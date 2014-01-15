@@ -50,20 +50,26 @@ $(document).ready(function(){
 	});
 
 	//Verifica se as senhas são iguais
-	$('#txtPassword2').keyup(function(){
+	$('#txtPassword2, #txtPassword1').keyup(function(){
 		var password1 = $('#txtPassword1').val();
-		var password2 = $(this).val();
+		var password2 = $('#txtPassword2').val();
 
 		var field1 = $('#txtPassword1');
 		var field2 = $('#txtPassword2');
 
-		if(password1 != password2){
-			field1.addClass('redBorder');
-			field2.addClass('redBorder');
+		if(password2 == '' && password1 != ''){
+			//Não faz nada
 		} else {
-			field1.removeClass('redBorder').addClass('greenBorder');
-			field2.removeClass('redBorder').addClass('greenBorder');
+			if(password1 != password2){
+				field1.addClass('redBorder');
+				field2.addClass('redBorder');
+			} else {
+				field1.removeClass('redBorder').addClass('greenBorder');
+				field2.removeClass('redBorder').addClass('greenBorder');
+			}
 		}
+
+		
 	});
 
 	//Botão cancelar do formulário
