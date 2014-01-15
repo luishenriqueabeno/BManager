@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tempo de Geração: Jan 15, 2014 as 03:23 
+-- Tempo de Geração: Jan 15, 2014 as 04:56 
 -- Versão do Servidor: 5.1.41
 -- Versão do PHP: 5.3.1
 
@@ -16,7 +16,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Banco de Dados: `mytasks`
+-- Banco de Dados: `dailyhelper`
 --
 
 -- --------------------------------------------------------
@@ -77,7 +77,6 @@ CREATE TABLE IF NOT EXISTS `users` (
   `lastName` varchar(50) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `password2` varchar(255) NOT NULL,
   `productId` int(11) NOT NULL,
   `signupDate` varchar(15) NOT NULL,
   PRIMARY KEY (`id`)
