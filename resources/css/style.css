@@ -1,0 +1,29 @@
+/* Form add user */
+#addUserForm label{
+	float:left;
+	width:100%;
+	position:relative;
+}
+#addUserForm input{
+	float:right;
+	width:100%;	
+	position:relative;
+}
+.addUserFormSeparator{
+	margin-top:10px;
+	padding-top:10px;
+	width:100%;
+	float:left;
+	border-top-style: solid;
+	border-top-width: 1px;
+	border-top-color: #CCC;
+}
+.ui-dialog-buttonset{
+	text-align:right;
+}
+.greenBorder{
+	border: solid 2px green !important;;
+}
+.redBorder{
+	border: solid 2px red !important;
+}
