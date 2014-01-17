@@ -31,8 +31,11 @@ li{
 .redBorder{
 	border: solid 2px red !important;
 }
-#formMessage{
-	color: red;
+#formMessage{	
+	text-align: center;
+	font-weight: bold;
+}
+#formMessageSuccess{	
 	text-align: center;
 	font-weight: bold;
 }

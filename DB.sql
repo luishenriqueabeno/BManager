@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tempo de Geração: Jan 15, 2014 as 04:56 
+-- Tempo de Geração: Jan 17, 2014 as 03:09 
 -- Versão do Servidor: 5.1.41
 -- Versão do PHP: 5.3.1
 
@@ -54,16 +54,16 @@ CREATE TABLE IF NOT EXISTS `tasks` (
   `horaFim` varchar(10) NOT NULL,
   `minutoFim` varchar(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=61 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=80 ;
 
 --
 -- Extraindo dados da tabela `tasks`
 --
 
 INSERT INTO `tasks` (`id`, `taskName`, `desc`, `dataInicio`, `dataFim`, `horaInicio`, `minutoInicio`, `horaFim`, `minutoFim`) VALUES
-(55, 'Pagar IPVA', 'Pagar IPVA', '16/01/2014', '16/01/2014', '10', '00', '16', '00'),
+(55, 'Pagar IPVA', 'Pagar IPVA', '16/01/2014', '21/01/2014', '10', '00', '16', '00'),
 (60, 'SPTrans', 'Verificar recarga de vale transporte.\nEnd: Rua CatÃ£o, 50 - Term. Lapa', '16/01/2014', '16/01/2014', '08', '00', '09', '00'),
-(39, 'Pagar Roberto', 'Pagar R$240,00 para o Roberto referente ao Hotel Fazenda SÃ£o JoÃ£o.\nDados:\nAg: 4742\nCC: 010845582\nCPF: 66680093872', '12/01/2014', '12/05/2014', '10', '00', '16', '00');
+(39, 'Pagar Roberto', 'Pagar R$240,00 para o Roberto referente ao Hotel Fazenda SÃ£o JoÃ£o.\nDados:\nAg: 4742\nCC: 010845582\nCPF: 66680093872\n\n 1Âº Parcela paga dia 15/01/2014 TransaÃ§Ã£o: 671466', '12/01/2014', '12/05/2014', '10', '00', '16', '00');
 
 -- --------------------------------------------------------
 
@@ -77,15 +77,18 @@ CREATE TABLE IF NOT EXISTS `users` (
   `lastName` varchar(50) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `gender` int(11) NOT NULL,
   `productId` int(11) NOT NULL,
   `signupDate` varchar(15) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Extraindo dados da tabela `users`
 --
 
+INSERT INTO `users` (`id`, `firstName`, `lastName`, `email`, `password`, `gender`, `productId`, `signupDate`) VALUES
+(1, 'Luis', 'Henrique', 'luis_abeno@hotmail.com', '4aafd190adfeb9477899840deae6c370', 1, 1, '17/01/2014');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

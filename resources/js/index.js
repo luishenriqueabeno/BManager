@@ -12,6 +12,7 @@ $(document).ready(function(){
 	var lastNameField = $('#txtLastName');
 	var userNameField = $('#txtUsername');
 	var passwordField = $('#txtPassword');
+	var formSucess = 0;
 	var erroMsgUpdate = true;
 
 
@@ -52,7 +53,7 @@ $(document).ready(function(){
 	
 		if(field1.hasClass('redBorder') || field2.hasClass('redBorder') || emailField.hasClass('redBorder') || firstNameField.hasClass('redBorder') || lastNameField.hasClass('redBorder')){
 			if (erroMsgUpdate) {
-				$('#formMessage').append('Corrija os campos destacados');
+				$('#formMessage').append('Corrija os campos destacados').css('color', 'red');
 				erroMsgUpdate = false;
 			}
 		} else {
@@ -68,7 +69,18 @@ $(document).ready(function(){
 					gender: gender
 				},
 				success: function(data){
-					$( "#addUserForm" ).dialog( "destroy" );
+					if(formSucess == 0){
+						$('#formMessage').remove();
+						$('#formMessageSuccess').append('Usuário cadastrado com sucesso').css('color', 'green');
+						formSucess = 1;
+						$('#formAddTask')[0].reset();
+						field1.removeClass('greenBorder');
+						field2.removeClass('greenBorder');
+						firstNameField.removeClass('greenBorder');
+						lastNameField.removeClass('greenBorder');
+						emailField.removeClass('greenBorder');
+					} 
+					
 				}
 			});
 		}

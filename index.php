@@ -25,6 +25,7 @@
 		<!-- Add user modal -->
 		<div id="addUserForm" title="Inscreva-se">
 			<div id = "formMessage"> </div>
+			<div id = "formMessageSuccess"> </div>
 			<form method = "post" id = "formAddTask">
 				<label for = "firstName"> Nome </label>
 				<input id = "txtFirstName" type = "text" name = "txtFirstName" >
