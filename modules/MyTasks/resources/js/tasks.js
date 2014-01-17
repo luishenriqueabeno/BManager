@@ -39,7 +39,7 @@ $(document).ready(function(){
 
 	//Lista todas as tarefas
 	$.ajax({
-		url: 'php/carregaTarefas.php',
+		url: 'modules/MyTasks/php/carregaTarefas.php',
 		type: 'POST',
 		success: function(data){
 			var json = $.parseJSON(data);
@@ -105,7 +105,7 @@ $(document).ready(function(){
 						//Remove do banco
 						$.ajax({
 							type: 'POST',
-							url: 'php/deletaTarefas.php',
+							url: 'modules/MyTasks/php/deletaTarefas.php',
 							data: { tasks: tasks },
 							success: function(data){
 								
@@ -167,7 +167,7 @@ $(document).ready(function(){
 		} else {
 			$.ajax({
 				type: 'POST',
-				url: 'php/addTask.php',
+				url: 'modules/MyTasks/php/addTask.php',
 				data:{
 					taskId: taskId,
 					taskName: taskName,
@@ -180,8 +180,23 @@ $(document).ready(function(){
 					minutoFim: minutoFim,
 				},
 				success: function(data){
-					location.reload();
+					//location.reload();
+					$( "#addTaskForm" ).dialog( "destroy" );
+					$('#taskList tr').not(':first-child').empty();
 				}
+			}).done(function(data){
+					var json = $.parseJSON(data);
+			
+					for(var i = 0; i < json.length; i++){
+						taskList.append(
+							"<tr id = "+ json[i].id +">" + 
+								"<td>" + json[i].taskName + "</td>" +
+								"<td>" + json[i].desc + "</td>" +
+								"<td>" + json[i].dataInicio + " " + json[i].horaInicio + ":" + json[i].minutoInicio + "</td>" +
+								"<td>" + json[i].dataFim + " " + json[i].horaFim + ":" + json[i].minutoFim + "</td>" +
+							"</tr>"
+						)
+					}
 			});
 		}
 		
@@ -208,7 +223,7 @@ $(document).ready(function(){
 		var minutoFim = $('#minutoFim');
     	
     	$.ajax({
-    		url: 'php/editaTarefa.php',
+    		url: 'modules/MyTasks/php/editaTarefa.php',
     		type: 'POST',
     		data:{ taskId: taskId },
     		success: function(data){

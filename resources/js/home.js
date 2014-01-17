@@ -11,7 +11,8 @@ $(document).ready(function(){
 
 	//Adiciona o modulo de tarefas a página
 	$("a[name=modulesTasks]").click(function () { 
-		$("#frame").attr("src", "modules/MyTasks/index.php");		
+		//$("#frame").attr("src", "modules/MyTasks/index.php");		
+		$('#contentMain').load('modules/MyTasks/index.php');
 	});
 
 })
