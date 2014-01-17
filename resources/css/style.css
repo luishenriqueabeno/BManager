@@ -1,15 +1,19 @@
+li{
+	list-style-type: none;
+}
+
 /* Form add user */
-#addUserForm label{
+#addUserForm label, #loginForm label{
 	float:left;
 	width:100%;
 	position:relative;
 }
-#addUserForm input{
+#addUserForm input, #addUserForm select, #loginForm input{
 	float:right;
 	width:100%;	
 	position:relative;
 }
-.addUserFormSeparator{
+.addUserFormSeparator, .formLoginSeparator{
 	margin-top:10px;
 	padding-top:10px;
 	width:100%;
@@ -26,4 +30,14 @@
 }
 .redBorder{
 	border: solid 2px red !important;
+}
+#formMessage{
+	color: red;
+	text-align: center;
+	font-weight: bold;
+}
+
+/* Content Area */
+#contentMainArea{
+	border:solid;
 }
