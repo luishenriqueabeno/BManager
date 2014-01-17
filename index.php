@@ -86,8 +86,10 @@
 		<a href = "#" id = "addUserModal"> Inscreva-se </a>
 		<?php if($_SESSION['login'] == 1){ ?>
 					<a href = "home.php" id = "systemRedirect"> Acessar sistema </a>
+					<br>
 					<a href = "php/logout.php" name = "logout"> Logout </a>
 		<?php } else { ?>
+					<br>
 					<a href = "#" id = "loginUserModal"> Login </a>
 		<?php } ?>
 
