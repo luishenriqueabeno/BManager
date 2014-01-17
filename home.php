@@ -25,7 +25,7 @@
 		<!-- Scripts -->
 		<script src = "lib/jquery-1.10.2/jquery-1.10.2.min.js" type = "text/javascript"></script>
 		<script src="resources/js/home.js"></script>
-		<script src="lib/jquery-ui-1.10.3/ui/jquery-ui.js"></script>
+		<script src="lib/jquery-ui-1.10.3/ui/jquery-ui.min.js"></script>
 
 	</head>
 	<body>
