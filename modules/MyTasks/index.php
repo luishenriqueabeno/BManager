@@ -12,7 +12,7 @@
 		<link rel="stylesheet" href="lib/jquery-ui-1.10.3/themes/base/jquery-ui.css">
 
 		<!-- Scripts -->
-		<script src = "lib/jquery-1.10.2/jquery-1.10.2.dev.js" type = "text/javascript"></script>
+		<script src = "lib/jquery-1.10.2/jquery-1.10.2.min.js" type = "text/javascript"></script>
 		<script src = "resources/js/tasks.js" type = "text/javascript"></script>
 		<script src="lib/jquery-ui-1.10.3/ui/jquery-ui.js"></script>
 
