@@ -15,6 +15,12 @@ $(document).ready(function(){
 	var formSucess = 0;
 	var erroMsgUpdate = true;
 
+	var firstNameReq = $('.firstNameReq');
+	var lastNameReq = $('.lastNameReq');
+	var emailReq = $('.emailReq');
+	var pass1 = $('.pass1');
+	var pass2 = $('.pass2');
+
 
 	/***************************
 	* Inicio das funções 
@@ -72,6 +78,7 @@ $(document).ready(function(){
 					if(formSucess == 0){
 						$('#formMessage').remove();
 						$('#formMessageSuccess').append('Usuário cadastrado com sucesso').css('color', 'green');
+						$('#formMessageSuccess').append("<a href = '#' id = 'loginLink' class = 'loginLink'>Login </a>");
 						formSucess = 1;
 						$('#formAddTask')[0].reset();
 						field1.removeClass('greenBorder');
@@ -79,8 +86,18 @@ $(document).ready(function(){
 						firstNameField.removeClass('greenBorder');
 						lastNameField.removeClass('greenBorder');
 						emailField.removeClass('greenBorder');
-					} 
-					
+					}
+
+					//Abre modal de login a partir do formulário de cadastro
+					$('#loginLink').on('click', function(){
+						$( "#addUserForm" ).dialog( "destroy" );
+						//Abre modal para o usuário logar
+						$( "#loginForm" ).dialog({
+							modal: true,
+							show: { effect: "slideDown", duration: 600 } ,
+							width: 500,
+						});
+					}); 					
 				}
 			});
 		}
@@ -93,9 +110,11 @@ $(document).ready(function(){
 
 		if(password1.length < 6 || password1 == ''){
 			field1.addClass('redBorder');
+			pass1.html('A senha deve ter no mínimo 6 caracteres');
 		} else {
 			field1.removeClass('redBorder').addClass('greenBorder');
 			$('#txtPassword2').attr('disabled', false);
+			pass1.html('');
 		}
 	});
 	$('#txtPassword2').keyup(function(){
@@ -104,12 +123,15 @@ $(document).ready(function(){
 
 		if(password2.length < 6){
 			field2.addClass('redBorder');
+			pass2.html('As senhas não coincidem');
 		} else if(password1 != password2) {
 			field1.addClass('redBorder');
 			field2.addClass('redBorder');
+			pass2.html('As senhas não coincidem');
 		} else {
 			field1.removeClass('redBorder').addClass('greenBorder');
 			field2.removeClass('redBorder').addClass('greenBorder');
+			pass2.html('');
 		}
 	});
 
@@ -121,10 +143,34 @@ $(document).ready(function(){
 
 	    if(pattern.test(email)){         
 			emailField.removeClass('redBorder').addClass('greenBorder');
+			emailReq.html('');
 	    }else{   
 			emailField.addClass('redBorder');
+			emailReq.html('Email inválido').css('margin-left', '-80px');
 	    }
+	});
+	$('#txtEmail').focusout(function(){
+		var email = $(this).val();
 
+		if($(this).val() == ''){
+			emailField.addClass('redBorder');
+			emailReq.html('Campo obrigatório');
+		} else {
+			$.ajax({
+		    	url: 'php/checkUser.php',
+		    	type: 'POST',
+		    	data: { email: email },
+		    	success: function(data){
+		    		if(data == 1){
+		    			emailField.addClass('redBorder');
+						emailReq.html('Este email já esta sendo usado').css('margin-left', '-180px');
+		    		} else {
+		    			emailField.removeClass('redBorder').addClass('greenBorder');
+						emailReq.html('');
+		    		}
+		    	}
+		    });
+		}
 	});
 
 	//Verifica nome e altera estilo
@@ -133,8 +179,10 @@ $(document).ready(function(){
 
 		if(firstName == ''){
 			firstNameField.addClass('redBorder');
+			firstNameReq.html('Campo obrigatório');
 		} else {
 			firstNameField.removeClass('redBorder').addClass('greenBorder');
+			firstNameReq.html('');
 		} 
 	});
 
@@ -144,8 +192,10 @@ $(document).ready(function(){
 
 		if(lastName == ''){
 			lastNameField.addClass('redBorder');
+			lastNameReq.html('Campo obrigatório');
 		} else {
 			lastNameField.removeClass('redBorder').addClass('greenBorder');
+			lastNameReq.html('');
 		} 
 
 	});
@@ -183,5 +233,5 @@ $(document).ready(function(){
 	//Botão cancelar do formulário para logar
 	$('#btnCancelLoginForm').on('click', function(){
 		$( "#loginForm" ).dialog( "destroy" );
-	});
+	});	
 })

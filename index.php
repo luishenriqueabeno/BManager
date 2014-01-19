@@ -27,19 +27,19 @@
 			<div id = "formMessage"> </div>
 			<div id = "formMessageSuccess"> </div>
 			<form method = "post" id = "formAddTask">
-				<label for = "firstName"> Nome </label>
+				<label for = "firstName"> Nome </label> <span class = "firstNameReq"> </span>
 				<input id = "txtFirstName" type = "text" name = "txtFirstName" >
 
-				<label for = "lastName"> Sobrenome </label>
+				<label for = "lastName"> Sobrenome </label> <span class = "lastNameReq"> </span>
 				<input id = "txtLastName" type = "text" name = "txtLastName" >
 
-				<label for = "email"> Email </label>
+				<label for = "email"> Email </label> <span class = "emailReq"> </span>
 				<input id = "txtEmail" type = "text" name = "txtEmail" >
 
-				<label for = "pass1"> Senha </label>
+				<label for = "pass1"> Senha </label> <span class = "pass1"> </span>
 				<input id = "txtPassword1" type = "password" name = "txtPassword1" >
 
-				<label for = "pass2"> Repita a senha </label>
+				<label for = "pass2"> Repita a senha </label> <span class = "pass2"> </span>
 				<input id = "txtPassword2" type = "password" name = "txtPassword2" >
 
 				<label for = "gender"> Sexo </label>

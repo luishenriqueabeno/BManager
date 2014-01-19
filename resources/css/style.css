@@ -3,6 +3,9 @@ li{
 }
 
 /* Form add user */
+#addUserForm{
+	overflow: hidden;
+}
 #addUserForm label, #loginForm label{
 	float:left;
 	width:100%;
@@ -38,6 +41,55 @@ li{
 #formMessageSuccess{	
 	text-align: center;
 	font-weight: bold;
+}
+.firstNameReq{
+	color: red;
+	position: absolute;
+	z-index: 4;
+	width: 250px;
+	margin-left: -110px;
+	font-size: 11px;
+	margin-top: 5px;
+}
+.lastNameReq{
+	position: absolute;
+	z-index: 4;
+	width: 250px;
+	margin-left: -110px;
+	margin-top: 60px;
+	font-size: 11px;
+	color:red;
+}
+.emailReq{
+	position: absolute;
+	z-index: 4;
+	width: 250px;
+	margin-left: -110px;
+	margin-top: 115px;
+	font-size: 11px;
+	color:red;
+}
+.pass1{
+	color: red;
+	position: absolute;
+	z-index: 4;
+	font-size: 11px;
+	width: 450px;
+	margin-left: -240px;
+	margin-top: 170px;
+}
+.pass2{
+	color: red;
+	position: absolute;
+	z-index: 4;
+	font-size: 11px;
+	width: 450px;
+	margin-left: -148px;
+	margin-top: 225px;
+}
+.loginLink{
+	color:blue !important;
+	margin-left:10px;
 }
 
 /* Content Area */

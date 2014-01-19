@@ -14,6 +14,7 @@ $(document).ready(function(){
 
 	//Esconde modal no carregamento do documento
 	$('#addTaskForm').hide();
+	$('#addGroupForm').hide();
 
 	//Date picker
     $( "#dataInicio" ).datepicker({
@@ -45,6 +46,7 @@ $(document).ready(function(){
 		data:{ userId: userId },
 		success: function(data){
 			var json = $.parseJSON(data);
+			var count = 0;
 			
 			for(var i = 0; i < json.length; i++){
 				taskList.append(
@@ -297,4 +299,50 @@ $(document).ready(function(){
 		var horaFim = $('#horaFim').val('');
 		var minutoFim = $('#minutoFim').val('');
     }
+
+    //Cria grupo de tarefas
+    $('#createGroup').on('click', function(){
+    	var groupName = $('input[name=txtTaskGroupName]').val();
+
+    	//Exibe modal
+		$( "#addGroupForm" ).dialog({
+			modal: true,
+			show: { effect: "slideDown", duration: 600 } ,
+			width: 500,
+		});
+
+		//Adiciona grupo
+		$('#btnAddGroup').on('click', function(){
+			var i = 0;
+			var checkSelected = [];
+			var groupName = $('#txtTaskGroupName').val();
+
+			//Verifica se tem algum item selecionado
+			$('.highlighted').each(function(){
+				
+				//Guarda itens selecionados em um array
+				checkSelected[i] = $(this).attr('id');		
+
+				i++;
+			});
+
+			$.ajax({
+				url: 'modules/MyTasks/php/createGroup.php',
+	    		type: 'POST',
+	    		data:{ 
+	    			taskId: checkSelected,
+	    			groupName: groupName,
+	    			userId: userId
+    			},
+	    		success: function(data){
+	    			alert(data);
+	    		}
+			});
+		})
+    });
+
+    //Botão cancelar do formulário
+	$('#btnCancelGroupForm').on('click', function(){
+		$( "#addGroupForm" ).dialog( "destroy" );
+	});
 });

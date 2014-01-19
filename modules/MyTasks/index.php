@@ -32,6 +32,20 @@
 			</p>
 		</div>
 
+			<div id="addGroupForm" title="Criar um grupo">
+			<form method = "post" id = "formAddGroup">
+				<label for = "taskGroupName"> Nome do agrupamento </label>
+				<input id = "txtTaskGroupName" type = "text" name = "txtTaskGroupName" >				
+
+				<div class = "formAddGroupSeparator">
+					<div class="ui-dialog-buttonset">
+						<button id= "btnAddGroup" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"> <span class="ui-button-text">Agrupar tarefas</span> </button>
+						<button id = "btnCancelGroupForm" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"> <span class="ui-button-text">Cancel</span></button>
+					</div>
+				</div>
+			</form>
+		</div>
+
 		<div id="addTaskForm" title="Criar uma tarefa">
 			<form method = "post" id = "formAddTask">
 				<label for = "taskName"> Nome da tarefa </label>
@@ -87,6 +101,9 @@
 							</div>
 							<div class = "bgBtnContainer">
 								<div id = "removeTask"> </div> 
+							</div>
+							<div class = "bgBtnContainer">
+								<div id = "createGroup"> G</div> 
 							</div>
 						</td>
 					</tr>
