@@ -46,7 +46,6 @@ $(document).ready(function(){
 		data:{ userId: userId },
 		success: function(data){
 			var json = $.parseJSON(data);
-			var count = 0;
 			
 			for(var i = 0; i < json.length; i++){
 				taskList.append(
