@@ -1,7 +1,9 @@
 <?php
 	require('../../../php/conn.php');
+
+	$userId = $_POST['userId'];
 	
-	$query = "Select * From tasks";
+	$query = "Select * From tasks Where userId = $userId";
 
 	$sql = mysql_query($query);
 

@@ -164,12 +164,13 @@ $(document).ready(function(){
 			},
 			success: function(data){
 				$( "#loginForm" ).dialog( "destroy" );
-				if(data == 1){
+				if(data[0] == 1){
 					//Redireciona para a página principal do sistema
 					window.location.href = "home.php";	
 				} else {
 					alert("Usuário e/ou senha incorreto.");
 				}
+				//alert(data[0]);
 			}
 		})
 	});

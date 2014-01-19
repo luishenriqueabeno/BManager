@@ -4,15 +4,19 @@
 	$username = $_POST['username'];
 	$password = md5($_POST['password']);
 
-	$checkUser = "Select email From users Where email = '$username' And password = '$password'";
+	$checkUser = "Select id, email From users Where email = '$username' And password = '$password'";
 	$checkUserSql = mysql_query($checkUser);
 	$rows = mysql_num_rows($checkUserSql);
 
+	$res = mysql_fetch_object($checkUserSql);
+
+	$userId = $res->id;
+
 	if($rows == 1){
 		session_start();
-		$_SESSION['login'] = "1";
-		$_SESSION['username'] = $username;
-		echo $_SESSION['login'];
+		echo $_SESSION['login'] = "1";
+		echo $_SESSION['username'] = $username;
+		echo $_SESSION['userId'] = $userId;
 	} else {
 		echo $_SESSION['login'] = 0;
 	}

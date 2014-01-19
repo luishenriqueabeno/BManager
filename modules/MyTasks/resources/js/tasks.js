@@ -6,6 +6,7 @@ $(document).ready(function(){
 	var taskList = $('#taskList');
 	var dataInicio = $('#dataInicio').val();
 	var dataFim = $('#dataFim').val();
+	var userId = $('input[name=userId]').val();
 
 	//Esconde dialog no carregamento
 	$('#deleteDialog').hide();
@@ -41,6 +42,7 @@ $(document).ready(function(){
 	$.ajax({
 		url: 'modules/MyTasks/php/carregaTarefas.php',
 		type: 'POST',
+		data:{ userId: userId },
 		success: function(data){
 			var json = $.parseJSON(data);
 			

@@ -37,7 +37,7 @@
 				</ul>
 		<?php } ?>
 
-			
+			<input type = "hidden" value = "<?php echo $_SESSION['userId']; ?>" name = "userId">
 		<!--<iframe id="frame" src="" frameborder="0" style="overflow:hidden" width="100%" height = "500"></iframe>-->
 
 		<div id = "contentMain"> </div>
