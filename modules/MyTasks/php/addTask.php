@@ -6,6 +6,7 @@
 	$taskDesc = $_POST['taskDesc'];
 	$dataInicio = $_POST['dataInicio'];
 	$dataFim = $_POST['dataFim'];
+	$userId = $_POST['userId'];
 
 	$horaInicio = $_POST['horaInicio'];
 	$minutoInicio = $_POST['minutoInicio'];
@@ -15,7 +16,7 @@
 	if($taskId != ''){
 		$query = mysql_query("Update tasks Set taskName = '$taskName', `desc` = '$taskDesc', dataInicio = '$dataInicio', dataFim = '$dataFim', horaInicio = '$horaInicio', minutoInicio = '$minutoInicio', horaFim = '$horaFim', minutoFim = '$minutoFim' Where id = '$taskId'");
 
-		$updateTable = mysql_query("Select * From tasks");
+		$updateTable = mysql_query("Select * From tasks Where userId = $userId");
 
 		$rows = array();
 
@@ -25,14 +26,14 @@
 
 		echo json_encode($rows);
 	} else {
-		$query = "Insert Into tasks Values ('', '$taskName', '$taskDesc', '$dataInicio', '$dataFim', '$horaInicio', '$minutoInicio', '$horaFim', '$minutoFim')";
+		$query = "Insert Into tasks Values ('', '$taskName', '$taskDesc', '$dataInicio', '$dataFim', '$horaInicio', '$minutoInicio', '$horaFim', '$minutoFim', $userId)";
 
 		$sql = mysql_query($query);
 
-		$lastReg = mysql_query("Select max(id) as last From tasks");
+		$lastReg = mysql_query("Select max(id) as last From tasks ");
 		$resLastReg = mysql_fetch_object($lastReg);
 
-		$updateTable = mysql_query("Select * From tasks");
+		$updateTable = mysql_query("Select * From tasks Where userId = $userId");
 
 		$rows = array();
 

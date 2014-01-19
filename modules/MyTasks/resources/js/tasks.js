@@ -180,6 +180,7 @@ $(document).ready(function(){
 					minutoInicio: minutoInicio,
 					horaFim: horaFim,
 					minutoFim: minutoFim,
+					userId: userId
 				},
 				success: function(data){
 					//location.reload();
