@@ -100,9 +100,6 @@
 								<div class = "bgBtnContainer">
 									<div id = "removeTask"> </div> 
 								</div>
-								<div class = "bgBtnContainer">
-									<div id = "createGroup"> G</div> 
-								</div>
 							</td>
 						</tr>
 					</table>

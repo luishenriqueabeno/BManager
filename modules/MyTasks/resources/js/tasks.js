@@ -299,47 +299,6 @@ $(document).ready(function(){
 		var minutoFim = $('#minutoFim').val('');
     }
 
-    //Cria grupo de tarefas
-    $('#createGroup').on('click', function(){
-    	var groupName = $('input[name=txtTaskGroupName]').val();
-
-    	//Exibe modal
-		$( "#addGroupForm" ).dialog({
-			modal: true,
-			show: { effect: "slideDown", duration: 600 } ,
-			width: 500,
-		});
-
-		//Adiciona grupo
-		$('#btnAddGroup').on('click', function(){
-			var i = 0;
-			var checkSelected = [];
-			var groupName = $('#txtTaskGroupName').val();
-
-			//Verifica se tem algum item selecionado
-			$('.highlighted').each(function(){
-				
-				//Guarda itens selecionados em um array
-				checkSelected[i] = $(this).attr('id');		
-
-				i++;
-			});
-
-			$.ajax({
-				url: 'modules/MyTasks/php/createGroup.php',
-	    		type: 'POST',
-	    		data:{ 
-	    			taskId: checkSelected,
-	    			groupName: groupName,
-	    			userId: userId
-    			},
-	    		success: function(data){
-	    			alert(data);
-	    		}
-			});
-		})
-    });
-
     //Botão cancelar do formulário
 	$('#btnCancelGroupForm').on('click', function(){
 		$( "#addGroupForm" ).dialog( "destroy" );
