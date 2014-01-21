@@ -17,18 +17,35 @@
 
 		<!-- Meta -->
 		<meta charset = "utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<!-- CSS -->
 		<link type="text/css" rel="stylesheet" href="resources/css/style.css">
 		<link rel="stylesheet" href="lib/jquery-ui-1.10.3/themes/base/jquery-ui.css">
+		<link rel="stylesheet" href="lib/bootstrap-3.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="resources/css/normalize.css">
 
 		<!-- Scripts -->
 		<script src = "lib/jquery-1.10.2/jquery-1.10.2.min.js" type = "text/javascript"></script>
 		<script src="resources/js/home.js"></script>
 		<script src="lib/jquery-ui-1.10.3/ui/minified/jquery-ui.min.js"></script>
-
+		<script src="lib/bootstrap-3.0/js/bootstrap.min.js"></script>
 	</head>
 	<body>
+		<!-- Header -->
+		<section>
+			<header>
+			<div class="row">
+  <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
+  <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
+  <!-- Optional: clear the XS cols if their content doesn't match in height -->
+  <div class="clearfix visible-xs"></div>
+  <div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4</div>
+</div>
+			</header>
+		</section>
+		<!-- ./Header -->
+
 		<a href = "php/logout.php"> Logout </a>
 		<?php if($res->productId == 1){ ?>
 				<div class = "welcome"> <?php if($res->gender == 1) echo "Seja bem vindo " . $res->firstName . " " . $res->lastName; ?> </div>
@@ -38,8 +55,7 @@
 				</ul>
 		<?php } ?>
 
-			<input type = "hidden" value = "<?php echo $_SESSION['userId']; ?>" name = "userId">
-		<!--<iframe id="frame" src="" frameborder="0" style="overflow:hidden" width="100%" height = "500"></iframe>-->
+		<input type = "hidden" value = "<?php echo $_SESSION['userId']; ?>" name = "userId">
 
 		<div id = "contentMain"> </div>
 	</body>
