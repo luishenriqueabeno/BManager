@@ -35,14 +35,19 @@
 		<!-- Header -->
 		<section>
 			<header>
-
+				<div class="row">
+					<div class="col-xs-offset-4 col-xs-4 col-xs-offset-4 col-sm-offset-1 col-sm-12 col-md-offset-1 col-md-8"> Logo Header </div>
+					<div class="col-xs-12 col-sm-offset-1 col-sm-12 col-md-offset-1 col-md-8"> 
+						<div class = "welcome"> 
+							<?php if($res->gender == 1) echo "Seja bem vindo " . $res->firstName . " " . $res->lastName; ?> <a href = "php/logout.php"> Logout </a>
+						</div>
+					</div>
+				</div>
 			</header>
 		</section>
 		<!-- ./Header -->
 
-		<a href = "php/logout.php"> Logout </a>
 		<?php if($res->productId == 1){ ?>
-				<div class = "welcome"> <?php if($res->gender == 1) echo "Seja bem vindo " . $res->firstName . " " . $res->lastName; ?> </div>
 				<ul>
 					<li> <a href = "#" name = "modulesTasks"> Minhas Tarefas </a> </li>
 					<li> <a href = "#" name = "modulesCashFlow"> Fluxo de caixa </a> </li>
