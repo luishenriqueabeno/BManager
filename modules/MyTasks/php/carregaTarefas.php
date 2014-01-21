@@ -3,7 +3,7 @@
 
 	$userId = $_POST['userId'];
 	
-	$query = "Select * From tasks Where userId = $userId Order By taskGroupId";
+	$query = "Select * From tasks Where userId = $userId";
 
 	$sql = mysql_query($query);
 
