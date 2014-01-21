@@ -34,6 +34,7 @@
 				<div class = "welcome"> <?php if($res->gender == 1) echo "Seja bem vindo " . $res->firstName . " " . $res->lastName; ?> </div>
 				<ul>
 					<li> <a href = "#" name = "modulesTasks"> Minhas Tarefas </a> </li>
+					<li> <a href = "#" name = "modulesCashFlow"> Fluxo de caixa </a> </li>
 				</ul>
 		<?php } ?>
 

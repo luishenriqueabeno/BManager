@@ -11,8 +11,12 @@ $(document).ready(function(){
 
 	//Adiciona o modulo de tarefas a página
 	$("a[name=modulesTasks]").click(function () { 
-		//$("#frame").attr("src", "modules/MyTasks/index.php");		
 		$('#contentMain').load('modules/MyTasks/index.php');
+	});
+
+	//Adiciona o modulo de fluxo de caixa a página
+	$("a[name=modulesCashFlow]").click(function () { 
+		$('#contentMain').load('modules/CashFlow/index.php');
 	});
 
 })

@@ -9,12 +9,9 @@
 
 		<!-- CSS -->
 		<link type="text/css" rel="stylesheet" href="modules/MyTasks/resources/css/style.css">
-		<!--<link rel="stylesheet" href="modules/MyTasks/lib/jquery-ui-1.10.3/themes/base/jquery-ui.css">-->
 
 		<!-- Scripts -->
-		<!--<script src = "modules/MyTasks/lib/jquery-1.10.2/jquery-1.10.2.min.js" type = "text/javascript"></script>-->
 		<script src = "modules/MyTasks/resources/js/tasks.js" type = "text/javascript"></script>
-		<!--<script src="modules/MyTasks/lib/jquery-ui-1.10.3/ui/minified/jquery-ui.min.js"></script>-->
 
 	</head>
 	<body>
