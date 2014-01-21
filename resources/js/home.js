@@ -9,6 +9,15 @@ $(document).ready(function(){
 	* Inicio das funções 
 	****************************/
 
+	//Adiciona estilo para item ativo do menu
+	$('.navbar-nav li').on('click', function(){
+		$('.navbar-nav li').each(function(){
+			$(this).removeClass('active');	
+		});		
+		$(this).addClass('active');
+	})
+
+
 	//Adiciona o modulo de tarefas a página
 	$("a[name=modulesTasks]").click(function () { 
 		$('#contentMain').load('modules/MyTasks/index.php');

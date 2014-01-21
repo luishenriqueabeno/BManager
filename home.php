@@ -36,8 +36,10 @@
 		<section>
 			<header>
 				<div class="row">
-					<div class="col-xs-offset-4 col-xs-4 col-xs-offset-4 col-sm-offset-1 col-sm-12 col-md-offset-1 col-md-8"> Logo Header </div>
-					<div class="col-xs-12 col-sm-offset-1 col-sm-12 col-md-offset-1 col-md-8"> 
+					<div class="col-xs-4"> </div>
+					<div class="col-xs-4 col-sm-12 col-md-12"> Logo Header </div>
+					<div class="col-xs-4"> </div>
+					<div class="col-xs-12 col-sm-12 col-md-12"> 
 						<div class = "welcome"> 
 							<?php if($res->gender == 1) echo "Seja bem vindo " . $res->firstName . " " . $res->lastName; ?> <a href = "php/logout.php"> Logout </a>
 						</div>
@@ -48,9 +50,39 @@
 		<!-- ./Header -->
 
 		<?php if($res->productId == 1){ ?>
+				<nav class="navbar navbar-default" role="navigation">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						</button>
+						<!--<a class="navbar-brand" href="#">Brand</a>-->
+					</div>
+
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav">
+							<li> <a href = "#" name = "modulesTasks"> Minhas Tarefas </a> </li>
+							<li> <a href = "#" name = "modulesCashFlow"> Fluxo de caixa </a> </li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="#">Action</a></li>
+									<li><a href="#">Another action</a></li>
+									<li class="divider"></li>
+									<li><a href="#">Separated link</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div><!-- /.navbar-collapse -->
+				</nav>
+
 				<ul>
-					<li> <a href = "#" name = "modulesTasks"> Minhas Tarefas </a> </li>
-					<li> <a href = "#" name = "modulesCashFlow"> Fluxo de caixa </a> </li>
+					<li></li>
+					<li></li>
 				</ul>
 		<?php } ?>
 

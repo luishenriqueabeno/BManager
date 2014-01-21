@@ -90,30 +90,32 @@
 		<div id = "taskContainer">
 			<div class = "taskContainerTitle"> Tarefas </div>	
 			<div class = "taskList">
-				<table id = "taskPanel">
-					<tr>
-						<td>
-							<div class = "bgBtnContainer">
-								<div id = "addTask"> </div>
-							</div>
-							<div class = "bgBtnContainer">
-								<div id = "removeTask"> </div> 
-							</div>
-							<div class = "bgBtnContainer">
-								<div id = "createGroup"> G</div> 
-							</div>
-						</td>
-					</tr>
-				</table>
+				<div class="table-responsive">
+					<table class = "table" id = "taskPanel">
+						<tr>
+							<td>
+								<div class = "bgBtnContainer">
+									<div id = "addTask"> </div>
+								</div>
+								<div class = "bgBtnContainer">
+									<div id = "removeTask"> </div> 
+								</div>
+								<div class = "bgBtnContainer">
+									<div id = "createGroup"> G</div> 
+								</div>
+							</td>
+						</tr>
+					</table>
 
-				<table id = "taskList">
-					<tr>
-						<td> Nome </td>
-						<td> Descrição </td>
-						<td> Inicio </td>
-						<td> Fim </td>
-					</tr>
-				</table>
+					<table class = "table" id = "taskList">
+						<tr>
+							<td> Nome </td>
+							<td> Descrição </td>
+							<td> Inicio </td>
+							<td> Fim </td>
+						</tr>
+					</table>
+				</div>
 			</div>
 		</div>
 	</body>
