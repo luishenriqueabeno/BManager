@@ -93,7 +93,7 @@ $(document).ready(function(){
 		var checkSelected = [];
 
 		//Verifica se tem algum item selecionado
-		$('.highlighted').each(function(){
+		$('.highlighted, .highlighted2').each(function(){
 			
 			//Guarda itens selecionados em um array
 			checkSelected[i] = $(this).attr('id');
@@ -112,7 +112,7 @@ $(document).ready(function(){
 						var i = 0;
 						var tasks = [];
 
-						$('.highlighted').each(function(){
+						$('.highlighted, .highlighted2').each(function(){
 							
 							//Remove da lista
 							$(this).remove();

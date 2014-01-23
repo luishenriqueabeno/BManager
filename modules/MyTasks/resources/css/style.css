@@ -116,8 +116,8 @@ table{
     background-color: #CCC !important;
 }
 .highlighted2 {
-    color: #261F1D;
-    background-color: #CCC !important;
+    color: #CCC;
+    background-color: #FFFF00 !important;
 }
 .done{
 	background: #00CC00 !important;
