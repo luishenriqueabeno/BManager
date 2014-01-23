@@ -11,6 +11,7 @@ $(document).ready(function(){
 	//Esconde dialog no carregamento
 	$('#deleteDialog').hide();
 	$('#deleteDialogSelected').hide();
+	$('#doneDialog').hide();
 
 	//Esconde modal no carregamento do documento
 	$('#addTaskForm').hide();
@@ -48,14 +49,25 @@ $(document).ready(function(){
 			var json = $.parseJSON(data);
 			
 			for(var i = 0; i < json.length; i++){
-				taskList.append(
-					"<tr id = "+ json[i].id +">" + 
-						"<td>" + json[i].taskName + "</td>" +
-						"<td>" + json[i].desc + "</td>" +
-						"<td>" + json[i].dataInicio + " " + json[i].horaInicio + ":" + json[i].minutoInicio + "</td>" +
-						"<td>" + json[i].dataFim + " " + json[i].horaFim + ":" + json[i].minutoFim + "</td>" +
-					"</tr>"
-				)
+				if(json[i].taskStatus == 1){
+					taskList.append(
+						"<tr id = "+ json[i].id +" class = 'done'>" + 
+							"<td>" + json[i].taskName + "</td>" +
+							"<td>" + json[i].desc + "</td>" +
+							"<td>" + json[i].dataInicio + " " + json[i].horaInicio + ":" + json[i].minutoInicio + "</td>" +
+							"<td>" + json[i].dataFim + " " + json[i].horaFim + ":" + json[i].minutoFim + "</td>" +
+						"</tr>"
+					)
+				} else {
+					taskList.append(
+						"<tr id = "+ json[i].id +">" + 
+							"<td>" + json[i].taskName + "</td>" +
+							"<td>" + json[i].desc + "</td>" +
+							"<td>" + json[i].dataInicio + " " + json[i].horaInicio + ":" + json[i].minutoInicio + "</td>" +
+							"<td>" + json[i].dataFim + " " + json[i].horaFim + ":" + json[i].minutoFim + "</td>" +
+						"</tr>"
+					)
+				}				
 			}
 		}
 	});
@@ -64,9 +76,11 @@ $(document).ready(function(){
 	$('.taskList').on('click', 'tr:not(:first-child)', function () {
 		if($(this).hasClass("highlighted")){
 			$(this).removeClass('highlighted');
+		} else if($(this).hasClass("done")) {
+			
 		} else {
 			$(this).addClass('highlighted');
-		}		
+		}	
 	});
 
 	//Remove tarefas selecionadas
@@ -192,14 +206,25 @@ $(document).ready(function(){
 					var json = $.parseJSON(data);
 			
 					for(var i = 0; i < json.length; i++){
-						taskList.append(
-							"<tr id = "+ json[i].id +">" + 
-								"<td>" + json[i].taskName + "</td>" +
-								"<td>" + json[i].desc + "</td>" +
-								"<td>" + json[i].dataInicio + " " + json[i].horaInicio + ":" + json[i].minutoInicio + "</td>" +
-								"<td>" + json[i].dataFim + " " + json[i].horaFim + ":" + json[i].minutoFim + "</td>" +
-							"</tr>"
-						)
+						if(json[i].taskStatus == 1){
+							taskList.append(
+								"<tr id = "+ json[i].id +" class = 'done'>" + 
+									"<td>" + json[i].taskName + "</td>" +
+									"<td>" + json[i].desc + "</td>" +
+									"<td>" + json[i].dataInicio + " " + json[i].horaInicio + ":" + json[i].minutoInicio + "</td>" +
+									"<td>" + json[i].dataFim + " " + json[i].horaFim + ":" + json[i].minutoFim + "</td>" +
+								"</tr>"
+							)
+						} else {
+							taskList.append(
+								"<tr id = "+ json[i].id +">" + 
+									"<td>" + json[i].taskName + "</td>" +
+									"<td>" + json[i].desc + "</td>" +
+									"<td>" + json[i].dataInicio + " " + json[i].horaInicio + ":" + json[i].minutoInicio + "</td>" +
+									"<td>" + json[i].dataFim + " " + json[i].horaFim + ":" + json[i].minutoFim + "</td>" +
+								"</tr>"
+							)
+						}
 					}
 			});
 		}
@@ -299,8 +324,60 @@ $(document).ready(function(){
 		var minutoFim = $('#minutoFim').val('');
     }
 
-    //Botão cancelar do formulário
-	$('#btnCancelGroupForm').on('click', function(){
-		$( "#addGroupForm" ).dialog( "destroy" );
+	//Marca tarefa como concluída
+	$('#doneTask').on('click', function(){
+		var i = 0;
+		var checkSelected = [];
+
+		//Verifica se tem algum item selecionado
+		$('.highlighted').each(function(){
+			
+			//Guarda itens selecionados em um array
+			checkSelected[i] = $(this).attr('id');
+
+			i++;
+		});
+
+		if(checkSelected.length > 0){
+			$( "#doneDialog" ).dialog({
+				resizable: false,
+				height:140,
+				width:500,
+				modal: true,
+				buttons: {
+					"Marcar essa(s) tarefa(s) como concluída(s)": function() {
+						var i = 0;
+						var tasks = [];
+
+						$('.highlighted').each(function(){
+							
+							//Guarda itens selecionados em um array
+							tasks[i] = $(this).attr('id');
+
+							$(this).removeClass('highlighted');
+							$(this).css('background', '#00CC00');
+							$(this).addClass('done');
+
+							i++;
+						});
+
+						//Flaga no banco como concluída
+						$.ajax({
+							type: 'POST',
+							url: 'modules/MyTasks/php/doneTask.php',
+							data: { tasks: tasks },
+							success: function(data){
+								
+							}
+						});
+
+						$( this ).dialog( "close" );
+					},
+					Cancelar: function() {
+						$( this ).dialog( "close" );
+					}
+				}
+			});
+		}
 	});
 });

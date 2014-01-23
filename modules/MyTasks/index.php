@@ -23,24 +23,14 @@
 			</p>
 		</div>
 
+		<div id="doneDialog" title="Marcar tarefa como concluída">
+			Deseja marcar essa tarefa como concluída?
+		</div>
+
 		<div id="deleteDialogSelected" title="Selecione uma tarefa">
 			<p>
 				Nenhuma tarefa selecionada.
 			</p>
-		</div>
-
-			<div id="addGroupForm" title="Criar um grupo">
-			<form method = "post" id = "formAddGroup">
-				<label for = "taskGroupName"> Nome do agrupamento </label>
-				<input id = "txtTaskGroupName" type = "text" name = "txtTaskGroupName" >				
-
-				<div class = "formAddGroupSeparator">
-					<div class="ui-dialog-buttonset">
-						<button id= "btnAddGroup" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"> <span class="ui-button-text">Agrupar tarefas</span> </button>
-						<button id = "btnCancelGroupForm" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"> <span class="ui-button-text">Cancel</span></button>
-					</div>
-				</div>
-			</form>
 		</div>
 
 		<div id="addTaskForm" title="Criar uma tarefa">
@@ -99,6 +89,9 @@
 								</div>
 								<div class = "bgBtnContainer">
 									<div id = "removeTask"> </div> 
+								</div>
+								<div class = "bgBtnContainer">
+									<div id = "doneTask"> D </div> 
 								</div>
 							</td>
 						</tr>

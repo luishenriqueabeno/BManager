@@ -115,6 +115,9 @@ table{
     color: #261F1D;
     background-color: #CCC !important;
 }
+.done{
+	background: #00CC00 !important;
+}
 #taskList{
 	width:100%;
 }

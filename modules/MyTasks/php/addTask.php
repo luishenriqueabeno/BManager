@@ -26,7 +26,7 @@
 
 		echo json_encode($rows);
 	} else {
-		$query = "Insert Into tasks Values ('', '$taskName', '$taskDesc', '$dataInicio', '$dataFim', '$horaInicio', '$minutoInicio', '$horaFim', '$minutoFim', $userId)";
+		$query = "Insert Into tasks Values ('', '$taskName', '$taskDesc', '$dataInicio', '$dataFim', '$horaInicio', '$minutoInicio', '$horaFim', '$minutoFim', $userId, 0)";
 
 		$sql = mysql_query($query);
 
