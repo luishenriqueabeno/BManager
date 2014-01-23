@@ -115,6 +115,10 @@ table{
     color: #261F1D;
     background-color: #CCC !important;
 }
+.highlighted2 {
+    color: #261F1D;
+    background-color: #CCC !important;
+}
 .done{
 	background: #00CC00 !important;
 }

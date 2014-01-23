@@ -72,12 +72,16 @@ $(document).ready(function(){
 		}
 	});
 
-	//Permite selecionar uma linha ao clicar
+	//Muda cor da linha dependendo do status da tarefa
 	$('.taskList').on('click', 'tr:not(:first-child)', function () {
 		if($(this).hasClass("highlighted")){
 			$(this).removeClass('highlighted');
 		} else if($(this).hasClass("done")) {
-			
+			$(this).removeClass('done');
+			$(this).addClass('highlighted2');
+		} else if($(this).hasClass("highlighted2")) {
+			$(this).removeClass('highlighted2');
+			$(this).addClass('done')
 		} else {
 			$(this).addClass('highlighted');
 		}	
