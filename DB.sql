@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tempo de Geração: Jan 23, 2014 as 05:06 
+-- Tempo de Geração: Jan 24, 2014 as 04:36 
 -- Versão do Servidor: 5.1.41
 -- Versão do PHP: 5.3.1
 
@@ -56,14 +56,15 @@ CREATE TABLE IF NOT EXISTS `tasks` (
   `userId` int(11) NOT NULL,
   `taskStatus` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=30 ;
 
 --
 -- Extraindo dados da tabela `tasks`
 --
 
 INSERT INTO `tasks` (`id`, `taskName`, `desc`, `dataInicio`, `dataFim`, `horaInicio`, `minutoInicio`, `horaFim`, `minutoFim`, `userId`, `taskStatus`) VALUES
-(1, 'TEste', 'teste', '', '', '01', '00', '01', '00', 1, 1);
+(28, 'asdasdasdsadas', 'asdasdsadsad', '06/01/2014', '08/01/2014', '01', '00', '01', '00', 1, 1),
+(29, 'qweqweqwe', 'qweqweqweqweqw', '23/01/2014', '23/01/2014', '17', '17', '18', '15', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -108,7 +109,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `firstName`, `lastName`, `email`, `password`, `gender`, `productId`, `signupDate`) VALUES
-(1, 'Luis', 'Abeno', 'luis_abeno@hotmail.com', '4aafd190adfeb9477899840deae6c370', 1, 1, '23/01/2014');
+(1, 'Luis', 'Abeno', 'luis_abeno@hotmail.com', '172cbaaf9ebde9101a2f1d285ce06434', 1, 1, '23/01/2014');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
