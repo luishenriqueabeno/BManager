@@ -263,14 +263,12 @@ $(document).ready(function(){
 				data:{ email: email },
 				url: 'php/forgotPass.php',
 				success: function(data){		
-
 					if(data == 1){
 						$('#passError').append('Não encontramos o e-mail informado em nossa base de dados').css('color', 'green');
 						errorAppended = 1;
 					} else {
 						$('#passSend').append('Uma nova senha foi enviada para seu email').css('color', 'green');
 					}
-	
 				}
 			})
 		}
