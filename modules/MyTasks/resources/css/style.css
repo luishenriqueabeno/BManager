@@ -26,6 +26,12 @@ table{
 	color:#ffffff;
 	line-height:20px;
 }
+.ui-dialog-titlebar-close{
+	background: url('../../../../lib/jquery-ui-1.10.3/themes/base/images/ui-icons_888888_256x240.png') no-repeat -34px -194px;
+	border:none;
+	width:15px !important;
+	height:12px !important;
+}
 
 /* Task panel */
 #taskPanel{
@@ -56,10 +62,50 @@ table{
 	float:left;
 	margin-left:10px;
 }
+#doneTask{
+	width:16px;
+	height:16px;
+	background:url('../images/done.png') center center no-repeat;
+	background-size: 100% 100%;	
+	float:left;
+	margin-left:10px;
+}
+#doneTask2{
+	width:16px;
+	height:16px;
+	background:url('../images/done.png') center center no-repeat;
+	background-size: 100% 100%;	
+	float:left;
+	margin-left:10px;
+}
 .bgBtnContainer{
 	float:left;	
 	width:40px;
 	margin-left:5px;
+}
+.bgBtnContainerTxt{
+	width:130px;
+	height:32px;
+	padding-top: 7px;
+	float:right;	
+	text-align:center;
+	font-weight:bold;
+}
+.activeTaskTypeDone{
+	color: #555;
+	background-color: #D0D0D0;
+	border: aliceblue;
+	border-left-color: white;
+	border-left-style: solid;
+	border-left-width: 2px;
+}
+.activeTaskTypeUndone{
+	color: #555;
+	background-color: #D0D0D0;
+	border: aliceblue;
+	border-right-color: white;
+	border-right-style: solid;
+	border-right-width: 2px;
 }
 
 /* Task list */
@@ -117,7 +163,7 @@ table{
 }
 .highlighted2 {
     color: #CCC;
-    background-color: #FFFF00 !important;
+    background-color: #CCC !important;
 }
 .done{
 	background: #00CC00 !important;
@@ -168,6 +214,9 @@ table{
 }
 #horaInicio, #minutoInicio, #horaFim, #minutoFim{
 	width:100px !important;
+}
+.dataTime{
+	float:left;
 }
 
 /* Delete Dialog */

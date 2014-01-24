@@ -36,14 +36,19 @@
 		<section>
 			<header>
 				<div class="row">
-					<div class="col-xs-4"> </div>
-					<div class="col-xs-4 col-sm-12 col-md-12"> Logo Header </div>
-					<div class="col-xs-4"> </div>
-					<div class="col-xs-12 col-sm-12 col-md-12"> 
+					<div class="col-xs-4 col-sm-4 col-md-12"> </div>
+					<div class="col-xs-4 col-sm-4 col-md-12"> 
+						<div class = "logo"> <img src = "resources/images/logo.gif" width = "80" height = "80"> </div>
+					</div>
+					<div class="col-xs-4 col-sm-4 col-md-12"> </div>
+
+					<div class="col-xs-4 col-sm-4 col-md-12"> </div>
+					<div class="col-md-offset-1 col-xs-12 col-sm-12 col-md-12">
 						<div class = "welcome"> 
-							<?php if($res->gender == 1) echo "Seja bem vindo " . $res->firstName . " " . $res->lastName; ?> <a href = "php/logout.php"> Logout </a>
+							<?php if($res->gender == 1) echo "<span class = 'welcomeText'> Seja bem vindo " . $res->firstName . " " . $res->lastName; ?> </span> <a href = "php/logout.php"> Logout </a>
 						</div>
 					</div>
+					<div class="col-xs-4 col-sm-4 col-md-12"> </div>
 				</div>
 			</header>
 		</section>

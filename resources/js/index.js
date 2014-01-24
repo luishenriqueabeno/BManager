@@ -4,6 +4,7 @@ $(document).ready(function(){
 	****************************/
 	$( "#addUserForm" ).hide();
 	$( "#loginForm" ).hide();
+	$('#forgotPassForm').hide();
 	$('#txtPassword2').attr('disabled', true);
 	var field1 = $('#txtPassword1');
 	var field2 = $('#txtPassword2');
@@ -12,12 +13,14 @@ $(document).ready(function(){
 	var lastNameField = $('#txtLastName');
 	var userNameField = $('#txtUsername');
 	var passwordField = $('#txtPassword');
+	var emailRecoverField = $('#txtUsernameRecover');
 	var formSucess = 0;
 	var erroMsgUpdate = true;
 
 	var firstNameReq = $('.firstNameReq');
 	var lastNameReq = $('.lastNameReq');
 	var emailReq = $('.emailReq');
+	var emailReqForgot = $('.emailReqForgot');
 	var pass1 = $('.pass1');
 	var pass2 = $('.pass2');
 
@@ -234,4 +237,57 @@ $(document).ready(function(){
 	$('#btnCancelLoginForm').on('click', function(){
 		$( "#loginForm" ).dialog( "destroy" );
 	});	
+
+	//Botão cancelar do formulário para recuperar senha
+	$('#btnCancelForgotpassForm').on('click', function(){
+		$( "#formForgotPass" ).dialog( "destroy" );
+	});
+
+	//Recuperar senha
+	$('#forgotPass').click(function(){
+		$( "#loginForm" ).dialog( "destroy" );
+
+		//Abre modal para o usuário recuperar senha
+		$( "#formForgotPass" ).dialog({
+			modal: true,
+			show: { effect: "slideDown", duration: 600 } ,
+			width: 500,
+		});
+	});
+	$('#btnRecoverPass').on('click', function(){
+		var email = $('#txtUsernameRecover').val();
+		
+		if(emailRecoverField.hasClass('greenBorder')){
+			$.ajax({
+				type: 'POST',
+				data:{ email: email },
+				url: 'php/forgotPass.php',
+				success: function(data){		
+
+					if(data == 1){
+						$('#passError').append('Não encontramos o e-mail informado em nossa base de dados').css('color', 'green');
+						errorAppended = 1;
+					} else {
+						$('#passSend').append('Uma nova senha foi enviada para seu email').css('color', 'green');
+					}
+	
+				}
+			})
+		}
+	});
+
+	//Verificar email do formulário para recuperar senha
+	$('#txtUsernameRecover').keyup(function(){
+		var email = $(this).val();
+
+	    var pattern = /^([a-zA-Z0-9_.-])+@([a-zA-Z0-9_.-])+\.([a-zA-Z])+([a-zA-Z])+/;
+
+	    if(pattern.test(email)){         
+			emailRecoverField.removeClass('redBorder').addClass('greenBorder');
+			emailReqForgot.html('');
+	    }else{   
+			emailRecoverField.addClass('redBorder');
+			emailReqForgot.html('Email inválido').css('margin-left', '-80px');
+	    }
+	})	
 })

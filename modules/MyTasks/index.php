@@ -91,7 +91,15 @@
 									<div id = "removeTask"> </div> 
 								</div>
 								<div class = "bgBtnContainer">
-									<div id = "doneTask"> D </div> 
+									<div id = "doneTask"> </div> 
+								</div>
+							</td>
+							<td style = "padding:0">
+								<div id = "typeDone" class = "bgBtnContainerTxt">
+									<div id = "listDoneTasks"> Tarefas concluídas </div> 
+								</div>
+								<div id = "typeUndone" class = "bgBtnContainerTxt">
+									<div id = "listActiveTasks"> Tarefas ativas </div> 
 								</div>
 							</td>
 						</tr>

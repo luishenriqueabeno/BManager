@@ -1,6 +1,22 @@
 li{
 	list-style-type: none;
 }
+a:link{
+	color: #3333FF !important;
+	font-weight:bold !important;
+}
+a:visited{
+	color: #3333FF !important;	
+	font-weight:bold !important;
+}
+
+/* Header */
+.welcomeText{
+	font-weight:bold !important;
+}
+.welcome{
+	padding-bottom: 10px;
+}
 
 /* Form add user */
 #addUserForm{
@@ -42,6 +58,16 @@ li{
 	text-align: center;
 	font-weight: bold;
 }
+#passSend{
+	text-align: center;
+	font-weight: bold;
+	padding-bottom:5px;
+}
+#passError{
+	text-align: center;
+	font-weight: bold;
+	padding-bottom:5px;
+}
 .firstNameReq{
 	color: red;
 	position: absolute;
@@ -69,6 +95,15 @@ li{
 	font-size: 11px;
 	color:red;
 }
+.emailReqForgot{
+	position: absolute;
+	z-index: 4;
+	width: 250px;
+	font-size: 11px;
+	color:red;
+	margin-left: 220px !important;
+	margin-top: 10px !important;
+}
 .pass1{
 	color: red;
 	position: absolute;
@@ -91,8 +126,51 @@ li{
 	color:blue !important;
 	margin-left:10px;
 }
+.forgotPass{
+	font-size:12px;
+}
 
 /* Content Area */
 #contentMainArea{
 	border:solid;
+}
+
+/* Correções para o Mozilla */
+@-moz-document url-prefix() {
+   .emailReq{
+		position: absolute;
+		z-index: 4;
+		width: 250px;
+		margin-left: -110px;
+		margin-top: 105px;
+		font-size: 11px;
+		color:red;
+	}
+	.lastNameReq{
+		position: absolute;
+		z-index: 4;
+		width: 250px;
+		margin-left: -110px;
+		margin-top: 55px;
+		font-size: 11px;
+		color:red;
+	}
+	.pass1{
+		color: red;
+		position: absolute;
+		z-index: 4;
+		font-size: 11px;
+		width: 450px;
+		margin-left: -240px;
+		margin-top: 155px;
+	}
+	.pass2{
+		color: red;
+		position: absolute;
+		z-index: 4;
+		font-size: 11px;
+		width: 450px;
+		margin-left: -148px;
+		margin-top: 205px;
+	}
 }

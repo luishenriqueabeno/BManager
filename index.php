@@ -71,10 +71,29 @@
 				<label for = "password"> Senha </label>
 				<input id = "txtPassword" type = "password" name = "txtPassword" >
 
+				<a href = '#' id = 'forgotPass' class = 'forgotPass'> Esqueci minha senha! </a>
+
 				<div class = "formLoginSeparator">
 					<div class="ui-dialog-buttonset">
 						<button id= "btnLogin" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"> <span class="ui-button-text">OK</span> </button>
 						<button id = "btnCancelLoginForm" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"> <span class="ui-button-text">Cancel</span></button>
+					</div>
+				</div>
+			</form>
+		</div>
+
+		<!-- Forgot pass modal -->
+		<div id="forgotPassForm" title="Recuperar senha">
+			<form method = "post" id = "formForgotPass">
+				<div id = "passSend"> </div>
+				<div id = "passError"> </div>
+				<label for = "username"> Email cadsatrado: </label> <span class = "emailReqForgot"> </span>
+				<input id = "txtUsernameRecover" type = "text" name = "txtUsername" >
+
+				<div class = "formForgotpassSeparator">
+					<div class="ui-dialog-buttonset">
+						<button id= "btnRecoverPass" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"> <span class="ui-button-text">Enviar e-mail</span> </button>
+						<button id = "btnCancelForgotpassForm" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"> <span class="ui-button-text">Cancel</span></button>
 					</div>
 				</div>
 			</form>

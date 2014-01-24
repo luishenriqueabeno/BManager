@@ -7,11 +7,16 @@ $(document).ready(function(){
 	var dataInicio = $('#dataInicio').val();
 	var dataFim = $('#dataFim').val();
 	var userId = $('input[name=userId]').val();
+	$('#typeUndone').addClass('activeTaskTypeUndone');
+
+	//Carrega tarefas na inicilização
+	taskListLoad();
 
 	//Esconde dialog no carregamento
 	$('#deleteDialog').hide();
 	$('#deleteDialogSelected').hide();
 	$('#doneDialog').hide();
+	$('#alreadyDoneDialog').hide();
 
 	//Esconde modal no carregamento do documento
 	$('#addTaskForm').hide();
@@ -40,38 +45,56 @@ $(document).ready(function(){
 	* Inicio das funções 
 	****************************/
 
-	//Lista todas as tarefas
-	$.ajax({
-		url: 'modules/MyTasks/php/carregaTarefas.php',
-		type: 'POST',
-		data:{ userId: userId },
-		success: function(data){
-			var json = $.parseJSON(data);
-			
-			for(var i = 0; i < json.length; i++){
-				if(json[i].taskStatus == 1){
-					taskList.append(
-						"<tr id = "+ json[i].id +" class = 'done'>" + 
-							"<td>" + json[i].taskName + "</td>" +
-							"<td>" + json[i].desc + "</td>" +
-							"<td>" + json[i].dataInicio + " " + json[i].horaInicio + ":" + json[i].minutoInicio + "</td>" +
-							"<td>" + json[i].dataFim + " " + json[i].horaFim + ":" + json[i].minutoFim + "</td>" +
-						"</tr>"
-					)
-				} else {
-					taskList.append(
-						"<tr id = "+ json[i].id +">" + 
-							"<td>" + json[i].taskName + "</td>" +
-							"<td>" + json[i].desc + "</td>" +
-							"<td>" + json[i].dataInicio + " " + json[i].horaInicio + ":" + json[i].minutoInicio + "</td>" +
-							"<td>" + json[i].dataFim + " " + json[i].horaFim + ":" + json[i].minutoFim + "</td>" +
-						"</tr>"
-					)
-				}				
+	//Lista todas as tarefas não concluídas
+	function taskListLoad(){
+		$.ajax({
+			url: 'modules/MyTasks/php/carregaTarefas.php',
+			type: 'POST',
+			data:{ userId: userId },
+			success: function(data){
+				var json = $.parseJSON(data);
+				
+				for(var i = 0; i < json.length; i++){
+					if(json[i].taskStatus != 1){
+						taskList.append(
+							"<tr id = "+ json[i].id +">" + 
+								"<td>" + json[i].taskName + "</td>" +
+								"<td>" + json[i].desc + "</td>" +
+								"<td>" + json[i].dataInicio + " " + json[i].horaInicio + ":" + json[i].minutoInicio + "</td>" +
+								"<td>" + json[i].dataFim + " " + json[i].horaFim + ":" + json[i].minutoFim + "</td>" +
+							"</tr>"
+						)
+					}
+				}
 			}
-		}
-	});
+		});
+	}
 
+	//Lista todas as tarefas concluídas
+	function taskListDoneLoad(){
+		$.ajax({
+			url: 'modules/MyTasks/php/carregaTarefas.php',
+			type: 'POST',
+			data:{ userId: userId },
+			success: function(data){
+				var json = $.parseJSON(data);
+				
+				for(var i = 0; i < json.length; i++){
+					if(json[i].taskStatus == 1){
+						taskList.append(
+							"<tr id = "+ json[i].id +" class = 'done'>" + 
+								"<td>" + json[i].taskName + "</td>" +
+								"<td>" + json[i].desc + "</td>" +
+								"<td>" + json[i].dataInicio + " " + json[i].horaInicio + ":" + json[i].minutoInicio + "</td>" +
+								"<td>" + json[i].dataFim + " " + json[i].horaFim + ":" + json[i].minutoFim + "</td>" +
+							"</tr>"
+						)
+					}
+				}
+			}
+		});
+	}
+	
 	//Muda cor da linha dependendo do status da tarefa
 	$('.taskList').on('click', 'tr:not(:first-child)', function () {
 		if($(this).hasClass("highlighted")){
@@ -81,10 +104,10 @@ $(document).ready(function(){
 			$(this).addClass('highlighted2');
 		} else if($(this).hasClass("highlighted2")) {
 			$(this).removeClass('highlighted2');
-			$(this).addClass('done')
+			$(this).addClass('done');
 		} else {
 			$(this).addClass('highlighted');
-		}	
+		}
 	});
 
 	//Remove tarefas selecionadas
@@ -202,7 +225,6 @@ $(document).ready(function(){
 					userId: userId
 				},
 				success: function(data){
-					//location.reload();
 					$( "#addTaskForm" ).dialog( "destroy" );
 					$('#taskList tr').not(':first-child').empty();
 				}
@@ -210,16 +232,7 @@ $(document).ready(function(){
 					var json = $.parseJSON(data);
 			
 					for(var i = 0; i < json.length; i++){
-						if(json[i].taskStatus == 1){
-							taskList.append(
-								"<tr id = "+ json[i].id +" class = 'done'>" + 
-									"<td>" + json[i].taskName + "</td>" +
-									"<td>" + json[i].desc + "</td>" +
-									"<td>" + json[i].dataInicio + " " + json[i].horaInicio + ":" + json[i].minutoInicio + "</td>" +
-									"<td>" + json[i].dataFim + " " + json[i].horaFim + ":" + json[i].minutoFim + "</td>" +
-								"</tr>"
-							)
-						} else {
+						if(json[i].taskStatus != 1){
 							taskList.append(
 								"<tr id = "+ json[i].id +">" + 
 									"<td>" + json[i].taskName + "</td>" +
@@ -371,7 +384,8 @@ $(document).ready(function(){
 							url: 'modules/MyTasks/php/doneTask.php',
 							data: { tasks: tasks },
 							success: function(data){
-								
+								$('#taskList tr').not(':first-child').empty();
+								taskListLoad();
 							}
 						});
 
@@ -382,6 +396,23 @@ $(document).ready(function(){
 					}
 				}
 			});
-		}
+		}		
+	});	
+
+	//Lista tarefas concluídas
+	$('#listDoneTasks').on('click', function(){
+		$('#typeDone').addClass('activeTaskTypeDone');
+		$('#typeUndone').removeClass('activeTaskTypeUndone');
+
+		$('#taskList tr').not(':first-child').remove();
+		taskListDoneLoad();
 	});
+
+	//Lista tarefas ativas
+	$('#listActiveTasks').on('click', function(){
+		$('#typeDone').removeClass('activeTaskTypeDone');
+		$('#typeUndone').addClass('activeTaskTypeUndone');
+		$('#taskList tr').not(':first-child').remove();
+		taskListLoad();
+	});	
 });
