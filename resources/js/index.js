@@ -5,6 +5,8 @@ $(document).ready(function(){
 	$( "#addUserForm" ).hide();
 	$( "#loginForm" ).hide();
 	$('#forgotPassForm').hide();
+	$('#passError').hide();
+	$('#passSend').hide();
 	$('#txtPassword2').attr('disabled', true);
 	var field1 = $('#txtPassword1');
 	var field2 = $('#txtPassword2');
@@ -264,10 +266,11 @@ $(document).ready(function(){
 				url: 'php/forgotPass.php',
 				success: function(data){		
 					if(data == 1){
-						$('#passError').append('Não encontramos o e-mail informado em nossa base de dados').css('color', 'green');
-						errorAppended = 1;
+						$('#passError').show();
+						$('#passSend').hide();
 					} else {
-						$('#passSend').append('Uma nova senha foi enviada para seu email').css('color', 'green');
+						$('#passSend').show();
+						$('#passError').hide();
 					}
 				}
 			})

@@ -85,8 +85,8 @@
 		<!-- Forgot pass modal -->
 		<div id="forgotPassForm" title="Recuperar senha">
 			<form method = "post" id = "formForgotPass">
-				<div id = "passSend"> </div>
-				<div id = "passError"> </div>
+				<div id = "passSend"> Uma nova senha foi enviada para seu email </div>
+				<div id = "passError"> Não encontramos o e-mail informado em nossa base de dados </div>
 				<label for = "username"> Email cadsatrado: </label> <span class = "emailReqForgot"> </span>
 				<input id = "txtUsernameRecover" type = "text" name = "txtUsername" >
 
