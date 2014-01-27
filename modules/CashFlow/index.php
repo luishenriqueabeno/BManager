@@ -81,7 +81,7 @@
 				<input id = "txtCategoryName" type = "text" name = "txtCategoryName" >
 
 				<label for = "categoryType"> Escolha a natureza da categoria </label>
-				<input type="radio" name="categoryType" value="1">Despesa
+				<input type="radio" name="categoryType" value="1" checked>Despesa
 				<input type="radio" name="categoryType" value="2">Receita
 
 				<div class = "formAddCategorySeparator">
@@ -94,29 +94,34 @@
 		</div>
 
 
+		<div class = "cashFlowContainner">
+			<table id = "cashFlowTable">
+				<tr>
+					<th> 
+						<a href = "#" id = "addIncome"> Cadastrar Receita </a>
+						<a href = "#" id = "addExpense"> Cadastrar Despesa </a> 
+						<a href = "#" id = "addCategory"> Criar categoria </a> 
+					</th>
+				</tr>
+				<tr>
+					<th class = "tableTitle">
+						Visão geral
+					</th>
+				</tr>
+				<tr>
+					<th id = "openIncome">
+						Receitas
+					</th>
+				</tr>
+				<tr id = "showIncome" class = "incomeBox"> 
 
-		<table>
-			<tr>
-				<th> 
-					<a href = "#" id = "addIncome"> Cadastrar Receita </a>
-					<a href = "#" id = "addExpense"> Cadastrar Despesa </a> 
-					<a href = "#" id = "addCategory"> Criar uma categoria </a> 
-				</th>
-			</tr>
-			<tr>
-				<th>
-					<?php
-						$year = Date('Y');
-
-						for($i = 1; $i <= 12; $i++){
-							echo date('F', strtotime("$year-$i"));
-						}
-					?>
-				</th>
-			</tr>
-			<tr>
-				<td> </td>
-			</tr>
-		</table>
+				</tr>
+				<tr>
+					<th id = "openExpense">
+						Despesas
+					</th>
+				</tr>
+			</table>
+		</div>
 	</body>
 </html>

@@ -108,3 +108,27 @@
 #formAddCategory label{
 	width:100%;
 }
+
+/* Tabelas */
+#cashFlowTable{
+	width:100%;
+}
+#cashFlowTable th{
+	border:solid 1px #000;
+}
+#cashFlowTable td{
+	width:100%;
+	border: 0 !important;
+}
+#showIncome{
+	border:0 !important;
+}
+.cashFlowContainner{
+	padding:30px;
+}
+.tableTitle{
+	text-align:center;
+}
+#openIncome{
+	cursor:pointer;
+}

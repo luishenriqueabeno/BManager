@@ -5,6 +5,8 @@ $(document).ready(function(){
 	var userId = $('input[name=userId]').val();
 	var expenseCategory = $('select[name=expenseCategory]');
 	var incomeCategory = $('select[name=incomeCategory]');
+	var showIncome = $('#showIncome');
+	var incomeBox = $('.incomeBox');
 
 	//Esconde dialog no carregamento
 	$('#addExpenseForm').hide();
@@ -187,6 +189,40 @@ $(document).ready(function(){
 				}
 			}
 		})
+	});
+
+	//Exibe receitas ao clicar na tabela
+	$('#openIncome').on('click', function(){
+		
+		//Verifica o total de receitas
+		$.ajax({
+			type: 'POST',
+			url: 'modules/CashFlow/php/listIncomes.php',
+			data: { userId: userId },
+			success: function(data){
+				var json = $.parseJSON(data);
+
+				if(incomeBox.hasClass('incomeBox')){
+					
+					for(var i = 0; i < json.length; i++){
+						showIncome.append(
+							"<tr id = "+ json[i].id +">" + 
+								"<td>" + json[i].incomeName + "</td>" +
+								"<td>" + json[i].incomeValue + "</td>" +
+							"</tr>"
+						);					
+					}
+
+					incomeBox.removeClass('incomeBox');
+					incomeBox.addClass('showIncome');
+				} else {
+					showIncome.empty();
+					incomeBox.removeClass('showIncome');
+					incomeBox.addClass('incomeBox');
+				}
+				
+			}
+		});
 	});
 
 	//Botão cancelar do formulário
