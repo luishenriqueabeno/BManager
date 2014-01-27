@@ -36,12 +36,6 @@
 				<label for = "expenseCategory"> Categoria </label>
 				<select name = "expenseCategory">
 					<option value = ""> Selecione uma categoria </option>
-					<?php
-						$sql = mysql_query ("Select * From cashflowcategories Where userid = $userId");
-						while($res = mysql_fetch_object($sql)){
-							echo "<option value = ". $res->id .">". $res->categoryName ."</option>";
-						}
-					?>
 				</select>
 				<div class = "formAddExpenseSeparator">
 					<div class="ui-dialog-buttonset">

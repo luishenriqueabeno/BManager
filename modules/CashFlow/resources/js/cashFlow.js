@@ -3,6 +3,7 @@ $(document).ready(function(){
 	* Variaveis de inicialização 
 	****************************/
 	var userId = $('input[name=userId]').val();
+	var expenseCategory = $('select[name=expenseCategory]');
 
 	//Esconde dialog no carregamento
 	$('#addExpenseForm').hide();
@@ -26,6 +27,24 @@ $(document).ready(function(){
     /***************************
 	* Inicio das funções 
 	****************************/
+
+	//Carrega categorias
+	$.ajax({
+		type: 'POST',
+		url: 'modules/CashFlow/php/loadCategories.php',
+		data:{
+			userId: userId,
+		},
+		success: function (data){
+			var json = $.parseJSON(data);
+
+			for(var i = 0; i < json.length; i++){
+				expenseCategory.append(
+					"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
+				)
+			}
+		}
+	});
 
 	//Adicionar despesas
 	$('#addExpense').on('click', function(){
@@ -86,12 +105,21 @@ $(document).ready(function(){
 				categoryName: categoryName
 			},
 			success: function(data){
-				if(data == 1){
-					$('.categoryMsgError').hide();
-					$('.categoryMsgSuccess').show();
-				} else {
+				if(data == 2){
 					$('.categoryMsgError').show();
 					$('.categoryMsgSuccess').hide();
+				} else {
+					expenseCategory.empty();
+					$('.categoryMsgError').hide();
+					$('.categoryMsgSuccess').show();
+
+					var json = $.parseJSON(data);
+
+					for(var i = 0; i < json.length; i++){
+						expenseCategory.append(
+							"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
+						)
+					}
 				}
 			}
 		})

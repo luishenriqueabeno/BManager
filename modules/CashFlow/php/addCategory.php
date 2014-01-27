@@ -14,6 +14,15 @@
 		echo 2;
 	} else {
 		$insert = mysql_query("Insert Into cashflowcategories Values ('', '$categoryName', $userId)");
-		echo 1;
+
+		$updateList = mysql_query("Select * From cashflowcategories Where userId = $userId");
+
+		$rows = array();
+
+		while($res = mysql_fetch_object($updateList)){
+			$rows[] = $res;
+		}
+
+		echo json_encode($rows);
 	}	
 ?>
