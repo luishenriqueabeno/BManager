@@ -8,6 +8,8 @@
 	$checkUserLicsql = mysql_query($checkUserLic);
 
 	$res = mysql_fetch_object($checkUserLicsql);
+
+	$userId = $_SESSION['userId'];
 ?>
 
 <!doctype html>
@@ -86,7 +88,7 @@
 				</nav>
 		<?php } ?>
 
-		<input type = "hidden" value = "<?php echo $_SESSION['userId']; ?>" name = "userId">
+		<input type = "hidden" value = "<?php echo $userId; ?>" name = "userId">
 
 		<div id = "contentMain"> </div>
 	</body>

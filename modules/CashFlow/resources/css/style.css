@@ -1,0 +1,68 @@
+.ui-dialog-titlebar-close{
+	background: url('../../../../lib/jquery-ui-1.10.3/themes/base/images/ui-icons_888888_256x240.png') no-repeat -34px -194px;
+	border:none;
+	width:15px !important;
+	height:12px !important;
+}
+
+/* Add expense form */
+#formAddExpense label{
+	float:left;
+	width:100%;
+}
+#formAddExpense input{
+	float:left;
+	width:100%;	
+}
+#formAddExpense select{
+	float:left;
+	width:100%;	
+}
+.formFix{
+	float:left;
+	width:100%;		
+}
+.cashValue{
+	width:100px !important;
+}
+.expenseDate{
+	width:100px !important;	
+}
+.formAddExpenseSeparator{
+	margin-top:10px;
+	padding-top:10px;
+	width:100%;
+	float:left;
+	border-top-style: solid;
+	border-top-width: 1px;
+	border-top-color: #CCC;
+}
+.expenseAddSuccess{
+	text-align: center;
+	font-weight: bold;
+	padding-bottom:5px;
+	color:green;
+}
+
+/* Add category form */
+.formAddCategorySeparator{
+	margin-top:10px;
+	padding-top:10px;
+	width:100%;
+	float:left;
+	border-top-style: solid;
+	border-top-width: 1px;
+	border-top-color: #CCC;
+}
+.categoryMsgSuccess{
+	text-align: center;
+	font-weight: bold;
+	padding-bottom:5px;
+	color:green;
+}
+.categoryMsgError{
+	text-align: center;
+	font-weight: bold;
+	padding-bottom:5px;
+	color:red;
+}
