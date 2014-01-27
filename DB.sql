@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tempo de Geração: Jan 24, 2014 as 04:36 
+-- Tempo de Geração: Jan 27, 2014 as 12:55 
 -- Versão do Servidor: 5.1.41
 -- Versão do PHP: 5.3.1
 
@@ -18,6 +18,53 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 -- Banco de Dados: `dailyhelper`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `cashflowcategories`
+--
+
+CREATE TABLE IF NOT EXISTS `cashflowcategories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `categoryName` varchar(255) NOT NULL,
+  `userid` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Extraindo dados da tabela `cashflowcategories`
+--
+
+INSERT INTO `cashflowcategories` (`id`, `categoryName`, `userid`) VALUES
+(1, 'asdasd', 1),
+(2, 'asdasdd', 1),
+(3, 'qwe', 1),
+(4, 'asdasd', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `cashflowexpenses`
+--
+
+CREATE TABLE IF NOT EXISTS `cashflowexpenses` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `expenseName` varchar(255) NOT NULL,
+  `expenseValue` varchar(255) NOT NULL,
+  `date` varchar(255) NOT NULL,
+  `categoryId` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Extraindo dados da tabela `cashflowexpenses`
+--
+
+INSERT INTO `cashflowexpenses` (`id`, `expenseName`, `expenseValue`, `date`, `categoryId`, `userId`) VALUES
+(1, 'asdasd', '123', '28/01/2014', 2, 1),
+(2, 'asdasd', '123', '23/01/2014', 3, 1);
 
 -- --------------------------------------------------------
 
@@ -56,15 +103,14 @@ CREATE TABLE IF NOT EXISTS `tasks` (
   `userId` int(11) NOT NULL,
   `taskStatus` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=30 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=33 ;
 
 --
 -- Extraindo dados da tabela `tasks`
 --
 
 INSERT INTO `tasks` (`id`, `taskName`, `desc`, `dataInicio`, `dataFim`, `horaInicio`, `minutoInicio`, `horaFim`, `minutoFim`, `userId`, `taskStatus`) VALUES
-(28, 'asdasdasdsadas', 'asdasdsadsad', '06/01/2014', '08/01/2014', '01', '00', '01', '00', 1, 1),
-(29, 'qweqweqwe', 'qweqweqweqweqw', '23/01/2014', '23/01/2014', '17', '17', '18', '15', 1, 0);
+(30, 'asd', 'asdasdasdasdasdsadasd', '16/01/2014', '01/02/2014', '17', '18', '19', '18', 6, 1);
 
 -- --------------------------------------------------------
 
@@ -109,7 +155,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `firstName`, `lastName`, `email`, `password`, `gender`, `productId`, `signupDate`) VALUES
-(1, 'Luis', 'Abeno', 'luis_abeno@hotmail.com', '172cbaaf9ebde9101a2f1d285ce06434', 1, 1, '23/01/2014');
+(1, 'Luis', 'Abeno', 'luis_abeno@hotmail.com', '4aafd190adfeb9477899840deae6c370', 1, 1, '27/01/2014');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -60,8 +60,8 @@ $(document).ready(function(){
 					$('.expenseAddSuccess').show();
 				}
 			}
-		})
-	})
+		});
+	});
 
 	//Criar uma categoria
 	$('#addCategory').on('click', function(){
