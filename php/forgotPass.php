@@ -1,6 +1,6 @@
 <?php
 	require("conn.php");
-	require("../lib/phpmailer/class.phpmailer.php");
+	require("../lib/phpMailer/class.phpmailer.php");
 
 	$email = $_POST['email'];
 
