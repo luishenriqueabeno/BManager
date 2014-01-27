@@ -167,6 +167,7 @@ $(document).ready(function(){
 					$('.categoryMsgSuccess').hide();
 				} else {
 					expenseCategory.empty();
+					incomeCategory.empty();
 					$('.categoryMsgError').hide();
 					$('.categoryMsgSuccess').show();
 
