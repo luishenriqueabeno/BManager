@@ -21,9 +21,9 @@
 		$mail = new PHPMailer();
 
 		$mail->IsSMTP();
-		$mail->Port = 587;
+		$mail->Port = 25;
 		$mail->Host = "smtp.gmail.com"; // Endereço do servidor SMTP
-		//$mail->SMTPAuth = true; // Usa autenticação SMTP? (opcional)
+		$mail->SMTPAuth = true; // Usa autenticação SMTP? (opcional)
 		$mail->Username = 'luis.abeno@gmail.com'; // Usuário do servidor SMTP
 		$mail->Password = 'luis089!@'; // Senha do servidor SMTP
 
