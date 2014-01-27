@@ -1,5 +1,4 @@
 <?php 
-	error_reporting(E_ERROR | E_PARSE);
 	require("../../secure.php"); 
 	require("../../php/conn.php"); 
 	$userId = $_SESSION['userId'];

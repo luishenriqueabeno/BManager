@@ -1,4 +1,5 @@
 <?php
+	error_reporting(E_ERROR | E_PARSE);
 	require('php/conn.php');
 	require("secure.php");
 	
