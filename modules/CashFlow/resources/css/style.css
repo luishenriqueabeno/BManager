@@ -44,6 +44,45 @@
 	color:green;
 }
 
+/* Add income form */
+#formAddIncome label{
+	float:left;
+	width:100%;
+}
+#formAddIncome input{
+	float:left;
+	width:100%;	
+}
+#formAddIncome select{
+	float:left;
+	width:100%;	
+}
+.formFix{
+	float:left;
+	width:100%;		
+}
+.cashValue{
+	width:100px !important;
+}
+.incomeDate{
+	width:100px !important;	
+}
+.formAddIncomeSeparator{
+	margin-top:10px;
+	padding-top:10px;
+	width:100%;
+	float:left;
+	border-top-style: solid;
+	border-top-width: 1px;
+	border-top-color: #CCC;
+}
+.incomeAddSuccess{
+	text-align: center;
+	font-weight: bold;
+	padding-bottom:5px;
+	color:green;
+}
+
 /* Add category form */
 .formAddCategorySeparator{
 	margin-top:10px;
@@ -65,4 +104,7 @@
 	font-weight: bold;
 	padding-bottom:5px;
 	color:red;
+}
+#formAddCategory label{
+	width:100%;
 }

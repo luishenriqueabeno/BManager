@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tempo de Geração: Jan 27, 2014 as 12:55 
+-- Tempo de Geração: Jan 27, 2014 as 04:40 
 -- Versão do Servidor: 5.1.41
 -- Versão do PHP: 5.3.1
 
@@ -28,19 +28,38 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 CREATE TABLE IF NOT EXISTS `cashflowcategories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `categoryName` varchar(255) NOT NULL,
+  `categoryTypeId` int(11) NOT NULL,
   `userid` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Extraindo dados da tabela `cashflowcategories`
 --
 
-INSERT INTO `cashflowcategories` (`id`, `categoryName`, `userid`) VALUES
-(1, 'asdasd', 1),
-(2, 'asdasdd', 1),
-(3, 'qwe', 1),
-(4, 'asdasd', 2);
+INSERT INTO `cashflowcategories` (`id`, `categoryName`, `categoryTypeId`, `userid`) VALUES
+(1, 'Vendas', 2, 1),
+(2, 'Imovel', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `cashflowcategorytypes`
+--
+
+CREATE TABLE IF NOT EXISTS `cashflowcategorytypes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Extraindo dados da tabela `cashflowcategorytypes`
+--
+
+INSERT INTO `cashflowcategorytypes` (`id`, `name`) VALUES
+(1, 'expense'),
+(2, 'income');
 
 -- --------------------------------------------------------
 
@@ -63,8 +82,34 @@ CREATE TABLE IF NOT EXISTS `cashflowexpenses` (
 --
 
 INSERT INTO `cashflowexpenses` (`id`, `expenseName`, `expenseValue`, `date`, `categoryId`, `userId`) VALUES
-(1, 'asdasd', '123', '28/01/2014', 2, 1),
-(2, 'asdasd', '123', '23/01/2014', 3, 1);
+(1, 'Clips de papel', '4,50', '28/01/2014', 1, 1),
+(2, 'IPTU', '830,00', '29/01/2014', 2, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `cashflowincome`
+--
+
+CREATE TABLE IF NOT EXISTS `cashflowincome` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `incomeName` varchar(255) NOT NULL,
+  `incomeValue` varchar(255) NOT NULL,
+  `date` varchar(255) NOT NULL,
+  `categoryId` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Extraindo dados da tabela `cashflowincome`
+--
+
+INSERT INTO `cashflowincome` (`id`, `incomeName`, `incomeValue`, `date`, `categoryId`, `userId`) VALUES
+(1, '', '', '', 0, 1),
+(2, 'Teste', '12', '29/01/2014', 0, 1),
+(4, 'Venda PS3', '800', '30/01/2014', 0, 1),
+(5, 'Venda XBOX', '900,00', '29/01/2014', 1, 1);
 
 -- --------------------------------------------------------
 

@@ -7,7 +7,12 @@
 	$data = $_POST['data'];
 	$category = $_POST['category'];
 
+	if($category == ''){
+		$category = 0;
+	}
+
 	$expenseInsert = mysql_query("Insert Into cashflowexpenses Values ('', '$expenseName', '$expenseValue', '$data', $category, $userId)");
+
 	echo 1;
 
 ?>

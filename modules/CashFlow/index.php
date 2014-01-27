@@ -46,6 +46,32 @@
 			</form>
 		</div>
 
+		<!-- Add income form -->
+		<div id="addIncomeForm" title="Cadastrar receita">
+			<div class = "incomeAddSuccess"> Receita cadastrada com sucesso! </div>
+			<form method = "post" id = "formAddIncome">
+				<label for = "incomeName"> Receita </label>
+				<input id = "txtIncomeName" type = "text" name = "txtIncomeName" >
+
+				<label for = "incomeValue"> Valor </label>
+				<input id = "txtIncomeValue" name = "txtIncomeValue" class = "cashValue" type = "text"> <div class = "formFix"> </div>
+
+				<label for = "incomeDate"> Data </label>
+				<input type="text" class = "incomeDate" id="incomeDate"> <div class = "formFix"> </div>
+
+				<label for = "incomeCategory"> Categoria </label>
+				<select name = "incomeCategory">
+					<option value = ""> Selecione uma categoria </option>
+				</select>
+				<div class = "formAddIncomeSeparator">
+					<div class="ui-dialog-buttonset">
+						<button id= "btnAddIncome" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"> <span class="ui-button-text">Adicionar</span> </button>
+						<button id = "btnCancelIncomeForm" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"> <span class="ui-button-text">Cancel</span></button>
+					</div>
+				</div>
+			</form>
+		</div>
+
 		<!-- Add Category form -->
 		<div id="addCategoryForm" title="Criar uma categoria">
 			<div class = "categoryMsgSuccess"> Categoria criada com sucesso! </div>
@@ -53,6 +79,10 @@
 			<form method = "post" id = "formAddCategory">
 				<label for = "categoryName"> Categoria </label>
 				<input id = "txtCategoryName" type = "text" name = "txtCategoryName" >
+
+				<label for = "categoryType"> Escolha a natureza da categoria </label>
+				<input type="radio" name="categoryType" value="1">Despesa
+				<input type="radio" name="categoryType" value="2">Receita
 
 				<div class = "formAddCategorySeparator">
 					<div class="ui-dialog-buttonset">
@@ -68,7 +98,7 @@
 		<table>
 			<tr>
 				<th> 
-					<a href = "#" id = ""> Cadastrar Receita </a>
+					<a href = "#" id = "addIncome"> Cadastrar Receita </a>
 					<a href = "#" id = "addExpense"> Cadastrar Despesa </a> 
 					<a href = "#" id = "addCategory"> Criar uma categoria </a> 
 				</th>

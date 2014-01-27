@@ -4,18 +4,31 @@ $(document).ready(function(){
 	****************************/
 	var userId = $('input[name=userId]').val();
 	var expenseCategory = $('select[name=expenseCategory]');
+	var incomeCategory = $('select[name=incomeCategory]');
 
 	//Esconde dialog no carregamento
 	$('#addExpenseForm').hide();
+	$('#addIncomeForm').hide();	
 	$('#addCategoryForm').hide();
 
 	//Mensagens
 	$('.categoryMsgError').hide();
 	$('.categoryMsgSuccess').hide();
 	$('.expenseAddSuccess').hide();
+	$('.incomeAddSuccess').hide();
 
 	//Date picker
     $( "#data" ).datepicker({
+    	altFormat: "dd/mm/yyy",
+    	dateFormat: "dd/mm/yy",
+    	showOtherMonths: true,
+      	selectOtherMonths: true,
+      	changeMonth: true,
+      	changeYear: true
+    });
+
+    //Date picker
+    $( "#incomeDate" ).datepicker({
     	altFormat: "dd/mm/yyy",
     	dateFormat: "dd/mm/yy",
     	showOtherMonths: true,
@@ -39,9 +52,15 @@ $(document).ready(function(){
 			var json = $.parseJSON(data);
 
 			for(var i = 0; i < json.length; i++){
-				expenseCategory.append(
-					"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
-				)
+				if(json[i].categoryTypeId == 1){
+					expenseCategory.append(
+						"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
+					);
+				} else {
+					incomeCategory.append(
+						"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
+					);
+				}
 			}
 		}
 	});
@@ -82,6 +101,42 @@ $(document).ready(function(){
 		});
 	});
 
+	//Adicionar receita
+	$('#addIncome').on('click', function(){
+
+		//Exibe modal
+		$( "#addIncomeForm" ).dialog({
+			modal: true,
+			show: { effect: "slideDown", duration: 600 } ,
+			width: 500,
+		});
+	});
+
+	//Adiciona receita no banco
+	$('#btnAddIncome').on('click', function(){
+		var incomeName = $('#txtIncomeName').val();
+		var incomeValue = $('#txtIncomeValue').val();
+		var data = $('#incomeDate').val();
+		var category = $('select[name=incomeCategory]').find(":selected").val();
+
+		$.ajax({
+			type: 'POST',
+			url: 'modules/CashFlow/php/addIncome.php',
+			data:{
+				userId: userId,
+				incomeName: incomeName,
+				incomeValue: incomeValue,
+				data: data,
+				category: category
+			},
+			success: function (data){
+				if(data == 1){
+					$('.incomeAddSuccess').show();
+				}
+			}
+		});
+	});
+
 	//Criar uma categoria
 	$('#addCategory').on('click', function(){
 
@@ -96,13 +151,15 @@ $(document).ready(function(){
 	//Adiciona categoria no banco
 	$('#btnAddCategory').on('click', function(){
 		var categoryName = $('#txtCategoryName').val();
+		var categoryTypeId = $('input[name=categoryType]:checked').val();
 
 		$.ajax({
 			type: 'POST',
 			url: 'modules/CashFlow/php/addCategory.php',
 			data:{
 				userId: userId,
-				categoryName: categoryName
+				categoryName: categoryName,
+				categoryTypeId: categoryTypeId
 			},
 			success: function(data){
 				if(data == 2){
@@ -116,9 +173,15 @@ $(document).ready(function(){
 					var json = $.parseJSON(data);
 
 					for(var i = 0; i < json.length; i++){
-						expenseCategory.append(
-							"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
-						)
+						if(json[i].categoryTypeId == 1){
+							expenseCategory.append(
+								"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
+							);
+						} else {
+							incomeCategory.append(
+								"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
+							);
+						}
 					}
 				}
 			}
@@ -133,6 +196,11 @@ $(document).ready(function(){
 	//Botão cancelar do formulário
 	$('#btnCancelCategoryForm').on('click', function(){
 		$( "#addCategoryForm" ).dialog( "destroy" );
+	});
+
+	//Botão cancelar do formulário
+	$('#btnCancelIncomeForm').on('click', function(){
+		$( "#addIncomeForm" ).dialog( "destroy" );
 	});
 
 });
