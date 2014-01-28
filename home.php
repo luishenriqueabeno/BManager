@@ -90,6 +90,10 @@
 
 		<input type = "hidden" value = "<?php echo $userId; ?>" name = "userId">
 
-		<div id = "contentMain"> </div>
+		<div id = "contentMain">
+			<div id='loadingDiv'>
+			    Please wait...  
+			 </div> 
+		</div>
 	</body>
 </html>
