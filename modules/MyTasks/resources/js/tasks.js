@@ -51,9 +51,6 @@ $(document).ready(function(){
 			url: 'modules/MyTasks/php/carregaTarefas.php',
 			type: 'POST',
 			data:{ userId: userId },
-			beforeSend: function() {
-				$('#loading').html("Carregando...");
-			},
 			success: function(data){
 				$('#loading').html("");
 

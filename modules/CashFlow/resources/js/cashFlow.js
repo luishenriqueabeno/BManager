@@ -62,12 +62,7 @@ $(document).ready(function(){
 		data:{
 			userId: userId,
 		},
-		beforeSend: function() {
-			$('#loading').html("Carregando...");
-		},
-		success: function (data){
-			$('#loading').html("");
-			
+		success: function (data){			
 			var json = $.parseJSON(data);
 
 			for(var i = 0; i < json.length; i++){
