@@ -52,7 +52,6 @@ $(document).ready(function(){
 			type: 'POST',
 			data:{ userId: userId },
 			success: function(data){
-				$('#loading').html("");
 
 				var json = $.parseJSON(data);
 				
