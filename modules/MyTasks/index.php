@@ -77,6 +77,7 @@
 			</form>
 		</div>
 
+		<div id = "loading"> </div>
 		<div id = "taskContainer">
 			<div class = "taskContainerTitle"> Tarefas </div>	
 			<div class = "taskList">

@@ -67,6 +67,7 @@ $(document).ready(function(){
 		},
 		success: function (data){
 			$('#loading').html("");
+			
 			var json = $.parseJSON(data);
 
 			for(var i = 0; i < json.length; i++){
