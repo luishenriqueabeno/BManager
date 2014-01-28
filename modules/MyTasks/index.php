@@ -15,7 +15,6 @@
 
 	</head>
 	<body>
-
 		<!-- Dialogs -->
 		<div id="deleteDialog" title="Remover tarefa?">
 			<p>
