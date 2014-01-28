@@ -103,6 +103,7 @@
 						<a href = "#" id = "addCategory"> Criar categoria </a> 
 					</th>
 				</tr>
+				<div id = "loading"> </div>
 				<tr>
 					<th class = "tableTitle taskContainerTitle">
 						Visão geral
