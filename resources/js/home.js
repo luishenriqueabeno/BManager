@@ -20,11 +20,13 @@ $(document).ready(function(){
 
 	//Adiciona o modulo de tarefas a página
 	$("a[name=modulesTasks]").click(function () { 
+		$('#contentMain').empty();
 		$('#contentMain').load('modules/MyTasks/index.php');
 	});
 
 	//Adiciona o modulo de fluxo de caixa a página
 	$("a[name=modulesCashFlow]").click(function () { 
+		$('#contentMain').empty();
 		$('#contentMain').load('modules/CashFlow/index.php');
 	});
 
