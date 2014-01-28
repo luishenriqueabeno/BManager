@@ -9,19 +9,13 @@ $(document).ready(function(){
 	* Inicio das funções 
 	****************************/
 
-	$('#loadingDiv').hide().ajaxStart( function() {
-	$(this).show();  // show Loading Div
-	} ).ajaxStop ( function(){
-	$(this).hide(); // hide loading div
-	});
-	
 	//Adiciona estilo para item ativo do menu
 	$('.navbar-nav li').on('click', function(){
 		$('.navbar-nav li').each(function(){
 			$(this).removeClass('active');	
 		});		
 		$(this).addClass('active');
-	});
+	})
 
 
 	//Adiciona o modulo de tarefas a página
