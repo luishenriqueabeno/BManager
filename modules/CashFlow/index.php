@@ -96,7 +96,7 @@
 
 		<div class = "cashFlowContainner">
 			<table id = "cashFlowTable">
-				<tr>
+				<tr id = "cashPanel">
 					<th> 
 						<a href = "#" id = "addIncome"> Cadastrar Receita </a>
 						<a href = "#" id = "addExpense"> Cadastrar Despesa </a> 
@@ -104,7 +104,7 @@
 					</th>
 				</tr>
 				<tr>
-					<th class = "tableTitle">
+					<th class = "tableTitle taskContainerTitle">
 						Visão geral
 					</th>
 				</tr>
@@ -120,6 +120,9 @@
 					<th id = "openExpense">
 						Despesas
 					</th>
+				</tr>
+				<tr id = "showExpense" class = "expenseBox"> 
+					
 				</tr>
 			</table>
 		</div>

@@ -7,6 +7,8 @@ $(document).ready(function(){
 	var incomeCategory = $('select[name=incomeCategory]');
 	var showIncome = $('#showIncome');
 	var incomeBox = $('.incomeBox');
+	var showExpense = $('#showExpense');
+	var expenseBox = $('.expenseBox');
 
 	//Esconde dialog no carregamento
 	$('#addExpenseForm').hide();
@@ -42,6 +44,16 @@ $(document).ready(function(){
     /***************************
 	* Inicio das funções 
 	****************************/
+
+	//Limpa tabela
+	function clearTable(){
+		showIncome.empty();
+		showExpense.empty();
+		incomeBox.removeClass('showIncome');
+		incomeBox.addClass('incomeBox');
+		expenseBox.addClass('expenseBox');
+		expenseBox.removeClass('showExpense');
+	}
 
 	//Carrega categorias
 	$.ajax({
@@ -98,6 +110,7 @@ $(document).ready(function(){
 			success: function (data){
 				if(data == 1){
 					$('.expenseAddSuccess').show();
+					clearTable();
 				}
 			}
 		});
@@ -134,6 +147,7 @@ $(document).ready(function(){
 			success: function (data){
 				if(data == 1){
 					$('.incomeAddSuccess').show();
+					clearTable();
 				}
 			}
 		});
@@ -203,7 +217,6 @@ $(document).ready(function(){
 				var json = $.parseJSON(data);
 
 				if(incomeBox.hasClass('incomeBox')){
-					
 					for(var i = 0; i < json.length; i++){
 						showIncome.append(
 							"<tr id = "+ json[i].id +">" + 
@@ -220,7 +233,38 @@ $(document).ready(function(){
 					incomeBox.removeClass('showIncome');
 					incomeBox.addClass('incomeBox');
 				}
-				
+			}
+		});
+	});
+
+	//Exibe despesas ao clicar na tabela
+	$('#openExpense').on('click', function(){
+		
+		//Verifica o total de despesas
+		$.ajax({
+			type: 'POST',
+			url: 'modules/CashFlow/php/listExpenses.php',
+			data: { userId: userId },
+			success: function(data){
+				var json = $.parseJSON(data);
+
+				if(expenseBox.hasClass('expenseBox')){
+					for(var i = 0; i < json.length; i++){
+						showExpense.append(
+							"<tr id = "+ json[i].id +">" + 
+								"<td>" + json[i].expenseName + "</td>" +
+								"<td>" + json[i].expenseValue + "</td>" +
+							"</tr>"
+						);					
+					}
+
+					expenseBox.removeClass('expenseBox');
+					expenseBox.addClass('showExpense');
+				} else {
+					showExpense.empty();
+					expenseBox.removeClass('showExpense');
+					expenseBox.addClass('expenseBox');
+				}
 			}
 		});
 	});
