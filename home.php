@@ -73,12 +73,11 @@
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">
 							<li> <a href = "#" name = "modulesTasks"> Minhas Tarefas </a> </li>
-							<li> <a href = "#" name = "modulesCashFlow"> Fluxo de caixa </a> </li>
 							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Fluxo de caixa <b class="caret"></b></a>
 								<ul class="dropdown-menu">
-									<li><a href="#">Action</a></li>
-									<li><a href="#">Another action</a></li>
+									<li><a href="#" name = "modulesCashFlow"> Visão geral </a></li>
+									<li><a href="#" name = "modulesCashFlowMonth"> Visão mensal </a></li>
 									<li class="divider"></li>
 									<li><a href="#">Separated link</a></li>
 								</ul>

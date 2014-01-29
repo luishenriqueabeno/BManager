@@ -3,15 +3,14 @@
 
 	$userId = $_POST['userId'];
 	$incomeName = $_POST['incomeName'];
-	$incomeValue = $_POST['incomeValue'];
-	$data = $_POST['data'];
 	$category = $_POST['category'];
+	$ano = $_POST['ano'];
 
 	if($category == ''){
 		$category = 0;
 	}
 
-	$expenseInsert = mysql_query("Insert Into cashflowincome Values ('', '$incomeName', '$incomeValue', '$data', $category, $userId)");
+	$expenseInsert = mysql_query("Insert Into cashflowincome Values ('', '$incomeName', $category, $userId, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '$ano')");
 
 	echo 1;
 

@@ -23,7 +23,7 @@
 		</div>
 
 		<div id="doneDialog" title="Marcar tarefa como concluída">
-			Deseja marcar essa tarefa como concluída?
+			Deseja marcar essa(s) tarefa(s) como concluída(s)?
 		</div>
 
 		<div id="deleteDialogSelected" title="Selecione uma tarefa">

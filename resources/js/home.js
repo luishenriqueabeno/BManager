@@ -24,10 +24,16 @@ $(document).ready(function(){
 		$('#contentMain').load('modules/MyTasks/index.php');
 	});
 
-	//Adiciona o modulo de fluxo de caixa a página
+	//Adiciona o modulo de fluxo de caixa na página para exibir a visão geral
 	$("a[name=modulesCashFlow]").click(function () { 
 		$('#contentMain').empty();
 		$('#contentMain').load('modules/CashFlow/index.php');
+	});
+
+	//Adiciona o modulo de fluxo de caixa na página para exibir a visão mensal
+	$("a[name=modulesCashFlowMonth]").click(function () { 
+		$('#contentMain').empty();
+		$('#contentMain').load('modules/CashFlow/visaoMensal.php');
 	});
 
 })

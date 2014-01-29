@@ -9,6 +9,8 @@ $(document).ready(function(){
 	var incomeBox = $('.incomeBox');
 	var showExpense = $('#showExpense');
 	var expenseBox = $('.expenseBox');
+	var monthTableExpenses = $('#listExpenses');
+	var monthTableIncomes = $('#listIncomes');
 
 	//Esconde dialog no carregamento
 	$('#addExpenseForm').hide();
@@ -39,7 +41,7 @@ $(document).ready(function(){
       	selectOtherMonths: true,
       	changeMonth: true,
       	changeYear: true
-    });
+    });incomeBox.removeClass('incomeBox');
 
     /***************************
 	* Inicio das funções 
@@ -54,6 +56,73 @@ $(document).ready(function(){
 		expenseBox.addClass('expenseBox');
 		expenseBox.removeClass('showExpense');
 	}
+
+	function reloadMonthTable(){
+		var ano = $('#anoSelect').val();
+		monthTableExpenses.empty();
+		monthTableIncomes.empty();
+
+		$.ajax({
+			type: 'POST',
+			url: 'modules/CashFlow/php/loadExpenses.php',
+			data:{
+				ano: ano,
+				userId: userId
+			},
+			success: function(data){
+				$(monthTableExpenses).append(data);
+			}
+		});
+
+		$.ajax({
+			type: 'POST',
+			url: 'modules/CashFlow/php/loadIncomes.php',
+			data:{
+				ano: ano,
+				userId: userId
+			},
+			success: function(data){
+				$(monthTableIncomes).append(data);
+			}
+		});
+	}
+
+	//Carrega despesas ao selecionar o ano
+	$('#anoSelect').change(function(){
+		var ano = $('#anoSelect').val();
+		monthTableExpenses.empty();
+
+		$.ajax({
+			type: 'POST',
+			url: 'modules/CashFlow/php/loadExpenses.php',
+			data:{
+				ano: ano,
+				userId: userId
+			},
+			success: function(data){
+				$(monthTableExpenses).append(data);
+			}
+		});
+	});
+	
+	//Carrega receitas ao selecionar o ano
+	$('#anoSelect').change(function(){
+		var ano = $('#anoSelect').val();
+		monthTableIncomes.empty();
+
+		$.ajax({
+			type: 'POST',
+			url: 'modules/CashFlow/php/loadIncomes.php',
+			data:{
+				ano: ano,
+				userId: userId
+			},
+			success: function(data){
+				$(monthTableIncomes).append(data);
+			}
+		});
+	});
+	
 
 	//Carrega categorias
 	$.ajax({
@@ -93,8 +162,7 @@ $(document).ready(function(){
 	//Adiciona despesa no banco
 	$('#btnAddExpense').on('click', function(){
 		var expenseName = $('#txtExpenseName').val();
-		var expenseValue = $('#txtExpenseValue').val();
-		var data = $('#data').val();
+		var ano = $('#anoSelect').val();
 		var category = $('select[name=expenseCategory]').find(":selected").val();
 
 		$.ajax({
@@ -103,14 +171,14 @@ $(document).ready(function(){
 			data:{
 				userId: userId,
 				expenseName: expenseName,
-				expenseValue: expenseValue,
-				data: data,
+				ano: ano,
 				category: category
 			},
 			success: function (data){
 				if(data == 1){
 					$('.expenseAddSuccess').show();
 					clearTable();
+					reloadMonthTable();
 				}
 			}
 		});
@@ -130,8 +198,7 @@ $(document).ready(function(){
 	//Adiciona receita no banco
 	$('#btnAddIncome').on('click', function(){
 		var incomeName = $('#txtIncomeName').val();
-		var incomeValue = $('#txtIncomeValue').val();
-		var data = $('#incomeDate').val();
+		var ano = $('#anoSelect').val();
 		var category = $('select[name=incomeCategory]').find(":selected").val();
 
 		$.ajax({
@@ -140,14 +207,14 @@ $(document).ready(function(){
 			data:{
 				userId: userId,
 				incomeName: incomeName,
-				incomeValue: incomeValue,
-				data: data,
+				ano: ano,
 				category: category
 			},
 			success: function (data){
 				if(data == 1){
 					$('.incomeAddSuccess').show();
 					clearTable();
+					reloadMonthTable();
 				}
 			}
 		});
@@ -207,7 +274,8 @@ $(document).ready(function(){
 
 	//Exibe receitas ao clicar na tabela
 	$('#openIncome').on('click', function(){
-		
+		var total = 0;
+
 		//Verifica o total de receitas
 		$.ajax({
 			type: 'POST',
@@ -221,10 +289,18 @@ $(document).ready(function(){
 						showIncome.append(
 							"<tr id = "+ json[i].id +">" + 
 								"<td>" + json[i].incomeName + "</td>" +
-								"<td>" + json[i].incomeValue + "</td>" +
+								"<td> R$ " + String(json[i].incomeValue).replace('.', ',') + "</td>" +
 							"</tr>"
-						);					
+						);			
+						total += parseFloat(json[i].incomeValue);		
 					}
+
+					showIncome.append(
+						"<tr>" + 
+							"<td style = 'font-weight:bold'> Total </td>" +
+							"<td style = 'font-weight:bold'> R$ " + String(total).replace('.', ',') + "</td>" +
+						"</tr>"
+					);
 
 					incomeBox.removeClass('incomeBox');
 					incomeBox.addClass('showIncome');
@@ -239,6 +315,7 @@ $(document).ready(function(){
 
 	//Exibe despesas ao clicar na tabela
 	$('#openExpense').on('click', function(){
+		var total = 0;
 		
 		//Verifica o total de despesas
 		$.ajax({
@@ -253,10 +330,18 @@ $(document).ready(function(){
 						showExpense.append(
 							"<tr id = "+ json[i].id +">" + 
 								"<td>" + json[i].expenseName + "</td>" +
-								"<td>" + json[i].expenseValue + "</td>" +
+								"<td> R$ " + String(json[i].expenseValue).replace('.', ',') + "</td>" +
 							"</tr>"
-						);					
+						);		
+						total += parseFloat(json[i].expenseValue);
 					}
+					
+					showExpense.append(
+						"<tr>" + 
+							"<td style = 'font-weight:bold'> Total </td>" +
+							"<td style = 'font-weight:bold'> R$ " + String(total).replace('.', ',') + "</td>" +
+						"</tr>"
+					);
 
 					expenseBox.removeClass('expenseBox');
 					expenseBox.addClass('showExpense');

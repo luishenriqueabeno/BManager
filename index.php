@@ -111,6 +111,8 @@
 					<br>
 					<a href = "#" id = "loginUserModal"> Login </a>
 		<?php } ?>
-
+		<br>
+		<br>
+		<p> Testes e homologação nos navegadores Internet explorer 9+, google chrome e mozila firefox </p>
 	</body>
 </html>

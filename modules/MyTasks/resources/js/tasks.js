@@ -8,7 +8,6 @@ $(document).ready(function(){
 	var dataFim = $('#dataFim').val();
 	var userId = $('input[name=userId]').val();
 	$('#typeUndone').addClass('activeTaskTypeUndone');
-	var content = $('#contentMain');
 
 	//Carrega tarefas na inicialização
 	taskListLoad();
@@ -45,27 +44,6 @@ $(document).ready(function(){
     /***************************
 	* Inicio das funções 
 	****************************/
-
-	//pre carregando o gif
-	loading = new Image(); loading.src = 'loading.gif';
-	$('.subcategory_menu_item').click(function(e){
-		e.preventDefault();
-		content.html( '<img src="http://localhost/public/images/loading.gif" style = "float:left;margin-left:40%;margin-top:5%"/>' );
-
-		var href = $( this ).attr('href');
-		$.ajax({
-			url: href,
-			success: function(response){
-				var data = $( '<div>'+response+'</div>' ).find('#content').html();
-				window.setTimeout( function(){
-					content.fadeOut('slow', function(){
-						content.html( data ).fadeIn();
-					});
-				}, 500 );
-			}
-		});
-
-	});
 
 	//Lista todas as tarefas não concluídas
 	function taskListLoad(){
@@ -154,7 +132,7 @@ $(document).ready(function(){
 				width:500,
 				modal: true,
 				buttons: {
-					"Apagar?": function() {
+					"Sim": function() {
 						var i = 0;
 						var tasks = [];
 
@@ -385,7 +363,7 @@ $(document).ready(function(){
 				width:500,
 				modal: true,
 				buttons: {
-					"Marcar essa(s) tarefa(s) como concluída(s)": function() {
+					"Sim": function() {
 						var i = 0;
 						var tasks = [];
 

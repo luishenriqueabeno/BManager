@@ -1,3 +1,4 @@
+
 <?php 
 	error_reporting(E_ERROR | E_PARSE);
 	require("../../secure.php"); 
@@ -27,12 +28,6 @@
 					<label for = "expenseName"> Despesa </label>
 					<input id = "txtExpenseName" type = "text" name = "txtExpenseName" >
 
-					<!--<label for = "expenseValue"> Valor </label>
-					<input id = "txtExpenseValue" name = "txtExpenseValue" class = "cashValue" type = "text"> <div class = "formFix"> </div>-->
-
-					<!--<label for = "expenseDate"> Data </label>
-					<input type="text" class = "expenseDate" id="data"> <div class = "formFix"> </div>-->
-
 					<label for = "expenseCategory"> Categoria </label>
 					<select name = "expenseCategory">
 						<option value = ""> Selecione uma categoria </option>
@@ -52,12 +47,6 @@
 				<form method = "post" id = "formAddIncome">
 					<label for = "incomeName"> Receita </label>
 					<input id = "txtIncomeName" type = "text" name = "txtIncomeName" >
-
-					<!--<label for = "incomeValue"> Valor </label>
-					<input id = "txtIncomeValue" name = "txtIncomeValue" class = "cashValue" type = "text"> <div class = "formFix"> </div>
-
-					<label for = "incomeDate"> Data </label>
-					<input type="text" class = "incomeDate" id="incomeDate"> <div class = "formFix"> </div>-->
 
 					<label for = "incomeCategory"> Categoria </label>
 					<select name = "incomeCategory">
@@ -92,39 +81,45 @@
 					</div>
 				</form>
 			</div>
+		
+		<input type = "hidden" value = "" id = "anoRetorno" name = "anoRetorno">
+		<select id = "anoSelect">
+			<option value = ""> Selecione um ano </option>
+			<option value = "2014"> 2014 </option>
+		</select>
 
-			<div class = "cashFlowContainner">
-				<div class = "cashContainerTitle"> Fluxo de caixa </div>
-				<table id = "cashFlowTable">
-					<tr id = "cashPanel">
-						<th> 
-							<a href = "#" id = "addIncome"> Cadastrar Receita </a>
-							<a href = "#" id = "addExpense"> Cadastrar Despesa </a> 
-							<a href = "#" id = "addCategory"> Criar categoria </a> 
-						</th>
-					</tr>
-					<tr>
-						<th class = "tableTitle taskContainerTitle">
-							Visão geral
-						</th>
-					</tr>
-					<tr>
-						<th id = "openIncome">
-							Receitas
-						</th>
-					</tr>
-					<tr id = "showIncome" class = "incomeBox"> 
+		<div class = "cashFlowContainner">
+			<div class = "cashContainerTitle"> Fluxo de caixa </div>
+			<table id = "cashFlowTable">
+				<tr id = "cashPanel">
+					<th colspan = "13"> 
+						<a href = "#" id = "addIncome"> Cadastrar Receita </a>
+						<a href = "#" id = "addExpense"> Cadastrar Despesa </a> 
+						<a href = "#" id = "addCategory"> Criar categoria </a> 
+					</th>
+				</tr>
+				<tr>
+					<th class = "tableTitle taskContainerTitle" colspan = "13">
+						Visão mensal
+					</th>
+				</tr>
+				<tr class = "tableRow">
+					<td> </td>
+					<?php
+						$year = date("Y");
 
-					</tr>
-					<tr>
-						<th id = "openExpense">
-							Despesas
-						</th>
-					</tr>
-					<tr id = "showExpense" class = "expenseBox"> 
-						
-					</tr>
-				</table>
-			</div>		
+						for($i = 1; $i <= 12; $i++ ){
+							echo "<td>". date('M', strtotime("$year-$i")) ."</td>";
+						}	
+					?>
+				</tr>				
+			</table>
+			<table id = "listIncomes">
+
+			<table>
+			<table id = "listExpenses">
+
+			<table>
+		</div>	
 	</body>
 </html>
