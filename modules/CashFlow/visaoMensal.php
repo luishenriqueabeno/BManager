@@ -28,6 +28,9 @@
 					<label for = "expenseName"> Despesa </label>
 					<input id = "txtExpenseName" type = "text" name = "txtExpenseName" >
 
+					<label for = "expenseValue"> Valor </label>
+ 				    <input id = "txtExpenseValue" name = "txtExpenseValue" class = "cashValue" type = "text"> <div class = "formFix"> </div>
+
 					<label for = "expenseCategory"> Categoria </label>
 					<select name = "expenseCategory">
 						<option value = ""> Selecione uma categoria </option>
@@ -47,6 +50,9 @@
 				<form method = "post" id = "formAddIncome">
 					<label for = "incomeName"> Receita </label>
 					<input id = "txtIncomeName" type = "text" name = "txtIncomeName" >
+
+					<label for = "incomeValue"> Valor </label>
+ 			        <input id = "txtIncomeValue" name = "txtIncomeValue" class = "cashValue" type = "text"> <div class = "formFix"> </div>
 
 					<label for = "incomeCategory"> Categoria </label>
 					<select name = "incomeCategory">

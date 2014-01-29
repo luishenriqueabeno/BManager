@@ -163,6 +163,7 @@ $(document).ready(function(){
 	$('#btnAddExpense').on('click', function(){
 		var expenseName = $('#txtExpenseName').val();
 		var ano = $('#anoSelect').val();
+		var expenseValue = $('#txtExpenseValue').val();
 		var category = $('select[name=expenseCategory]').find(":selected").val();
 
 		$.ajax({
@@ -171,6 +172,7 @@ $(document).ready(function(){
 			data:{
 				userId: userId,
 				expenseName: expenseName,
+				expenseValue: expenseValue,
 				ano: ano,
 				category: category
 			},
@@ -199,6 +201,7 @@ $(document).ready(function(){
 	$('#btnAddIncome').on('click', function(){
 		var incomeName = $('#txtIncomeName').val();
 		var ano = $('#anoSelect').val();
+		var incomeValue = $('#txtIncomeValue').val();
 		var category = $('select[name=incomeCategory]').find(":selected").val();
 
 		$.ajax({
@@ -207,6 +210,7 @@ $(document).ready(function(){
 			data:{
 				userId: userId,
 				incomeName: incomeName,
+				incomeValue: incomeValue,
 				ano: ano,
 				category: category
 			},
