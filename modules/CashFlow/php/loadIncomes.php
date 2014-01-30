@@ -14,7 +14,7 @@
 		echo "<th> Receitas </th>";
 	echo "</tr>";
 	while($resIncomeList = mysql_fetch_object($incomeList)){
-		echo "<tr class = 'tableRow' id = ". $resExpenseList->id .">";
+		echo "<tr class = 'tableRow' id = ". 'income_' . $resIncomeList->id .">";
 			echo "<td>". $resIncomeList->incomeName ."</td>";
 			echo "<td>". 'R$ ' . number_format($resIncomeList->jan,2,",",".") ."</td>";
 			echo "<td>". 'R$ ' . number_format($resIncomeList->fev,2,",",".") ."</td>";

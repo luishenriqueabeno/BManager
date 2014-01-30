@@ -123,10 +123,10 @@
 					?>
 				</tr>	
 			</table>
-			<table id = "listIncomes">
+			<table id = "listIncomes" class = "tabelaEditavel">
 
 			<table>
-			<table id = "listExpenses">
+			<table id = "listExpenses" class = "tabelaEditavel">
 
 			<table>
 		</div>	
