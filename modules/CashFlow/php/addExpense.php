@@ -7,8 +7,7 @@
 	$category = $_POST['category'];
 	$ano = $_POST['ano'];
 
-	$value = str_replace('.', '', $expenseValue);
-	$value = str_replace(',', '.', $value);
+	$value = str_replace(',','.',str_replace('.','',$expenseValue));
 
 	if($category == ''){
 		$category = 0;

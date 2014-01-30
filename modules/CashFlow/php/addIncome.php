@@ -7,15 +7,18 @@
 	$category = $_POST['category'];
 	$ano = $_POST['ano'];
 
-	$value = str_replace('.', '', $incomeValue);
-	$value = str_replace(',', '.', $value);
+	$value = str_replace(',','.',str_replace('.','',$incomeValue));
 
 	if($category == ''){
 		$category = 0;
 	}
 
-	$expenseInsert = mysql_query("Insert Into cashflowincome Values ('', '$incomeName', $category, $userId, '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$ano')");
+	$incomeInsert = mysql_query("Insert Into cashflowincome Values ('', '$incomeName', $category, $userId, '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$ano')");
 
-	echo 1;
+	if($incomeInsert){
+		echo 1;	
+	} else {
+		echo 2;
+	}
 
 ?>

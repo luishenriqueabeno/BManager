@@ -88,10 +88,12 @@
 				</form>
 			</div>
 		
-		<input type = "hidden" value = "" id = "anoRetorno" name = "anoRetorno">
-		<select id = "anoSelect">
-			<option value = "2014"> 2014 </option>
-		</select>
+		<div class = "selectYear">
+			<input type = "hidden" value = "" id = "anoRetorno" name = "anoRetorno">
+			<select id = "anoSelect">
+				<option value = "2014"> 2014 </option>
+			</select>
+		</div>
 
 		<div class = "cashFlowContainner">
 			<div class = "cashContainerTitle"> Fluxo de caixa </div>

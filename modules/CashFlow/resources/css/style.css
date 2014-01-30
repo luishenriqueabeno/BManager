@@ -171,17 +171,18 @@
 
 /* Fluxo de caixa mensal */
 .tableRow td:first-child{
-	width: 10% !important;
-	max-width: 80px; 
+	width:160px !important;
+	max-width: 160px; 
 	background: #e7e7e7;
 	overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis; 
     font-weight:bold;
-    padding-left: 50px;
+    padding-left: 25px;
 }
 .tableRow td:not(:first-child){
-	width: 5% !important;
+	width:100px !important;
+	max-width:100px;
 	background: #e7e7e7;
 	text-align: center;
 	color: #000;
@@ -189,23 +190,17 @@
 	border-right-width:1px !important;
 	border-right-color:#000 !important;
 }
-#listExpenses{
-	width:100%;
-}
-#listExpenses td{
-	width:100%;
-	border: 0 !important;
-}
-#listIncomes{
-	width:100%;
-}
-#listIncomes td{
-	width:100%;
-	border: 0 !important;
-}
 .months{
 	font-weight:bold;
 }
 .totalRow{
 	font-weight:bold;	
+}
+.selectYear{
+	width:100%;
+	text-align:center;
+}
+.selectYear select{
+	width:250px;
+	text-align:center;
 }

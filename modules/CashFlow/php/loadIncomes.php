@@ -16,18 +16,18 @@
 	while($resIncomeList = mysql_fetch_object($incomeList)){
 		echo "<tr class = 'tableRow' id = ". $resExpenseList->id .">";
 			echo "<td>". $resIncomeList->incomeName ."</td>";
-			echo "<td>". $resIncomeList->jan ."</td>";
-			echo "<td>". $resIncomeList->fev ."</td>";
-			echo "<td>". $resIncomeList->mar ."</td>";
-			echo "<td>". $resIncomeList->abr ."</td>";
-			echo "<td>". $resIncomeList->mai ."</td>";
-			echo "<td>". $resIncomeList->jun ."</td>";
-			echo "<td>". $resIncomeList->jul ."</td>";
-			echo "<td>". $resIncomeList->ago ."</td>";
-			echo "<td>". $resIncomeList->set ."</td>";
-			echo "<td>". $resIncomeList->out ."</td>";
-			echo "<td>". $resIncomeList->nov ."</td>";
-			echo "<td>". $resIncomeList->dez ."</td>";
+			echo "<td>". 'R$ ' . number_format($resIncomeList->jan,2,",",".") ."</td>";
+			echo "<td>". 'R$ ' . number_format($resIncomeList->fev,2,",",".") ."</td>";
+			echo "<td>". 'R$ ' . number_format($resIncomeList->mar,2,",",".") ."</td>";
+			echo "<td>". 'R$ ' . number_format($resIncomeList->abr,2,",",".") ."</td>";
+			echo "<td>". 'R$ ' . number_format($resIncomeList->mai,2,",",".") ."</td>";
+			echo "<td>". 'R$ ' . number_format($resIncomeList->jun,2,",",".") ."</td>";
+			echo "<td>". 'R$ ' . number_format($resIncomeList->jul,2,",",".") ."</td>";
+			echo "<td>". 'R$ ' . number_format($resIncomeList->ago,2,",",".") ."</td>";
+			echo "<td>". 'R$ ' . number_format($resIncomeList->set,2,",",".") ."</td>";
+			echo "<td>". 'R$ ' . number_format($resIncomeList->out,2,",",".") ."</td>";
+			echo "<td>". 'R$ ' . number_format($resIncomeList->nov,2,",",".") ."</td>";
+			echo "<td>". 'R$ ' . number_format($resIncomeList->dez,2,",",".") ."</td>";
 		echo "</tr>";
 
 		$totalJan = $totalJan + $resIncomeList->jan;
@@ -46,18 +46,18 @@
 
 	echo "<tr class = 'tableRow totalRow'>";
 		echo "<td>Total</td>";
-		echo "<td> ". $totalJan  ." </td>";
-		echo "<td> ". $totalFev  ." </td>";
-		echo "<td> ". $totalMar  ." </td>";
-		echo "<td> ". $totalAbr  ." </td>";
-		echo "<td> ". $totalMai  ." </td>";
-		echo "<td> ". $totalJun  ." </td>";
-		echo "<td> ". $totalJul  ." </td>";
-		echo "<td> ". $totalAgo  ." </td>";
-		echo "<td> ". $totalSet  ." </td>";
-		echo "<td> ". $totalOut  ." </td>";
-		echo "<td> ". $totalNov  ." </td>";
-		echo "<td> ". $totalDez  ." </td>";
+		echo "<td> ". 'R$ ' . number_format($totalJan,2,",",".")  ." </td>";
+		echo "<td> ". 'R$ ' . number_format($totalFev,2,",",".")  ." </td>";
+		echo "<td> ". 'R$ ' . number_format($totalMar,2,",",".")  ." </td>";
+		echo "<td> ". 'R$ ' . number_format($totalAbr,2,",",".")  ." </td>";
+		echo "<td> ". 'R$ ' . number_format($totalMai,2,",",".")  ." </td>";
+		echo "<td> ". 'R$ ' . number_format($totalJun,2,",",".")  ." </td>";
+		echo "<td> ". 'R$ ' . number_format($totalJul,2,",",".")  ." </td>";
+		echo "<td> ". 'R$ ' . number_format($totalAgo,2,",",".")  ." </td>";
+		echo "<td> ". 'R$ ' . number_format($totalSet,2,",",".")  ." </td>";
+		echo "<td> ". 'R$ ' . number_format($totalOut,2,",",".")  ." </td>";
+		echo "<td> ". 'R$ ' . number_format($totalNov,2,",",".")  ." </td>";
+		echo "<td> ". 'R$ ' . number_format($totalDez,2,",",".")  ." </td>";
 	echo "</tr>";				
 
 
