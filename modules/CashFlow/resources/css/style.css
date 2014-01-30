@@ -148,25 +148,11 @@
 	width:100%;
 	border: 0 !important;
 }
-#showIncome{
-	border:0 !important;
-}
 .cashFlowContainner{
 	padding:30px;
 }
 .tableTitle{
 	text-align:center;
-}
-#openIncome, #openExpense{
-	cursor:pointer;
-}
-.showIncome tr td, .showExpense tr td{
-	padding-left:120px;
-	width:5% !important;
-}
-.showExpense tr, .showIncome tr{
-	border-bottom-style:solid;
-	border-bottom-width:1px;
 }
 .taskContainerTitle{
 	background:-o-linear-gradient(bottom, #005fbf 5%, #003f7f 100%);	
@@ -191,13 +177,14 @@
 	overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis; 
+    font-weight:bold;
+    padding-left: 50px;
 }
 .tableRow td:not(:first-child){
 	width: 5% !important;
 	background: #e7e7e7;
 	text-align: center;
 	color: #000;
-	font-weight: bold;
 	border-right-style:solid !important;
 	border-right-width:1px !important;
 	border-right-color:#000 !important;
@@ -215,4 +202,10 @@
 #listIncomes td{
 	width:100%;
 	border: 0 !important;
+}
+.months{
+	font-weight:bold;
+}
+.totalRow{
+	font-weight:bold;	
 }

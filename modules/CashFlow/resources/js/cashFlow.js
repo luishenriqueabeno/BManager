@@ -5,12 +5,11 @@ $(document).ready(function(){
 	var userId = $('input[name=userId]').val();
 	var expenseCategory = $('select[name=expenseCategory]');
 	var incomeCategory = $('select[name=incomeCategory]');
-	var showIncome = $('#showIncome');
-	var incomeBox = $('.incomeBox');
 	var showExpense = $('#showExpense');
 	var expenseBox = $('.expenseBox');
 	var monthTableExpenses = $('#listExpenses');
 	var monthTableIncomes = $('#listIncomes');
+	listaComAnoAtual();
 
 	//Esconde dialog no carregamento
 	$('#addExpenseForm').hide();
@@ -41,21 +40,17 @@ $(document).ready(function(){
       	selectOtherMonths: true,
       	changeMonth: true,
       	changeYear: true
-    });incomeBox.removeClass('incomeBox');
+    });
+
+    //Mask money
+   	// Configuração para campos de Real.
+	$("#txtIncomeValue").maskMoney({showSymbol:true, symbol:"R$", decimal:",", thousands:"."});
+	$("#txtExpenseValue").maskMoney({showSymbol:true, symbol:"R$", decimal:",", thousands:".", precision:2});
+
 
     /***************************
 	* Inicio das funções 
 	****************************/
-
-	//Limpa tabela
-	function clearTable(){
-		showIncome.empty();
-		showExpense.empty();
-		incomeBox.removeClass('showIncome');
-		incomeBox.addClass('incomeBox');
-		expenseBox.addClass('expenseBox');
-		expenseBox.removeClass('showExpense');
-	}
 
 	function reloadMonthTable(){
 		var ano = $('#anoSelect').val();
@@ -74,6 +69,39 @@ $(document).ready(function(){
 			}
 		});
 
+		$.ajax({
+			type: 'POST',
+			url: 'modules/CashFlow/php/loadIncomes.php',
+			data:{
+				ano: ano,
+				userId: userId
+			},
+			success: function(data){
+				$(monthTableIncomes).append(data);
+			}
+		});
+	}
+
+	function listaComAnoAtual(){
+		monthTableExpenses.empty();
+		monthTableIncomes.empty();
+
+		var ano = "";
+
+		//Carrega despesas
+		$.ajax({
+			type: 'POST',
+			url: 'modules/CashFlow/php/loadExpenses.php',
+			data:{
+				ano: ano,
+				userId: userId
+			},
+			success: function(data){
+				$(monthTableExpenses).append(data);
+			}
+		});
+
+		//Carrega receitas
 		$.ajax({
 			type: 'POST',
 			url: 'modules/CashFlow/php/loadIncomes.php',
@@ -179,7 +207,6 @@ $(document).ready(function(){
 			success: function (data){
 				if(data == 1){
 					$('.expenseAddSuccess').show();
-					clearTable();
 					reloadMonthTable();
 				}
 			}
@@ -217,7 +244,6 @@ $(document).ready(function(){
 			success: function (data){
 				if(data == 1){
 					$('.incomeAddSuccess').show();
-					clearTable();
 					reloadMonthTable();
 				}
 			}
@@ -274,88 +300,6 @@ $(document).ready(function(){
 				}
 			}
 		})
-	});
-
-	//Exibe receitas ao clicar na tabela
-	$('#openIncome').on('click', function(){
-		var total = 0;
-
-		//Verifica o total de receitas
-		$.ajax({
-			type: 'POST',
-			url: 'modules/CashFlow/php/listIncomes.php',
-			data: { userId: userId },
-			success: function(data){
-				var json = $.parseJSON(data);
-
-				if(incomeBox.hasClass('incomeBox')){
-					for(var i = 0; i < json.length; i++){
-						showIncome.append(
-							"<tr id = "+ json[i].id +">" + 
-								"<td>" + json[i].incomeName + "</td>" +
-								"<td> R$ " + String(json[i].incomeValue).replace('.', ',') + "</td>" +
-							"</tr>"
-						);			
-						total += parseFloat(json[i].incomeValue);		
-					}
-
-					showIncome.append(
-						"<tr>" + 
-							"<td style = 'font-weight:bold'> Total </td>" +
-							"<td style = 'font-weight:bold'> R$ " + String(total).replace('.', ',') + "</td>" +
-						"</tr>"
-					);
-
-					incomeBox.removeClass('incomeBox');
-					incomeBox.addClass('showIncome');
-				} else {
-					showIncome.empty();
-					incomeBox.removeClass('showIncome');
-					incomeBox.addClass('incomeBox');
-				}
-			}
-		});
-	});
-
-	//Exibe despesas ao clicar na tabela
-	$('#openExpense').on('click', function(){
-		var total = 0;
-		
-		//Verifica o total de despesas
-		$.ajax({
-			type: 'POST',
-			url: 'modules/CashFlow/php/listExpenses.php',
-			data: { userId: userId },
-			success: function(data){
-				var json = $.parseJSON(data);
-
-				if(expenseBox.hasClass('expenseBox')){
-					for(var i = 0; i < json.length; i++){
-						showExpense.append(
-							"<tr id = "+ json[i].id +">" + 
-								"<td>" + json[i].expenseName + "</td>" +
-								"<td> R$ " + String(json[i].expenseValue).replace('.', ',') + "</td>" +
-							"</tr>"
-						);		
-						total += parseFloat(json[i].expenseValue);
-					}
-					
-					showExpense.append(
-						"<tr>" + 
-							"<td style = 'font-weight:bold'> Total </td>" +
-							"<td style = 'font-weight:bold'> R$ " + String(total).replace('.', ',') + "</td>" +
-						"</tr>"
-					);
-
-					expenseBox.removeClass('expenseBox');
-					expenseBox.addClass('showExpense');
-				} else {
-					showExpense.empty();
-					expenseBox.removeClass('showExpense');
-					expenseBox.addClass('expenseBox');
-				}
-			}
-		});
 	});
 
 	//Botão cancelar do formulário

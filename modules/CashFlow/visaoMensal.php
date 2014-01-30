@@ -52,7 +52,7 @@
 					<input id = "txtIncomeName" type = "text" name = "txtIncomeName" >
 
 					<label for = "incomeValue"> Valor </label>
- 			        <input id = "txtIncomeValue" name = "txtIncomeValue" class = "cashValue" type = "text"> <div class = "formFix"> </div>
+ 			        <input id = "txtIncomeValue" name = "txtIncomeValue" class = "cashValue" type = "text" > <div class = "formFix"> </div>
 
 					<label for = "incomeCategory"> Categoria </label>
 					<select name = "incomeCategory">
@@ -90,7 +90,6 @@
 		
 		<input type = "hidden" value = "" id = "anoRetorno" name = "anoRetorno">
 		<select id = "anoSelect">
-			<option value = ""> Selecione um ano </option>
 			<option value = "2014"> 2014 </option>
 		</select>
 
@@ -109,7 +108,7 @@
 						Visão mensal
 					</th>
 				</tr>
-				<tr class = "tableRow">
+				<tr class = "tableRow months">
 					<td> </td>
 					<?php
 						$year = date("Y");
