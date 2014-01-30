@@ -110,7 +110,9 @@
 						Visão mensal
 					</th>
 				</tr>
-				<tr class = "tableRow months">
+			</table>
+			<table id = "tableMonths" >
+				<tr class = "months">
 					<td> </td>
 					<?php
 						$year = date("Y");
@@ -119,7 +121,7 @@
 							echo "<td>". date('M', strtotime("$year-$i")) ."</td>";
 						}	
 					?>
-				</tr>				
+				</tr>	
 			</table>
 			<table id = "listIncomes">
 

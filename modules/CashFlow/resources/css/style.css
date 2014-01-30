@@ -181,17 +181,16 @@
     padding-left: 25px;
 }
 .tableRow td:not(:first-child){
-	width:100px !important;
-	max-width:100px;
 	background: #e7e7e7;
-	text-align: center;
+	text-align: left;
 	color: #000;
 	border-right-style:solid !important;
 	border-right-width:1px !important;
 	border-right-color:#000 !important;
 }
-.months{
+.months td{
 	font-weight:bold;
+	text-align:center !important;
 }
 .totalRow{
 	font-weight:bold;	
@@ -203,4 +202,22 @@
 .selectYear select{
 	width:250px;
 	text-align:center;
+}
+#listIncomes, #listExpenses, #tableMonths{
+	width:100% !important;
+}
+#tableMonths td{
+	background: #e7e7e7;
+	text-align: center;
+	color: #000;
+}
+#tableMonths td:first-child{
+	width:160px !important;
+	max-width: 160px; 
+	background: #e7e7e7;
+	overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; 
+    font-weight:bold;
+    padding-left: 25px;
 }
