@@ -320,22 +320,33 @@ $(document).ready(function(){
 
 	//Edição dos dados diretamente na tabela
 	
-		 $('#listIncomes').on('dblclick', 'td', function(){ 
-			var conteudoOriginal = $(this).text(); 
-			$(this).addClass("celulaEmEdicao"); 
-			$(this).html("<input type='text' value='" + conteudoOriginal + "' />"); 
-			$(this).children().first().focus(); 
-			$(this).children().first().keypress(function (e) { 
-				if (e.which == 13) { 
-					var novoConteudo = $(this).val(); 
-					$(this).parent().text(novoConteudo); 
-					$(this).parent().removeClass("celulaEmEdicao"); 
-				} 
-			}); 
-			$(this).children().first().blur(function(){ 
-				$(this).parent().text(conteudoOriginal); 
+	 $('#listIncomes').on('dblclick', 'td', function(){ 
+	 	//Pega o texto do campo
+		var conteudoOriginal = $(this).text(); 
+
+		//Muda estilo para edição
+		$(this).addClass("celulaEmEdicao"); 
+
+		//Altera campo para um input que recebe como valor o conteúdo original
+		$(this).html("<input type='text' value='" + conteudoOriginal + "' />"); 
+
+		//Foca no input
+		$(this).children().first().focus(); 
+
+		//Se o input "ouvir" um enter é feito um update na tabela
+		$(this).children().first().keypress(function (e) { 
+			if (e.which == 13) { 
+				var novoConteudo = $(this).val(); 
+				$(this).parent().text(novoConteudo); 
 				$(this).parent().removeClass("celulaEmEdicao"); 
-			});
+			} 
+		}); 
+
+		//Volta campo para o estado original
+		$(this).children().first().blur(function(){ 
+			$(this).parent().text(conteudoOriginal); 
+			$(this).parent().removeClass("celulaEmEdicao"); 
 		});
+	});
 	
 });
