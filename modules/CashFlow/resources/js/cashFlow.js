@@ -320,7 +320,7 @@ $(document).ready(function(){
 
 	//Edição dos dados diretamente na tabela
 	
-		/*$("td").dblclick(function () { 
+		 $('#listIncomes').on('dblclick', 'td', function(){ 
 			var conteudoOriginal = $(this).text(); 
 			$(this).addClass("celulaEmEdicao"); 
 			$(this).html("<input type='text' value='" + conteudoOriginal + "' />"); 
@@ -335,7 +335,7 @@ $(document).ready(function(){
 			$(this).children().first().blur(function(){ 
 				$(this).parent().text(conteudoOriginal); 
 				$(this).parent().removeClass("celulaEmEdicao"); 
-			}); 
-		}); */
+			});
+		});
 	
 });

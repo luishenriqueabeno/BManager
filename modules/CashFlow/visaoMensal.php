@@ -18,6 +18,8 @@
 
 		<!-- Scripts -->
 		<script src = "modules/CashFlow/resources/js/cashFlow.js" type = "text/javascript"></script>
+		<!--<script src = "modules/CashFlow/resources/js/cashFlow.min.js" type = "text/javascript"></script>-->
+
 
 	</head>
 	<body>
