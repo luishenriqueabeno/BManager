@@ -102,7 +102,7 @@
 		<!--#########################-->
 		<!--######## Page ###########-->
 		<!--#########################-->
-		<a href = "#" id = "addUserModal"> Inscreva-se </a>
+		<a href = "#" id = "addUserModal"> Inscreva-se </a><br>
 		<?php if($_SESSION['login'] == 1){ ?>
 					<a href = "home.php" id = "systemRedirect"> Acessar sistema </a>
 					<br>
