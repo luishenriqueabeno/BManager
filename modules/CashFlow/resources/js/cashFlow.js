@@ -320,9 +320,11 @@ $(document).ready(function(){
 
 	//Edição dos dados diretamente na tabela
 	
-	 $('#listIncomes').on('dblclick', 'td', function(){ 
+	 $('#listIncomes, #listExpenses').on('click', 'td', function(){ 
 	 	//Pega o texto do campo
 		var conteudoOriginal = $(this).text(); 
+		var rowId = $(this).parent().attr('id');
+		var month = $(this).attr('class');
 
 		//Muda estilo para edição
 		$(this).addClass("celulaEmEdicao"); 
@@ -339,6 +341,20 @@ $(document).ready(function(){
 				var novoConteudo = $(this).val(); 
 				$(this).parent().text(novoConteudo); 
 				$(this).parent().removeClass("celulaEmEdicao"); 
+
+				$.ajax({
+					url: 'modules/CashFlow/php/updateTableField.php',
+					data: { 
+						novoConteudo: novoConteudo,
+						rowId: rowId,
+						month: month,
+						userId: userId,
+					},
+					type: 'POST',
+					success: function(data){
+						reloadMonthTable();
+					}
+				})
 			} 
 		}); 
 

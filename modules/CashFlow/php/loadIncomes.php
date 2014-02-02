@@ -16,18 +16,18 @@
 	while($resIncomeList = mysql_fetch_object($incomeList)){
 		echo "<tr class = 'tableRow' id = ". 'income_' . $resIncomeList->id .">";
 			echo "<td>". $resIncomeList->incomeName ."</td>";
-			echo "<td>". 'R$ ' . number_format($resIncomeList->jan,2,",",".") ."</td>";
-			echo "<td>". 'R$ ' . number_format($resIncomeList->fev,2,",",".") ."</td>";
-			echo "<td>". 'R$ ' . number_format($resIncomeList->mar,2,",",".") ."</td>";
-			echo "<td>". 'R$ ' . number_format($resIncomeList->abr,2,",",".") ."</td>";
-			echo "<td>". 'R$ ' . number_format($resIncomeList->mai,2,",",".") ."</td>";
-			echo "<td>". 'R$ ' . number_format($resIncomeList->jun,2,",",".") ."</td>";
-			echo "<td>". 'R$ ' . number_format($resIncomeList->jul,2,",",".") ."</td>";
-			echo "<td>". 'R$ ' . number_format($resIncomeList->ago,2,",",".") ."</td>";
-			echo "<td>". 'R$ ' . number_format($resIncomeList->set,2,",",".") ."</td>";
-			echo "<td>". 'R$ ' . number_format($resIncomeList->out,2,",",".") ."</td>";
-			echo "<td>". 'R$ ' . number_format($resIncomeList->nov,2,",",".") ."</td>";
-			echo "<td>". 'R$ ' . number_format($resIncomeList->dez,2,",",".") ."</td>";
+			echo "<td class = 'jan'>". 'R$ ' . number_format($resIncomeList->jan,2,",",".") ."</td>";
+			echo "<td class = 'fev'>". 'R$ ' . number_format($resIncomeList->fev,2,",",".") ."</td>";
+			echo "<td class = 'mar'>". 'R$ ' . number_format($resIncomeList->mar,2,",",".") ."</td>";
+			echo "<td class = 'abr'>". 'R$ ' . number_format($resIncomeList->abr,2,",",".") ."</td>";
+			echo "<td class = 'mai'>". 'R$ ' . number_format($resIncomeList->mai,2,",",".") ."</td>";
+			echo "<td class = 'jun'>". 'R$ ' . number_format($resIncomeList->jun,2,",",".") ."</td>";
+			echo "<td class = 'jul'>". 'R$ ' . number_format($resIncomeList->jul,2,",",".") ."</td>";
+			echo "<td class = 'ago'>". 'R$ ' . number_format($resIncomeList->ago,2,",",".") ."</td>";
+			echo "<td class = 'set'>". 'R$ ' . number_format($resIncomeList->set,2,",",".") ."</td>";
+			echo "<td class = 'out'>". 'R$ ' . number_format($resIncomeList->out,2,",",".") ."</td>";
+			echo "<td class = 'nov'>". 'R$ ' . number_format($resIncomeList->nov,2,",",".") ."</td>";
+			echo "<td class = 'dez'>". 'R$ ' . number_format($resIncomeList->dez,2,",",".") ."</td>";
 		echo "</tr>";
 
 		$totalJan = $totalJan + $resIncomeList->jan;
