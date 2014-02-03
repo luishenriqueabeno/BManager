@@ -320,7 +320,7 @@ $(document).ready(function(){
 
 	//Edição dos dados diretamente na tabela
 	
-	 $('#listIncomes, #listExpenses').on('click', 'td', function(){ 
+	 $('#listIncomes, #listExpenses').on('click', 'td:not(.total)', function(){ 
 	 	//Pega o texto do campo
 		var conteudoOriginal = $(this).text(); 
 		var rowId = $(this).parent().attr('id');

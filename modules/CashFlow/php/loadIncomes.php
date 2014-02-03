@@ -45,19 +45,19 @@
 	}
 
 	echo "<tr class = 'tableRow totalRow'>";
-		echo "<td>Total</td>";
-		echo "<td> ". 'R$ ' . number_format($totalJan,2,",",".")  ." </td>";
-		echo "<td> ". 'R$ ' . number_format($totalFev,2,",",".")  ." </td>";
-		echo "<td> ". 'R$ ' . number_format($totalMar,2,",",".")  ." </td>";
-		echo "<td> ". 'R$ ' . number_format($totalAbr,2,",",".")  ." </td>";
-		echo "<td> ". 'R$ ' . number_format($totalMai,2,",",".")  ." </td>";
-		echo "<td> ". 'R$ ' . number_format($totalJun,2,",",".")  ." </td>";
-		echo "<td> ". 'R$ ' . number_format($totalJul,2,",",".")  ." </td>";
-		echo "<td> ". 'R$ ' . number_format($totalAgo,2,",",".")  ." </td>";
-		echo "<td> ". 'R$ ' . number_format($totalSet,2,",",".")  ." </td>";
-		echo "<td> ". 'R$ ' . number_format($totalOut,2,",",".")  ." </td>";
-		echo "<td> ". 'R$ ' . number_format($totalNov,2,",",".")  ." </td>";
-		echo "<td> ". 'R$ ' . number_format($totalDez,2,",",".")  ." </td>";
+		echo "<td class = 'total'>Total</td>";
+		echo "<td class = 'total'> ". 'R$ ' . number_format($totalJan,2,",",".")  ." </td>";
+		echo "<td class = 'total'> ". 'R$ ' . number_format($totalFev,2,",",".")  ." </td>";
+		echo "<td class = 'total'> ". 'R$ ' . number_format($totalMar,2,",",".")  ." </td>";
+		echo "<td class = 'total'> ". 'R$ ' . number_format($totalAbr,2,",",".")  ." </td>";
+		echo "<td class = 'total'> ". 'R$ ' . number_format($totalMai,2,",",".")  ." </td>";
+		echo "<td class = 'total'> ". 'R$ ' . number_format($totalJun,2,",",".")  ." </td>";
+		echo "<td class = 'total'> ". 'R$ ' . number_format($totalJul,2,",",".")  ." </td>";
+		echo "<td class = 'total'> ". 'R$ ' . number_format($totalAgo,2,",",".")  ." </td>";
+		echo "<td class = 'total'> ". 'R$ ' . number_format($totalSet,2,",",".")  ." </td>";
+		echo "<td class = 'total'> ". 'R$ ' . number_format($totalOut,2,",",".")  ." </td>";
+		echo "<td class = 'total'> ". 'R$ ' . number_format($totalNov,2,",",".")  ." </td>";
+		echo "<td class = 'total'> ". 'R$ ' . number_format($totalDez,2,",",".")  ." </td>";
 	echo "</tr>";				
 
 
