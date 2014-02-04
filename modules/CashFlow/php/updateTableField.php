@@ -32,7 +32,7 @@
 			case 'nov': $updateIncomeNov = mysql_query("Update `cashflowincome` Set `nov` = $novoConteudo Where id = $realId And userId = $userId"); break;
 			case 'dez': $updateIncomeDez = mysql_query("Update `cashflowincome` Set `dez` = $novoConteudo Where id = $realId And userId = $userId"); break;
 		}
-	} else {
+	} elseif($type == 'expense') {
 		switch ($month){
 			case 'jan': $updateExpenseJan = mysql_query("Update `cashflowexpenses` Set `jan` = $novoConteudo Where id = $realId And userId = $userId"); break;
 			case 'fev': $updateExpenseFev = mysql_query("Update `cashflowexpenses` Set `fev` = $novoConteudo Where id = $realId And userId = $userId"); break;
@@ -46,6 +46,10 @@
 			case 'out': $updateExpenseOut = mysql_query("Update `cashflowexpenses` Set `out` = $novoConteudo Where id = $realId And userId = $userId"); break;
 			case 'nov': $updateExpenseNov = mysql_query("Update `cashflowexpenses` Set `nov` = $novoConteudo Where id = $realId And userId = $userId"); break;
 			case 'dez': $updateExpenseDez = mysql_query("Update `cashflowexpenses` Set `dez` = $novoConteudo Where id = $realId And userId = $userId"); break;
+		}
+	} else {
+		switch ($month){
+			
 		}
 	}
 	

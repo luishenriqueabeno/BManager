@@ -321,7 +321,6 @@ $(document).ready(function(){
 	//Edição dos dados diretamente na tabela
 	
 	 $('#listIncomes, #listExpenses, #tableSaldo').on('click', 'td:not(.total, :first-child)', function(){ 
-	 	//Pega o texto do campo
 		var conteudoOriginal = $(this).text(); 
 		var rowId = $(this).parent().attr('id');
 		var month = $(this).attr('class');
