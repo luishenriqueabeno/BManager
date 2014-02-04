@@ -125,6 +125,23 @@
 					?>
 				</tr>	
 			</table>
+			<table id = "tableSaldo" >
+				<tr class = "saldo tableRow" id = "saldoMonths">
+					<td> Saldo </td>
+					<td class = "jan"> 1</td>
+					<td class = "fev"> 1</td>
+					<td class = "mar"> 1</td>
+					<td class = "abr"> 1</td>
+					<td class = "mai"> 1</td>
+					<td class = "jun"> 1</td>
+					<td class = "jul"> 1</td>
+					<td class = "ago"> 1</td>
+					<td class = "set"> 1</td>
+					<td class = "out"> 1</td>
+					<td class = "nov"> 1</td>
+					<td class = "dez"> 1</td>
+				</tr>	
+			</table>
 			<table id = "listIncomes" class = "tabelaEditavel">
 
 			<table>

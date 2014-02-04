@@ -33,7 +33,20 @@
 			case 'dez': $updateIncomeDez = mysql_query("Update `cashflowincome` Set `dez` = $novoConteudo Where id = $realId And userId = $userId"); break;
 		}
 	} else {
-
+		switch ($month){
+			case 'jan': $updateExpenseJan = mysql_query("Update `cashflowexpenses` Set `jan` = $novoConteudo Where id = $realId And userId = $userId"); break;
+			case 'fev': $updateExpenseFev = mysql_query("Update `cashflowexpenses` Set `fev` = $novoConteudo Where id = $realId And userId = $userId"); break;
+			case 'mar': $updateExpenseMar = mysql_query("Update `cashflowexpenses` Set `mar` = $novoConteudo Where id = $realId And userId = $userId"); break;
+			case 'abr': $updateExpenseAbr = mysql_query("Update `cashflowexpenses` Set `abr` = $novoConteudo Where id = $realId And userId = $userId"); break;
+			case 'mai': $updateExpenseMai = mysql_query("Update `cashflowexpenses` Set `mai` = $novoConteudo Where id = $realId And userId = $userId"); break;
+			case 'jun': $updateExpenseJun = mysql_query("Update `cashflowexpenses` Set `jun` = $novoConteudo Where id = $realId And userId = $userId"); break;
+			case 'jul': $updateExpenseJul = mysql_query("Update `cashflowexpenses` Set `jul` = $novoConteudo Where id = $realId And userId = $userId"); break;
+			case 'ago': $updateExpenseAgo = mysql_query("Update `cashflowexpenses` Set `ago` = $novoConteudo Where id = $realId And userId = $userId"); break;
+			case 'set': $updateExpenseSet = mysql_query("Update `cashflowexpenses` Set `set` = $novoConteudo Where id = $realId And userId = $userId"); break;
+			case 'out': $updateExpenseOut = mysql_query("Update `cashflowexpenses` Set `out` = $novoConteudo Where id = $realId And userId = $userId"); break;
+			case 'nov': $updateExpenseNov = mysql_query("Update `cashflowexpenses` Set `nov` = $novoConteudo Where id = $realId And userId = $userId"); break;
+			case 'dez': $updateExpenseDez = mysql_query("Update `cashflowexpenses` Set `dez` = $novoConteudo Where id = $realId And userId = $userId"); break;
+		}
 	}
 	
 ?>

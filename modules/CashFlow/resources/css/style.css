@@ -149,7 +149,7 @@
 	border: 0 !important;
 }
 .cashFlowContainner{
-	padding:30px;
+	padding:0px 30px 30px 30px;
 }
 .tableTitle{
 	text-align:center;
@@ -171,14 +171,15 @@
 
 /* Fluxo de caixa mensal */
 .tableRow td:first-child{
-	width:160px !important;
-	max-width: 160px; 
 	background: #e7e7e7;
 	overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis; 
     font-weight:bold;
     padding-left: 25px;
+    width:150px !important; 
+    max-width:150px !important;
+    min-width:150px !important;
 }
 .tableRow td:not(:first-child){
 	background: #e7e7e7;
@@ -186,6 +187,13 @@
 	color: #000;
 	border-right-style:solid !important;
 	border-right-width:1px !important;
+	border-right-color:#000 !important;
+	width:100px !important;
+	max-width:100px !important;
+}
+.tableRow td:last-child{
+	border-right-style:solid !important;
+	border-right-width:0px !important;
 	border-right-color:#000 !important;
 }
 .months td{
@@ -197,13 +205,15 @@
 }
 .selectYear{
 	width:100%;
-	text-align:center;
+	text-align:right;
+	padding:0px 30px 0px 30px;
 }
 .selectYear select{
 	width:250px;
-	text-align:center;
+	height:30px;
+	padding-left: 100px;
 }
-#listIncomes, #listExpenses, #tableMonths{
+#listIncomes, #listExpenses, #tableMonths, #tableSaldo{
 	width:100% !important;
 }
 #tableMonths td{
@@ -228,4 +238,25 @@
 	width:100%; 
 	border:0; 
 	background-color:rgb(255,253,210); 
+}
+.saldo{
+	height:50px !important;
+}
+#tableSaldo td{
+	border-right-style:solid !important;
+	border-right-width:0px !important;
+	border-right-color:#000 !important;
+	text-align:center;
+}
+#tableSaldo td:first-child{
+	text-align:left !important;
+}
+.saldo{
+	height:40px !important;
+}
+#tableSaldo td:not(:first-child){
+	background: #e7e7e7;
+	color: #000;
+	width:100px !important;
+	max-width:100px !important;
 }
