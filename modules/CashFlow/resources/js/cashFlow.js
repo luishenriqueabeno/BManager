@@ -9,6 +9,7 @@ $(document).ready(function(){
 	var expenseBox = $('.expenseBox');
 	var monthTableExpenses = $('#listExpenses');
 	var monthTableIncomes = $('#listIncomes');
+	var monthTableSaldo = $('#tableSaldo');
 	listaComAnoAtual();
 
 	//Esconde dialog no carregamento
@@ -56,6 +57,7 @@ $(document).ready(function(){
 		var ano = $('#anoSelect').val();
 		monthTableExpenses.empty();
 		monthTableIncomes.empty();
+		monthTableSaldo.empty();
 
 		$.ajax({
 			type: 'POST',
@@ -78,6 +80,18 @@ $(document).ready(function(){
 			},
 			success: function(data){
 				$(monthTableIncomes).append(data);
+			}
+		});
+
+		$.ajax({
+			type: 'POST',
+			url: 'modules/CashFlow/php/loadSaldo.php',
+			data:{
+				ano: ano,
+				userId: userId
+			},
+			success: function(data){
+				$(monthTableSaldo).append(data);
 			}
 		});
 	}
@@ -111,6 +125,19 @@ $(document).ready(function(){
 			},
 			success: function(data){
 				$(monthTableIncomes).append(data);
+			}
+		});
+
+		//Carrega saldo
+		$.ajax({
+			type: 'POST',
+			url: 'modules/CashFlow/php/loadSaldo.php',
+			data:{
+				ano: ano,
+				userId: userId
+			},
+			success: function(data){
+				$(monthTableSaldo).append(data);
 			}
 		});
 	}
@@ -324,6 +351,7 @@ $(document).ready(function(){
 		var conteudoOriginal = $(this).text(); 
 		var rowId = $(this).parent().attr('id');
 		var month = $(this).attr('class');
+		var ano = $('#anoSelect').val();
 
 		//Muda estilo para edição
 		$(this).addClass("celulaEmEdicao"); 
@@ -348,6 +376,7 @@ $(document).ready(function(){
 						rowId: rowId,
 						month: month,
 						userId: userId,
+						ano: ano
 					},
 					type: 'POST',
 					success: function(data){
