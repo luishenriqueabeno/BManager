@@ -9,7 +9,13 @@
 		$ano = date("Y");
 	}
 
-	$saldoList = mysql_query("Select * From `cashflowsaldo` Where ano = '$ano' And userId = $userId");
+	//$saldoList = mysql_query("Select * From `cashflowsaldo` Where ano = '$ano' And userId = $userId");
+	$saldoList = mysql_query("
+							SELECT distinct a.jan - sum(b.jan) saldoJan
+							FROM `cashflowsaldo` a
+							inner join cashflowexpenses b on (a.userid = b.userid and a.ano = b.ano)
+							WHERE a.userid = 1 and a.ano = 2014
+							");
 
 	$rows = mysql_num_rows($saldoList);
 
