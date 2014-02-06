@@ -6,8 +6,10 @@
 
 	$checkUserLic = "Select firstName, lastName, productId, gender From users Where email = '$username'";
 	$checkUserLicsql = mysql_query($checkUserLic);
-
 	$res = mysql_fetch_object($checkUserLicsql);
+
+	$sqlPrivileges = mysql_query("Select usertype From `users` Where email = '$username'");
+	$resPrivileges = mysql_fetch_object($sqlPrivileges);
 
 	$userId = $_SESSION['userId'];
 ?>
@@ -82,12 +84,14 @@
 									<li><a href="#">Separated link</a></li>
 								</ul>
 							</li>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Gerencial <b class="caret"></b></a>
-								<ul class="dropdown-menu">
-									<li><a href="#" name = "gerencialUsuarios"> Usuários </a></li>
-								</ul>
-							</li>
+							<?php if ($resPrivileges->usertype == 1){ ?>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Gerencial <b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li><a href="#" name = "gerencialUsuarios"> Usuários </a></li>
+									</ul>
+								</li>
+							<?php } ?>
 						</ul>
 					</div><!-- /.navbar-collapse -->
 				</nav>
