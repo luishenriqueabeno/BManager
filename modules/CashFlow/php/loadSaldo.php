@@ -9,7 +9,6 @@
 		$ano = date("Y");
 	}
 
-	//$saldoList = mysql_query("Select * From `cashflowsaldo` Where ano = '$ano' And userId = $userId");
 	$saldoList = mysql_query("
 							Select 
 								`jan` + (Select Case When Sum(`jan`) Is Null Then 0 Else Sum(`jan`) End From cashflowincome) - (Select Case WHen Sum(`jan`) is Null Then 0 Else Sum(`jan`) End From cashflowexpenses) As SaldoJan,
@@ -25,7 +24,7 @@
 								`nov` + (Select Case When Sum(`nov`) Is Null Then 0 Else Sum(`nov`) End From cashflowincome) - (Select Case WHen Sum(`nov`) is Null Then 0 Else Sum(`nov`) End From cashflowexpenses) As SaldoNov,
 								`dez` + (Select Case When Sum(`dez`) Is Null Then 0 Else Sum(`dez`) End From cashflowincome) - (Select Case WHen Sum(`dez`) is Null Then 0 Else Sum(`dez`) End From cashflowexpenses) As SaldoDez
 							From 
-								cashflowSaldo
+								cashflowsaldo
 							Where
 								userId = $userId And ano = $ano
 							");
