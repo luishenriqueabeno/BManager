@@ -17,6 +17,7 @@
 		echo $_SESSION['login'] = "1";
 		echo $_SESSION['username'] = $username;
 		echo $_SESSION['userId'] = $userId;
+		echo $_SESSION['userType'];
 	} else {
 		echo $_SESSION['login'] = 0;
 	}

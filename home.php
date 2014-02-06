@@ -82,6 +82,12 @@
 									<li><a href="#">Separated link</a></li>
 								</ul>
 							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Gerencial <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="#" name = "gerencialUsuarios"> Usuários </a></li>
+								</ul>
+							</li>
 						</ul>
 					</div><!-- /.navbar-collapse -->
 				</nav>

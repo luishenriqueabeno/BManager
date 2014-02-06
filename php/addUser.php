@@ -9,7 +9,7 @@
 	$gender = $_POST['gender'];
 	$signupDate = date('d/m/Y');
 
-	$query = "Insert Into users Values('', '$firstName', '$lastName', '$email', '$password1', $gender, $product, '$signupDate')";
+	$query = "Insert Into users Values('', '$firstName', '$lastName', '$email', '$password1', $gender, $product, '$signupDate', '1', '$email')";
 
 	$sql = mysql_query($query);
 

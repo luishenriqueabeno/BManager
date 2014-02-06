@@ -41,7 +41,7 @@
 
 				<label for = "pass2"> Repita a senha </label> <span class = "pass2"> </span>
 				<input id = "txtPassword2" type = "password" name = "txtPassword2" >
-
+				
 				<label for = "gender"> Sexo </label>
 				<select id = "gender">
 					<option value = '1'> Masculino </option>

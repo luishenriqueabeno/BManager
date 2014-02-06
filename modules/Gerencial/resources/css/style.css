@@ -1,0 +1,274 @@
+table{
+	-moz-user-select: none; 
+    -khtml-user-select: none; 
+    -webkit-user-select: none; 
+    -o-user-select: none;
+}
+#usersContainer{
+	border:solid #CCC;
+	border-width:2px;
+	width:900px;
+	margin: 0 auto;
+}
+.userContainerTitle{
+	background:-o-linear-gradient(bottom, #005fbf 5%, #003f7f 100%);	
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #005fbf), color-stop(1, #003f7f) );
+	background:-moz-linear-gradient( center top, #005fbf 5%, #003f7f 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#005fbf", endColorstr="#003f7f");	
+	background: -o-linear-gradient(top,#005fbf,003f7f);
+	background-color:#005fbf;
+	border:0px solid #000000;
+	text-align:left;
+	border-width:0px 0px 1px 1px;
+	font-size:12px;
+	font-family:Arial;
+	font-weight:bold;
+	color:#ffffff;
+	line-height:20px;
+}
+.ui-dialog-titlebar-close{
+	background: url('../../../../lib/jquery-ui-1.10.3/themes/base/images/ui-icons_888888_256x240.png') no-repeat -34px -194px;
+	border:none;
+	width:15px !important;
+	height:12px !important;
+}
+
+/* User panel */
+#userPanel{
+	width:100%;
+}
+#userPanel tr:first-child td{
+	background-color:#d3e1f1 !important;
+	border:0px solid #000000;
+	text-align:center;
+	font-size:12px;
+	font-family:Arial;
+	font-weight:bold;
+	color:#ffffff;
+}
+#removeUser{
+	width:16px;
+	height:16px;
+	background:url('../images/remove.gif') center center no-repeat;
+	background-size: 100% 100%;
+	float:left;
+	margin-left:10px;
+}
+#addUser{
+	width:16px;
+	height:16px;
+	background:url('../images/add.gif') center center no-repeat;
+	background-size: 100% 100%;	
+	float:left;
+	margin-left:10px;
+}
+.bgBtnContainer{
+	float:left;	
+	width:40px;
+	margin-left:5px;
+}
+.bgBtnContainerTxt{
+	width:130px;
+	height:32px;
+	padding-top: 7px;
+	float:right;	
+	text-align:center;
+	font-weight:bold;
+}
+
+/* User list */
+.userList {
+	margin:0px;
+	padding:0px;	
+}
+.userList table{
+    border-collapse: collapse;
+    border-spacing: 0;	
+	height:100%;
+	margin:0px;
+	padding:0px;
+	table-layout: fixed;
+}
+.userList tr:nth-child(odd){ 
+	background-color:#aad4ff; 
+}
+.userList tr:nth-child(even){ 
+	background-color:#ffffff; 
+}
+.userList td{
+	vertical-align:middle;
+	text-align:left;
+	padding:7px;
+	font-size:10px;
+	font-family:Arial;
+	font-weight:normal;
+	color:#000000;
+}
+.userList tr:not(:first-child){
+	border-bottom-style:solid;
+	border-bottom-width:1px;
+}
+.userList #userList tr:first-child td{
+	background:-o-linear-gradient(bottom, #005fbf 5%, #003f7f 100%);	
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #005fbf), color-stop(1, #003f7f) );
+	background:-moz-linear-gradient( center top, #005fbf 5%, #003f7f 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#005fbf", endColorstr="#003f7f");	
+	background: -o-linear-gradient(top,#005fbf,003f7f);
+	background-color:#005fbf;
+	border:0px solid #000000;
+	text-align:center;
+	font-size:12px;
+	font-family:Arial;
+	font-weight:bold;
+	color:#ffffff;
+}
+.userList tr:hover{
+	background-color:#CCC;
+}
+.highlighted {
+    color: #261F1D;
+    background-color: #CCC !important;
+}
+#userList{
+	width:100%;
+}
+#userList tr td{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; 
+}
+#userList tr td:first-child{
+	width:200px;
+}
+#userList tr td:nth-child(2){
+	width:400px;	
+}
+#userList tr td:nth-child(3){
+	width:122px;	
+}
+#userList tr td:nth-child(4){
+	width:122px;	
+}
+
+/* Form add user */
+#addUserForm{
+	overflow: hidden;
+}
+#addUserForm label, #loginForm label{
+	float:left;
+	width:100%;
+	position:relative;
+}
+#addUserForm input, #addUserForm select, #loginForm input{
+	float:right;
+	width:100%;	
+	position:relative;
+}
+.addUserFormSeparator, .formLoginSeparator{
+	margin-top:10px;
+	padding-top:10px;
+	width:100%;
+	float:left;
+	border-top-style: solid;
+	border-top-width: 1px;
+	border-top-color: #CCC;
+}
+.ui-dialog-buttonset{
+	text-align:right;
+}
+.greenBorder{
+	border: solid 2px green !important;;
+}
+.redBorder{
+	border: solid 2px red !important;
+}
+#formMessage{	
+	text-align: center;
+	font-weight: bold;
+}
+#formMessageSuccess{	
+	text-align: center;
+	font-weight: bold;
+}
+#passSend{
+	text-align: center;
+	font-weight: bold;
+	padding-bottom:5px;
+	color:green;
+}
+#passError{
+	text-align: center;
+	font-weight: bold;
+	padding-bottom:5px;
+	color:red;
+}
+.firstNameReq{
+	color: red;
+	position: absolute;
+	z-index: 4;
+	width: 250px;
+	margin-left: -110px;
+	font-size: 11px;
+	margin-top: 5px;
+}
+.lastNameReq{
+	position: absolute;
+	z-index: 4;
+	width: 250px;
+	margin-left: -110px;
+	margin-top: 60px;
+	font-size: 11px;
+	color:red;
+}
+.emailReq{
+	position: absolute;
+	z-index: 4;
+	width: 250px;
+	margin-left: -110px;
+	margin-top: 110px;
+	font-size: 11px;
+	color:red;
+}
+.emailReqForgot{
+	position: absolute;
+	z-index: 4;
+	width: 250px;
+	font-size: 11px;
+	color:red;
+	margin-left: 220px !important;
+	margin-top: 10px !important;
+}
+.pass1{
+	color: red;
+	position: absolute;
+	z-index: 4;
+	font-size: 11px;
+	width: 450px;
+	margin-left: -240px;
+	margin-top: 160px;
+}
+.pass2{
+	color: red;
+	position: absolute;
+	z-index: 4;
+	font-size: 11px;
+	width: 450px;
+	margin-left: -148px;
+	margin-top: 210px;
+}
+.loginLink{
+	color:blue !important;
+	margin-left:10px;
+}
+.forgotPass{
+	font-size:12px;
+}
+.formAddUserSeparator{
+	margin-top:10px;
+	padding-top:10px;
+	width:100%;
+	float:left;
+	border-top-style: solid;
+	border-top-width: 1px;
+	border-top-color: #CCC;
+}
