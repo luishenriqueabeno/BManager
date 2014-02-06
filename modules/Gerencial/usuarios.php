@@ -42,6 +42,10 @@
 				<label for = "pass2"> Repita a senha </label> <span class = "pass2"> </span>
 				<input id = "txtPassword2" type = "password" name = "txtPassword2" >
 
+				<div class = "userAcl">
+					<label for = "cashFlow"> CashFlow </label> <input type = "checkbox" value = "2" name = "cashFlow">
+				</div>
+
 				<label for = "gender"> Sexo </label>
 				<select id = "gender">
 					<option value = '1'> Masculino </option>

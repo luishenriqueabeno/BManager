@@ -272,3 +272,17 @@ table{
 	border-top-width: 1px;
 	border-top-color: #CCC;
 }
+.userAcl{
+	width:100%;
+	float:right;
+}
+.userAcl label{
+	float:none !important;
+	width:90px !important;
+	margin:10px 0 10px 0;
+}
+ .userAcl input{
+ 	float:none !important;
+	width:auto !important;
+	margin:15px 0 10px 0;
+ }
