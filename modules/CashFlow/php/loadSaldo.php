@@ -11,10 +11,23 @@
 
 	//$saldoList = mysql_query("Select * From `cashflowsaldo` Where ano = '$ano' And userId = $userId");
 	$saldoList = mysql_query("
-							SELECT distinct a.jan - sum(b.jan) saldoJan
-							FROM `cashflowsaldo` a
-							inner join cashflowexpenses b on (a.userid = b.userid and a.ano = b.ano)
-							WHERE a.userid = 1 and a.ano = 2014
+							Select 
+								`jan` + (Select Case When Sum(`jan`) Is Null Then 0 Else Sum(`jan`) End From cashflowincome) - (Select Case WHen Sum(`jan`) is Null Then 0 Else Sum(`jan`) End From cashflowexpenses) As SaldoJan,
+								`fev` + (Select Case When Sum(`fev`) Is Null Then 0 Else Sum(`fev`) End From cashflowincome) - (Select Case WHen Sum(`fev`) is Null Then 0 Else Sum(`fev`) End From cashflowexpenses) As SaldoFev,
+								`mar` + (Select Case When Sum(`mar`) Is Null Then 0 Else Sum(`mar`) End From cashflowincome) - (Select Case WHen Sum(`mar`) is Null Then 0 Else Sum(`mar`) End From cashflowexpenses) As SaldoMar,
+								`abr` + (Select Case When Sum(`abr`) Is Null Then 0 Else Sum(`abr`) End From cashflowincome) - (Select Case WHen Sum(`abr`) is Null Then 0 Else Sum(`abr`) End From cashflowexpenses) As SaldoAbr,
+								`mai` + (Select Case When Sum(`mai`) Is Null Then 0 Else Sum(`mai`) End From cashflowincome) - (Select Case WHen Sum(`mai`) is Null Then 0 Else Sum(`mai`) End From cashflowexpenses) As SaldoMai,
+								`jun` + (Select Case When Sum(`jun`) Is Null Then 0 Else Sum(`jun`) End From cashflowincome) - (Select Case WHen Sum(`jun`) is Null Then 0 Else Sum(`jun`) End From cashflowexpenses) As SaldoJun,
+								`jul` + (Select Case When Sum(`jul`) Is Null Then 0 Else Sum(`jul`) End From cashflowincome) - (Select Case WHen Sum(`jul`) is Null Then 0 Else Sum(`jul`) End From cashflowexpenses) As SaldoJul,
+								`ago` + (Select Case When Sum(`ago`) Is Null Then 0 Else Sum(`ago`) End From cashflowincome) - (Select Case WHen Sum(`ago`) is Null Then 0 Else Sum(`ago`) End From cashflowexpenses) As SaldoAgo,
+								`set` + (Select Case When Sum(`set`) Is Null Then 0 Else Sum(`set`) End From cashflowincome) - (Select Case WHen Sum(`set`) is Null Then 0 Else Sum(`set`) End From cashflowexpenses) As SaldoSet,
+								`out` + (Select Case When Sum(`out`) Is Null Then 0 Else Sum(`out`) End From cashflowincome) - (Select Case WHen Sum(`out`) is Null Then 0 Else Sum(`out`) End From cashflowexpenses) As SaldoOut,
+								`nov` + (Select Case When Sum(`nov`) Is Null Then 0 Else Sum(`nov`) End From cashflowincome) - (Select Case WHen Sum(`nov`) is Null Then 0 Else Sum(`nov`) End From cashflowexpenses) As SaldoNov,
+								`dez` + (Select Case When Sum(`dez`) Is Null Then 0 Else Sum(`dez`) End From cashflowincome) - (Select Case WHen Sum(`dez`) is Null Then 0 Else Sum(`dez`) End From cashflowexpenses) As SaldoDez
+							From 
+								cashflowSaldo
+							Where
+								userId = $userId And ano = $ano
 							");
 
 	$rows = mysql_num_rows($saldoList);
@@ -39,18 +52,18 @@
 		while($resSaldoList = mysql_fetch_object($saldoList)){
 			echo "<tr class = 'saldo tableRow' id = 'saldoMonths'>";
 				echo "<td> Saldo </td>";
-				echo "<td class = 'jan'>". 'R$ ' . number_format($resSaldoList->jan,2,",",".") ."</td>";
-				echo "<td class = 'fev'>". 'R$ ' . number_format($resSaldoList->fev,2,",",".") ."</td>";
-				echo "<td class = 'mar'>". 'R$ ' . number_format($resSaldoList->mar,2,",",".") ."</td>";
-				echo "<td class = 'abr'>". 'R$ ' . number_format($resSaldoList->abr,2,",",".") ."</td>";
-				echo "<td class = 'mai'>". 'R$ ' . number_format($resSaldoList->mai,2,",",".") ."</td>";
-				echo "<td class = 'jun'>". 'R$ ' . number_format($resSaldoList->jun,2,",",".") ."</td>";
-				echo "<td class = 'jul'>". 'R$ ' . number_format($resSaldoList->jul,2,",",".") ."</td>";
-				echo "<td class = 'ago'>". 'R$ ' . number_format($resSaldoList->ago,2,",",".") ."</td>";
-				echo "<td class = 'set'>". 'R$ ' . number_format($resSaldoList->set,2,",",".") ."</td>";
-				echo "<td class = 'out'>". 'R$ ' . number_format($resSaldoList->out,2,",",".") ."</td>";
-				echo "<td class = 'nov'>". 'R$ ' . number_format($resSaldoList->nov,2,",",".") ."</td>";
-				echo "<td class = 'dez'>". 'R$ ' . number_format($resSaldoList->dez,2,",",".") ."</td>";
+				echo "<td class = 'jan ". (((number_format($resSaldoList->SaldoJan,2,",",".")) < 0) ? "redNum" : "blueNum") ."'>". 'R$ ' . number_format($resSaldoList->SaldoJan,2,",",".") ."</td>";
+				echo "<td class = 'fev ". (((number_format($resSaldoList->SaldoFev,2,",",".")) < 0) ? "redNum" : "blueNum") ."'>". 'R$ ' . number_format($resSaldoList->SaldoFev,2,",",".") ."</td>";
+				echo "<td class = 'mar ". (((number_format($resSaldoList->SaldoMar,2,",",".")) < 0) ? "redNum" : "blueNum") ."'>". 'R$ ' . number_format($resSaldoList->SaldoMar,2,",",".") ."</td>";
+				echo "<td class = 'abr ". (((number_format($resSaldoList->SaldoAbr,2,",",".")) < 0) ? "redNum" : "blueNum") ."'>". 'R$ ' . number_format($resSaldoList->SaldoAbr,2,",",".") ."</td>";
+				echo "<td class = 'mai ". (((number_format($resSaldoList->SaldoMai,2,",",".")) < 0) ? "redNum" : "blueNum") ."'>". 'R$ ' . number_format($resSaldoList->SaldoMai,2,",",".") ."</td>";
+				echo "<td class = 'jun ". (((number_format($resSaldoList->SaldoJun,2,",",".")) < 0) ? "redNum" : "blueNum") ."'>". 'R$ ' . number_format($resSaldoList->SaldoJun,2,",",".") ."</td>";
+				echo "<td class = 'jul ". (((number_format($resSaldoList->SaldoJul,2,",",".")) < 0) ? "redNum" : "blueNum") ."'>". 'R$ ' . number_format($resSaldoList->SaldoJul,2,",",".") ."</td>";
+				echo "<td class = 'ago ". (((number_format($resSaldoList->SaldoAgo,2,",",".")) < 0) ? "redNum" : "blueNum") ."'>". 'R$ ' . number_format($resSaldoList->SaldoAgo,2,",",".") ."</td>";
+				echo "<td class = 'set ". (((number_format($resSaldoList->SaldoSet,2,",",".")) < 0) ? "redNum" : "blueNum") ."'>". 'R$ ' . number_format($resSaldoList->SaldoSet,2,",",".") ."</td>";
+				echo "<td class = 'out ". (((number_format($resSaldoList->SaldoOut,2,",",".")) < 0) ? "redNum" : "blueNum") ."'>". 'R$ ' . number_format($resSaldoList->SaldoOut,2,",",".") ."</td>";
+				echo "<td class = 'nov ". (((number_format($resSaldoList->SaldoNov,2,",",".")) < 0) ? "redNum" : "blueNum") ."'>". 'R$ ' . number_format($resSaldoList->SaldoNov,2,",",".") ."</td>";
+				echo "<td class = 'dez ". (((number_format($resSaldoList->SaldoDez,2,",",".")) < 0) ? "redNum" : "blueNum") ."'>". 'R$ ' . number_format($resSaldoList->SaldoDez,2,",",".") ."</td>";
 			echo "</tr>";
 		}		
 	}

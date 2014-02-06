@@ -16,6 +16,11 @@
 
 	$type = $text[0];
 
+	if(strlen($month) > 3){
+		$month = explode (" ", $month);
+		$month = $month[0];
+	}
+
 	//echo $novoConteudo . ' - '. $type . ' - '. $realId .' - '. $month;
 
 	if($type == 'income'){

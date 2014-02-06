@@ -253,4 +253,13 @@
 	border-right-style:solid !important;
 	border-right-width:0px !important;
 	border-right-color:#000 !important;
+	font-weight:bold !important;
+}
+.blueNum{
+	color:#0000FF !important;
+	font-weight:bold;
+}
+.redNum{
+	color:#FF0000 !important;
+	font-weight:bold;
 }
