@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.11.1
+-- version 3.2.4
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tempo de Geração: 06/02/2014 às 22:40:57
--- Versão do Servidor: 5.5.33
--- Versão do PHP: 5.3.17
+-- Tempo de Geração: Fev 07, 2014 as 04:53 
+-- Versão do Servidor: 5.1.41
+-- Versão do PHP: 5.3.1
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -17,7 +16,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Banco de Dados: `luish360_dailyhelper`
+-- Banco de Dados: `dailyhelper`
 --
 
 -- --------------------------------------------------------
@@ -30,21 +29,19 @@ CREATE TABLE IF NOT EXISTS `cashflowcategories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `categoryName` varchar(255) NOT NULL,
   `categoryTypeId` int(11) NOT NULL,
-  `userid` int(11) NOT NULL,
+  `userMaster` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Extraindo dados da tabela `cashflowcategories`
 --
 
-INSERT INTO `cashflowcategories` (`id`, `categoryName`, `categoryTypeId`, `userid`) VALUES
-(1, 'Vendas', 2, 3),
-(2, 'Imovel', 1, 3),
-(3, 'Teste', 2, 3),
-(4, 'TEste', 1, 1),
-(5, 'TEste2', 2, 1),
-(6, 'jhjhkh', 2, 2);
+INSERT INTO `cashflowcategories` (`id`, `categoryName`, `categoryTypeId`, `userMaster`) VALUES
+(1, 'Vendas', 2, 'luis_abeno@hotmail.com'),
+(2, 'Predio', 1, 'luis_abeno@hotmail.com'),
+(3, 'Teste', 2, 'luis_abeno@hotmail.com'),
+(4, 'Teste', 1, 'luis_abeno@hotmail.com');
 
 -- --------------------------------------------------------
 
@@ -90,8 +87,17 @@ CREATE TABLE IF NOT EXISTS `cashflowexpenses` (
   `nov` decimal(10,2) NOT NULL,
   `dez` decimal(10,2) NOT NULL,
   `ano` varchar(10) NOT NULL,
+  `userMaster` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Extraindo dados da tabela `cashflowexpenses`
+--
+
+INSERT INTO `cashflowexpenses` (`id`, `expenseName`, `categoryId`, `userId`, `jan`, `fev`, `mar`, `abr`, `mai`, `jun`, `jul`, `ago`, `set`, `out`, `nov`, `dez`, `ano`, `userMaster`) VALUES
+(1, 'Despesa1', 4, 1, '5000.00', '4000.00', '5000.00', '5000.00', '5000.00', '5000.00', '5000.00', '5000.00', '5000.00', '5000.00', '5000.00', '5000.00', '2014', 'luis_abeno@hotmail.com'),
+(2, 'Despesa2', 0, 2, '4800.00', '3500.00', '4800.00', '4800.00', '4800.00', '4800.00', '4800.00', '4800.00', '4800.00', '4800.00', '4800.00', '4800.00', '2014', 'luis_abeno@hotmail.com');
 
 -- --------------------------------------------------------
 
@@ -117,8 +123,18 @@ CREATE TABLE IF NOT EXISTS `cashflowincome` (
   `nov` decimal(10,2) NOT NULL,
   `dez` decimal(10,2) NOT NULL,
   `ano` varchar(10) NOT NULL,
+  `userMaster` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Extraindo dados da tabela `cashflowincome`
+--
+
+INSERT INTO `cashflowincome` (`id`, `incomeName`, `categoryId`, `userId`, `jan`, `fev`, `mar`, `abr`, `mai`, `jun`, `jul`, `ago`, `set`, `out`, `nov`, `dez`, `ano`, `userMaster`) VALUES
+(1, 'Testeeeeee', 5, 1, '3500.00', '3500.00', '3500.00', '3500.00', '3500.00', '3500.00', '3500.00', '3500.00', '3500.00', '3500.00', '3500.00', '3500.00', '2014', 'luis_abeno@hotmail.com'),
+(2, 'Teste2', 0, 1, '7900.00', '8000.00', '8000.00', '8000.00', '8000.00', '8000.00', '8000.00', '8000.00', '8000.00', '8000.00', '8000.00', '8000.00', '2014', 'luis_abeno@hotmail.com'),
+(3, 'TEste3', 6, 2, '5900.00', '5900.00', '5900.00', '5900.00', '5900.00', '5900.00', '5900.00', '5900.00', '5900.00', '5900.00', '5900.00', '5900.00', '2014', 'luis_abeno@hotmail.com');
 
 -- --------------------------------------------------------
 
@@ -142,9 +158,16 @@ CREATE TABLE IF NOT EXISTS `cashflowsaldo` (
   `nov` decimal(10,2) NOT NULL,
   `dez` decimal(10,2) NOT NULL,
   `ano` varchar(10) NOT NULL,
-  `empresaId` int(11) NOT NULL,
+  `userMaster` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Extraindo dados da tabela `cashflowsaldo`
+--
+
+INSERT INTO `cashflowsaldo` (`id`, `userId`, `jan`, `fev`, `mar`, `abr`, `mai`, `jun`, `jul`, `ago`, `set`, `out`, `nov`, `dez`, `ano`, `userMaster`) VALUES
+(1, 1, '4500.00', '2500.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '2014', 'luis_abeno@hotmail.com');
 
 -- --------------------------------------------------------
 
@@ -158,6 +181,11 @@ CREATE TABLE IF NOT EXISTS `products` (
   `price` varchar(10) NOT NULL,
   PRIMARY KEY (`productId`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Extraindo dados da tabela `products`
+--
+
 
 -- --------------------------------------------------------
 
@@ -241,15 +269,18 @@ CREATE TABLE IF NOT EXISTS `users` (
   `userMaster` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Extraindo dados da tabela `users`
 --
 
 INSERT INTO `users` (`id`, `firstName`, `lastName`, `email`, `password`, `gender`, `productId`, `signupDate`, `userType`, `userMaster`) VALUES
-(1, 'Luis', 'Abeno', 'luis_abeno@hotmail.com', '4aafd190adfeb9477899840deae6c370', 1, 1, '27/01/2014', '1', 'luis_abeno@hotmail.com'),
-(2, 'Roberta', 'Krug', 'robertakrug@gmail.com', '9b538b392c3364579ccde894ccc6c3b8', 2, 1, '26/01/2014', '1', 'robertakrug@gmail.com');
+(1, 'Luis', 'Abeno', 'luis_abeno@hotmail.com', '4aafd190adfeb9477899840deae6c370', 1, 1, '07/02/2014', '1', 'luis_abeno@hotmail.com'),
+(2, 'Roberta', 'Krug', 'roberta@krug.com.br', 'a8f5f167f44f4964e6c998dee827110c', 2, 1, '07/02/2014', '2,3', 'luis_abeno@hotmail.com'),
+(3, 'paulo', 'silva', 'paulo@teste.com.br', 'a8f5f167f44f4964e6c998dee827110c', 1, 1, '07/02/2014', '2', 'luis_abeno@hotmail.com'),
+(4, 'asdaasd', 'asa', 'sdasdasd@asdasd.com.br', 'a8f5f167f44f4964e6c998dee827110c', 1, 1, '07/02/2014', '3', 'luis_abeno@hotmail.com'),
+(5, 'zeca', 'zeca', 'zeca@zeca.com.br', 'efe6398127928f1b2e9ef3207fb82663', 1, 1, '07/02/2014', '2,3', 'luis_abeno@hotmail.com');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
