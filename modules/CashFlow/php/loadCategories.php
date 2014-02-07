@@ -3,7 +3,10 @@
 
 	$userId = $_POST['userId'];
 
-	$list = mysql_query("Select * From cashflowcategories Where userId = $userId");
+	$getMaster = mysql_query("Select userMaster From users Where id = $userId");
+	$resMaster = mysql_fetch_object($getMaster);
+
+	$list = mysql_query("Select * From cashflowcategories Where userMaster = '$resMaster->userMaster'");
 
 	$rows = array();
 

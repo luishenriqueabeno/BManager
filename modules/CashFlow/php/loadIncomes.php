@@ -9,7 +9,10 @@
 		$ano = date("Y");
 	}
 
-	$incomeList = mysql_query("Select * From cashflowincome Where ano = '$ano' And userId = $userId");
+	$getMaster = mysql_query("Select userMaster From users Where id = $userId");
+	$resMaster = mysql_fetch_object($getMaster);
+
+	$incomeList = mysql_query("Select * From cashflowincome Where ano = '$ano' And userMaster = '$resMaster->userMaster'");
 	echo "<tr>";
 		echo "<th> Receitas </th>";
 	echo "</tr>";

@@ -7,13 +7,16 @@
 	$category = $_POST['category'];
 	$ano = $_POST['ano'];
 
+	$getMaster = mysql_query("Select userMaster From users Where id = $userId");
+	$resMaster = mysql_fetch_object($getMaster);
+
 	$value = str_replace(',','.',str_replace('.','',$expenseValue));
 
 	if($category == ''){
 		$category = 0;
 	}
 
-	$expenseInsert = mysql_query("Insert Into cashflowexpenses Values ('', '$expenseName', $category, $userId, '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$ano')");
+	$expenseInsert = mysql_query("Insert Into cashflowexpenses Values ('', '$expenseName', $category, $userId, '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$ano', '$resMaster->userMaster')");
 
 	if($expenseInsert){
 		echo 1;	

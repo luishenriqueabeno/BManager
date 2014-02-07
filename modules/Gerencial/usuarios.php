@@ -17,7 +17,7 @@
 		<link type="text/css" rel="stylesheet" href="modules/Gerencial/resources/css/style.css">
 
 		<!-- Scripts -->
-		<script src = "modules/Gerencial/resources/js/gerencial.js" type = "text/javascript"></script>
+		<script src = "modules/Gerencial/resources/js/usuarios.js" type = "text/javascript"></script>
 
 	</head>
 	<body>
@@ -26,15 +26,19 @@
 		<div id="addUserForm" title="Adicionar usuário">
 			<div id = "formMessage"> </div>
 			<div id = "formMessageSuccess"> </div>
-			<form method = "post" id = "formAddTask">
+			<form method = "post" id = "formAddUser">
 				<label for = "firstName"> Nome </label> <span class = "firstNameReq"> </span>
 				<input id = "txtFirstName" type = "text" name = "txtFirstName" >
+
+				<input type = "hidden" value = "" id = "userIdEdit">
 
 				<label for = "lastName"> Sobrenome </label> <span class = "lastNameReq"> </span>
 				<input id = "txtLastName" type = "text" name = "txtLastName" >
 
 				<label for = "email"> Email </label> <span class = "emailReq"> </span>
 				<input id = "txtEmail" type = "text" name = "txtEmail" >
+
+				<input type = "hidden" id = "checkmd" value = "">
 
 				<label for = "pass1"> Senha </label> <span class = "pass1"> </span>
 				<input id = "txtPassword1" type = "password" name = "txtPassword1" >
@@ -43,8 +47,8 @@
 				<input id = "txtPassword2" type = "password" name = "txtPassword2" >
 
 				<div class = "userAcl">
-					<label for = "cashFlow"> CashFlow </label> <input type = "checkbox" value = "2" name = "cashFlow">
-					<label for = "estoque"> Estoque </label> <input type = "checkbox" value = "3" name = "estoque">
+					<label for = "cashFlow"> CashFlow </label> <input type = "checkbox" value = "2" id = "cashFlow" name = "cashFlow">
+					<label for = "estoque"> Estoque </label> <input type = "checkbox" value = "3" id = "estoque" name = "estoque">
 				</div>
 
 				<label for = "gender"> Sexo </label>

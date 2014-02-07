@@ -5,6 +5,9 @@
 	$ano = $_POST['ano'];
 	$userId = $_POST['userId'];
 
+	$getMaster = mysql_query("Select userMaster From users Where id = $userId");
+	$resMaster = mysql_fetch_object($getMaster);
+
 	if($ano == ''){
 		$ano = date("Y");
 	}
@@ -26,7 +29,7 @@
 							From 
 								cashflowsaldo
 							Where
-								userId = $userId And ano = $ano
+								userMaster = '$resMaster->userMaster' And ano = $ano
 							");
 
 	$rows = mysql_num_rows($saldoList);

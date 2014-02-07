@@ -9,7 +9,10 @@
 		$ano = date("Y");
 	}
 
-	$expenseList = mysql_query("Select * From cashflowexpenses Where ano = '$ano' And userId = $userId");
+	$getMaster = mysql_query("Select userMaster From users Where id = $userId");
+	$resMaster = mysql_fetch_object($getMaster);
+
+	$expenseList = mysql_query("Select * From cashflowexpenses Where ano = '$ano' And userMaster = '$resMaster->userMaster'");
 	echo "<tr>";
 		echo "<th> Despesas </th>";
 	echo "</tr>";

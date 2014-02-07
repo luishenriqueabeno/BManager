@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
 	/***************************
 	* Variaveis de inicialização
 	****************************/
@@ -33,6 +34,7 @@ $(document).ready(function(){
 	****************************/
 	//Abre modal para adicionar usuário
 	$('#addUser').click(function(){
+		$('#formAddUser')[0].reset();
 		//Exibe modal
 		$( "#addUserForm" ).dialog({
 			modal: true,
@@ -50,6 +52,10 @@ $(document).ready(function(){
 		var password2 = $('#txtPassword2').val();
 		var gender = $('#gender').val();
 		var modulesPermission = [];
+		var checkmd = $('#checkmd').val();
+
+		var userIdEdit = $('#userIdEdit').val();
+
 		var i = 0;
 
 		$('input[type=checkbox]:checked').each(function(){
@@ -67,25 +73,29 @@ $(document).ready(function(){
 				type: 'POST',
 				url: 'modules/Gerencial/php/addUser.php',
 				data:{
+					userIdEdit: userIdEdit,
 					userId: userId,
 					firstName: firstName,
 					lastName: lastName,
 					email: email,
 					password1: password1,
 					gender: gender,
-					modulesPermission: modulesPermission
+					modulesPermission: modulesPermission,
+					checkmd: checkmd
 				},
 				success: function(data){
 					if(formSucess == 0){
 						$('#formMessage').remove();
-						$('#formMessageSuccess').append('Usuário cadastrado com sucesso').css('color', 'green');
+						$('#formMessageSuccess').append(data).css('color', 'green');
 						formSucess = 1;
-						$('#formAddTask')[0].reset();
+						$('#formAddUser')[0].reset();
 						field1.removeClass('greenBorder');
 						field2.removeClass('greenBorder');
 						firstNameField.removeClass('greenBorder');
 						lastNameField.removeClass('greenBorder');
 						emailField.removeClass('greenBorder');
+						userListLoad();
+					} else {
 						userListLoad();
 					}
 				}
@@ -130,10 +140,72 @@ $(document).ready(function(){
 		});
 	}
 
+    //Carrega dados do usuário para edição
+    $('#userList').on('dblclick', 'tr', function(){
+    	var userId = $(this).attr('id');
+    	var firstName = $('#txtFirstName');
+		var lastName = $('#txtLastName');
+		var email = $('#txtEmail').attr('disabled', true);
+		var password1 = $('#txtPassword1');
+		var password2 = $('#txtPassword2');
+		var gender = $('#gender');
+		$('#checkmd').val('1');
+
+		var userIdEdit = $('#userIdEdit').val(userId);
+
+    	$.ajax({
+    		url: 'modules/Gerencial/php/editaUsuario.php',
+    		type: 'POST',
+    		data:{ userId: userId },
+    		success: function(data){
+
+    			var user = $.parseJSON(data);
+
+    			$('#btnAddUser span').html('Gravar');
+
+    			//Exibe modal preenchido
+				$( "#addUserForm" ).dialog({
+					modal: true,
+					show: { effect: "slideDown", duration: 600 } ,
+					width: 500,
+				});
+
+    			for(var i = 0; i < user.length; i++){
+    				firstName.val(user[i].firstName);
+    				email.val(user[i].email);
+    				lastName.val(user[i].lastName);
+    				password1.val(user[i].password);
+    				password2.val(user[i].password);
+    				gender.val(user[i].gender);
+    			}
+
+    			var arr = user[0].userType.split(',');
+
+    			for(i = 0; i< arr.length; i++){
+    				if(arr[i] == 2){
+    					$('#cashFlow').attr('checked', true);   
+    					$('#cashFlow').attr('disabled', false); 
+    				} else if(arr[i] == 3){
+    					$('#estoque').attr('checked', true);   
+    					$('#estoque').attr('disabled', false); 
+    				} else if(arr[i] == 1){
+    					$('#cashFlow').attr('checked', true);    	
+    					$('#estoque').attr('checked', true);   
+    					$('#cashFlow').attr('disabled', true); 
+    					$('#estoque').attr('disabled', true); 
+    				}
+    			}
+    		}
+    	});
+
+    });
+
+
 	//Verifica senhas e altera estilo
 	$('#txtPassword1').keyup(function(){
 		var password1 = $('#txtPassword1').val();
 		var password2 = $('#txtPassword2').val();
+		$('#checkmd').val('2');
 
 		if(password1.length < 6 || password1 == ''){
 			field1.addClass('redBorder');
@@ -147,6 +219,7 @@ $(document).ready(function(){
 	$('#txtPassword2').keyup(function(){
 		var password1 = $('#txtPassword1').val();
 		var password2 = $('#txtPassword2').val();
+		$('#checkmd').val('2');
 
 		if(password2.length < 6){
 			field2.addClass('redBorder');
@@ -178,6 +251,7 @@ $(document).ready(function(){
 	});
 	$('#txtEmail').focusout(function(){
 		var email = $(this).val();
+		var userIdEdit = $('#userIdEdit').val();
 
 		if($(this).val() == ''){
 			emailField.addClass('redBorder');
@@ -186,7 +260,10 @@ $(document).ready(function(){
 			$.ajax({
 		    	url: 'modules/Gerencial/php/checkUser.php',
 		    	type: 'POST',
-		    	data: { email: email },
+		    	data: { 
+		    		email: email,
+		    		userIdEdit: userIdEdit
+		    	},
 		    	success: function(data){
 		    		if(data == 1){
 		    			emailField.addClass('redBorder');
