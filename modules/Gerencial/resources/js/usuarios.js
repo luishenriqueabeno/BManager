@@ -35,6 +35,12 @@ $(document).ready(function(){
 	//Abre modal para adicionar usuário
 	$('#addUser').click(function(){
 		$('#formAddUser')[0].reset();
+
+		$('#cashFlow').attr('checked', false);    	
+		$('#estoque').attr('checked', false);   
+		$('#cashFlow').attr('disabled', false); 
+		$('#estoque').attr('disabled', false);
+
 		//Exibe modal
 		$( "#addUserForm" ).dialog({
 			modal: true,
