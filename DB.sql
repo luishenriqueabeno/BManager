@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 3.2.4
+-- version 3.4.11.1
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tempo de Geração: Fev 05, 2014 as 05:50 
--- Versão do Servidor: 5.1.41
--- Versão do PHP: 5.3.1
+-- Tempo de Geração: 06/02/2014 às 22:40:57
+-- Versão do Servidor: 5.5.33
+-- Versão do PHP: 5.3.17
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -16,7 +17,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Banco de Dados: `dailyhelper`
+-- Banco de Dados: `luish360_dailyhelper`
 --
 
 -- --------------------------------------------------------
@@ -31,17 +32,19 @@ CREATE TABLE IF NOT EXISTS `cashflowcategories` (
   `categoryTypeId` int(11) NOT NULL,
   `userid` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Extraindo dados da tabela `cashflowcategories`
 --
 
 INSERT INTO `cashflowcategories` (`id`, `categoryName`, `categoryTypeId`, `userid`) VALUES
-(1, 'Vendas', 2, 1),
-(2, 'Imovel', 1, 1),
-(3, 'Teste', 2, 1),
-(4, 'Teste', 1, 1);
+(1, 'Vendas', 2, 3),
+(2, 'Imovel', 1, 3),
+(3, 'Teste', 2, 3),
+(4, 'TEste', 1, 1),
+(5, 'TEste2', 2, 1),
+(6, 'jhjhkh', 2, 2);
 
 -- --------------------------------------------------------
 
@@ -88,15 +91,7 @@ CREATE TABLE IF NOT EXISTS `cashflowexpenses` (
   `dez` decimal(10,2) NOT NULL,
   `ano` varchar(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
-
---
--- Extraindo dados da tabela `cashflowexpenses`
---
-
-INSERT INTO `cashflowexpenses` (`id`, `expenseName`, `categoryId`, `userId`, `jan`, `fev`, `mar`, `abr`, `mai`, `jun`, `jul`, `ago`, `set`, `out`, `nov`, `dez`, `ano`) VALUES
-(1, 'IPTU', 0, 1, '5.00', '12.00', '123.00', '14.56', '16.00', '12.45', '45.65', '930.25', '930.25', '930.25', '930.25', '4.00', '2014'),
-(2, 'Testeeeeewwwwwwwwwwww', 0, 1, '2.00', '34.00', '12.33', '12.33', '12.33', '12.33', '12.33', '12.33', '12.33', '12.33', '12.33', '12.33', '2014');
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -123,15 +118,7 @@ CREATE TABLE IF NOT EXISTS `cashflowincome` (
   `dez` decimal(10,2) NOT NULL,
   `ano` varchar(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
-
---
--- Extraindo dados da tabela `cashflowincome`
---
-
-INSERT INTO `cashflowincome` (`id`, `incomeName`, `categoryId`, `userId`, `jan`, `fev`, `mar`, `abr`, `mai`, `jun`, `jul`, `ago`, `set`, `out`, `nov`, `dez`, `ano`) VALUES
-(1, 'XBOX', 0, 1, '10.00', '45.00', '123.00', '12.34', '12.45', '10.00', '7689.00', '15.00', '856.00', '85.12', '12.34', '12.45', '2014'),
-(2, 'PS3', 0, 1, '10.00', '99999.99', '99999.99', '25.00', '99999.99', '1000.00', '15.00', '15.00', '75.00', '15.00', '15.00', '12.00', '2014');
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -157,14 +144,7 @@ CREATE TABLE IF NOT EXISTS `cashflowsaldo` (
   `ano` varchar(10) NOT NULL,
   `empresaId` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
-
---
--- Extraindo dados da tabela `cashflowsaldo`
---
-
-INSERT INTO `cashflowsaldo` (`id`, `userId`, `jan`, `fev`, `mar`, `abr`, `mai`, `jun`, `jul`, `ago`, `set`, `out`, `nov`, `dez`, `ano`, `empresaId`) VALUES
-(1, 1, '12.00', '45.00', '22.22', '0.00', '50.00', '99.99', '0.00', '0.00', '99999.99', '0.00', '0.00', '0.00', '2014', 0);
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -178,11 +158,6 @@ CREATE TABLE IF NOT EXISTS `products` (
   `price` varchar(10) NOT NULL,
   PRIMARY KEY (`productId`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
---
--- Extraindo dados da tabela `products`
---
-
 
 -- --------------------------------------------------------
 
@@ -203,15 +178,29 @@ CREATE TABLE IF NOT EXISTS `tasks` (
   `userId` int(11) NOT NULL,
   `taskStatus` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=34 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
 
 --
 -- Extraindo dados da tabela `tasks`
 --
 
 INSERT INTO `tasks` (`id`, `taskName`, `desc`, `dataInicio`, `dataFim`, `horaInicio`, `minutoInicio`, `horaFim`, `minutoFim`, `userId`, `taskStatus`) VALUES
-(30, 'asd', 'asdasdasdasdasdsadasd', '16/01/2014', '01/02/2014', '17', '18', '19', '18', 6, 1),
-(33, 'Teste', '', '', '', '01', '00', '01', '00', 1, 1);
+(10, 'Vender vale refeiÃ§Ã£o', 'Vender R$ 310,00\nAlameda Raja Gabaglia, nÂ°??? â€“ passar o Starbucks Coffee', '30/01/2014', '31/01/2014', '09', '00', '18', '00', 1, 1),
+(17, 'DecoraÃ§Ã£o Cups', '5 - Alices\n5 - Jardins\n5 - Cartas\n5 - Mesinhas\n5 - RelÃ³gios', '04/02/2014', '04/02/2014', '08', '00', '18', '00', 2, 0),
+(16, 'DecoraÃ§Ã£o Bolo', 'ChapÃ©u\nGato\nAlice', '03/02/2014', '03/02/2014', '08', '00', '18', '00', 2, 0),
+(6, 'Borracheiro', 'Ir atÃ© o borracheiro para consertar o step.', '01/02/2014', '01/02/2014', '09', '00', '18', '00', 1, 1),
+(7, 'Pagar hospedagem Hostgator', 'Pagar hospedagem hostgator trimestral.', '01/02/2014', '03/02/2014', '10', '00', '16', '00', 1, 1),
+(8, 'LÃ¢mpada', 'Trocar lÃ¢mpada traseira esquerda do freio.', '01/02/2014', '01/02/2014', '08', '00', '14', '00', 1, 0),
+(9, 'Alinhamento', 'Alinhar carro.\nAvenida Antonio C. Costa prÃ³ximo a sorveteria Frutiquello.', '01/02/2014', '01/02/2014', '08', '00', '14', '00', 1, 1),
+(11, 'Comprar mochila', 'Comprar uma mochila no shopping Morumbi', '02/02/2014', '02/02/2014', '09', '00', '20', '00', 1, 0),
+(12, 'Comprar um tÃªnis', 'Comprar um tÃªnis no shopping morumbi.', '02/02/2014', '02/02/2014', '09', '00', '20', '00', 1, 1),
+(13, 'SPTrans', 'Ir atÃ© o SPTrans para verificar a questÃ£o do vale transporte.\nTel.:(11) 3714-5908\nEnd.:Av Mal MÃ¡rio Guedes , 221 , JaguarÃ©, SÃ£o Paulo  -  SP  ', '31/01/2014', '07/02/2014', '08', '00', '16', '00', 1, 1),
+(14, 'Pagar carro', 'Pagar parcela do carro referente ao mÃªs de janeiro.', '31/01/2014', '31/01/2014', '09', '00', '20', '00', 1, 1),
+(15, 'IdÃ©ia nome', 'GEEPME', '31/01/2014', '31/01/2014', '01', '00', '01', '00', 1, 0),
+(18, 'Massas ', 'Bolo Baunilha \nBolo Chocolate\nGanache', '05/02/2014', '05/02/2014', '08', '00', '18', '00', 2, 0),
+(20, 'Massa cupcakes', 'Massas cenoura cupcakes\nRechear e decorar cupcakes\nCobrir, decorar e montar o bolo', '07/02/2014', '07/02/2014', '08', '00', '18', '00', 2, 0),
+(21, 'Recheios', 'Brigadeiros', '06/02/2014', '06/02/2014', '08', '00', '18', '00', 2, 0),
+(22, 'Pagar celular - Jan', 'Paar conta de celular referente a janeiro.\nVcto.: 06/02/14\nVlr.: 117,00', '05/02/2014', '10/02/2014', '01', '00', '01', '00', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -248,15 +237,19 @@ CREATE TABLE IF NOT EXISTS `users` (
   `gender` int(11) NOT NULL,
   `productId` int(11) NOT NULL,
   `signupDate` varchar(15) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  `userType` varchar(255) NOT NULL,
+  `userMaster` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Extraindo dados da tabela `users`
 --
 
-INSERT INTO `users` (`id`, `firstName`, `lastName`, `email`, `password`, `gender`, `productId`, `signupDate`) VALUES
-(1, 'Luis', 'Abeno', 'luis_abeno@hotmail.com', '4aafd190adfeb9477899840deae6c370', 1, 1, '27/01/2014');
+INSERT INTO `users` (`id`, `firstName`, `lastName`, `email`, `password`, `gender`, `productId`, `signupDate`, `userType`, `userMaster`) VALUES
+(1, 'Luis', 'Abeno', 'luis_abeno@hotmail.com', '4aafd190adfeb9477899840deae6c370', 1, 1, '27/01/2014', '1', 'luis_abeno@hotmail.com'),
+(2, 'Roberta', 'Krug', 'robertakrug@gmail.com', '9b538b392c3364579ccde894ccc6c3b8', 2, 1, '26/01/2014', '1', 'robertakrug@gmail.com');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
