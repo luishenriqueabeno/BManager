@@ -141,13 +141,14 @@ table{
 	width:200px;
 }
 #userList tr td:nth-child(2){
-	width:400px;	
+	width:300px;	
 }
 #userList tr td:nth-child(3){
-	width:122px;	
+	width:222px;	
 }
 #userList tr td:nth-child(4){
 	width:122px;	
+	text-align:center !important;
 }
 
 /* Form add user */

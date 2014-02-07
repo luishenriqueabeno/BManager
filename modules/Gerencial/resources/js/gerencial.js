@@ -13,6 +13,8 @@ $(document).ready(function(){
 	var lastNameField = $('#txtLastName');
 	var userNameField = $('#txtUsername');
 	var passwordField = $('#txtPassword');
+	var erroMsgUpdate = true;
+	var formSucess = 0;
 
 	var firstNameReq = $('.firstNameReq');
 	var lastNameReq = $('.lastNameReq');
@@ -21,6 +23,7 @@ $(document).ready(function(){
 	var pass1 = $('.pass1');
 	var pass2 = $('.pass2');
 	var userList = $('#userList');
+
 
 	userListLoad();
 
@@ -38,6 +41,58 @@ $(document).ready(function(){
 		});
 	});
 
+	//Adiciona usuário
+	$('#btnAddUser').click(function(){
+		var firstName = $('#txtFirstName').val();
+		var lastName = $('#txtLastName').val();
+		var email = $('#txtEmail').val();
+		var password1 = $('#txtPassword1').val();
+		var password2 = $('#txtPassword2').val();
+		var gender = $('#gender').val();
+		var modulesPermission = [];
+		var i = 0;
+
+		$('input[type=checkbox]:checked').each(function(){
+			modulesPermission[i] = $(this).val();
+			i++;
+		});
+	
+		if(field1.hasClass('redBorder') || field2.hasClass('redBorder') || emailField.hasClass('redBorder') || firstNameField.hasClass('redBorder') || lastNameField.hasClass('redBorder')){
+			if (erroMsgUpdate) {
+				$('#formMessage').append('Corrija os campos destacados').css('color', 'red');
+				erroMsgUpdate = false;
+			}
+		} else {
+			$.ajax({
+				type: 'POST',
+				url: 'modules/Gerencial/php/addUser.php',
+				data:{
+					userId: userId,
+					firstName: firstName,
+					lastName: lastName,
+					email: email,
+					password1: password1,
+					gender: gender,
+					modulesPermission: modulesPermission
+				},
+				success: function(data){
+					if(formSucess == 0){
+						$('#formMessage').remove();
+						$('#formMessageSuccess').append('Usuário cadastrado com sucesso').css('color', 'green');
+						formSucess = 1;
+						$('#formAddTask')[0].reset();
+						field1.removeClass('greenBorder');
+						field2.removeClass('greenBorder');
+						firstNameField.removeClass('greenBorder');
+						lastNameField.removeClass('greenBorder');
+						emailField.removeClass('greenBorder');
+						userListLoad();
+					}
+				}
+			});
+		}
+	});
+
 	//Botão cancelar do formulário para inscrição
 	$('#btnCancelUserForm').on('click', function(){
 		$( "#addUserForm" ).dialog( "destroy" );
@@ -45,6 +100,8 @@ $(document).ready(function(){
 
 	//Função para carregar usuários relacionados à empresa/pessoa
 	function userListLoad(){
+		$('#userList tr').not(':first-child').empty();
+
 		$.ajax({
 			url: 'modules/Gerencial/php/carregaUsuarios.php',
 			type: 'POST',
@@ -55,15 +112,15 @@ $(document).ready(function(){
 				
 				for(var i = 0; i < json.length; i++){
 
-					if(json[i].usertype == '1'){
-						json[i].usertype = 'Master';
+					if(json[i].userType == '1'){
+						json[i].userType = 'Master';
 					}
 
 					userList.append(
 						"<tr id = "+ json[i].id +">" + 
 							"<td>" + json[i].firstName + ' ' + json[i].lastName + "</td>" +
 							"<td>" + json[i].email + "</td>" +
-							"<td>" + json[i].usertype + "</td>" +
+							"<td>" + json[i].userType + "</td>" +
 							"<td> Editar </td>" +
 						"</tr>"
 					)

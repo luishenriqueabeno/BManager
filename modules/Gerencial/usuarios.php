@@ -44,6 +44,7 @@
 
 				<div class = "userAcl">
 					<label for = "cashFlow"> CashFlow </label> <input type = "checkbox" value = "2" name = "cashFlow">
+					<label for = "estoque"> Estoque </label> <input type = "checkbox" value = "3" name = "estoque">
 				</div>
 
 				<label for = "gender"> Sexo </label>

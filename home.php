@@ -84,7 +84,7 @@
 									<li><a href="#">Separated link</a></li>
 								</ul>
 							</li>
-							<?php if ($resPrivileges->usertype == 1){ ?>
+							<?php if ($resPrivileges->usertype == '1'){ ?>
 								<li class="dropdown">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Gerencial <b class="caret"></b></a>
 									<ul class="dropdown-menu">

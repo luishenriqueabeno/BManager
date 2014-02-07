@@ -61,8 +61,6 @@ $(document).ready(function(){
 		var password2 = $('#txtPassword2').val();
 		var gender = $('#gender').val();
 		var product = $('#product').val();
-		var cnpj = $('#txtCNPJ').val();
-		var cpf = $('#txtCPF').val();
 	
 		if(field1.hasClass('redBorder') || field2.hasClass('redBorder') || emailField.hasClass('redBorder') || firstNameField.hasClass('redBorder') || lastNameField.hasClass('redBorder')){
 			if (erroMsgUpdate) {
@@ -79,9 +77,7 @@ $(document).ready(function(){
 					email: email,
 					password1: password1,
 					product: product,
-					gender: gender,
-					cnpj: cnpj,
-					cpf: cpf
+					gender: gender
 				},
 				success: function(data){
 					if(formSucess == 0){
