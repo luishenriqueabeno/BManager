@@ -80,8 +80,8 @@
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Fluxo de caixa <b class="caret"></b></a>
 								<ul class="dropdown-menu">
 									<li><a href="#" name = "modulesCashFlowMonth"> Visão mensal </a></li>
-									<li class="divider"></li>
-									<li><a href="#">Separated link</a></li>
+									<!--<li class="divider"></li>
+									<li><a href="#">Separated link</a></li>-->
 								</ul>
 							</li>
 							<?php if ($resPrivileges->usertype == '1'){ ?>

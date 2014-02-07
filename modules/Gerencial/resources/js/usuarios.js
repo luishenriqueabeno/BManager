@@ -118,13 +118,13 @@ $(document).ready(function(){
 			data:{ userId: userId },
 			success: function(data){
 
-				var json = $.parseJSON(data);
+				var json = $.parseJSON(data);	
 				
 				for(var i = 0; i < json.length; i++){
 
-					if(json[i].userType == '1'){
+					/*if(json[i].userType == '1'){
 						json[i].userType = 'Master';
-					}
+					}*/
 
 					userList.append(
 						"<tr id = "+ json[i].id +">" + 
