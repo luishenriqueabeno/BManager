@@ -47,9 +47,11 @@ $(document).ready(function(){
 
 	$( document ).ajaxStart(function() {
 		$('.loader').show();
+		$('#taskList').hide();
 	});
 	$( document ).ajaxStop(function() {
 	  	$('.loader').hide();
+	  	$('#taskList').show();
 	});
 
 	//Lista todas as tarefas não concluídas
