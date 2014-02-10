@@ -5,6 +5,13 @@
 	height:12px !important;
 }
 
+.loader{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	padding: 100px 600px;
+}
+
 /* Add expense form */
 #formAddExpense label{
 	float:left;

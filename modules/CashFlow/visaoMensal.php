@@ -115,7 +115,7 @@
 			</table>
 
 			<div class = "loader"> Carregando... </div>
-
+		
 			<table id = "tableMonths" >
 				<tr class = "months tableRow">
 					<td> </td>
