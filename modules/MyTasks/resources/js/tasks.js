@@ -411,6 +411,7 @@ $(document).ready(function(){
 
 	//Lista tarefas concluídas
 	$('#listDoneTasks').on('click', function(){
+		taskList.hide();
 		$('#typeDone').addClass('activeTaskTypeDone');
 		$('#typeUndone').removeClass('activeTaskTypeUndone');
 
@@ -420,6 +421,7 @@ $(document).ready(function(){
 
 	//Lista tarefas ativas
 	$('#listActiveTasks').on('click', function(){
+		taskList.hide();
 		$('#typeDone').removeClass('activeTaskTypeDone');
 		$('#typeUndone').addClass('activeTaskTypeUndone');
 		$('#taskList tr').not(':first-child').remove();
