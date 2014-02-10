@@ -113,6 +113,7 @@
 					</th>
 				</tr>
 			</table>
+			<div class = "loading"> </div>
 			<table id = "tableMonths" >
 				<tr class = "months tableRow">
 					<td> </td>

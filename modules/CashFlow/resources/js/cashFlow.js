@@ -102,6 +102,8 @@ $(document).ready(function(){
 
 		var ano = "";
 
+		$('.loading').html('loading...');
+
 		//Carrega despesas
 		$.ajax({
 			type: 'POST',
@@ -112,6 +114,7 @@ $(document).ready(function(){
 			},
 			success: function(data){
 				$(monthTableExpenses).append(data);
+				 $('.loading').html('');
 			}
 		});
 
