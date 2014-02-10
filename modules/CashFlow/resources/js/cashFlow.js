@@ -52,6 +52,12 @@ $(document).ready(function(){
     /***************************
 	* Inicio das funções 
 	****************************/
+	$( document ).ajaxStart(function() {
+		$('.loader').show();
+	});
+	$( document ).ajaxStop(function() {
+  $('.loader').hide();
+});
 
 	function reloadMonthTable(){
 		var ano = $('#anoSelect').val();
@@ -102,8 +108,6 @@ $(document).ready(function(){
 
 		var ano = "";
 
-		$('.loading').html('loading...');
-
 		//Carrega despesas
 		$.ajax({
 			type: 'POST',
@@ -140,7 +144,6 @@ $(document).ready(function(){
 			},
 			success: function(data){
 				$(monthTableSaldo).append(data);
-				$('.loading').html('');
 			}
 		});
 	}
