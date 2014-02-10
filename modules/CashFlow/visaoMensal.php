@@ -26,6 +26,7 @@
 			<!-- Add expense form -->
 			<div id="addExpenseForm" title="Cadastrar despesa">
 				<div class = "expenseAddSuccess"> Despesa cadastrada com sucesso! </div>
+				<div class = "displayError">Corrija os campos destacados </div>
 				<form method = "post" id = "formAddExpense">
 					<label for = "expenseName"> Despesa </label>
 					<input id = "txtExpenseName" type = "text" name = "txtExpenseName" >
@@ -49,6 +50,7 @@
 			<!-- Add income form -->
 			<div id="addIncomeForm" title="Cadastrar receita">
 				<div class = "incomeAddSuccess"> Receita cadastrada com sucesso! </div>
+				<div class = "displayError">Corrija os campos destacados </div>
 				<form method = "post" id = "formAddIncome">
 					<label for = "incomeName"> Receita </label>
 					<input id = "txtIncomeName" type = "text" name = "txtIncomeName" >
@@ -73,6 +75,7 @@
 			<div id="addCategoryForm" title="Criar uma categoria">
 				<div class = "categoryMsgSuccess"> Categoria criada com sucesso! </div>
 				<div class = "categoryMsgError"> Essa categoria já existe. </div>
+				<div class = "displayError">Corrija os campos destacados </div>
 				<form method = "post" id = "formAddCategory">
 					<label for = "categoryName"> Categoria </label>
 					<input id = "txtCategoryName" type = "text" name = "txtCategoryName" >

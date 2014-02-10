@@ -4,6 +4,18 @@
 	width:15px !important;
 	height:12px !important;
 }
+.greenBorder{
+	border: solid 2px green !important;;
+}
+.redBorder{
+	border: solid 2px red !important;
+}
+.displayError{
+	text-align: center;
+	font-weight: bold;
+	padding-bottom:5px;
+	color:red;
+}
 
 /* Loader */
 .loader{

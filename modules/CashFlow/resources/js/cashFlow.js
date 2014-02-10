@@ -19,6 +19,7 @@ $(document).ready(function(){
 
 	//Mensagens
 	$('.categoryMsgError').hide();
+	$('.displayError').hide();
 	$('.categoryMsgSuccess').hide();
 	$('.expenseAddSuccess').hide();
 	$('.incomeAddSuccess').hide();
@@ -211,6 +212,10 @@ $(document).ready(function(){
 
 	//Adicionar despesas
 	$('#addExpense').on('click', function(){
+		$('#formAddExpense')[0].reset();
+		$('.expenseAddSuccess').hide();
+		$('.displayError').hide();
+		$('#txtExpenseName').removeClass("redBorder");
 
 		//Exibe modal
 		$( "#addExpenseForm" ).dialog({
@@ -227,27 +232,38 @@ $(document).ready(function(){
 		var expenseValue = $('#txtExpenseValue').val();
 		var category = $('select[name=expenseCategory]').find(":selected").val();
 
-		$.ajax({
-			type: 'POST',
-			url: 'modules/CashFlow/php/addExpense.php',
-			data:{
-				userId: userId,
-				expenseName: expenseName,
-				expenseValue: expenseValue,
-				ano: ano,
-				category: category
-			},
-			success: function (data){
-				if(data == 1){
-					$('.expenseAddSuccess').show();
-					reloadMonthTable();
+		if(expenseName == ''){
+			$('#txtExpenseName').addClass("redBorder");
+			$('.expenseAddSuccess').hide();
+			$('.displayError').show();
+		} else {
+			$.ajax({
+				type: 'POST',
+				url: 'modules/CashFlow/php/addExpense.php',
+				data:{
+					userId: userId,
+					expenseName: expenseName,
+					expenseValue: expenseValue,
+					ano: ano,
+					category: category
+				},
+				success: function (data){
+					if(data == 1){
+						$('.expenseAddSuccess').show();
+						$('.displayError').hide();
+						reloadMonthTable();
+					}
 				}
-			}
-		});
+			});
+		}
 	});
 
 	//Adicionar receita
 	$('#addIncome').on('click', function(){
+		$('#formAddIncome')[0].reset();
+		$('.incomeAddSuccess').hide();
+		$('.displayError').hide();
+		$('#txtIncomeName').removeClass("redBorder");
 
 		//Exibe modal
 		$( "#addIncomeForm" ).dialog({
@@ -264,27 +280,40 @@ $(document).ready(function(){
 		var incomeValue = $('#txtIncomeValue').val();
 		var category = $('select[name=incomeCategory]').find(":selected").val();
 
-		$.ajax({
-			type: 'POST',
-			url: 'modules/CashFlow/php/addIncome.php',
-			data:{
-				userId: userId,
-				incomeName: incomeName,
-				incomeValue: incomeValue,
-				ano: ano,
-				category: category
-			},
-			success: function (data){
-				if(data == 1){
-					$('.incomeAddSuccess').show();
-					reloadMonthTable();
+		if(incomeName == ''){
+			$('#txtIncomeName').addClass("redBorder");
+			$('.incomeAddSuccess').hide();
+			$('.displayError').show();
+		} else {
+			$.ajax({
+				type: 'POST',
+				url: 'modules/CashFlow/php/addIncome.php',
+				data:{
+					userId: userId,
+					incomeName: incomeName,
+					incomeValue: incomeValue,
+					ano: ano,
+					category: category
+				},
+				success: function (data){
+					if(data == 1){
+						$('.incomeAddSuccess').show();
+						$('.displayError').hide();
+						reloadMonthTable();
+					}
 				}
-			}
-		});
+			});	
+		}
+		
 	});
 
 	//Criar uma categoria
 	$('#addCategory').on('click', function(){
+		$('#formAddCategory')[0].reset();
+		$('.categoryMsgSuccess').hide();
+		$('.categoryMsgError').hide();
+		$('.displayError').hide();
+		$('#txtCategoryName').removeClass("redBorder");
 
 		//Exibe modal
 		$( "#addCategoryForm" ).dialog({
@@ -299,40 +328,50 @@ $(document).ready(function(){
 		var categoryName = $('#txtCategoryName').val();
 		var categoryTypeId = $('input[name=categoryType]:checked').val();
 
-		$.ajax({
-			type: 'POST',
-			url: 'modules/CashFlow/php/addCategory.php',
-			data:{
-				userId: userId,
-				categoryName: categoryName,
-				categoryTypeId: categoryTypeId
-			},
-			success: function(data){
-				if(data == 2){
-					$('.categoryMsgError').show();
-					$('.categoryMsgSuccess').hide();
-				} else {
-					expenseCategory.empty();
-					incomeCategory.empty();
-					$('.categoryMsgError').hide();
-					$('.categoryMsgSuccess').show();
+		if(categoryName == ''){
+			$('#txtCategoryName').addClass("redBorder");
+			$('.categoryMsgSuccess').hide();
+			$('.categoryMsgError').hide();
+			$('.displayError').show();
+		} else {
+			$.ajax({
+				type: 'POST',
+				url: 'modules/CashFlow/php/addCategory.php',
+				data:{
+					userId: userId,
+					categoryName: categoryName,
+					categoryTypeId: categoryTypeId
+				},
+				success: function(data){
+					if(data == 2){
+						$('.categoryMsgError').show();
+						$('.categoryMsgSuccess').hide();
+						$('.displayError').hide();
+					} else {
+						expenseCategory.empty();
+						incomeCategory.empty();
+						$('.categoryMsgError').hide();
+						$('.categoryMsgSuccess').show();
+						$('.displayError').hide();
 
-					var json = $.parseJSON(data);
+						var json = $.parseJSON(data);
 
-					for(var i = 0; i < json.length; i++){
-						if(json[i].categoryTypeId == 1){
-							expenseCategory.append(
-								"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
-							);
-						} else {
-							incomeCategory.append(
-								"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
-							);
+						for(var i = 0; i < json.length; i++){
+							if(json[i].categoryTypeId == 1){
+								expenseCategory.append(
+									"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
+								);
+							} else {
+								incomeCategory.append(
+									"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
+								);
+							}
 						}
 					}
 				}
-			}
-		})
+			})
+		}
+		
 	});
 
 	//Botão cancelar do formulário
