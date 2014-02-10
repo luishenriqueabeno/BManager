@@ -356,6 +356,8 @@ $(document).ready(function(){
 		var i = 0;
 		var checkSelected = [];
 
+		taskList.hide();
+
 		//Verifica se tem algum item selecionado
 		$('.highlighted').each(function(){
 			
