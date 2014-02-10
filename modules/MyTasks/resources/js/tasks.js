@@ -4,6 +4,7 @@ $(document).ready(function(){
 	* Variaveis de inicialização 
 	****************************/
 	var taskList = $('#taskList');
+	taskList.hide();
 	var dataInicio = $('#dataInicio').val();
 	var dataFim = $('#dataFim').val();
 	var userId = $('input[name=userId]').val();
@@ -47,11 +48,10 @@ $(document).ready(function(){
 
 	$( document ).ajaxStart(function() {
 		$('.loader').show();
-		$('#taskList').hide();
 	});
 	$( document ).ajaxStop(function() {
 	  	$('.loader').hide();
-	  	$('#taskList').show();
+	  	taskList.show();
 	});
 
 	//Lista todas as tarefas não concluídas
