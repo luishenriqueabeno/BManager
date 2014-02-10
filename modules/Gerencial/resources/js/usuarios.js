@@ -52,6 +52,8 @@ $(document).ready(function(){
 		$('#cashFlow').attr('disabled', false); 
 		$('#estoque').attr('disabled', false);
 
+		$('#formMessageSuccess').html('');
+
 		//Exibe modal
 		$( "#addUserForm" ).dialog({
 			modal: true,
@@ -82,7 +84,7 @@ $(document).ready(function(){
 	
 		if(field1.hasClass('redBorder') || field2.hasClass('redBorder') || emailField.hasClass('redBorder') || firstNameField.hasClass('redBorder') || lastNameField.hasClass('redBorder')){
 			if (erroMsgUpdate) {
-				$('#formMessage').append('Corrija os campos destacados').css('color', 'red');
+				$('#formMessage').html('Corrija os campos destacados').css('color', 'red');
 				erroMsgUpdate = false;
 			}
 		} else {
@@ -103,7 +105,7 @@ $(document).ready(function(){
 				success: function(data){
 					if(formSucess == 0){
 						$('#formMessage').remove();
-						$('#formMessageSuccess').append(data).css('color', 'green');
+						$('#formMessageSuccess').html(data).css('color', 'green');
 						formSucess = 1;
 						$('#formAddUser')[0].reset();
 						field1.removeClass('greenBorder');
@@ -113,6 +115,7 @@ $(document).ready(function(){
 						emailField.removeClass('greenBorder');
 						userListLoad();
 					} else {
+						$('#formMessageSuccess').html(data).css('color', 'green');
 						userListLoad();
 					}
 				}
@@ -177,7 +180,7 @@ $(document).ready(function(){
 
     			var user = $.parseJSON(data);
 
-    			$('#btnAddUser span').html('Gravar');
+    			$('#formMessageSuccess').html('');
 
     			//Exibe modal preenchido
 				$( "#addUserForm" ).dialog({

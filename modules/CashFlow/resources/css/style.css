@@ -210,7 +210,6 @@
 }
 .tableRow td:not(:first-child){
 	background: #e7e7e7;
-	text-align: left;
 	color: #000;
 	border-right-style:solid;
 	border-right-width:1px;
@@ -230,7 +229,7 @@
 .selectYear{
 	width:100%;
 	text-align:right;
-	padding:0px 30px 0px 30px;
+	padding:0px 5px 0px 30px;
 }
 .selectYear select{
 	width:250px;
@@ -268,7 +267,7 @@
 #tableSaldo td:not(:first-child){
 	background: #e7e7e7;
 	color: #000;
-	text-align:center;
+	text-align:left;
 }
 #tableSaldo td input{
 	width:100%; 
@@ -276,7 +275,7 @@
 	background-color:rgb(255,253,210); 
 }
 .months td{
-	text-align:center !important;
+	text-align:left !important;
 	border-right-style:solid !important;
 	border-right-width:0px !important;
 	border-right-color:#000 !important;

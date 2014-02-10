@@ -12,6 +12,9 @@
 
 	$userIdEdit = $_POST['userIdEdit'];
 
+	$checkMaster = mysql_query("Select userMaster From users Where id = $userId");
+	$resMaster = mysql_fetch_object($checkMaster);
+
 	$rows = count($modulesPermission);
 
 	for($i = 0; $i < $rows; $i++){
@@ -23,7 +26,7 @@
 	$getProduct = mysql_query("Select productId, email From users Where id = $userId ");
 	$resProduct = mysql_fetch_object($getProduct);
 
-	if($userIdEdit == ''){
+	if($userIdEdit == '' && $resProduct->productId != 1){
 		$password1 =  md5($_POST['password1']);
 
 		$query = "Insert Into users Values('', '$firstName', '$lastName', '$email', '$password1', $gender, $resProduct->productId, '$signupDate', '$permissions', '$resProduct->email')";
@@ -35,11 +38,15 @@
 		} else {
 			echo "Falha ao cadastrar usuário";
 		}
-	} else {
+	} elseif($userIdEdit != '') {
 		if($checkmd == '1'){
 			$password1 = $_POST['password1'];
 		} else {
 			$password1 = md5($_POST['password1']);
+		}
+
+		if($resMaster->userMaster == $email){
+			$permissions = 1;
 		}
 
 		$query = "Update users Set firstName = '$firstName', lastName = '$lastName', password = '$password1', userType = '$permissions', gender = '$gender' Where id = $userIdEdit";
@@ -51,6 +58,8 @@
 		} else {
 			echo "Falha ao editar usuário";
 		}
+	} else {
+		echo "Para cadastrar mais usuários faça um upgrade do seu plano!";
 	}
 
 ?>
