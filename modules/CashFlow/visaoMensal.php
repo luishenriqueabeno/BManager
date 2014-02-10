@@ -114,7 +114,7 @@
 				</tr>
 			</table>
 
-			<div class = "loader"> Carregando... </div>
+			<div class = "loader"> <img src = "resources/images/loading.gif"> </div>
 		
 			<table id = "tableMonths" >
 				<tr class = "months tableRow">
