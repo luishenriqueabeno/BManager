@@ -45,6 +45,13 @@ $(document).ready(function(){
 	* Inicio das funções 
 	****************************/
 
+	$( document ).ajaxStart(function() {
+		$('.loader').show();
+	});
+	$( document ).ajaxStop(function() {
+	  	$('.loader').hide();
+	});
+
 	//Lista todas as tarefas não concluídas
 	function taskListLoad(){
 		$.ajax({

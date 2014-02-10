@@ -1,3 +1,16 @@
+/* Loader */
+.loader{
+	width: 600px !important;
+	height: 600px !important;
+	background: #FFF;
+}
+.loader img{
+	left: 50%;
+	position: absolute;
+	margin-left: -200px;
+	width: 400px;
+}
+
 table{
 	-moz-user-select: none; 
     -khtml-user-select: none; 

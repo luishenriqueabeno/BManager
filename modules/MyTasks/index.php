@@ -104,6 +104,8 @@
 						</tr>
 					</table>
 
+					<div class = "loader"> <img src = "resources/images/loading.gif"> </div>
+
 					<table class = "table" id = "taskList">
 						<tr>
 							<td> Nome </td>
