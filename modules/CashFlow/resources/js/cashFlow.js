@@ -56,8 +56,8 @@ $(document).ready(function(){
 		$('.loader').show();
 	});
 	$( document ).ajaxStop(function() {
-  $('.loader').hide();
-});
+	  	$('.loader').hide();
+	});
 
 	function reloadMonthTable(){
 		var ano = $('#anoSelect').val();
