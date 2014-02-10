@@ -43,6 +43,9 @@ $(document).ready(function(){
 	//Abre modal para adicionar usuário
 	$('#addUser').click(function(){
 		$('#formAddUser')[0].reset();
+		$('#txtEmail').attr('disabled', false);
+
+		$('#userIdEdit').val('');
 
 		$('#cashFlow').attr('checked', false);    	
 		$('#estoque').attr('checked', false);   
@@ -133,19 +136,18 @@ $(document).ready(function(){
 			success: function(data){
 
 				var json = $.parseJSON(data);	
-				
-				for(var i = 0; i < json.length; i++){
 
-					/*if(json[i].userType == '1'){
+				for(var i = 0; i < json.length; i++){
+					
+					if(json[i].userType == '1'){
 						json[i].userType = 'Master';
-					}*/
+					}
 
 					userList.append(
 						"<tr id = "+ json[i].id +">" + 
 							"<td>" + json[i].firstName + ' ' + json[i].lastName + "</td>" +
 							"<td>" + json[i].email + "</td>" +
 							"<td>" + json[i].userType + "</td>" +
-							"<td> Editar </td>" +
 						"</tr>"
 					)
 

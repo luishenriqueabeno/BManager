@@ -47,7 +47,7 @@
 				<input id = "txtPassword2" type = "password" name = "txtPassword2" >
 
 				<div class = "userAcl">
-					<label for = "cashFlow"> CashFlow </label> <input type = "checkbox" value = "2" id = "cashFlow" name = "cashFlow">
+					<label for = "cashFlow"> Fluxo de caixa </label> <input type = "checkbox" value = "2" id = "cashFlow" name = "cashFlow">
 					<label for = "estoque"> Estoque </label> <input type = "checkbox" value = "3" id = "estoque" name = "estoque">
 				</div>
 
@@ -91,7 +91,6 @@
 							<td> Nome </td>
 							<td> Usuário </td>
 							<td> Permissões </td>
-							<td> Editar </td>
 						</tr>
 					</table>
 				</div>
