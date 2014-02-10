@@ -24,7 +24,7 @@ $(document).ready(function(){
 	var pass1 = $('.pass1');
 	var pass2 = $('.pass2');
 	var userList = $('#userList');
-
+	userList.hide();
 
 	userListLoad();
 
@@ -32,6 +32,14 @@ $(document).ready(function(){
 	/***************************
 	* Inicio das funções 
 	****************************/
+	$( document ).ajaxStart(function() {
+		$('.loader').show();
+	});
+	$( document ).ajaxStop(function() {
+	  	$('.loader').hide();
+	  	userList.show();
+	});
+
 	//Abre modal para adicionar usuário
 	$('#addUser').click(function(){
 		$('#formAddUser')[0].reset();
