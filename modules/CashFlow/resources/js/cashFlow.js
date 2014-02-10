@@ -114,7 +114,6 @@ $(document).ready(function(){
 			},
 			success: function(data){
 				$(monthTableExpenses).append(data);
-				 $('.loading').html('');
 			}
 		});
 
@@ -141,6 +140,7 @@ $(document).ready(function(){
 			},
 			success: function(data){
 				$(monthTableSaldo).append(data);
+				$('.loading').html('');
 			}
 		});
 	}
