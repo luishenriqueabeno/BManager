@@ -1,0 +1,230 @@
+.ui-dialog-titlebar-close{
+	background: url('../../../../lib/jquery-ui-1.10.3/themes/base/images/ui-icons_888888_256x240.png') no-repeat -34px -194px;
+	border:none;
+	width:15px !important;
+	height:12px !important;
+}
+.greenBorder{
+	border: solid 2px green !important;;
+}
+.redBorder{
+	border: solid 2px red !important;
+}
+.displayError{
+	text-align: center;
+	font-weight: bold;
+	padding-bottom:5px;
+	color:red;
+}
+
+/* Loader */
+.loader{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	padding: 0 400px;
+	background: #FFF;
+}
+.loader img{
+	left: 50%;
+	position: absolute;
+	margin-left: -200px;
+	width: 400px;
+}
+
+/* Add income form */
+#formAddIncome label{
+	float:left;
+	width:100%;
+}
+#formAddIncome input{
+	float:left;
+	width:100%;	
+}
+#formAddIncome select{
+	float:left;
+	width:100%;	
+}
+.formFix{
+	float:left;
+	width:100%;		
+}
+.cashValue{
+	width:100px !important;
+}
+.incomeDate{
+	width:100px !important;	
+}
+.formAddIncomeSeparator{
+	margin-top:10px;
+	padding-top:10px;
+	width:100%;
+	float:left;
+	border-top-style: solid;
+	border-top-width: 1px;
+	border-top-color: #CCC;
+}
+.incomeAddSuccess{
+	text-align: center;
+	font-weight: bold;
+	padding-bottom:5px;
+	color:green;
+}
+
+/* Table panel */
+#cashPanel{
+	width:100%;
+	background-color:#d3e1f1 !important;
+	border:1px solid #CCC;
+	text-align:center;
+	font-size:12px;
+	font-family:Arial;
+	font-weight:bold;
+	color:#ffffff;
+}
+#cashPanel th a{
+	margin-right:30px;
+}
+.cashContainerTitle{
+	background:-o-linear-gradient(bottom, #005fbf 5%, #003f7f 100%);	
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #005fbf), color-stop(1, #003f7f) );
+	background:-moz-linear-gradient( center top, #005fbf 5%, #003f7f 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#005fbf", endColorstr="#003f7f");	
+	background: -o-linear-gradient(top,#005fbf,003f7f);
+	background-color:#005fbf;
+	border:0px solid #000000;
+	text-align:left;
+	border-width:0px 0px 1px 1px;
+	font-size:12px;
+	font-family:Arial;
+	font-weight:bold;
+	color:#ffffff;
+	line-height:20px;
+}
+
+/* Tabelas */
+#listIncomes tr:nth-child(odd){ 
+	background-color:#aad4ff; 
+}
+#listIncomes tr:nth-child(even){ 
+	background-color:#ffffff; 
+}
+#listIncomes th{
+	background-color: #ffffff !important;
+}
+#cashFlowTable{
+	width:100%;
+}
+#cashFlowTable td{
+	width:100%;
+	border: 0 !important;
+}
+.cashFlowContainner{
+	padding:0px 5px 5px 5px;
+}
+.tableTitle{
+	text-align:center;
+}
+.taskContainerTitle{
+	background:-o-linear-gradient(bottom, #005fbf 5%, #003f7f 100%);	
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #005fbf), color-stop(1, #003f7f) );
+	background:-moz-linear-gradient( center top, #005fbf 5%, #003f7f 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#005fbf", endColorstr="#003f7f");	
+	background: -o-linear-gradient(top,#005fbf,003f7f);
+	background-color:#005fbf;
+	border:1px solid #CCC;
+	text-align:left;
+	font-weight:bold;
+	color:#ffffff;
+	line-height:25px;
+	text-align:center;
+}
+
+/* Fluxo de caixa receitas */
+#removeIncome{
+	width:16px;
+	height:16px;
+	background:url('../images/remove.gif') center center no-repeat;
+	background-size: 100% 100%;
+	float:left;
+	margin-left:10px;
+}
+#addIncome{
+	width:16px;
+	height:16px;
+	background:url('../images/add.gif') center center no-repeat;
+	background-size: 100% 100%;	
+	float:left;
+	margin-left:10px;
+}
+.tableRow td:first-child{
+	overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; 
+    font-weight:bold;
+    padding-left: 25px;
+    width:150px !important; 
+    max-width:150px !important;
+    min-width:150px !important;
+}
+.tableRow td:not(:first-child){
+	color: #000;
+	border-right-style:solid;
+	border-right-width:1px;
+	border-right-color:#000;
+	width:100px !important;
+	max-width:100px !important;
+	min-width:100px !important;
+}
+.tableRow td:last-child{
+	border-right-style:solid !important;
+	border-right-width:0px !important;
+	border-right-color:#000 !important;
+}
+.totalRow{
+	font-weight:bold;	
+	background-color:#e7e7e7 !important;
+}
+.selectYear{
+	width:100%;
+	text-align:right;
+	padding:0px 5px 0px 30px;
+}
+.selectYear select{
+	width:250px;
+	height:30px;
+	padding-left: 100px;
+}
+#listIncomes, #tableMonths{
+	width:100% !important;
+}
+#listIncomes th{
+	border-bottom: solid 1px #CCC;
+}
+.tabelaEditavel .celulaEmEdicao { 
+	padding: 0; 
+} 
+.tabelaEditavel .celulaEmEdicao input[type=text]{ 
+	width:100%; 
+	border:0; 
+	background-color:rgb(255,253,210); 
+}
+.months td{
+	text-align:left !important;
+	border-right-style:solid !important;
+	border-right-width:0px !important;
+	border-right-color:#000 !important;
+	font-weight:bold !important;
+}
+.blueNum{
+	color:#0000FF !important;
+	font-weight:bold;
+}
+.redNum{
+	color:#FF0000 !important;
+	font-weight:bold;
+}
+.highlighted {
+    color: #261F1D;
+    background-color: #CCC !important;
+}

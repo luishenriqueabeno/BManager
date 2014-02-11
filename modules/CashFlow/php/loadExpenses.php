@@ -14,7 +14,7 @@
 
 	$expenseList = mysql_query("Select * From cashflowexpenses Where ano = '$ano' And userMaster = '$resMaster->userMaster'");
 	echo "<tr>";
-		echo "<th> Despesas </th>";
+		echo "<th colspan = '13'> Despesas </th>";
 	echo "</tr>";
 	while($resExpenseList = mysql_fetch_object($expenseList)){
 		echo "<tr class = 'tableRow' id = ". 'expense_' .$resExpenseList->id .">";

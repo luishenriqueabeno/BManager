@@ -71,70 +71,6 @@
 	color:green;
 }
 
-/* Add income form */
-#formAddIncome label{
-	float:left;
-	width:100%;
-}
-#formAddIncome input{
-	float:left;
-	width:100%;	
-}
-#formAddIncome select{
-	float:left;
-	width:100%;	
-}
-.formFix{
-	float:left;
-	width:100%;		
-}
-.cashValue{
-	width:100px !important;
-}
-.incomeDate{
-	width:100px !important;	
-}
-.formAddIncomeSeparator{
-	margin-top:10px;
-	padding-top:10px;
-	width:100%;
-	float:left;
-	border-top-style: solid;
-	border-top-width: 1px;
-	border-top-color: #CCC;
-}
-.incomeAddSuccess{
-	text-align: center;
-	font-weight: bold;
-	padding-bottom:5px;
-	color:green;
-}
-
-/* Add category form */
-.formAddCategorySeparator{
-	margin-top:10px;
-	padding-top:10px;
-	width:100%;
-	float:left;
-	border-top-style: solid;
-	border-top-width: 1px;
-	border-top-color: #CCC;
-}
-.categoryMsgSuccess{
-	text-align: center;
-	font-weight: bold;
-	padding-bottom:5px;
-	color:green;
-}
-.categoryMsgError{
-	text-align: center;
-	font-weight: bold;
-	padding-bottom:5px;
-	color:red;
-}
-#formAddCategory label{
-	width:100%;
-}
 
 /* Table panel */
 #cashPanel{
@@ -168,6 +104,15 @@
 }
 
 /* Tabelas */
+#listExpenses tr:nth-child(odd){ 
+	background-color:#aad4ff; 
+}
+#listExpenses tr:nth-child(even){ 
+	background-color:#ffffff; 
+}
+#listExpenses th{
+	background-color: #ffffff !important;
+}
 #cashFlowTable{
 	width:100%;
 }
@@ -196,9 +141,24 @@
 	text-align:center;
 }
 
-/* Fluxo de caixa mensal */
+/* Fluxo de caixa despesas */
+#removeExpense{
+	width:16px;
+	height:16px;
+	background:url('../images/remove.gif') center center no-repeat;
+	background-size: 100% 100%;
+	float:left;
+	margin-left:10px;
+}
+#addExpense{
+	width:16px;
+	height:16px;
+	background:url('../images/add.gif') center center no-repeat;
+	background-size: 100% 100%;	
+	float:left;
+	margin-left:10px;
+}
 .tableRow td:first-child{
-	background: #e7e7e7;
 	overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis; 
@@ -209,7 +169,6 @@
     min-width:150px !important;
 }
 .tableRow td:not(:first-child){
-	background: #e7e7e7;
 	color: #000;
 	border-right-style:solid;
 	border-right-width:1px;
@@ -225,6 +184,7 @@
 }
 .totalRow{
 	font-weight:bold;	
+	background-color:#e7e7e7 !important;
 }
 .selectYear{
 	width:100%;
@@ -236,40 +196,16 @@
 	height:30px;
 	padding-left: 100px;
 }
-#listIncomes, #listExpenses, #tableMonths, #tableSaldo{
+#listExpenses, #tableMonths{
 	width:100% !important;
+}
+#listExpenses th{
+	border-bottom: solid 1px #CCC;
 }
 .tabelaEditavel .celulaEmEdicao { 
 	padding: 0; 
 } 
 .tabelaEditavel .celulaEmEdicao input[type=text]{ 
-	width:100%; 
-	border:0; 
-	background-color:rgb(255,253,210); 
-}
-.saldo{
-	height:50px !important;
-}
-#tableSaldo td{
-	border-right-style:solid !important;
-	border-right-width:0px !important;
-	border-right-color:#000 !important;
-	text-align:center;
-}
-#tableSaldo td:first-child{
-	text-align:left !important;
-}
-.saldo{
-	height:40px !important;
-	max-width:100px !important;
-	min-width:100px !important;
-}
-#tableSaldo td:not(:first-child){
-	background: #e7e7e7;
-	color: #000;
-	text-align:left;
-}
-#tableSaldo td input{
 	width:100%; 
 	border:0; 
 	background-color:rgb(255,253,210); 
@@ -288,4 +224,8 @@
 .redNum{
 	color:#FF0000 !important;
 	font-weight:bold;
+}
+.highlighted {
+    color: #261F1D;
+    background-color: #CCC !important;
 }

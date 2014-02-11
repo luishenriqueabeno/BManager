@@ -14,7 +14,7 @@
 
 	$incomeList = mysql_query("Select * From cashflowincome Where ano = '$ano' And userMaster = '$resMaster->userMaster'");
 	echo "<tr>";
-		echo "<th> Receitas </th>";
+		echo "<th colspan = '13'> Receitas </th>";
 	echo "</tr>";
 	while($resIncomeList = mysql_fetch_object($incomeList)){
 		echo "<tr class = 'tableRow' id = ". 'income_' . $resIncomeList->id .">";
