@@ -83,6 +83,7 @@
 									<li><a href="#" name = "modulesCashFlowMonth"> Visão mensal </a></li>
 									<li><a href="#" name = "modulesCashFlowExpenses"> Gerenciar despesas </a></li>
 									<li><a href="#" name = "modulesCashFlowIncomes"> Gerenciar receitas </a></li>
+									<li><a href="#" name = "modulesCashFlowCategories"> Gerenciar categorias </a></li>
 									<!--<li class="divider"></li>
 									<li><a href="#">Separated link</a></li>-->
 								</ul>

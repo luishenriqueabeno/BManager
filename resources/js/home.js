@@ -30,16 +30,22 @@ $(document).ready(function(){
 		$('#contentMain').load('modules/CashFlow/visaoMensal.php');
 	});
 
-	//Apresenta despesas do modulo de flxo de caixa
+	//Apresenta despesas do modulo de fluxo de caixa
 	$("a[name=modulesCashFlowExpenses]").click(function () { 
 		$('#contentMain').empty();
 		$('#contentMain').load('modules/CashFlow/visaoDespesas.php');
 	});
 
-	//Apresenta receitas do modulo de flxo de caixa
+	//Apresenta receitas do modulo de fluxo de caixa
 	$("a[name=modulesCashFlowIncomes]").click(function () { 
 		$('#contentMain').empty();
 		$('#contentMain').load('modules/CashFlow/visaoReceitas.php');
+	});
+
+	//Apresenta categorias do modulo de fluxo de caixa
+	$("a[name=modulesCashFlowCategories]").click(function () { 
+		$('#contentMain').empty();
+		$('#contentMain').load('modules/CashFlow/visaoCategorias.php');
 	});
 
 	//Adiciona o modulo gerencial de usuários
