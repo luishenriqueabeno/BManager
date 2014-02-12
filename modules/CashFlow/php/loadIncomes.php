@@ -18,7 +18,7 @@
 	echo "</tr>";
 	while($resIncomeList = mysql_fetch_object($incomeList)){
 		echo "<tr class = 'tableRow' id = ". 'income_' . $resIncomeList->id .">";
-			echo "<td title = ".$resIncomeList->incomeName.">". $resIncomeList->incomeName ."</td>";
+			echo "<td class = 'incomeTitle' title = ".str_replace(' ', '_', $resIncomeList->incomeName).">". $resIncomeList->incomeName ."</td>";
 			echo "<td class = 'jan'>". 'R$ ' . number_format($resIncomeList->jan,2,",",".") ."</td>";
 			echo "<td class = 'fev'>". 'R$ ' . number_format($resIncomeList->fev,2,",",".") ."</td>";
 			echo "<td class = 'mar'>". 'R$ ' . number_format($resIncomeList->mar,2,",",".") ."</td>";

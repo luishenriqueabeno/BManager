@@ -58,6 +58,26 @@ $(document).ready(function(){
 	});
 	$( document ).ajaxStop(function() {
 	  	$('.loader').hide();
+
+	  	$('.expenseTitle').each(function(){
+	  		var titleExpense = $(this).attr('title').split('_').join(' ');
+	  		$(this).attr('title', titleExpense);
+	  	});
+
+	  	$('.incomeTitle').each(function(){
+	  		var titleIncome = $(this).attr('title').split('_').join(' ');
+	  		$(this).attr('title', titleIncome);
+	  	});
+
+	  	$('.incomeTitleCat').each(function(){
+	  		var incomeTitleCat = $(this).attr('title').split('_').join(' ');
+	  		$(this).attr('title', incomeTitleCat);
+	  	});
+
+	  	$('.expenseTitleCat').each(function(){
+	  		var expenseTitleCat = $(this).attr('title').split('_').join(' ');
+	  		$(this).attr('title', expenseTitleCat);
+	  	});
 	});
 
 	function reloadMonthTable(){

@@ -37,7 +37,7 @@
 	echo "</tr>";
 	while($resCategoryListExpense = mysql_fetch_object($categoryListExpense)){
 		echo "<tr class = 'tableRow' id = ". 'category_' .$resCategoryListExpense->catId .">";
-			echo "<td title = ".$resCategoryListExpense->categoryName.">". $resCategoryListExpense->categoryName ."</td>";
+			echo "<td class = 'expenseTitleCat' title = ".str_replace(' ', '_', $resCategoryListExpense->categoryName).">". $resCategoryListExpense->categoryName ."</td>";
 			echo "<td class = 'jan'>". 'R$ ' . number_format($resCategoryListExpense->TotalJan,2,",",".") ."</td>";
 			echo "<td class = 'fev'>". 'R$ ' . number_format($resCategoryListExpense->TotalFev,2,",",".") ."</td>";
 			echo "<td class = 'mar'>". 'R$ ' . number_format($resCategoryListExpense->TotalMar,2,",",".") ."</td>";
