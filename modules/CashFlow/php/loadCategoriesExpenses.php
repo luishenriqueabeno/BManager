@@ -5,6 +5,12 @@
 
 	$userId = $_POST['userId'];
 
+	$ano = $_POST['ano'];
+
+	if($ano == ''){
+		$ano = date("Y");
+	}
+
 	$getMaster = mysql_query("Select userMaster From users Where id = $userId");
 	$resMaster = mysql_fetch_object($getMaster);
 
@@ -28,6 +34,7 @@
 											Inner Join cashflowexpenses b On (a.id = b.categoryId)
 										Where 
 											a.userMaster = '$resMaster->userMaster'
+											And ano = $ano
 										Group By
 											a.categoryName
 											,a.id");

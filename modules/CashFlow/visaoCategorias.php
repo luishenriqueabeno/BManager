@@ -53,7 +53,9 @@
 		<div class = "selectYear">
 			<input type = "hidden" value = "" id = "anoRetorno" name = "anoRetorno">
 			<select id = "anoSelect">
+				<option value = "2013"> 2013 </option>
 				<option value = "2014"> 2014 </option>
+				<option value = "2015"> 2015 </option>
 			</select>
 		</div>
 

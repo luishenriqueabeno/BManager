@@ -29,6 +29,9 @@ $(document).ready(function(){
     //Mask money
 	$("#txtIncomeValue").maskMoney({showSymbol:true, symbol:"R$", decimal:",", thousands:"."});
 
+	//Pega ano atual
+	$('#anoSelect').val(new Date().getFullYear()).attr('selected');
+
 
     /***************************
 	* Inicio das funções 

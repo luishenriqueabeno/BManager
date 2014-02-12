@@ -19,6 +19,9 @@ $(document).ready(function(){
 	$('.displayError').hide();
 	$('.categoryMsgSuccess').hide();
 
+	//Pega ano atual
+	$('#anoSelect').val(new Date().getFullYear()).attr('selected');
+
 
     /***************************
 	* Inicio das funções 
@@ -142,6 +145,42 @@ $(document).ready(function(){
 	//Botão cancelar do formulário
 	$('#btnCancelCategoryForm').on('click', function(){
 		$( "#addCategoryForm" ).dialog( "destroy" );
+	});
+
+	//Carrega receitas ao selecionar o ano
+	$('#anoSelect').change(function(){
+		var ano = $('#anoSelect').val();
+		monthTableCategoryIncomes.empty();
+
+		$.ajax({
+			type: 'POST',
+			url: 'modules/CashFlow/php/loadCategoriesIncomes.php',
+			data:{
+				ano: ano,
+				userId: userId
+			},
+			success: function(data){
+				$(monthTableCategoryIncomes).append(data);
+			}
+		});
+	});
+
+	//Carrega despesas ao selecionar o ano
+	$('#anoSelect').change(function(){
+		var ano = $('#anoSelect').val();
+		monthTableCategoryExpenses.empty();
+
+		$.ajax({
+			type: 'POST',
+			url: 'modules/CashFlow/php/loadCategoriesExpenses.php',
+			data:{
+				ano: ano,
+				userId: userId
+			},
+			success: function(data){
+				$(monthTableCategoryExpenses).append(data);
+			}
+		});
 	});
 
 	//Remove categorias selecionadas

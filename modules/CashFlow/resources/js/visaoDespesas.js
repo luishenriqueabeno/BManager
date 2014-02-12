@@ -30,6 +30,9 @@ $(document).ready(function(){
     //Mask money
 	$("#txtExpenseValue").maskMoney({showSymbol:true, symbol:"R$", decimal:",", thousands:".", precision:2});
 
+	//Pega ano atual
+	$('#anoSelect').val(new Date().getFullYear()).attr('selected');
+
 
     /***************************
 	* Inicio das funções 
