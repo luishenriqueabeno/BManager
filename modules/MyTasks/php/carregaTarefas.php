@@ -3,9 +3,7 @@
 
 	$userId = $_POST['userId'];
 	
-	$query = "Select * From tasks Where userId = $userId Order By dataInicio";
-
-	$sql = mysql_query($query);
+	$sql = mysql_query("Select * From tasks Where userId = $userId Order By dataInicio");
 
 	$rows = array();
 
@@ -14,3 +12,4 @@
 	}
 
 	echo json_encode($rows);
+?>
