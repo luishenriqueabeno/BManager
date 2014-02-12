@@ -34,7 +34,7 @@
 											Inner Join cashflowexpenses b On (a.id = b.categoryId)
 										Where 
 											a.userMaster = '$resMaster->userMaster'
-											And ano = $ano
+											And b.ano = $ano
 										Group By
 											a.categoryName
 											,a.id");

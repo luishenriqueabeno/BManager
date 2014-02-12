@@ -8,6 +8,7 @@ $(document).ready(function(){
 	var expenseBox = $('.expenseBox');
 	var monthTableExpenses = $('#listExpenses');
 	listaComAnoAtual();
+	loadCategories();
 
 	//Esconde dialog no carregamento
 	$('#addExpenseForm').hide();
@@ -159,6 +160,66 @@ $(document).ready(function(){
 	$('#btnCancelExpenseForm').on('click', function(){
 		$( "#addExpenseForm" ).dialog( "destroy" );
 	});
+
+	//Carrega categorias ao selecionar o ano
+	$('#anoSelect').change(function(){
+		var ano = $('#anoSelect').val();
+		expenseCategory.empty();
+		incomeCategory.empty();
+
+		$.ajax({
+			type: 'POST',
+			url: 'modules/CashFlow/php/loadCategories.php',
+			data:{
+				ano: ano,
+				userId: userId
+			},
+			success: function(data){
+				var json = $.parseJSON(data);
+
+				for(var i = 0; i < json.length; i++){
+					if(json[i].categoryTypeId == 1){
+						expenseCategory.append(
+							"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
+						);
+					} else {
+						incomeCategory.append(
+							"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
+						);
+					}
+				}
+			}
+		});
+	});
+
+	function loadCategories(){
+		var ano = new Date().getFullYear();
+
+		//Carrega categorias
+		$.ajax({
+			type: 'POST',
+			url: 'modules/CashFlow/php/loadCategories.php',
+			data:{
+				userId: userId,
+				ano: ano
+			},
+			success: function (data){			
+				var json = $.parseJSON(data);
+
+				for(var i = 0; i < json.length; i++){
+					if(json[i].categoryTypeId == 1){
+						expenseCategory.append(
+							"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
+						);
+					} else {
+						incomeCategory.append(
+							"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
+						);
+					}
+				}
+			}
+		});
+	}
 
 	//Edição dos dados diretamente na tabela
 	
