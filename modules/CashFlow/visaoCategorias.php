@@ -79,9 +79,13 @@
 					?>
 				</tr>	
 			</table>
-			<table id = "listCategories">
+			<table id = "listCategoriesExpenses">
 
 			<table>
+			<table id = "listCategoriesIncomes">
+
+			<table>
+		</div>	
 		</div>	
 	</body>
 </html>

@@ -5,7 +5,8 @@ $(document).ready(function(){
 	var userId = $('input[name=userId]').val();
 	var expenseCategory = $('select[name=expenseCategory]');
 	var incomeCategory = $('select[name=incomeCategory]');
-	var monthTableCategory = $('#listCategories');
+	var monthTableCategoryExpenses = $('#listCategoriesExpenses');
+	var monthTableCategoryIncomes = $('#listCategoriesIncomes');
 	
 	listaComAnoAtual();
 
@@ -28,85 +29,38 @@ $(document).ready(function(){
 	  	$('.loader').hide();
 	});
 
-	function reloadMonthTable(){
-		var ano = $('#anoSelect').val();
-		monthTableExpenses.empty();
-		monthTableIncomes.empty();
-		monthTableSaldo.empty();
-
-		$.ajax({
-			type: 'POST',
-			url: 'modules/CashFlow/php/loadExpenses.php',
-			data:{
-				ano: ano,
-				userId: userId
-			},
-			success: function(data){
-				$(monthTableExpenses).append(data);
-			}
-		});
-
-		$.ajax({
-			type: 'POST',
-			url: 'modules/CashFlow/php/loadIncomes.php',
-			data:{
-				ano: ano,
-				userId: userId
-			},
-			success: function(data){
-				$(monthTableIncomes).append(data);
-			}
-		});
-
-		$.ajax({
-			type: 'POST',
-			url: 'modules/CashFlow/php/loadSaldo.php',
-			data:{
-				ano: ano,
-				userId: userId
-			},
-			success: function(data){
-				$(monthTableSaldo).append(data);
-			}
-		});
-	}
-
 	function listaComAnoAtual(){
-		monthTableCategory.empty();
+		monthTableCategoryExpenses.empty();
+		monthTableCategoryIncomes.empty();
 
 		var ano = "";
 
-		//Carrega categorias
+		//Carrega categorias de natureza despesa
 		$.ajax({
 			type: 'POST',
-			url: 'modules/CashFlow/php/loadCategories.php',
+			url: 'modules/CashFlow/php/loadCategoriesExpenses.php',
 			data:{
 				ano: ano,
 				userId: userId
 			},
 			success: function(data){
-				//$(monthTableCategory).append(data);
+				$(monthTableCategoryExpenses).append(data);
+			}
+		});
+
+		//Carrega categorias de natureza receitas
+		$.ajax({
+			type: 'POST',
+			url: 'modules/CashFlow/php/loadCategoriesIncomes.php',
+			data:{
+				ano: ano,
+				userId: userId
+			},
+			success: function(data){
+				$(monthTableCategoryIncomes).append(data);
 			}
 		});
 	}
-
-	//Carrega despesas ao selecionar o ano
-	$('#anoSelect').change(function(){
-		var ano = $('#anoSelect').val();
-		monthTableCategory.empty();
-
-		$.ajax({
-			type: 'POST',
-			url: 'modules/CashFlow/php/loadCategories.php',
-			data:{
-				ano: ano,
-				userId: userId
-			},
-			success: function(data){
-				$(monthTableCategory).append(data);
-			}
-		});
-	});
 	
 	//Criar uma categoria
 	$('#addCategory').on('click', function(){

@@ -90,13 +90,13 @@
 }
 
 /* Tabelas */
-#listExpenses tr:nth-child(odd), #listIncomes tr:nth-child(odd){ 
+#listCategoriesExpenses tr:nth-child(odd), #listCategoriesIncomes tr:nth-child(odd){ 
 	background-color:#aad4ff; 
 }
-#listExpenses tr:nth-child(even), #listIncomes tr:nth-child(even){ 
+#listCategoriesExpenses tr:nth-child(even), #listCategoriesIncomes tr:nth-child(even){ 
 	background-color:#ffffff; 
 }
-#listExpenses th, #listIncomes th{
+#listCategoriesExpenses th, #listCategoriesIncomes th{
 	background-color: #ffffff !important;
 }
 #cashFlowTable{
@@ -126,8 +126,11 @@
 	line-height:25px;
 	text-align:center;
 }
+#listCategoriesIncomes{
+	margin-top:15px;
+}
 
-/* Fluxo de caixa mensal */
+/* Fluxo de caixa categorias */
 .tableRow td:first-child{
 	overflow: hidden;
     white-space: nowrap;
@@ -166,22 +169,11 @@
 	height:30px;
 	padding-left: 100px;
 }
-#listIncomes, #listExpenses, #tableMonths, #tableSaldo{
+#listCategoriesExpenses, #listCategoriesIncomes {
 	width:100% !important;
 }
-#listExpenses{
-	margin-top: 20px;
-}
-#listExpenses th, #listIncomes th{
+#listCategoriesExpenses th, #listCategoriesIncomes th{
 	border-bottom: solid 1px #CCC;
-}
-.tabelaEditavel .celulaEmEdicao { 
-	padding: 0; 
-} 
-.tabelaEditavel .celulaEmEdicao input[type=text]{ 
-	width:100%; 
-	border:0; 
-	background-color:rgb(255,253,210); 
 }
 .months td{
 	text-align:left !important;
