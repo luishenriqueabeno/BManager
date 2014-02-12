@@ -13,7 +13,7 @@
 	$i = 0;
 
 	foreach($categories as $value){
-		$id[$i] = substr($value, -1);
+		$id[$i] = substr($value, 9, +3);
 		$i++;
 	}
 
@@ -22,10 +22,10 @@
 	$deleteCategory = mysql_query("Delete From `cashflowcategories` Where id In ($finalIdArr) And userMaster = '$resMaster->userMaster'");
 
 	$checkForExpenses = mysql_query("Select * From cashflowexpenses Where categoryId In ($finalIdArr)");
-	$rowsExpenses = mysql_fetch_row($checkForExpenses);
+	$rowsExpenses = mysql_num_rows($checkForExpenses);
 
 	$checkForIncomes = mysql_query("Select * From cashflowincome Where categoryId In ($finalIdArr)");
-	$rowsIncomes = mysql_fetch_row($checkForIncomes);
+	$rowsIncomes = mysql_num_rows($checkForIncomes);
 
 	if($rowsExpenses > 0){
 		$deleteExpensesCategory = mysql_query("Delete From cashflowexpenses Where categoryId In ($finalIdArr) ");

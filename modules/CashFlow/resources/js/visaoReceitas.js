@@ -29,7 +29,7 @@ $(document).ready(function(){
     //Mask money
 	$("#txtIncomeValue").maskMoney({showSymbol:true, symbol:"R$", decimal:",", thousands:"."});
 
-	//Pega ano atual
+	//Pega ano atual e troca no select
 	$('#anoSelect').val(new Date().getFullYear()).attr('selected');
 
 

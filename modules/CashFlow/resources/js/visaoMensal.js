@@ -50,7 +50,7 @@ $(document).ready(function(){
 	$("#txtIncomeValue").maskMoney({showSymbol:true, symbol:"R$", decimal:",", thousands:"."});
 	$("#txtExpenseValue").maskMoney({showSymbol:true, symbol:"R$", decimal:",", thousands:".", precision:2});
 
-	//Pega ano atual
+	//Pega ano atual e troca no select
 	$('#anoSelect').val(new Date().getFullYear()).attr('selected');
 
     /***************************

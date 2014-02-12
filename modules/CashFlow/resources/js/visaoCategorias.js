@@ -19,7 +19,7 @@ $(document).ready(function(){
 	$('.displayError').hide();
 	$('.categoryMsgSuccess').hide();
 
-	//Pega ano atual
+	//Pega ano atual e troca no select
 	$('#anoSelect').val(new Date().getFullYear()).attr('selected');
 
 
@@ -189,6 +189,8 @@ $(document).ready(function(){
 	$('#removeCategory').on('click', function(){
 		var i = 0;
 		var checkSelected = [];
+
+		var ano = $('#anoSelect').val();
 
 		//Verifica se tem algum item selecionado
 		$('.highlighted').each(function(){

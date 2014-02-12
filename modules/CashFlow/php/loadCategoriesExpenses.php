@@ -55,7 +55,7 @@
 									And id not in(Select categoryId From cashflowexpenses Where ano = $ano)");
 
 		while($resEmptyCat = mysql_fetch_object($emptyCat)){
-			echo "<tr class = 'tableRow' id = ". 'category_' .$resEmptyCat->catId .">";
+			echo "<tr class = 'tableRow' id = ". 'category_' .$resEmptyCat->id .">";
 				echo "<td class = 'expenseTitleCat' title = ".str_replace(' ', '_', $resEmptyCat->categoryName).">". $resEmptyCat->categoryName ."</td>";
 				echo "<td class = 'jan'> R$ 0,00 </td>";
 				echo "<td class = 'fev'> R$ 0,00 </td>";
