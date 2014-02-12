@@ -22,8 +22,8 @@
 
 		$message .= "Este email contém uma nova senha para acesso ao sistema XYZ. <br>";
 		$message .= "Você poderá alterar a senha selecionando o item 'Alterar senha', no perfil do usuário<br>";
-		$message .= "Esta é a sua nova senha: ". $newPass; 
-		$message .= "<br>";
+		$message .= "Esta é a sua nova senha: <b>". $newPass ."</b>"; 
+		$message .= "<br><br>";
 		$message .= "Atenciosamente, <br><br>";
 		$message .= "Equipe XYZ";
 		
