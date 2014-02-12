@@ -42,6 +42,13 @@
 				</div>
 			</form>
 		</div>
+
+		<!-- Dialogs -->
+		<div id="deleteDialog" title="Remover categorias(s)">
+			<p>
+				Esta(s) categorias(s) e todas as receitas/despesas associadas a ela será(ão) excluida(s) permanetemente, tem certeza que deseja prosseguir?
+			</p>
+		</div>
 	
 		<div class = "selectYear">
 			<input type = "hidden" value = "" id = "anoRetorno" name = "anoRetorno">
@@ -55,7 +62,8 @@
 			<table id = "cashFlowTable">
 				<tr id = "cashPanel">
 					<th colspan = "13"> 
-						<a href = "#" id = "addCategory"> Criar categoria </a> 
+						<a href = "#" id = "addCategory"> </a> 
+						<a href = "#" id = "removeCategory"> </a> 
 					</th>
 				</tr>
 				<tr>

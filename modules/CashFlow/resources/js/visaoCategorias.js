@@ -12,6 +12,7 @@ $(document).ready(function(){
 
 	//Esconde dialog no carregamento
 	$('#addCategoryForm').hide();
+	$('#deleteDialog').hide();
 
 	//Mensagens
 	$('.categoryMsgError').hide();
@@ -27,6 +28,15 @@ $(document).ready(function(){
 	});
 	$( document ).ajaxStop(function() {
 	  	$('.loader').hide();
+	});
+
+	//Seleciona categoria
+	$('#listCategoriesExpenses, #listCategoriesIncomes').on('click', 'tr:not(:last-child)', function () {
+		if($(this).hasClass("highlighted")){
+			$(this).removeClass('highlighted');
+		} else {
+			$(this).addClass('highlighted');
+		}
 	});
 
 	function listaComAnoAtual(){
@@ -132,6 +142,74 @@ $(document).ready(function(){
 	//Botão cancelar do formulário
 	$('#btnCancelCategoryForm').on('click', function(){
 		$( "#addCategoryForm" ).dialog( "destroy" );
+	});
+
+	//Remove categorias selecionadas
+	$('#removeCategory').on('click', function(){
+		var i = 0;
+		var checkSelected = [];
+
+		//Verifica se tem algum item selecionado
+		$('.highlighted').each(function(){
+			
+			//Guarda itens selecionados em um array
+			checkSelected[i] = $(this).attr('id');
+
+			i++;
+		});
+
+		if(checkSelected.length > 0){
+			$( "#deleteDialog" ).dialog({
+				resizable: false,
+				height:140,
+				width:500,
+				modal: true,
+				buttons: {
+					"Sim": function() {
+						var i = 0;
+						var categories = [];
+
+						$('.highlighted').each(function(){
+							
+							//Remove da lista
+							$(this).remove();
+							
+							//Guarda itens selecionados em um array
+							categories[i] = $(this).attr('id');
+
+							i++;
+						});
+
+						//Remove do banco
+						$.ajax({
+							type: 'POST',
+							url: 'modules/CashFlow/php/deletaCategorias.php',
+							data: { 
+								categories: categories,
+								userId: userId
+							},
+							success: function(data){
+								console.log(data);
+							}
+						});
+
+						$( this ).dialog( "close" );
+					},
+					Cancelar: function() {
+						$( this ).dialog( "close" );
+					}
+				}
+			});
+		} else {
+			$( "#deleteDialogSelected" ).dialog({
+				modal: true,
+				buttons: {
+					Ok: function() {
+						$( this ).dialog( "close" );
+					}
+				}
+			});
+		}
 	});
 	
 });

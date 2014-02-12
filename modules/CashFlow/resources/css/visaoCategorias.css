@@ -190,3 +190,23 @@
 	color:#FF0000 !important;
 	font-weight:bold;
 }
+.highlighted {
+    color: #261F1D;
+    background-color: #CCC !important;
+}
+#removeCategory{
+	width:16px;
+	height:16px;
+	background:url('../images/remove.gif') center center no-repeat;
+	background-size: 100% 100%;
+	float:left;
+	margin-left:10px;
+}
+#addCategory{
+	width:16px;
+	height:16px;
+	background:url('../images/add.gif') center center no-repeat;
+	background-size: 100% 100%;	
+	float:left;
+	margin-left:10px;
+}
