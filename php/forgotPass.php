@@ -17,8 +17,13 @@
 
 		$sql = mysql_query($query);
 
-		$message = "Esta é a sua nova senha: ". $newPass; 
-		//$message = wordwrap($message, 70);
+		$message .= "Este email contém uma nova senha para acesso ao sistema XYZ. <br>";
+		$message .= "Você poderá alterar a senha e selecionando o item 'Alterar senha', no perfil do usuário<br>";
+		$message .= "Esta é a sua nova senha: ". $newPass; 
+		$message .= "<br>";
+		$message .= "Atenciosamente, <br><br>";
+		$message .= "Equipe XYZ";
+		
 		$enviado = mail($email, 'Nova senha', $message);
 
 		// Exibe uma mensagem de resultado
