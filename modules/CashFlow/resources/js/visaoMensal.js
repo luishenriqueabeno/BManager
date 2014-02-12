@@ -49,6 +49,8 @@ $(document).ready(function(){
 	$("#txtIncomeValue").maskMoney({showSymbol:true, symbol:"R$", decimal:",", thousands:"."});
 	$("#txtExpenseValue").maskMoney({showSymbol:true, symbol:"R$", decimal:",", thousands:".", precision:2});
 
+	//Pega ano atual
+	$('#anoSelect').val(new Date().getFullYear()).attr('selected');
 
     /***************************
 	* Inicio das funções 
@@ -126,6 +128,7 @@ $(document).ready(function(){
 	function listaComAnoAtual(){
 		monthTableExpenses.empty();
 		monthTableIncomes.empty();
+		monthTableSaldo.empty();
 
 		var ano = "";
 
@@ -201,6 +204,24 @@ $(document).ready(function(){
 			},
 			success: function(data){
 				$(monthTableIncomes).append(data);
+			}
+		});
+	});
+
+	//Carrega saldo ao selecionar o ano
+	$('#anoSelect').change(function(){
+		var ano = $('#anoSelect').val();
+		monthTableSaldo.empty();
+
+		$.ajax({
+			type: 'POST',
+			url: 'modules/CashFlow/php/loadSaldo.php',
+			data:{
+				ano: ano,
+				userId: userId
+			},
+			success: function(data){
+				$(monthTableSaldo).append(data);
 			}
 		});
 	});
