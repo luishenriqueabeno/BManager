@@ -165,7 +165,6 @@ $(document).ready(function(){
 	//Carrega categorias ao selecionar o ano
 	$('#anoSelect').change(function(){
 		var ano = $('#anoSelect').val();
-		expenseCategory.empty();
 		incomeCategory.empty();
 
 		$.ajax({
@@ -179,15 +178,9 @@ $(document).ready(function(){
 				var json = $.parseJSON(data);
 
 				for(var i = 0; i < json.length; i++){
-					if(json[i].categoryTypeId == 1){
-						expenseCategory.append(
-							"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
-						);
-					} else {
-						incomeCategory.append(
-							"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
-						);
-					}
+					incomeCategory.append(
+						"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
+					);
 				}
 			}
 		});
@@ -208,15 +201,9 @@ $(document).ready(function(){
 				var json = $.parseJSON(data);
 
 				for(var i = 0; i < json.length; i++){
-					if(json[i].categoryTypeId == 1){
-						expenseCategory.append(
-							"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
-						);
-					} else {
-						incomeCategory.append(
-							"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
-						);
-					}
+					incomeCategory.append(
+						"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
+					);
 				}
 			}
 		});

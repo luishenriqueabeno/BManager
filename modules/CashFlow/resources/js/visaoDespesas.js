@@ -165,7 +165,6 @@ $(document).ready(function(){
 	$('#anoSelect').change(function(){
 		var ano = $('#anoSelect').val();
 		expenseCategory.empty();
-		incomeCategory.empty();
 
 		$.ajax({
 			type: 'POST',
@@ -178,15 +177,9 @@ $(document).ready(function(){
 				var json = $.parseJSON(data);
 
 				for(var i = 0; i < json.length; i++){
-					if(json[i].categoryTypeId == 1){
-						expenseCategory.append(
-							"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
-						);
-					} else {
-						incomeCategory.append(
-							"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
-						);
-					}
+					expenseCategory.append(
+						"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
+					);
 				}
 			}
 		});
@@ -207,15 +200,9 @@ $(document).ready(function(){
 				var json = $.parseJSON(data);
 
 				for(var i = 0; i < json.length; i++){
-					if(json[i].categoryTypeId == 1){
-						expenseCategory.append(
-							"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
-						);
-					} else {
-						incomeCategory.append(
-							"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
-						);
-					}
+					expenseCategory.append(
+						"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
+					);
 				}
 			}
 		});

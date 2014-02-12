@@ -1,5 +1,6 @@
 <?php
 	require('../../../php/conn.php');
+	error_reporting(E_ERROR | E_PARSE);
 
 	$userId = $_POST['userId'];
 	$firstName = $_POST['firstName'];
