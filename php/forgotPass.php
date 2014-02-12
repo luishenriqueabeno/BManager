@@ -18,7 +18,7 @@
 		$sql = mysql_query($query);
 
 		$headers  = 'MIME-Version: 1.0' . "\r\n";
-		$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+		$headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
 
 		$message .= "Este email contém uma nova senha para acesso ao sistema XYZ. <br>";
 		$message .= "Você poderá alterar a senha selecionando o item 'Alterar senha', no perfil do usuário<br>";
