@@ -39,53 +39,81 @@
 											a.categoryName
 											,a.id");
 
-	echo "<tr>";
-		echo "<th colspan = '13'> Natureza - Despesa </th>";
-	echo "</tr>";
-	while($resCategoryListExpense = mysql_fetch_object($categoryListExpense)){
-		echo "<tr class = 'tableRow' id = ". 'category_' .$resCategoryListExpense->catId .">";
-			echo "<td class = 'expenseTitleCat' title = ".str_replace(' ', '_', $resCategoryListExpense->categoryName).">". $resCategoryListExpense->categoryName ."</td>";
-			echo "<td class = 'jan'>". 'R$ ' . number_format($resCategoryListExpense->TotalJan,2,",",".") ."</td>";
-			echo "<td class = 'fev'>". 'R$ ' . number_format($resCategoryListExpense->TotalFev,2,",",".") ."</td>";
-			echo "<td class = 'mar'>". 'R$ ' . number_format($resCategoryListExpense->TotalMar,2,",",".") ."</td>";
-			echo "<td class = 'abr'>". 'R$ ' . number_format($resCategoryListExpense->TotalAbr,2,",",".") ."</td>";
-			echo "<td class = 'mai'>". 'R$ ' . number_format($resCategoryListExpense->TotalMai,2,",",".") ."</td>";
-			echo "<td class = 'jun'>". 'R$ ' . number_format($resCategoryListExpense->TotalJun,2,",",".") ."</td>";
-			echo "<td class = 'jul'>". 'R$ ' . number_format($resCategoryListExpense->TotalJul,2,",",".") ."</td>";
-			echo "<td class = 'ago'>". 'R$ ' . number_format($resCategoryListExpense->TotalAgo,2,",",".") ."</td>";
-			echo "<td class = 'set'>". 'R$ ' . number_format($resCategoryListExpense->TotalSet,2,",",".") ."</td>";
-			echo "<td class = 'out'>". 'R$ ' . number_format($resCategoryListExpense->TotalOut,2,",",".") ."</td>";
-			echo "<td class = 'nov'>". 'R$ ' . number_format($resCategoryListExpense->TotalNov,2,",",".") ."</td>";
-			echo "<td class = 'dez'>". 'R$ ' . number_format($resCategoryListExpense->TotalDez,2,",",".") ."</td>";
+		echo "<tr>";
+			echo "<th colspan = '13'> Natureza - Despesa </th>";
 		echo "</tr>";
 
-		$totalJan = $totalJan + $resCategoryListExpense->TotalJan;
-		$totalFev = $totalFev + $resCategoryListExpense->TotalFev;
-		$totalMar = $totalMar + $resCategoryListExpense->TotalMar;
-		$totalAbr = $totalAbr + $resCategoryListExpense->TotalAbr;
-		$totalMai = $totalMai + $resCategoryListExpense->TotalMai;
-		$totalJun = $totalJun + $resCategoryListExpense->TotalJun;
-		$totalJul = $totalJul + $resCategoryListExpense->TotalJul;
-		$totalAgo = $totalAgo + $resCategoryListExpense->TotalAgo;
-		$totalSet = $totalSet + $resCategoryListExpense->TotalSet;
-		$totalOut = $totalOut + $resCategoryListExpense->TotalOut;
-		$totalNov = $totalNov + $resCategoryListExpense->TotalNov;
-		$totalDez = $totalDez + $resCategoryListExpense->TotalDez;
-	}
+		$emptyCat = mysql_query("Select 
+										id 
+										,categoryName
+									From 
+										cashflowcategories 
+									Where 
+										userMaster = '$resMaster->userMaster'
+										And id not in(Select categoryId From cashflowexpenses Where ano = $ano)");
 
-	echo "<tr class = 'tableRow totalRow'>";
-		echo "<td class = 'total'>Total</td>";
-		echo "<td class = 'total'> ". 'R$ ' . number_format($totalJan,2,",",".")  ." </td>";
-		echo "<td class = 'total'> ". 'R$ ' . number_format($totalFev,2,",",".")  ." </td>";
-		echo "<td class = 'total'> ". 'R$ ' . number_format($totalMar,2,",",".")  ." </td>";
-		echo "<td class = 'total'> ". 'R$ ' . number_format($totalAbr,2,",",".")  ." </td>";
-		echo "<td class = 'total'> ". 'R$ ' . number_format($totalMai,2,",",".")  ." </td>";
-		echo "<td class = 'total'> ". 'R$ ' . number_format($totalJun,2,",",".")  ." </td>";
-		echo "<td class = 'total'> ". 'R$ ' . number_format($totalJul,2,",",".")  ." </td>";
-		echo "<td class = 'total'> ". 'R$ ' . number_format($totalAgo,2,",",".")  ." </td>";
-		echo "<td class = 'total'> ". 'R$ ' . number_format($totalSet,2,",",".")  ." </td>";
-		echo "<td class = 'total'> ". 'R$ ' . number_format($totalOut,2,",",".")  ." </td>";
-		echo "<td class = 'total'> ". 'R$ ' . number_format($totalNov,2,",",".")  ." </td>";
-		echo "<td class = 'total'> ". 'R$ ' . number_format($totalDez,2,",",".")  ." </td>";
-	echo "</tr>";			
+		while($resEmptyCat = mysql_fetch_object($emptyCat)){
+			echo "<tr class = 'tableRow' id = ". 'category_' .$resEmptyCat->catId .">";
+				echo "<td class = 'expenseTitleCat' title = ".str_replace(' ', '_', $resEmptyCat->categoryName).">". $resEmptyCat->categoryName ."</td>";
+				echo "<td class = 'jan'> R$ 0,00 </td>";
+				echo "<td class = 'fev'> R$ 0,00 </td>";
+				echo "<td class = 'mar'> R$ 0,00 </td>";
+				echo "<td class = 'abr'> R$ 0,00 </td>";
+				echo "<td class = 'mai'> R$ 0,00 </td>";
+				echo "<td class = 'jun'> R$ 0,00 </td>";
+				echo "<td class = 'jul'> R$ 0,00 </td>";
+				echo "<td class = 'ago'> R$ 0,00 </td>";
+				echo "<td class = 'set'> R$ 0,00 </td>";
+				echo "<td class = 'out'> R$ 0,00 </td>";
+				echo "<td class = 'nov'> R$ 0,00 </td>";
+				echo "<td class = 'dez'> R$ 0,00 </td>";
+			echo "</tr>";
+		}
+
+		while($resCategoryListExpense = mysql_fetch_object($categoryListExpense)){
+			echo "<tr class = 'tableRow' id = ". 'category_' .$resCategoryListExpense->catId .">";
+				echo "<td class = 'expenseTitleCat' title = ".str_replace(' ', '_', $resCategoryListExpense->categoryName).">". $resCategoryListExpense->categoryName ."</td>";
+				echo "<td class = 'jan'>". 'R$ ' . number_format($resCategoryListExpense->TotalJan,2,",",".") ."</td>";
+				echo "<td class = 'fev'>". 'R$ ' . number_format($resCategoryListExpense->TotalFev,2,",",".") ."</td>";
+				echo "<td class = 'mar'>". 'R$ ' . number_format($resCategoryListExpense->TotalMar,2,",",".") ."</td>";
+				echo "<td class = 'abr'>". 'R$ ' . number_format($resCategoryListExpense->TotalAbr,2,",",".") ."</td>";
+				echo "<td class = 'mai'>". 'R$ ' . number_format($resCategoryListExpense->TotalMai,2,",",".") ."</td>";
+				echo "<td class = 'jun'>". 'R$ ' . number_format($resCategoryListExpense->TotalJun,2,",",".") ."</td>";
+				echo "<td class = 'jul'>". 'R$ ' . number_format($resCategoryListExpense->TotalJul,2,",",".") ."</td>";
+				echo "<td class = 'ago'>". 'R$ ' . number_format($resCategoryListExpense->TotalAgo,2,",",".") ."</td>";
+				echo "<td class = 'set'>". 'R$ ' . number_format($resCategoryListExpense->TotalSet,2,",",".") ."</td>";
+				echo "<td class = 'out'>". 'R$ ' . number_format($resCategoryListExpense->TotalOut,2,",",".") ."</td>";
+				echo "<td class = 'nov'>". 'R$ ' . number_format($resCategoryListExpense->TotalNov,2,",",".") ."</td>";
+				echo "<td class = 'dez'>". 'R$ ' . number_format($resCategoryListExpense->TotalDez,2,",",".") ."</td>";
+			echo "</tr>";
+
+			$totalJan = $totalJan + $resCategoryListExpense->TotalJan;
+			$totalFev = $totalFev + $resCategoryListExpense->TotalFev;
+			$totalMar = $totalMar + $resCategoryListExpense->TotalMar;
+			$totalAbr = $totalAbr + $resCategoryListExpense->TotalAbr;
+			$totalMai = $totalMai + $resCategoryListExpense->TotalMai;
+			$totalJun = $totalJun + $resCategoryListExpense->TotalJun;
+			$totalJul = $totalJul + $resCategoryListExpense->TotalJul;
+			$totalAgo = $totalAgo + $resCategoryListExpense->TotalAgo;
+			$totalSet = $totalSet + $resCategoryListExpense->TotalSet;
+			$totalOut = $totalOut + $resCategoryListExpense->TotalOut;
+			$totalNov = $totalNov + $resCategoryListExpense->TotalNov;
+			$totalDez = $totalDez + $resCategoryListExpense->TotalDez;
+		}
+
+		echo "<tr class = 'tableRow totalRow'>";
+			echo "<td class = 'total'>Total</td>";
+			echo "<td class = 'total'> ". 'R$ ' . number_format($totalJan,2,",",".")  ." </td>";
+			echo "<td class = 'total'> ". 'R$ ' . number_format($totalFev,2,",",".")  ." </td>";
+			echo "<td class = 'total'> ". 'R$ ' . number_format($totalMar,2,",",".")  ." </td>";
+			echo "<td class = 'total'> ". 'R$ ' . number_format($totalAbr,2,",",".")  ." </td>";
+			echo "<td class = 'total'> ". 'R$ ' . number_format($totalMai,2,",",".")  ." </td>";
+			echo "<td class = 'total'> ". 'R$ ' . number_format($totalJun,2,",",".")  ." </td>";
+			echo "<td class = 'total'> ". 'R$ ' . number_format($totalJul,2,",",".")  ." </td>";
+			echo "<td class = 'total'> ". 'R$ ' . number_format($totalAgo,2,",",".")  ." </td>";
+			echo "<td class = 'total'> ". 'R$ ' . number_format($totalSet,2,",",".")  ." </td>";
+			echo "<td class = 'total'> ". 'R$ ' . number_format($totalOut,2,",",".")  ." </td>";
+			echo "<td class = 'total'> ". 'R$ ' . number_format($totalNov,2,",",".")  ." </td>";
+			echo "<td class = 'total'> ". 'R$ ' . number_format($totalDez,2,",",".")  ." </td>";
+		echo "</tr>";			
 ?>

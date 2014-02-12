@@ -42,6 +42,34 @@
 	echo "<tr>";
 		echo "<th colspan = '13'> Natureza - Receita </th>";
 	echo "</tr>";
+
+	$emptyCat = mysql_query("Select 
+										id 
+										,categoryName
+									From 
+										cashflowcategories 
+									Where 
+										userMaster = '$resMaster->userMaster'
+										And id not in(Select categoryId From cashflowincome Where ano = $ano)");
+
+	while($resEmptyCat = mysql_fetch_object($emptyCat)){
+		echo "<tr class = 'tableRow' id = ". 'category_' .$resEmptyCat->catId .">";
+			echo "<td class = 'expenseTitleCat' title = ".str_replace(' ', '_', $resEmptyCat->categoryName).">". $resEmptyCat->categoryName ."</td>";
+			echo "<td class = 'jan'> R$ 0,00 </td>";
+			echo "<td class = 'fev'> R$ 0,00 </td>";
+			echo "<td class = 'mar'> R$ 0,00 </td>";
+			echo "<td class = 'abr'> R$ 0,00 </td>";
+			echo "<td class = 'mai'> R$ 0,00 </td>";
+			echo "<td class = 'jun'> R$ 0,00 </td>";
+			echo "<td class = 'jul'> R$ 0,00 </td>";
+			echo "<td class = 'ago'> R$ 0,00 </td>";
+			echo "<td class = 'set'> R$ 0,00 </td>";
+			echo "<td class = 'out'> R$ 0,00 </td>";
+			echo "<td class = 'nov'> R$ 0,00 </td>";
+			echo "<td class = 'dez'> R$ 0,00 </td>";
+		echo "</tr>";
+	}
+
 	while($resCategoryListIncome = mysql_fetch_object($categoryListIncome)){
 		echo "<tr class = 'tableRow' id = ". 'category_' .$resCategoryListIncome->catId .">";
 			echo "<td class = 'incomeTitleCat' title = ".str_replace(' ', '_',  $resCategoryListIncome->categoryName ).">". $resCategoryListIncome->categoryName ."</td>";
