@@ -18,7 +18,7 @@
 	echo "</tr>";
 	while($resExpenseList = mysql_fetch_object($expenseList)){
 		echo "<tr class = 'tableRow' id = ". 'expense_' .$resExpenseList->id .">";
-			echo "<td>". $resExpenseList->expenseName ."</td>";
+			echo "<td title = ".$resExpenseList->expenseName.">". $resExpenseList->expenseName ."</td>";
 			echo "<td class = 'jan'>". 'R$ ' . number_format($resExpenseList->jan,2,",",".") ."</td>";
 			echo "<td class = 'fev'>". 'R$ ' . number_format($resExpenseList->fev,2,",",".") ."</td>";
 			echo "<td class = 'mar'>". 'R$ ' . number_format($resExpenseList->mar,2,",",".") ."</td>";

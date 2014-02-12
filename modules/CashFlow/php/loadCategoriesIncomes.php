@@ -37,7 +37,7 @@
 	echo "</tr>";
 	while($resCategoryListIncome = mysql_fetch_object($categoryListIncome)){
 		echo "<tr class = 'tableRow' id = ". 'category_' .$resCategoryListIncome->catId .">";
-			echo "<td>". $resCategoryListIncome->categoryName ."</td>";
+			echo "<td title = ". $resCategoryListIncome->categoryName .">". $resCategoryListIncome->categoryName ."</td>";
 			echo "<td class = 'jan'>". 'R$ ' . number_format($resCategoryListIncome->TotalJan,2,",",".") ."</td>";
 			echo "<td class = 'fev'>". 'R$ ' . number_format($resCategoryListIncome->TotalFev,2,",",".") ."</td>";
 			echo "<td class = 'mar'>". 'R$ ' . number_format($resCategoryListIncome->TotalMar,2,",",".") ."</td>";
