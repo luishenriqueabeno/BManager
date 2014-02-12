@@ -95,6 +95,7 @@ $(document).ready(function(){
 	$('#btnAddCategory').on('click', function(){
 		var categoryName = $('#txtCategoryName').val();
 		var categoryTypeId = $('input[name=categoryType]:checked').val();
+		var ano = $('#anoSelect').val();
 
 		if(categoryName == ''){
 			$('#txtCategoryName').addClass("redBorder");
@@ -108,7 +109,8 @@ $(document).ready(function(){
 				data:{
 					userId: userId,
 					categoryName: categoryName,
-					categoryTypeId: categoryTypeId
+					categoryTypeId: categoryTypeId,
+					ano: ano
 				},
 				success: function(data){
 					if(data == 2){

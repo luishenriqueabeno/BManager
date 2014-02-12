@@ -4,6 +4,7 @@
 	$userId = $_POST['userId'];
 	$categoryName = $_POST['categoryName'];
 	$categoryTypeId = $_POST['categoryTypeId'];
+	$ano = $_POST['ano'];
 
 	$getMaster = mysql_query("Select userMaster From users Where id = $userId");
 	$resMaster = mysql_fetch_object($getMaster);
@@ -17,9 +18,9 @@
 	if($numRows >= 1){
 		echo 2;
 	} else {
-		$insert = mysql_query("Insert Into cashflowcategories Values ('', '$categoryName', $categoryTypeId, '$resMaster->userMaster')");
+		$insert = mysql_query("Insert Into cashflowcategories Values ('', '$categoryName', $categoryTypeId, '$resMaster->userMaster', $ano)");
 
-		$updateList = mysql_query("Select * From cashflowcategories Where userMaster = '$resMaster->userMaster'");
+		$updateList = mysql_query("Select * From cashflowcategories Where userMaster = '$resMaster->userMaster' And ano = $ano");
 
 		$rows = array();
 

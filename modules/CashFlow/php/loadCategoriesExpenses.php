@@ -44,13 +44,15 @@
 		echo "</tr>";
 
 		$emptyCat = mysql_query("Select 
-										id 
-										,categoryName
-									From 
-										cashflowcategories 
-									Where 
-										userMaster = '$resMaster->userMaster'
-										And id not in(Select categoryId From cashflowexpenses Where ano = $ano)");
+									id 
+									,categoryName
+								From 
+									cashflowcategories 
+								Where 
+									userMaster = '$resMaster->userMaster'
+									And ano = $ano
+									And categoryTypeId = 1
+									And id not in(Select categoryId From cashflowexpenses Where ano = $ano)");
 
 		while($resEmptyCat = mysql_fetch_object($emptyCat)){
 			echo "<tr class = 'tableRow' id = ". 'category_' .$resEmptyCat->catId .">";

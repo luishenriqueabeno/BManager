@@ -11,6 +11,7 @@ $(document).ready(function(){
 	var monthTableIncomes = $('#listIncomes');
 	var monthTableSaldo = $('#tableSaldo');
 	listaComAnoAtual();
+	loadCategories();
 
 	//Esconde dialog no carregamento
 	$('#addExpenseForm').hide();
@@ -226,30 +227,66 @@ $(document).ready(function(){
 		});
 	});
 	
+	//Carrega categorias ao selecionar o ano
+	$('#anoSelect').change(function(){
+		var ano = $('#anoSelect').val();
+		expenseCategory.empty();
+		incomeCategory.empty();
 
-	//Carrega categorias
-	$.ajax({
-		type: 'POST',
-		url: 'modules/CashFlow/php/loadCategories.php',
-		data:{
-			userId: userId,
-		},
-		success: function (data){			
-			var json = $.parseJSON(data);
+		$.ajax({
+			type: 'POST',
+			url: 'modules/CashFlow/php/loadCategories.php',
+			data:{
+				ano: ano,
+				userId: userId
+			},
+			success: function(data){
+				var json = $.parseJSON(data);
 
-			for(var i = 0; i < json.length; i++){
-				if(json[i].categoryTypeId == 1){
-					expenseCategory.append(
-						"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
-					);
-				} else {
-					incomeCategory.append(
-						"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
-					);
+				for(var i = 0; i < json.length; i++){
+					if(json[i].categoryTypeId == 1){
+						expenseCategory.append(
+							"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
+						);
+					} else {
+						incomeCategory.append(
+							"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
+						);
+					}
 				}
 			}
-		}
+		});
 	});
+
+	function loadCategories(){
+		var ano = new Date().getFullYear();
+
+		//Carrega categorias
+		$.ajax({
+			type: 'POST',
+			url: 'modules/CashFlow/php/loadCategories.php',
+			data:{
+				userId: userId,
+				ano: ano
+			},
+			success: function (data){			
+				var json = $.parseJSON(data);
+
+				for(var i = 0; i < json.length; i++){
+					if(json[i].categoryTypeId == 1){
+						expenseCategory.append(
+							"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
+						);
+					} else {
+						incomeCategory.append(
+							"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
+						);
+					}
+				}
+			}
+		});
+	}
+	
 
 	//Adicionar despesas
 	$('#addExpense').on('click', function(){
@@ -368,6 +405,7 @@ $(document).ready(function(){
 	$('#btnAddCategory').on('click', function(){
 		var categoryName = $('#txtCategoryName').val();
 		var categoryTypeId = $('input[name=categoryType]:checked').val();
+		var ano = $('#anoSelect').val();
 
 		if(categoryName == ''){
 			$('#txtCategoryName').addClass("redBorder");
@@ -381,7 +419,8 @@ $(document).ready(function(){
 				data:{
 					userId: userId,
 					categoryName: categoryName,
-					categoryTypeId: categoryTypeId
+					categoryTypeId: categoryTypeId,
+					ano: ano
 				},
 				success: function(data){
 					if(data == 2){

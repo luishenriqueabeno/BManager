@@ -106,26 +106,6 @@ $(document).ready(function(){
 			}
 		});
 	});
-	
-	//Carrega categorias
-	$.ajax({
-		type: 'POST',
-		url: 'modules/CashFlow/php/loadCategories.php',
-		data:{
-			userId: userId,
-		},
-		success: function (data){			
-			var json = $.parseJSON(data);
-
-			for(var i = 0; i < json.length; i++){
-				if(json[i].categoryTypeId == 2){
-					incomeCategory.append(
-						"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
-					);
-				} 
-			}
-		}
-	});
 
 	//Adicionar receita
 	$('#addIncome').on('click', function(){
