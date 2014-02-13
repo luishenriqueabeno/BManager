@@ -82,13 +82,18 @@
 			<table id = "tableMonths" >
 				<tr class = "months tableRow">
 					<td> </td>
-					<?php
-						$year = date("Y");
-
-						for($i = 1; $i <= 12; $i++ ){
-							echo "<td>". date('M', strtotime("$year-$i")) ."</td>";
-						}	
-					?>
+					<td> Jan </td>
+					<td> Fev </td>
+					<td> Mar </td>
+					<td> Abr </td>
+					<td> Mai </td>
+					<td> Jun </td>
+					<td> Jul </td>
+					<td> Ago </td>
+					<td> Set </td>
+					<td> Out </td>
+					<td> Nov </td>
+					<td> Dez</td>
 				</tr>	
 			</table>			
 			<table id = "listIncomes" class = "tabelaEditavel">
