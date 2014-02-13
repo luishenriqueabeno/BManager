@@ -1,29 +1,35 @@
 $(document).ready(function(){
 
-	/***************************
-	* Variaveis de inicialização 
-	****************************/
+	/****************************
+	* Variaveis de inicialização *
+	*****************************/
+	//Carrega campos
 	var taskList = $('#taskList');
-	taskList.hide();
-	var dataInicio = $('#dataInicio').val();
-	var dataFim = $('#dataFim').val();
-	var userId = $('input[name=userId]').val();
-	$('#typeUndone').addClass('activeTaskTypeUndone');
 
-	//Carrega tarefas na inicialização
-	taskListLoad();
-
-	//Esconde dialog no carregamento
+	//Esconde formulários e dialogs
 	$('#deleteDialog').hide();
 	$('#deleteDialogSelected').hide();
 	$('#doneDialog').hide();
 	$('#alreadyDoneDialog').hide();
-
-	//Esconde modal no carregamento do documento
 	$('#addTaskForm').hide();
 	$('#addGroupForm').hide();
+	taskList.hide();
 
-	//Date picker
+	//Adiciona classe para destacar que o item selecionado e inicial
+	//são as tarefas não concluídas
+	$('#typeUndone').addClass('activeTaskTypeUndone');
+
+	//Armazena data inicial e fata final dos campos
+	var dataInicio = $('#dataInicio').val();
+	var dataFim = $('#dataFim').val();
+
+	//Armazena id do usuário logado
+	var userId = $('input[name=userId]').val();
+
+	//Carrega tarefas na inicialização
+	taskListLoad();
+
+	//Date picker para data inicial
     $( "#dataInicio" ).datepicker({
     	altFormat: "dd/mm/yyy",
     	dateFormat: "dd/mm/yy",
@@ -33,6 +39,7 @@ $(document).ready(function(){
       	changeYear: true
     });
 
+    //Date picker para data final
     $( "#dataFim" ).datepicker({
     	altFormat: "dd/mm/yy",
     	dateFormat: "dd/mm/yy",
@@ -41,18 +48,67 @@ $(document).ready(function(){
       	changeMonth: true,
       	changeYear: true
     });
-
-    /***************************
-	* Inicio das funções 
+	
+	/***************************
+	*	 Inicio das funções 	*
 	****************************/
 
+	//Para qualquer requisição ajax é adicionado um loader na página
 	$( document ).ajaxStart(function() {
+		//Exibe o loader até que a requisição seja concluída
 		$('.loader').show();
 	});
 	$( document ).ajaxStop(function() {
+		//Ao terminar uma requisição o loader é escondido
 	  	$('.loader').hide();
+
+	  	//Ao terminar de carregar o conteúdo, as tarefas são exibidas novamente
 	  	taskList.show();
 	});
+
+	/********* Modals *********/
+
+	//Abre modal para adicionar tarefa
+	$('#addTask').on('click', function(){
+		//Altera texto botão do modal
+		$('#btnAddTask span').html('Adicionar');
+
+		//Como se trata da adição do usuário, o campo id deve ser nulo
+		$('input[name=taskId]').val('');
+
+		//Limpa valores dos campos
+		clearFields();
+
+		//Exibe modal
+		$( "#addTaskForm" ).dialog({
+			modal: true,
+			show: { effect: "slideDown", duration: 600 } ,
+			width: 500,
+			//height: 500
+		});
+
+	});
+
+	//Botão cancelar do formulário
+	$('#btnCancelTaskForm').on('click', function(){
+		$( "#addTaskForm" ).dialog( "destroy" );
+	});
+
+	/********* Ações *********/
+
+	//Função para limpar valores dos campos no formulário
+    function clearFields(){
+    	var taskName = $('input[name=txtTaskName]').val('');
+		var taskDesc = $('textarea[name=txtTaskDesc]').val('');
+		var dataInicio = $('#dataInicio').val('');
+		var dataFim = $('#dataFim').val('');
+		
+		//Hora e minuto
+		var horaInicio = $('#horaInicio').val('');
+		var minutoInicio = $('#minutoInicio').val('');
+		var horaFim = $('#horaFim').val('');
+		var minutoFim = $('#minutoFim').val('');
+    }
 
 	//Lista todas as tarefas não concluídas
 	function taskListLoad(){
@@ -64,6 +120,7 @@ $(document).ready(function(){
 
 				var json = $.parseJSON(data);
 				
+				//Monta tabela com tarefas não concluídas
 				for(var i = 0; i < json.length; i++){
 					if(json[i].taskStatus != 1){
 						taskList.append(
@@ -89,6 +146,7 @@ $(document).ready(function(){
 			success: function(data){
 				var json = $.parseJSON(data);
 				
+				//Monta tabela com tarefas concluídas
 				for(var i = 0; i < json.length; i++){
 					if(json[i].taskStatus == 1){
 						taskList.append(
@@ -107,15 +165,20 @@ $(document).ready(function(){
 	
 	//Muda cor da linha dependendo do status da tarefa
 	$('.taskList').on('click', 'tr:not(:first-child)', function () {
+
 		if($(this).hasClass("highlighted")){
+			//Se a tarefa já estiver selecionada a classe 'highlithed' é removida
 			$(this).removeClass('highlighted');
 		} else if($(this).hasClass("done")) {
+			//Se a tarefa estiver concluída e não estiver selecionada é adicinada a classe 'highligthed2'
 			$(this).removeClass('done');
 			$(this).addClass('highlighted2');
 		} else if($(this).hasClass("highlighted2")) {
+			//Se a tarefa estiver concluída e já estiver selecionada é adicinada a classe 'done'
 			$(this).removeClass('highlighted2');
 			$(this).addClass('done');
 		} else {
+			//Caso a tarefa seja do tipo 'não concluída' e já esteja selecionada, é adicionado a classe 'highlited'
 			$(this).addClass('highlighted');
 		}
 	});
@@ -123,6 +186,7 @@ $(document).ready(function(){
 	//Remove tarefas selecionadas
 	$('#removeTask').on('click', function(){
 		var i = 0;
+		//Cria array para armazenar tarefas selecionadas
 		var checkSelected = [];
 
 		//Verifica se tem algum item selecionado
@@ -134,6 +198,7 @@ $(document).ready(function(){
 			i++;
 		});
 
+		//Caso haja itens selecionados abre dialog com mensagem questionando sobre a exclusão
 		if(checkSelected.length > 0){
 			$( "#deleteDialog" ).dialog({
 				resizable: false,
@@ -141,10 +206,14 @@ $(document).ready(function(){
 				width:500,
 				modal: true,
 				buttons: {
+					//Se o usuário clicar em 'Sim', as tarefas selecionadas serão excluidas do banco
 					"Sim": function() {
 						var i = 0;
+
+						//Cria array para armazenar o id das tarefas
 						var tasks = [];
 
+						//Para cada tarefa selecionada é armazenado o id no array
 						$('.highlighted, .highlighted2').each(function(){
 							
 							//Remove da lista
@@ -162,7 +231,7 @@ $(document).ready(function(){
 							url: 'modules/MyTasks/php/deletaTarefas.php',
 							data: { tasks: tasks },
 							success: function(data){
-								
+								//Não faz nada em caso de sucesso
 							}
 						});
 
@@ -174,6 +243,7 @@ $(document).ready(function(){
 				}
 			});
 		} else {
+			//Caso o usuário não confirme a exclusão o dialog é fechado
 			$( "#deleteDialogSelected" ).dialog({
 				modal: true,
 				buttons: {
@@ -185,40 +255,26 @@ $(document).ready(function(){
 		}
 	});
 
-	//Abre modal para adicionar tarefa
-	$('#addTask').on('click', function(){
-		$('#btnAddTask span').html('Adicionar');
-		$('input[name=taskId]').val('');
-
-		clearFields();
-
-		//Exibe modal
-		$( "#addTaskForm" ).dialog({
-			modal: true,
-			show: { effect: "slideDown", duration: 600 } ,
-			width: 500,
-			//height: 500
-		});
-
-	});
-
 	//Adiciona tarefa
 	$('#btnAddTask').on('click', function(){
+		//Armazena valores dos campos
 		var taskId = $('input[name=taskId]').val();
 		var taskName = $('input[name=txtTaskName]').val();
 		var taskDesc = $('textarea[name=txtTaskDesc]').val();
 		var dataInicio = $('#dataInicio').val();
 		var dataFim = $('#dataFim').val();
-		
+
 		//Hora e minuto
 		var horaInicio = $('#horaInicio').val();
 		var minutoInicio = $('#minutoInicio').val();
 		var horaFim = $('#horaFim').val();
 		var minutoFim = $('#minutoFim').val();
 
+		//Valida se o campo com o nome da tarefa esta vazio
 		if(taskName == ''){
 			alert("Favor informe o nome da tarefa.");
 		} else {
+			//Caso o formulário seja valido, o mesmo é enviado
 			$.ajax({
 				type: 'POST',
 				url: 'modules/MyTasks/php/addTask.php',
@@ -235,12 +291,23 @@ $(document).ready(function(){
 					userId: userId
 				},
 				success: function(data){
+					//Fecha dialog para adição de tarefa
 					$( "#addTaskForm" ).dialog( "destroy" );
+
+					//Limpa tarefas já existentes na tabela
 					$('#taskList tr').not(':first-child').empty();
 				}
 			}).done(function(data){
 					var json = $.parseJSON(data);
-			
+
+					//Adiciona marcador para informar a visão atual
+					//Sempre que uma tarefa for adicionada a visão ativa será das tarefas não concluídas
+
+					$('#typeDone').removeClass('activeTaskTypeDone');
+					$('#typeUndone').addClass('activeTaskTypeUndone');
+					
+					//Após o término da função, as tarefas são carregadas novamente
+					//atualizando a tabela com as tarefas
 					for(var i = 0; i < json.length; i++){
 						if(json[i].taskStatus != 1){
 							taskList.append(
@@ -258,13 +325,9 @@ $(document).ready(function(){
 		
 	});
 
-	//Botão cancelar do formulário
-	$('#btnCancelTaskForm').on('click', function(){
-		$( "#addTaskForm" ).dialog( "destroy" );
-	});
-
     //Carrega dados da tarefa para edição
     $('#taskList').on('dblclick', 'tr', function(){
+    	//Campos do formulário
     	var taskId = $(this).attr('id');
     	var hidenId = $('input[name=taskId]');
     	var taskName = $('#txtTaskName');
@@ -278,6 +341,7 @@ $(document).ready(function(){
 		var horaFim = $('#horaFim');
 		var minutoFim = $('#minutoFim');
     	
+    	//Envia id da tarefa
     	$.ajax({
     		url: 'modules/MyTasks/php/editaTarefa.php',
     		type: 'POST',
@@ -285,6 +349,7 @@ $(document).ready(function(){
     		success: function(data){
     			var task = $.parseJSON(data);
 
+    			//Altera texto do botão
     			$('#btnAddTask span').html('Gravar');
 
     			//Exibe modal preenchido
@@ -294,6 +359,7 @@ $(document).ready(function(){
 					width: 500,
 				});
 
+				//Preenche modal com as informações retornadas
     			for(var i = 0; i < task.length; i++){
     				hidenId.val(task[i].id);
     				taskName.val(task[i].taskName);
@@ -337,25 +403,14 @@ $(document).ready(function(){
     	}
     });
 
-	//Limpa campos
-    function clearFields(){
-    	var taskName = $('input[name=txtTaskName]').val('');
-		var taskDesc = $('textarea[name=txtTaskDesc]').val('');
-		var dataInicio = $('#dataInicio').val('');
-		var dataFim = $('#dataFim').val('');
-		
-		//Hora e minuto
-		var horaInicio = $('#horaInicio').val('');
-		var minutoInicio = $('#minutoInicio').val('');
-		var horaFim = $('#horaFim').val('');
-		var minutoFim = $('#minutoFim').val('');
-    }
-
 	//Marca tarefa como concluída
 	$('#doneTask').on('click', function(){
 		var i = 0;
+
+		//Array para armazenar tarefas selecionadas
 		var checkSelected = [];
 
+		//Esconde a lista
 		taskList.hide();
 
 		//Verifica se tem algum item selecionado
@@ -367,6 +422,7 @@ $(document).ready(function(){
 			i++;
 		});
 
+		//Caso haja algum item selecionado
 		if(checkSelected.length > 0){
 			$( "#doneDialog" ).dialog({
 				resizable: false,
@@ -374,15 +430,21 @@ $(document).ready(function(){
 				width:500,
 				modal: true,
 				buttons: {
+					//Se o usuário pressionar 'Sim'
 					"Sim": function() {
 						var i = 0;
+
+						//Cria array para armazenar tarefas
 						var tasks = [];
 
+						//Para cada tarefa não concluída selecionada
 						$('.highlighted').each(function(){
 							
 							//Guarda itens selecionados em um array
 							tasks[i] = $(this).attr('id');
 
+							//Altera cor da  tarefa para identificar que a mesma foi marcada
+							//como concluida
 							$(this).removeClass('highlighted');
 							$(this).css('background', '#00CC00');
 							$(this).addClass('done');
@@ -396,7 +458,10 @@ $(document).ready(function(){
 							url: 'modules/MyTasks/php/doneTask.php',
 							data: { tasks: tasks },
 							success: function(data){
+								//Limpa a tabela de tarefas não concluídas
 								$('#taskList tr').not(':first-child').empty();
+
+								//Atualiza tabela de tarefas não concluidas
 								taskListLoad();
 							}
 						});
@@ -413,20 +478,39 @@ $(document).ready(function(){
 
 	//Lista tarefas concluídas
 	$('#listDoneTasks').on('click', function(){
+		//Esconde tarefas
 		taskList.hide();
+
+		//Esconde botão para marcar tarefa como concluída
+		$('#doneTask').hide();
+
+		//Adiciona marcador para informar a visão atual
 		$('#typeDone').addClass('activeTaskTypeDone');
 		$('#typeUndone').removeClass('activeTaskTypeUndone');
 
+		//Limpa tabela de tarefas
 		$('#taskList tr').not(':first-child').remove();
+
+		//Carrega tarefas concluidas
 		taskListDoneLoad();
 	});
 
 	//Lista tarefas ativas
 	$('#listActiveTasks').on('click', function(){
+		//Esconde tarefas
 		taskList.hide();
+
+		//Mostra botão para marcar tarefa como concluída
+		$('#doneTask').show();
+
+		//Adiciona marcador para informar a visão atual
 		$('#typeDone').removeClass('activeTaskTypeDone');
 		$('#typeUndone').addClass('activeTaskTypeUndone');
+	
+		//Limpa tabela de tarefas
 		$('#taskList tr').not(':first-child').remove();
+
+		//Carrega tarefas concluidas
 		taskListLoad();
 	});	
 });

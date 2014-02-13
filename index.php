@@ -13,7 +13,7 @@
 
 		<!-- Scripts -->
 		<script src = "lib/jquery-1.10.2/jquery-1.10.2.dev.js" type = "text/javascript"></script>
-		<script src="resources/js/index.js"></script>
+		<script src="resources/js/index.min.js"></script>
 		<script src="lib/jquery-ui-1.10.3/ui/jquery-ui.js"></script>
 
 	</head>

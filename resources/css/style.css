@@ -1,3 +1,6 @@
+/***********************
+*		Padrões			*
+************************/
 body{
 	overflow:hidden;
 }
@@ -13,7 +16,9 @@ a:visited{
 	font-weight:bold !important;
 }
 
-/* Header */
+/***********************
+*		Header			*
+************************/
 .welcomeText{
 	font-weight:bold !important;
 }
@@ -21,7 +26,9 @@ a:visited{
 	padding-bottom: 10px;
 }
 
-/* Form add user */
+/************************
+* Formulário add usuário *
+*************************/
 #addUserForm{
 	overflow: hidden;
 }
@@ -135,12 +142,16 @@ a:visited{
 	font-size:12px;
 }
 
-/* Content Area */
+/************************
+* 		Conteúdo		*
+*************************/
 #contentMainArea{
 	border:solid;
 }
 
-/* Correções para o Mozilla */
+/************************
+*	 Correções Mozila	*
+*************************/
 @-moz-document url-prefix() {
    .emailReq{
 		position: absolute;

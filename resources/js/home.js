@@ -1,12 +1,15 @@
 $(document).ready(function(){
-	/***************************
-	* Variaveis de inicialização
-	****************************/
+
+	/****************************
+	* Variaveis de inicialização *
+	*****************************/
+
+	//Local onde conteúdo será carregado
 	var contentMainArea = $('#contentMainArea');
 
 
 	/***************************
-	* Inicio das funções 
+	*	 Inicio das funções 	*
 	****************************/
 
 	//Adiciona estilo para item ativo do menu
@@ -16,7 +19,6 @@ $(document).ready(function(){
 		});		
 		$(this).addClass('active');
 	})
-
 
 	//Adiciona o modulo de tarefas a página
 	$("a[name=modulesTasks]").click(function () { 

@@ -4,9 +4,8 @@
 	
 	$username = $_SESSION['username'];
 
-	$checkUserLic = "Select firstName, lastName, productId, gender From users Where email = '$username'";
-	$checkUserLicsql = mysql_query($checkUserLic);
-	$res = mysql_fetch_object($checkUserLicsql);
+	$checkUserLic = mysql_query("Select firstName, lastName, productId, gender From users Where email = '$username'");
+	$res = mysql_fetch_object($checkUserLic);
 
 	$sqlPrivileges = mysql_query("Select usertype From `users` Where email = '$username'");
 	$resPrivileges = mysql_fetch_object($sqlPrivileges);
@@ -27,12 +26,12 @@
 		<link type="text/css" rel="stylesheet" href="resources/css/style.css">
 		<link rel="stylesheet" href="lib/jquery-ui-1.10.3/themes/base/jquery-ui.css">
 		<link rel="stylesheet" href="lib/bootstrap-3.0/css/bootstrap.min.css">
-		<link rel="stylesheet" href="resources/css/normalize.css">
+		<link rel="stylesheet" href="resources/css/normalize.min.css">
 
 		<!-- Scripts -->
 		<script src = "lib/jquery-1.10.2/jquery-1.10.2.min.js" type = "text/javascript"></script>
-		<script src = "lib/maskMoney/maskMoney.js" type = "text/javascript"></script>
-		<script src="resources/js/home.js"></script>
+		<script src = "lib/maskMoney/maskMoney.min.js" type = "text/javascript"></script>
+		<script src="resources/js/home.min.js"></script>
 		<script src="lib/jquery-ui-1.10.3/ui/minified/jquery-ui.min.js"></script>
 		<script src="lib/bootstrap-3.0/js/bootstrap.min.js"></script>
 	</head>
@@ -74,7 +73,7 @@
 					</div>
 
 					<!-- Collect the nav links, forms, and other content for toggling -->
-					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<div class="collapse navbar-collapse mainMenu" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">
 							<li> <a href = "#" name = "modulesTasks"> Minhas Tarefas </a> </li>
 							<li class="dropdown">
@@ -88,15 +87,15 @@
 									<li><a href="#">Separated link</a></li>-->
 								</ul>
 							</li>
-							<!-- Apenas o usuário master tem acesso a área gerencial -->
-							<?php if ($resPrivileges->usertype == '1'){ ?>
-								<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Gerencial <b class="caret"></b></a>
-									<ul class="dropdown-menu">
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Gerencial <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<!-- Apenas o usuário master tem acesso -->
+									<?php if ($resPrivileges->usertype == '1'){ ?>
 										<li><a href="#" name = "gerencialUsuarios"> Usuários </a></li>
-									</ul>
-								</li>
-							<?php } ?>
+									<?php } ?>
+								</ul>
+							</li>
 						</ul>
 					</div><!-- /.navbar-collapse -->
 				</nav>

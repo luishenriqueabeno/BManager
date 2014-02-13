@@ -1,4 +1,16 @@
-/* Loader */
+/***********************
+*		Padrões			*
+************************/
+table{
+	-moz-user-select: none; 
+    -khtml-user-select: none; 
+    -webkit-user-select: none; 
+    -o-user-select: none;
+}
+
+/***********************
+*		Loader			*
+************************/
 .loader{
 	width: 600px !important;
 	height: 300px !important;
@@ -11,12 +23,9 @@
 	width: 400px;
 }
 
-table{
-	-moz-user-select: none; 
-    -khtml-user-select: none; 
-    -webkit-user-select: none; 
-    -o-user-select: none;
-}
+/***********************
+*		Container		*
+************************/
 #taskContainer{
 	border:solid #CCC;
 	border-width:2px;
@@ -46,7 +55,9 @@ table{
 	height:12px !important;
 }
 
-/* Task panel */
+/***********************
+*		Painel			*
+************************/
 #taskPanel{
 	width:100%;
 }
@@ -126,7 +137,9 @@ table{
 	cursor:pointer;	
 }
 
-/* Task list */
+/***********************
+* 	Tabela de tarefas	*
+************************/
 .taskList {
 	margin:0px;
 	padding:0px;	
@@ -207,7 +220,9 @@ table{
 	width:122px;	
 }
 
-/* Form add task */
+/*************************
+*	Formulário add tarefa *
+**************************/
 #formAddTask label{
 	float:left;
 	width:100%;
@@ -237,7 +252,10 @@ table{
 	float:left;
 }
 
-/* Delete Dialog */
+
+/************************
+*	   Delete dialog	 *
+*************************/
 #deleteDialog{
 	height:auto !important;
 }

@@ -1,18 +1,19 @@
 <?php
 	require('../../../php/conn.php');
 
+	//Recebe id da tarefa a ser editada
 	$taskId = $_POST['taskId'];
 	
-	$getTaskDataQuery = "Select * From tasks Where id = '$taskId'";
-
-	$getTaskDataSql = mysql_query($getTaskDataQuery);
+	//Carrega dados da tarefa selecionada para edição
+	$getTaskDataQuery = mysql_query("Select * From tasks Where id = '$taskId'");
 
 	$rows = array();
 
-	while($resData = mysql_fetch_object($getTaskDataSql)){
+	//Itera dados e armazena em um array
+	while($resData = mysql_fetch_object($getTaskDataQuery)){
 		$rows[] = $resData;
 	}
 
-	echo json_encode($rows);
-	
+	//Retorna um json
+	echo json_encode($rows);	
 ?>

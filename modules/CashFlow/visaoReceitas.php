@@ -14,10 +14,10 @@
 		<meta charset = "utf-8">
 
 		<!-- CSS -->
-		<link type="text/css" rel="stylesheet" href="modules/CashFlow/resources/css/visaoReceitas.css">
+		<link type="text/css" rel="stylesheet" href="modules/CashFlow/resources/css/visaoReceitas.min.css">
 
 		<!-- Scripts -->
-		<script src = "modules/CashFlow/resources/js/visaoReceitas.js" type = "text/javascript"></script>
+		<script src = "modules/CashFlow/resources/js/visaoReceitas.min.js" type = "text/javascript"></script>
 
 	</head>
 	<body>
