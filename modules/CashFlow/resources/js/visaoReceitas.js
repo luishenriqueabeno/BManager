@@ -178,9 +178,11 @@ $(document).ready(function(){
 				var json = $.parseJSON(data);
 
 				for(var i = 0; i < json.length; i++){
-					incomeCategory.append(
-						"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
-					);
+					if(json[i].categoryTypeId == 2){
+						incomeCategory.append(
+							"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
+						);
+					}
 				}
 			}
 		});
@@ -201,9 +203,11 @@ $(document).ready(function(){
 				var json = $.parseJSON(data);
 
 				for(var i = 0; i < json.length; i++){
-					incomeCategory.append(
-						"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
-					);
+					if(json[i].categoryTypeId == 2){
+						incomeCategory.append(
+							"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
+						);
+					}
 				}
 			}
 		});

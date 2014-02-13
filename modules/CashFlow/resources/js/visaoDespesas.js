@@ -177,9 +177,11 @@ $(document).ready(function(){
 				var json = $.parseJSON(data);
 
 				for(var i = 0; i < json.length; i++){
-					expenseCategory.append(
-						"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
-					);
+					if(json[i].categoryTypeId == 1){
+						expenseCategory.append(
+							"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
+						);
+					}
 				}
 			}
 		});
@@ -200,9 +202,11 @@ $(document).ready(function(){
 				var json = $.parseJSON(data);
 
 				for(var i = 0; i < json.length; i++){
-					expenseCategory.append(
-						"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
-					);
+					if(json[i].categoryTypeId == 1){
+						expenseCategory.append(
+							"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
+						);
+					}
 				}
 			}
 		});
