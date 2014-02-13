@@ -302,9 +302,11 @@ $(document).ready(function(){
 
 					//Adiciona marcador para informar a visão atual
 					//Sempre que uma tarefa for adicionada a visão ativa será das tarefas não concluídas
-
 					$('#typeDone').removeClass('activeTaskTypeDone');
 					$('#typeUndone').addClass('activeTaskTypeUndone');
+
+					//Mostra botão para marcar tarefa como concluída
+					$('#doneTask').show();
 					
 					//Após o término da função, as tarefas são carregadas novamente
 					//atualizando a tabela com as tarefas
@@ -410,9 +412,6 @@ $(document).ready(function(){
 		//Array para armazenar tarefas selecionadas
 		var checkSelected = [];
 
-		//Esconde a lista
-		taskList.hide();
-
 		//Verifica se tem algum item selecionado
 		$('.highlighted').each(function(){
 			
@@ -469,6 +468,12 @@ $(document).ready(function(){
 						$( this ).dialog( "close" );
 					},
 					Cancelar: function() {
+						//Limpa a tabela de tarefas não concluídas
+						$('#taskList tr').not(':first-child').empty();
+						
+						//Carrega tarefas não concluidas
+						taskListLoad();
+
 						$( this ).dialog( "close" );
 					}
 				}
@@ -510,7 +515,7 @@ $(document).ready(function(){
 		//Limpa tabela de tarefas
 		$('#taskList tr').not(':first-child').remove();
 
-		//Carrega tarefas concluidas
+		//Carrega tarefas não concluidas
 		taskListLoad();
 	});	
 });
