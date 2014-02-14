@@ -380,7 +380,8 @@ $(document).ready(function(){
 							url: 'modules/CashFlow/php/deletaDespesas.php',
 							data: { expenses: expenses },
 							success: function(data){
-								//Não faz nada
+								//Recarrega tabela de despesas
+								reloadMonthTable();
 							}
 						});
 

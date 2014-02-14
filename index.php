@@ -64,6 +64,7 @@
 
 		<!-- Login modal -->
 		<div id="loginForm" title="Login">
+			<div id = "logonMessage"> Usuário e/ou senha incorreto </div>
 			<form method = "post" id = "formLogin">
 				<label for = "username"> Email </label>
 				<input id = "txtUsername" type = "text" name = "txtUsername" >
@@ -83,11 +84,11 @@
 		</div>
 
 		<!-- Forgot pass modal -->
-		<div id="forgotPassForm" title="Recuperar senha">
+		<div id="forgotPassForm">
 			<form method = "post" id = "formForgotPass">
 				<div id = "passSend"> Uma nova senha foi enviada para seu email </div>
 				<div id = "passError"> Não encontramos o e-mail informado em nossa base de dados </div>
-				<label for = "username"> Email cadsatrado: </label> <span class = "emailReqForgot"> </span>
+				<label for = "username"> Email cadastrado: </label> <span class = "emailReqForgot"> </span>
 				<input id = "txtUsernameRecover" type = "text" name = "txtUsername" >
 
 				<div class = "formForgotpassSeparator">

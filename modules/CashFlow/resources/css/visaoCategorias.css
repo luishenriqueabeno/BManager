@@ -41,6 +41,9 @@
     color: #261F1D;
     background-color: #CCC !important;
 }
+#deleteDialog{
+	height:auto !important;
+}
 
 /***********************
 *		Loader			*

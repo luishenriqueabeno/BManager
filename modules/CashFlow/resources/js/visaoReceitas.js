@@ -382,7 +382,8 @@ $(document).ready(function(){
 							url: 'modules/CashFlow/php/deletaReceitas.php',
 							data: { incomes: incomes },
 							success: function(data){
-								//Não faz nada
+								//Recarrega tabela de despesas
+								reloadMonthTable();
 							}
 						});
 

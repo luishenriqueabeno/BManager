@@ -15,6 +15,10 @@ a:visited{
 	color: #3333FF !important;	
 	font-weight:bold !important;
 }
+#logonMessage{
+	color: red;
+	text-align:center;
+}
 
 /***********************
 *		Header			*

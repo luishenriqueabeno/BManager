@@ -10,6 +10,7 @@ $(document).ready(function(){
 	$('#forgotPassForm').hide();
 	$('#passError').hide();
 	$('#passSend').hide();
+	$('#logonMessage').hide();
 
 	//Por padrão o campo "confirmar senha" é desabilitado
 	$('#txtPassword2').attr('disabled', true);
@@ -36,7 +37,6 @@ $(document).ready(function(){
 	var pass1 = $('.pass1');
 	var pass2 = $('.pass2');
 
-
 	/***************************
 	*	 Inicio das funções 	*
 	****************************/
@@ -55,6 +55,12 @@ $(document).ready(function(){
 
 	//Abre modal para o usuário logar
 	$('#loginUserModal').click(function(){
+		//Esconde mensagens de erro
+		$('#logonMessage').hide();
+
+		//Limpa o formulário
+		$('#formLogin')[0].reset();
+
 		//Exibe modal
 		$( "#loginForm" ).dialog({
 			modal: true,
@@ -71,6 +77,7 @@ $(document).ready(function(){
 			modal: true,
 			show: { effect: "slideDown", duration: 600 } ,
 			width: 500,
+			title: "Recuperar senha"
 		});
 	});
 
@@ -173,14 +180,15 @@ $(document).ready(function(){
 			},
 			success: function(data){
 				//Fecha o dialog de login
-				$( "#loginForm" ).dialog( "destroy" );
+				//$( "#loginForm" ).dialog( "destroy" );
 
 				//Dependendo do retorno é realizada uma ação
 				if(data[0] == 1){
 					//Redireciona para a página principal do sistema
 					window.location.href = "home.php";	
 				} else {
-					alert("Usuário e/ou senha incorreto.");
+					//alert("Usuário e/ou senha incorreto.");
+					$('#logonMessage').show();
 				}
 			}
 		})
@@ -227,6 +235,9 @@ $(document).ready(function(){
 			password1Field.addClass('redBorder');
 			//Exibe uma mensagem informando do que se trata o problema
 			pass1.html('A senha deve ter no mínimo 6 caracteres');
+
+			//Desabilito o campo "confirmar senha" caso o primeiro campo volte a ficar vazio
+			$('#txtPassword2').attr('disabled', true);
 		} else {
 			//Caso a senha atenda os requisitos minimos, é adicionada uma classe
 			//para identificar que o valor é valido
