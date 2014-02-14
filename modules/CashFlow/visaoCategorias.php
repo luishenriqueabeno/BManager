@@ -94,10 +94,10 @@
 					<td> Dez</td>
 				</tr>	
 			</table>
-			<table id = "listCategoriesExpenses">
+			<table id = "listCategoriesIncomes">
 
 			<table>
-			<table id = "listCategoriesIncomes">
+			<table id = "listCategoriesExpenses">
 
 			<table>
 		</div>	

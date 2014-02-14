@@ -7,6 +7,22 @@ $(document).ready(function(){
 	//Local onde conteúdo será carregado
 	var contentMainArea = $('#contentMainArea');
 
+	//Exibe data e hora
+	var data = new Date();
+
+	var dia = data.getDate(); 
+	var mes = data.getMonth();
+	var ano4 = data.getFullYear();
+	var hora = data.getHours();
+	var min = data.getMinutes();
+
+	//Formata antes de exibir
+	var str_data = dia + '/' + (mes+1) + '/' + ano4;
+	var str_hora = hora + ':' + min;
+
+	//Exibe data e hora
+	$('#dataHoraShow').html('<b>Hoje é dia ' + str_data + ' ' + str_hora + '</b>');
+
 
 	/***************************
 	*	 Inicio das funções 	*

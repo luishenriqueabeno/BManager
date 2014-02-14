@@ -62,9 +62,9 @@
 	width: 400px;
 }
 
-/*************************
-* Adicionar categoia form *
-**************************/
+/**************************
+* Adicionar categoria form *
+***************************/
 .formAddCategorySeparator{
 	margin-top:10px;
 	padding-top:10px;
@@ -139,9 +139,9 @@
 	margin-left:10px;
 }
 
-/************************
-* 	Tabela de despesas	*
-*************************/
+/************************************
+* 	Tabela de despesas e receitas	*
+*************************************/
 #listCategoriesExpenses tr:nth-child(odd), #listCategoriesIncomes tr:nth-child(odd){ 
 	background-color:#aad4ff; 
 }
@@ -178,7 +178,7 @@
 	line-height:25px;
 	text-align:center;
 }
-#listCategoriesIncomes{
+#listCategoriesExpenses{
 	margin-top:15px;
 }
 .tableRow td:first-child{

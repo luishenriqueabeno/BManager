@@ -47,10 +47,13 @@
 					<div class="col-xs-4 col-sm-4 col-md-12"> </div>
 
 					<div class="col-xs-4 col-sm-4 col-md-12"> </div>
-					<div class="col-md-offset-1 col-xs-12 col-sm-12 col-md-12">
+					<div class="col-md-offset-1 col-xs-8 col-sm-8 col-md-8">
 						<div class = "welcome"> 
 							<?php if($res->gender == 1) echo "<span class = 'welcomeText'> Seja bem vindo " . $res->firstName . " " . $res->lastName; ?> </span> <a href = "php/logout.php"> Logout </a>
 						</div>
+					</div>
+					<div class="col-xs-2 col-sm-2 col-md-2"> 
+						<div id = "dataHoraShow"> </div>
 					</div>
 					<div class="col-xs-4 col-sm-4 col-md-12"> </div>
 				</div>
