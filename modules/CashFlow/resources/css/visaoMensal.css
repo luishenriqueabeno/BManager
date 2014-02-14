@@ -1,3 +1,6 @@
+/***********************
+*		Padrões			*
+************************/
 .ui-dialog-titlebar-close{
 	background: url('../../../../lib/jquery-ui-1.10.3/themes/base/images/ui-icons_888888_256x240.png') no-repeat -34px -194px;
 	border:none;
@@ -16,8 +19,28 @@
 	padding-bottom:5px;
 	color:red;
 }
+.selectYear{
+	width:100%;
+	text-align:right;
+	padding:0px 5px 0px 30px;
+}
+.selectYear select{
+	width:250px;
+	height:30px;
+	padding-left: 100px;
+}
+.blueNum{
+	color:#0000FF !important;
+	font-weight:bold;
+}
+.redNum{
+	color:#FF0000 !important;
+	font-weight:bold;
+}
 
-/* Loader */
+/***********************
+*		Loader			*
+************************/
 .loader{
 	position: absolute;
 	width: 100%;
@@ -32,7 +55,9 @@
 	width: 400px;
 }
 
-/* Add expense form */
+/************************
+* Adicionar despesa form *
+*************************/
 #formAddExpense label{
 	float:left;
 	width:100%;
@@ -71,7 +96,9 @@
 	color:green;
 }
 
-/* Add income form */
+/************************
+* Adicionar receita form *
+*************************/
 #formAddIncome label{
 	float:left;
 	width:100%;
@@ -110,7 +137,9 @@
 	color:green;
 }
 
-/* Add category form */
+/**************************
+* Adicionar categoria form *
+***************************/
 .formAddCategorySeparator{
 	margin-top:10px;
 	padding-top:10px;
@@ -136,7 +165,9 @@
 	width:100%;
 }
 
-/* Table panel */
+/************************
+* 		Painel			 *
+*************************/
 #cashPanel{
 	width:100%;
 	background-color:#d3e1f1 !important;
@@ -167,7 +198,9 @@
 	line-height:20px;
 }
 
-/* Tabelas */
+/************************
+* Fluxo de caixa mensal *
+*************************/
 #listExpenses tr:nth-child(odd), #listIncomes tr:nth-child(odd){ 
 	background-color:#aad4ff; 
 }
@@ -204,8 +237,6 @@
 	line-height:25px;
 	text-align:center;
 }
-
-/* Fluxo de caixa mensal */
 .tableRow td:first-child{
 	overflow: hidden;
     white-space: nowrap;
@@ -233,16 +264,6 @@
 .totalRow{
 	font-weight:bold;	
 	background-color:#e7e7e7 !important;
-}
-.selectYear{
-	width:100%;
-	text-align:right;
-	padding:0px 5px 0px 30px;
-}
-.selectYear select{
-	width:250px;
-	height:30px;
-	padding-left: 100px;
 }
 #listIncomes, #listExpenses, #tableMonths, #tableSaldo{
 	width:100% !important;
@@ -293,12 +314,4 @@
 	border-right-width:0px !important;
 	border-right-color:#000 !important;
 	font-weight:bold !important;
-}
-.blueNum{
-	color:#0000FF !important;
-	font-weight:bold;
-}
-.redNum{
-	color:#FF0000 !important;
-	font-weight:bold;
 }
