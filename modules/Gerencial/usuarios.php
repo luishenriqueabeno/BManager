@@ -48,7 +48,6 @@
 
 				<div class = "userAcl">
 					<label for = "cashFlow"> Fluxo de caixa </label> <input type = "checkbox" value = "2" id = "cashFlow" name = "cashFlow">
-					<label for = "estoque"> Estoque </label> <input type = "checkbox" value = "3" id = "estoque" name = "estoque">
 				</div>
 
 				<label for = "gender"> Sexo </label>
@@ -75,10 +74,10 @@
 						<tr>
 							<td>
 								<div class = "bgBtnContainer">
-									<div id = "addUser"> </div>
+									<a href = "#" id = "addUser"> </a>
 								</div>
 								<div class = "bgBtnContainer">
-									<div id = "removeUser"> </div> 
+									<a href = "#" id = "removeUser"> </a>
 								</div>
 							</td>
 						</tr>

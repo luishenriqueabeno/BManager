@@ -84,13 +84,13 @@
 						<tr>
 							<td>
 								<div class = "bgBtnContainer">
-									<div id = "addTask"> </div>
+									<a href = "#" id = "addTask"> </a>
 								</div>
 								<div class = "bgBtnContainer">
-									<div id = "removeTask"> </div> 
+									<a href = "#" id = "removeTask"> </a>
 								</div>
 								<div class = "bgBtnContainer">
-									<div id = "doneTask"> </div> 
+									<a href = "#" id = "doneTask"> </a> 
 								</div>
 							</td>
 							<td style = "padding:0">

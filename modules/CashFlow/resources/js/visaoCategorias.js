@@ -314,7 +314,7 @@ $(document).ready(function(){
 								userId: userId
 							},
 							success: function(data){
-								//Não faz nada
+								reloadCategoriesTable();
 							}
 						});
 
