@@ -314,6 +314,7 @@ $(document).ready(function(){
 								userId: userId
 							},
 							success: function(data){
+								//Recarrega tabela de categorias
 								reloadCategoriesTable();
 							}
 						});
