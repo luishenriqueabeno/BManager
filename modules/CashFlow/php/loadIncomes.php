@@ -1,22 +1,32 @@
 <?php
 	require('../../../php/conn.php');
+
+	//Suprime warnings
 	error_reporting(E_ERROR | E_PARSE);
 
+	//Recebe dados para carregar receitas
 	$ano = $_POST['ano'];
 	$userId = $_POST['userId'];
 
+	//Caso a variavel ano chegue vazia, é setado o ano atual
 	if($ano == ''){
 		$ano = date("Y");
 	}
 
+	//Através do id do usuário logado é verificado quem é o usuário master
 	$getMaster = mysql_query("Select userMaster From users Where id = $userId");
 	$resMaster = mysql_fetch_object($getMaster);
 
-	$incomeList = mysql_query("Select * From cashflowincome Where ano = '$ano' And userMaster = '$resMaster->userMaster'");
+	//Query para retornar todas as receitas para o ano selecionado e que estão abaixo do usuário master
+	$incomeList = mysql_query("Select * From cashflowincome Where ano = ". $ano ." And userMaster = '". $resMaster->userMaster ."'");
+
 	echo "<tr>";
 		echo "<th colspan = '13'> Receitas </th>";
 	echo "</tr>";
+
+	//Itera despesas
 	while($resIncomeList = mysql_fetch_object($incomeList)){
+		//Imprime receitas para cada mês
 		echo "<tr class = 'tableRow' id = ". 'income_' . $resIncomeList->id .">";
 			echo "<td class = 'incomeTitle' title = ".str_replace(' ', '_', $resIncomeList->incomeName).">". $resIncomeList->incomeName ."</td>";
 			echo "<td class = 'jan'>". 'R$ ' . number_format($resIncomeList->jan,2,",",".") ."</td>";
@@ -33,6 +43,7 @@
 			echo "<td class = 'dez'>". 'R$ ' . number_format($resIncomeList->dez,2,",",".") ."</td>";
 		echo "</tr>";
 
+		//Calcula valor total de receitas para cada mês
 		$totalJan = $totalJan + $resIncomeList->jan;
 		$totalFev = $totalFev + $resIncomeList->fev;
 		$totalMar = $totalMar + $resIncomeList->mar;
@@ -47,6 +58,7 @@
 		$totalDez = $totalDez + $resIncomeList->dez;
 	}
 
+	//Imprime valor total de receitas
 	echo "<tr class = 'tableRow totalRow'>";
 		echo "<td class = 'total'>Total</td>";
 		echo "<td class = 'total'> ". 'R$ ' . number_format($totalJan,2,",",".")  ." </td>";
@@ -61,8 +73,5 @@
 		echo "<td class = 'total'> ". 'R$ ' . number_format($totalOut,2,",",".")  ." </td>";
 		echo "<td class = 'total'> ". 'R$ ' . number_format($totalNov,2,",",".")  ." </td>";
 		echo "<td class = 'total'> ". 'R$ ' . number_format($totalDez,2,",",".")  ." </td>";
-	echo "</tr>";				
-
-
-		
+	echo "</tr>";					
 ?>

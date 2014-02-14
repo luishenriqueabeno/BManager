@@ -1,17 +1,24 @@
 <?php
 	require('../../../php/conn.php');
+
+	//Suprime warnings
 	error_reporting(E_ERROR | E_PARSE);
 
+	//Recebe dados para carregar categorias da natureza despesa
 	$ano = $_POST['ano'];
 	$userId = $_POST['userId'];
 
-	$getMaster = mysql_query("Select userMaster From users Where id = $userId");
-	$resMaster = mysql_fetch_object($getMaster);
-
+	//Caso a variavel ano chegue vazia, é setado o ano atual
 	if($ano == ''){
 		$ano = date("Y");
 	}
 
+	//Através do id do usuário logado é verificado quem é o usuário master
+	$getMaster = mysql_query("Select userMaster From users Where id = $userId");
+	$resMaster = mysql_fetch_object($getMaster);
+
+	//Query para trazer o saldo calculado para todos os meses
+	//Caso não hajam despesas ou receitas cadastradas, o valor a ser somado/subtraído será igual a '0'
 	$saldoList = mysql_query("
 							Select 
 								`jan` + (Select Case When Sum(`jan`) Is Null Then 0 Else Sum(`jan`) End From cashflowincome) - (Select Case WHen Sum(`jan`) is Null Then 0 Else Sum(`jan`) End From cashflowexpenses) As SaldoJan,
@@ -29,12 +36,17 @@
 							From 
 								cashflowsaldo
 							Where
-								userMaster = '$resMaster->userMaster' And ano = $ano
+								userMaster = '$resMaster->userMaster' 
+								And ano = $ano
 							");
 
+	//Verifico se retornou registros
 	$rows = mysql_num_rows($saldoList);
 
+	//Condição para imprimir valores de acordo com quantidade de registros retornados
 	if($rows <= 0){
+		//Caso não retorne nenhum registro, os valores exibidos serão iguais a '0,00'
+		//isso significa que não foi cadastrado um saldo
 		echo "<tr class = 'saldo tableRow' id = 'saldoMonths'>";
 			echo "<td> Saldo </td>";
 			echo "<td class = 'jan'> R$ 0,00 </td>";
@@ -51,7 +63,10 @@
 			echo "<td class = 'dez'> R$ 0,00 </td>";
 		echo "</tr>";
 	} else {
+		//Itero resultados
 		while($resSaldoList = mysql_fetch_object($saldoList)){
+			//Imprime tabela com o valor do saldo
+			//Caso o saldo seja menor com zero o valor ficará vermelho, caso contrário, azul
 			echo "<tr class = 'saldo tableRow' id = 'saldoMonths'>";
 				echo "<td> Saldo </td>";
 				echo "<td class = 'jan ". (((number_format($resSaldoList->SaldoJan,2,",",".")) < 0) ? "redNum" : "blueNum") ."'>". 'R$ ' . number_format($resSaldoList->SaldoJan,2,",",".") ."</td>";
@@ -69,6 +84,4 @@
 			echo "</tr>";
 		}		
 	}
-
-			
 ?>

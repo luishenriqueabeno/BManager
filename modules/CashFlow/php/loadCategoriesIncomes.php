@@ -1,19 +1,25 @@
 
 <?php
 	require('../../../php/conn.php');
+
+	//Suprime warnings
 	error_reporting(E_ERROR | E_PARSE);
 
+	//Recebe dados para carregar categorias da natureza despesa
 	$userId = $_POST['userId'];
-
 	$ano = $_POST['ano'];
 
+	//Caso a variavel ano chegue vazia, é setado o ano atual
 	if($ano == ''){
 		$ano = date("Y");
 	}
 
+	//Através do id do usuário logado é verificado quem é o usuário master
 	$getMaster = mysql_query("Select userMaster From users Where id = $userId");
 	$resMaster = mysql_fetch_object($getMaster);
 
+	//Query que retorna lista com categorias de natureza despesa para o ano informado
+	//e que estejam abaixo do usuário master
 	$categoryListIncome = mysql_query("Select 
 											a.categoryName,
 											a.id As catId
@@ -34,7 +40,7 @@
 											Inner Join cashflowincome b On (a.id = b.categoryId)
 										Where 
 											a.userMaster = '$resMaster->userMaster'
-											And b.ano = $ano
+											And b.ano = ". $ano ."
 										Group By
 											a.categoryName
 											,a.id");
@@ -43,18 +49,21 @@
 		echo "<th colspan = '13'> Natureza - Receita </th>";
 	echo "</tr>";
 
+	//Verifica as categorias de natureza despesa que estejam sem despesas associadas
 	$emptyCat = mysql_query("Select 
 								id 
 								,categoryName
 							From 
 								cashflowcategories 
 							Where 
-								userMaster = '$resMaster->userMaster'
-								And ano = $ano
+								userMaster = '". $resMaster->userMaster ."'
+								And ano = ". $ano ."
 								And categoryTypeId = 2
 								And id not in(Select categoryId From cashflowincome Where ano = $ano)");
 
+	//Itera categorias de natureza despesa vazias
 	while($resEmptyCat = mysql_fetch_object($emptyCat)){
+		//Retorna valor zerado uma vez que não há nenhuma despesa associada
 		echo "<tr class = 'tableRow' id = ". 'category_' .$resEmptyCat->id .">";
 			echo "<td class = 'expenseTitleCat' title = ".str_replace(' ', '_', $resEmptyCat->categoryName).">". $resEmptyCat->categoryName ."</td>";
 			echo "<td class = 'jan'> R$ 0,00 </td>";
@@ -72,7 +81,9 @@
 		echo "</tr>";
 	}
 
+	//Itera categorias de natureza despesa que contenham valor
 	while($resCategoryListIncome = mysql_fetch_object($categoryListIncome)){
+		//Imprime categorias com valor
 		echo "<tr class = 'tableRow' id = ". 'category_' .$resCategoryListIncome->catId .">";
 			echo "<td class = 'incomeTitleCat' title = ".str_replace(' ', '_',  $resCategoryListIncome->categoryName ).">". $resCategoryListIncome->categoryName ."</td>";
 			echo "<td class = 'jan'>". 'R$ ' . number_format($resCategoryListIncome->TotalJan,2,",",".") ."</td>";
@@ -89,6 +100,7 @@
 			echo "<td class = 'dez'>". 'R$ ' . number_format($resCategoryListIncome->TotalDez,2,",",".") ."</td>";
 		echo "</tr>";
 
+		//Calcula valor total para cada mês
 		$totalJan = $totalJan + $resCategoryListIncome->TotalJan;
 		$totalFev = $totalFev + $resCategoryListIncome->TotalFev;
 		$totalMar = $totalMar + $resCategoryListIncome->TotalMar;
@@ -103,6 +115,7 @@
 		$totalDez = $totalDez + $resCategoryListIncome->TotalDez;
 	}
 
+	//Exibe valor total calculado
 	echo "<tr class = 'tableRow totalRow'>";
 		echo "<td class = 'total'>Total</td>";
 		echo "<td class = 'total'> ". 'R$ ' . number_format($totalJan,2,",",".")  ." </td>";

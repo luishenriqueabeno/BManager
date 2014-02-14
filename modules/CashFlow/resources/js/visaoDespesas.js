@@ -105,7 +105,7 @@ $(document).ready(function(){
 		});
 	}
 
-	//Função para listar as tarefas com o ano atual
+	//Função para listar as despesas com o ano atual
 	function listaComAnoAtual(){
 		//Limpa tabela de despesas
 		monthTableExpenses.empty();
