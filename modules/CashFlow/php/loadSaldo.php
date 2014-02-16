@@ -21,23 +21,23 @@
 	//Caso não hajam despesas ou receitas cadastradas, o valor a ser somado/subtraído será igual a '0'
 	$saldoList = mysql_query("
 							Select 
-								`jan` + (Select Case When Sum(`jan`) Is Null Then 0 Else Sum(`jan`) End From cashflowincome) - (Select Case WHen Sum(`jan`) is Null Then 0 Else Sum(`jan`) End From cashflowexpenses) As SaldoJan,
-								`fev` + (Select Case When Sum(`fev`) Is Null Then 0 Else Sum(`fev`) End From cashflowincome) - (Select Case WHen Sum(`fev`) is Null Then 0 Else Sum(`fev`) End From cashflowexpenses) As SaldoFev,
-								`mar` + (Select Case When Sum(`mar`) Is Null Then 0 Else Sum(`mar`) End From cashflowincome) - (Select Case WHen Sum(`mar`) is Null Then 0 Else Sum(`mar`) End From cashflowexpenses) As SaldoMar,
-								`abr` + (Select Case When Sum(`abr`) Is Null Then 0 Else Sum(`abr`) End From cashflowincome) - (Select Case WHen Sum(`abr`) is Null Then 0 Else Sum(`abr`) End From cashflowexpenses) As SaldoAbr,
-								`mai` + (Select Case When Sum(`mai`) Is Null Then 0 Else Sum(`mai`) End From cashflowincome) - (Select Case WHen Sum(`mai`) is Null Then 0 Else Sum(`mai`) End From cashflowexpenses) As SaldoMai,
-								`jun` + (Select Case When Sum(`jun`) Is Null Then 0 Else Sum(`jun`) End From cashflowincome) - (Select Case WHen Sum(`jun`) is Null Then 0 Else Sum(`jun`) End From cashflowexpenses) As SaldoJun,
-								`jul` + (Select Case When Sum(`jul`) Is Null Then 0 Else Sum(`jul`) End From cashflowincome) - (Select Case WHen Sum(`jul`) is Null Then 0 Else Sum(`jul`) End From cashflowexpenses) As SaldoJul,
-								`ago` + (Select Case When Sum(`ago`) Is Null Then 0 Else Sum(`ago`) End From cashflowincome) - (Select Case WHen Sum(`ago`) is Null Then 0 Else Sum(`ago`) End From cashflowexpenses) As SaldoAgo,
-								`set` + (Select Case When Sum(`set`) Is Null Then 0 Else Sum(`set`) End From cashflowincome) - (Select Case WHen Sum(`set`) is Null Then 0 Else Sum(`set`) End From cashflowexpenses) As SaldoSet,
-								`out` + (Select Case When Sum(`out`) Is Null Then 0 Else Sum(`out`) End From cashflowincome) - (Select Case WHen Sum(`out`) is Null Then 0 Else Sum(`out`) End From cashflowexpenses) As SaldoOut,
-								`nov` + (Select Case When Sum(`nov`) Is Null Then 0 Else Sum(`nov`) End From cashflowincome) - (Select Case WHen Sum(`nov`) is Null Then 0 Else Sum(`nov`) End From cashflowexpenses) As SaldoNov,
-								`dez` + (Select Case When Sum(`dez`) Is Null Then 0 Else Sum(`dez`) End From cashflowincome) - (Select Case WHen Sum(`dez`) is Null Then 0 Else Sum(`dez`) End From cashflowexpenses) As SaldoDez
+								`jan` + (Select Case When Sum(`jan`) Is Null Then 0 Else Sum(`jan`) End From cashflowincome Where ano = ". $ano ." And userMaster = '". $resMaster->userMaster ."') - (Select Case WHen Sum(`jan`) is Null Then 0 Else Sum(`jan`) End From cashflowexpenses Where ano = ". $ano ." And userMaster = '". $resMaster->userMaster ."') As SaldoJan,
+								`fev` + (Select Case When Sum(`fev`) Is Null Then 0 Else Sum(`fev`) End From cashflowincome Where ano = ". $ano ." And userMaster = '". $resMaster->userMaster ."') - (Select Case WHen Sum(`fev`) is Null Then 0 Else Sum(`fev`) End From cashflowexpenses Where ano = ". $ano ." And userMaster = '". $resMaster->userMaster ."') As SaldoFev,
+								`mar` + (Select Case When Sum(`mar`) Is Null Then 0 Else Sum(`mar`) End From cashflowincome Where ano = ". $ano ." And userMaster = '". $resMaster->userMaster ."') - (Select Case WHen Sum(`mar`) is Null Then 0 Else Sum(`mar`) End From cashflowexpenses Where ano = ". $ano ." And userMaster = '". $resMaster->userMaster ."') As SaldoMar,
+								`abr` + (Select Case When Sum(`abr`) Is Null Then 0 Else Sum(`abr`) End From cashflowincome Where ano = ". $ano ." And userMaster = '". $resMaster->userMaster ."') - (Select Case WHen Sum(`abr`) is Null Then 0 Else Sum(`abr`) End From cashflowexpenses Where ano = ". $ano ." And userMaster = '". $resMaster->userMaster ."') As SaldoAbr,
+								`mai` + (Select Case When Sum(`mai`) Is Null Then 0 Else Sum(`mai`) End From cashflowincome Where ano = ". $ano ." And userMaster = '". $resMaster->userMaster ."') - (Select Case WHen Sum(`mai`) is Null Then 0 Else Sum(`mai`) End From cashflowexpenses Where ano = ". $ano ." And userMaster = '". $resMaster->userMaster ."') As SaldoMai,
+								`jun` + (Select Case When Sum(`jun`) Is Null Then 0 Else Sum(`jun`) End From cashflowincome Where ano = ". $ano ." And userMaster = '". $resMaster->userMaster ."') - (Select Case WHen Sum(`jun`) is Null Then 0 Else Sum(`jun`) End From cashflowexpenses Where ano = ". $ano ." And userMaster = '". $resMaster->userMaster ."') As SaldoJun,
+								`jul` + (Select Case When Sum(`jul`) Is Null Then 0 Else Sum(`jul`) End From cashflowincome Where ano = ". $ano ." And userMaster = '". $resMaster->userMaster ."') - (Select Case WHen Sum(`jul`) is Null Then 0 Else Sum(`jul`) End From cashflowexpenses Where ano = ". $ano ." And userMaster = '". $resMaster->userMaster ."') As SaldoJul,
+								`ago` + (Select Case When Sum(`ago`) Is Null Then 0 Else Sum(`ago`) End From cashflowincome Where ano = ". $ano ." And userMaster = '". $resMaster->userMaster ."') - (Select Case WHen Sum(`ago`) is Null Then 0 Else Sum(`ago`) End From cashflowexpenses Where ano = ". $ano ." And userMaster = '". $resMaster->userMaster ."') As SaldoAgo,
+								`set` + (Select Case When Sum(`set`) Is Null Then 0 Else Sum(`set`) End From cashflowincome Where ano = ". $ano ." And userMaster = '". $resMaster->userMaster ."') - (Select Case WHen Sum(`set`) is Null Then 0 Else Sum(`set`) End From cashflowexpenses Where ano = ". $ano ." And userMaster = '". $resMaster->userMaster ."') As SaldoSet,
+								`out` + (Select Case When Sum(`out`) Is Null Then 0 Else Sum(`out`) End From cashflowincome Where ano = ". $ano ." And userMaster = '". $resMaster->userMaster ."') - (Select Case WHen Sum(`out`) is Null Then 0 Else Sum(`out`) End From cashflowexpenses Where ano = ". $ano ." And userMaster = '". $resMaster->userMaster ."') As SaldoOut,
+								`nov` + (Select Case When Sum(`nov`) Is Null Then 0 Else Sum(`nov`) End From cashflowincome Where ano = ". $ano ." And userMaster = '". $resMaster->userMaster ."') - (Select Case WHen Sum(`nov`) is Null Then 0 Else Sum(`nov`) End From cashflowexpenses Where ano = ". $ano ." And userMaster = '". $resMaster->userMaster ."') As SaldoNov,
+								`dez` + (Select Case When Sum(`dez`) Is Null Then 0 Else Sum(`dez`) End From cashflowincome Where ano = ". $ano ." And userMaster = '". $resMaster->userMaster ."') - (Select Case WHen Sum(`dez`) is Null Then 0 Else Sum(`dez`) End From cashflowexpenses Where ano = ". $ano ." And userMaster = '". $resMaster->userMaster ."') As SaldoDez
 							From 
 								cashflowsaldo
 							Where
-								userMaster = '$resMaster->userMaster' 
-								And ano = $ano
+								userMaster = '". $resMaster->userMaster ."' 
+								And ano = ". $ano ."
 							");
 
 	//Verifico se retornou registros
