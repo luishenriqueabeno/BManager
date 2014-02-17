@@ -6,11 +6,11 @@
 	$ano = $_POST['ano'];
 
 	//Através do id do usuário logado é verificado quem é o usuário master
-	$getMaster = mysql_query("Select userMaster From users Where id = 1");
+	$getMaster = mysql_query("Select userMaster From users Where id = ". $userId ."");
 	$resMaster = mysql_fetch_object($getMaster);
 
 	//Carrega as categorias a partir do usuário master e o ano
-	$list = mysql_query("Select * From cashflowcategories Where userMaster = '$resMaster->userMaster' And ano = $ano");
+	$list = mysql_query("Select * From cashflowcategories Where userMaster = '". $resMaster->userMaster ."' And ano = ". $ano ."");
 
 	$rows = array();
 
