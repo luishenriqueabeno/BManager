@@ -5,7 +5,27 @@
 	$userId = $_POST['userId'];
 	
 	//Retorna todas as tarefas do usuário logado e ordena por data de inicio
-	$sql = mysql_query("Select * From tasks Where userId = $userId Order By dataInicio");
+	$sql = mysql_query("Select 
+							id,
+							taskName,
+							`desc`,
+							CONCAT( DAY( dataInicio ) ,  '/', MONTH( dataInicio ) ,  '/', YEAR( dataInicio ) ) As dataInicio,
+							CONCAT( DAY( dataFim ) ,  '/', MONTH( dataFim ) ,  '/', YEAR( dataFim ) ) As dataFim,
+							horaInicio,
+							minutoInicio,
+							horaFim,
+							minutoFim,
+							userId,
+							taskStatus
+						From 
+							tasks 
+						Where 
+							userId = $userId 
+						Order By 
+							YEAR( dataInicio ),
+                            MONTH( dataInicio ),
+							DAY( dataInicio )
+                    	");
 
 	$rows = array();
 
