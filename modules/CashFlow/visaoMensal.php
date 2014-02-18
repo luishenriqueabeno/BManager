@@ -12,10 +12,10 @@
 		<meta charset = "utf-8">
 
 		<!-- CSS -->
-		<link type="text/css" rel="stylesheet" href="modules/CashFlow/resources/css/visaoMensal.min.css">
+		<link type="text/css" rel="stylesheet" href="modules/CashFlow/resources/css/visaoMensal.css">
 
 		<!-- Scripts -->
-		<script src = "modules/CashFlow/resources/js/visaoMensal.min.js" type = "text/javascript"></script>
+		<script src = "modules/CashFlow/resources/js/visaoMensal.js" type = "text/javascript"></script>
 
 	</head>
 	<body>
@@ -33,6 +33,7 @@
 					<label for = "expenseCategory"> Categoria </label>
 					<select name = "expenseCategory">
 						<option value = ""> Selecione uma categoria </option>
+						<option value = "0"> Cadastrar sem categoria </option>
 					</select>
 					<div class = "formAddExpenseSeparator">
 						<div class="ui-dialog-buttonset">
@@ -57,6 +58,7 @@
 					<label for = "incomeCategory"> Categoria </label>
 					<select name = "incomeCategory">
 						<option value = ""> Selecione uma categoria </option>
+						<option value = "0"> Cadastrar sem categoria </option>
 					</select>
 					<div class = "formAddIncomeSeparator">
 						<div class="ui-dialog-buttonset">

@@ -16,7 +16,7 @@
 		<link type="text/css" rel="stylesheet" href="modules/CashFlow/resources/css/visaoReceitas.min.css">
 
 		<!-- Scripts -->
-		<script src = "modules/CashFlow/resources/js/visaoReceitas.min.js" type = "text/javascript"></script>
+		<script src = "modules/CashFlow/resources/js/visaoReceitas.js" type = "text/javascript"></script>
 
 	</head>
 	<body>
@@ -34,6 +34,7 @@
 				<label for = "incomeCategory"> Categoria </label>
 				<select name = "incomeCategory">
 					<option value = ""> Selecione uma categoria </option>
+					<option value = "0"> Cadastrar sem categoria </option>
 				</select>
 				<div class = "formAddIncomeSeparator">
 					<div class="ui-dialog-buttonset">

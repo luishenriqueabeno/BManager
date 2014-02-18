@@ -206,6 +206,10 @@ $(document).ready(function(){
 						$('.categoryMsgSuccess').show();
 						$('.displayError').hide();
 
+						//Limpa formulário
+						$('#formAddCategory')[0].reset();
+						$('#txtCategoryName').removeClass("greenBorder");
+					
 						reloadCategoriesTable();
 					}
 				}

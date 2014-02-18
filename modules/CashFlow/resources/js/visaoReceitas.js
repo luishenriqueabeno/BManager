@@ -63,8 +63,9 @@ $(document).ready(function(){
 		$('.incomeAddSuccess').hide();
 		$('.displayError').hide();
 
-		//Remove borda que identifica campos a serem corrigidos
+		//Remove borda que identifica campos a serem corrigidos e campos ok
 		$('#txtIncomeName').removeClass("redBorder");
+		$('#txtIncomeName').removeClass("greenBorder");
 
 		//Exibe modal
 		$( "#addIncomeForm" ).dialog({
@@ -224,6 +225,32 @@ $(document).ready(function(){
 		});
 	});
 
+	//Valida campo com o nome da receita enquanto digita
+	$('#txtIncomeName').keyup(function(){
+		if($(this).val() == ''){
+			//Adiciona classe para destacar campo com problema
+			$(this).removeClass("greenBorder");
+			$(this).addClass("redBorder");
+		} else {
+			//Adiciona classe para destacar campo sem problema
+			$(this).addClass("greenBorder");
+			$(this).removeClass("redBorder");
+		}
+	});
+
+	//Valida campo com o nome da receita ao perder foco
+	$('#txtIncomeName').focusout(function(){
+		if($(this).val() == ''){
+			//Adiciona classe para destacar campo com problema
+			$(this).removeClass("greenBorder");
+			$(this).addClass("redBorder");
+		} else {
+			//Adiciona classe para destacar campo sem problema
+			$(this).addClass("greenBorder");
+			$(this).removeClass("redBorder");
+		}
+	});
+
 	//Adiciona receita no banco
 	$('#btnAddIncome').on('click', function(){
 		//Carrega dados dos campos
@@ -232,16 +259,20 @@ $(document).ready(function(){
 		var incomeValue = $('#txtIncomeValue').val();
 		var category = $('select[name=incomeCategory]').find(":selected").val();
 
-		//Valida se o nome da receita é nulo
-		if(incomeName == ''){
-			//Adiciona uma classe para identificar que o campo possui algum problema
-			$('#txtIncomeName').addClass("redBorder");
-
+		//Caso o nome da despesa esteja em branco
+		if($('#txtIncomeName').hasClass('redBorder')){
 			//Esconde mensagem de sucesso
 			$('.incomeAddSuccess').hide();
 
 			//Exibe mensagem de erro
 			$('.displayError').show();
+		} else if(category == ''){
+			alert("Favor informe ao menos uma categoria");
+			//Esconde mensagem de sucesso
+			$('.incomeAddSuccess').hide();
+
+			//Esconde mensagem de erro
+			$('.displayError').hide();
 		} else {
 			//Adiciono receita
 			$.ajax({
@@ -255,6 +286,10 @@ $(document).ready(function(){
 					category: category
 				},
 				success: function (data){
+					//Limpa formulário
+					$('#formAddIncome')[0].reset();
+					$('#txtIncomeName').removeClass("greenBorder");
+					
 					if(data == 1){
 						//Exibe mensagem de sucesso
 						$('.incomeAddSuccess').show();

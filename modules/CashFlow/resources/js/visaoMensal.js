@@ -103,8 +103,9 @@ $(document).ready(function(){
 		$('.expenseAddSuccess').hide();
 		$('.displayError').hide();
 
-		//Remove classe que destaca campos a serem corrigido
+		//Remove classe que destaca campos a serem corrigidos ou que estão ok
 		$('#txtExpenseName').removeClass("redBorder");
+		$('#txtExpenseName').removeClass("greenBorder");
 
 		//Exibe modal
 		$( "#addExpenseForm" ).dialog({
@@ -123,8 +124,9 @@ $(document).ready(function(){
 		$('.incomeAddSuccess').hide();
 		$('.displayError').hide();
 
-		//Remove classe que destaca campos a serem corrigido
+		//Remove classe que destaca campos a serem corrigidos ou que estão ok
 		$('#txtIncomeName').removeClass("redBorder");
+		$('#txtIncomeName').removeClass("greenBorder");
 
 		//Exibe modal
 		$( "#addIncomeForm" ).dialog({
@@ -429,6 +431,58 @@ $(document).ready(function(){
 		});
 	}
 
+	//Valida campo com o nome da despesa enquanto digita
+	$('#txtExpenseName').keyup(function(){
+		if($(this).val() == ''){
+			//Adiciona classe para destacar campo com problema
+			$(this).removeClass("greenBorder");
+			$(this).addClass("redBorder");
+		} else {
+			//Adiciona classe para destacar campo sem problema
+			$(this).addClass("greenBorder");
+			$(this).removeClass("redBorder");
+		}
+	});
+
+	//Valida campo com o nome da despesa ao perder foco
+	$('#txtExpenseName').focusout(function(){
+		if($(this).val() == ''){
+			//Adiciona classe para destacar campo com problema
+			$(this).removeClass("greenBorder");
+			$(this).addClass("redBorder");
+		} else {
+			//Adiciona classe para destacar campo sem problema
+			$(this).addClass("greenBorder");
+			$(this).removeClass("redBorder");
+		}
+	});
+
+	//Valida campo com o nome da receita enquanto digita
+	$('#txtIncomeName').keyup(function(){
+		if($(this).val() == ''){
+			//Adiciona classe para destacar campo com problema
+			$(this).removeClass("greenBorder");
+			$(this).addClass("redBorder");
+		} else {
+			//Adiciona classe para destacar campo sem problema
+			$(this).addClass("greenBorder");
+			$(this).removeClass("redBorder");
+		}
+	});
+
+	//Valida campo com o nome da receita ao perder foco
+	$('#txtIncomeName').focusout(function(){
+		if($(this).val() == ''){
+			//Adiciona classe para destacar campo com problema
+			$(this).removeClass("greenBorder");
+			$(this).addClass("redBorder");
+		} else {
+			//Adiciona classe para destacar campo sem problema
+			$(this).addClass("greenBorder");
+			$(this).removeClass("redBorder");
+		}
+	});
+
 	//Adiciona despesa no banco
 	$('#btnAddExpense').on('click', function(){
 		//Carrega dados dos campos
@@ -438,15 +492,19 @@ $(document).ready(function(){
 		var category = $('select[name=expenseCategory]').find(":selected").val();
 
 		//Caso o nome da despesa esteja em branco
-		if(expenseName == ''){
-			//Adiciona classe para destacar campo com problema
-			$('#txtExpenseName').addClass("redBorder");
-
+		if($('#txtExpenseName').hasClass('redBorder')){
 			//Esconde mensagem de sucesso
 			$('.expenseAddSuccess').hide();
 
 			//Exibe mensagem de erro
 			$('.displayError').show();
+		} else if(category == ''){
+			alert("Favor informe ao menos uma categoria");
+			//Esconde mensagem de sucesso
+			$('.expenseAddSuccess').hide();
+
+			//Esconde mensagem de erro
+			$('.displayError').hide();
 		} else {
 			//Adiciona despesa no banco
 			$.ajax({
@@ -461,6 +519,10 @@ $(document).ready(function(){
 				},
 				success: function (data){
 					if(data == 1){
+						//Limpa formulário
+						$('#formAddExpense')[0].reset();
+						$('#txtExpenseName').removeClass("greenBorder");
+
 						//Exibe mensagem de sucesso
 						$('.expenseAddSuccess').show();
 
@@ -493,6 +555,13 @@ $(document).ready(function(){
 
 			//Exibe mensagem de erro
 			$('.displayError').show();
+		} else if(category == ''){
+			alert("Favor informe ao menos uma categoria");
+			//Esconde mensagem de sucesso
+			$('.incomeAddSuccess').hide();
+
+			//Esconde mensagem de erro
+			$('.displayError').hide();
 		} else {
 			//Adiciona receitas
 			$.ajax({
@@ -506,6 +575,10 @@ $(document).ready(function(){
 					category: category
 				},
 				success: function (data){
+					//Limpa formulário
+					$('#formAddIncome')[0].reset();
+					$('#txtIncomeName').removeClass("greenBorder");
+
 					if(data == 1){
 						//Exibe mensagem de sucesso
 						$('.incomeAddSuccess').show();

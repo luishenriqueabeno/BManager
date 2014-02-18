@@ -64,8 +64,9 @@ $(document).ready(function(){
 		$('.expenseAddSuccess').hide();
 		$('.displayError').hide();
 
-		//Remove borda que identifica campos a serem corrigidos
+		//Remove borda que identifica campos a serem corrigidos e campos ok
 		$('#txtExpenseName').removeClass("redBorder");
+		$('#txtExpenseName').removeClass("greenBorder");
 
 		//Exibe modal
 		$( "#addExpenseForm" ).dialog({
@@ -222,6 +223,32 @@ $(document).ready(function(){
 			}
 		});
 	});
+
+	//Valida campo com o nome da despesa enquanto digita
+	$('#txtExpenseName').keyup(function(){
+		if($(this).val() == ''){
+			//Adiciona classe para destacar campo com problema
+			$(this).removeClass("greenBorder");
+			$(this).addClass("redBorder");
+		} else {
+			//Adiciona classe para destacar campo sem problema
+			$(this).addClass("greenBorder");
+			$(this).removeClass("redBorder");
+		}
+	});
+
+	//Valida campo com o nome da despesa ao perder foco
+	$('#txtExpenseName').focusout(function(){
+		if($(this).val() == ''){
+			//Adiciona classe para destacar campo com problema
+			$(this).removeClass("greenBorder");
+			$(this).addClass("redBorder");
+		} else {
+			//Adiciona classe para destacar campo sem problema
+			$(this).addClass("greenBorder");
+			$(this).removeClass("redBorder");
+		}
+	});
 	
 	//Adiciona despesa no banco
 	$('#btnAddExpense').on('click', function(){
@@ -231,16 +258,20 @@ $(document).ready(function(){
 		var expenseValue = $('#txtExpenseValue').val();
 		var category = $('select[name=expenseCategory]').find(":selected").val();
 
-		//Valida se o nome da despesa é nulo
-		if(expenseName == ''){
-			//Adiciona uma classe para identificar que o campo possui algum problema
-			$('#txtExpenseName').addClass("redBorder");
-
+		//Caso o nome da despesa esteja em branco
+		if($('#txtExpenseName').hasClass('redBorder')){
 			//Esconde mensagem de sucesso
 			$('.expenseAddSuccess').hide();
 
 			//Exibe mensagem de erro
 			$('.displayError').show();
+		} else if(category == ''){
+			alert("Favor informe ao menos uma categoria");
+			//Esconde mensagem de sucesso
+			$('.expenseAddSuccess').hide();
+
+			//Esconde mensagem de erro
+			$('.displayError').hide();
 		} else {
 			//Adiciono despesa
 			$.ajax({
@@ -254,6 +285,10 @@ $(document).ready(function(){
 					category: category
 				},
 				success: function (data){
+					//Limpa formulário
+					$('#formAddExpense')[0].reset();
+					$('#txtExpenseName').removeClass("greenBorder");
+
 					if(data == 1){
 						//Exibe mensagem de sucesso
 						$('.expenseAddSuccess').show();
