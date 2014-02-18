@@ -44,7 +44,12 @@
 #deleteDialog{
 	height:auto !important;
 }
-
+#listCategoriesIncomes tr:not(:last-child):hover{
+	background-color:#CCC !important;
+}
+#listCategoriesExpenses tr:not(:last-child):hover{
+	background-color:#CCC !important;
+}
 /***********************
 *		Loader			*
 ************************/

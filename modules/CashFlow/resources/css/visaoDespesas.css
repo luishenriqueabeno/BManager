@@ -241,3 +241,6 @@
 	border-right-color:#000 !important;
 	font-weight:bold !important;
 }
+#listExpenses tr:not(:last-child):hover{
+	background-color:#CCC !important;
+}

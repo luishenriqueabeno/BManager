@@ -240,3 +240,6 @@
 	border-right-color:#000 !important;
 	font-weight:bold !important;
 }
+#listIncomes tr:not(:last-child):hover{
+	background-color:#CCC !important;
+}
