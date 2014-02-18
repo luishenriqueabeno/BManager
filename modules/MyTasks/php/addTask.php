@@ -13,13 +13,14 @@
 	$horaFim = $_POST['horaFim'];
 	$minutoFim = $_POST['minutoFim'];
 
+	
 	//Trata data para inserir no banco
 	$DFm = explode("/",$dataInicio);
 	$dataInicioTratada = $DFm[2].'-'.$DFm[1].'-'.$DFm[0];
 
 	$DFm2 = explode("/",$dataFim);
 	$dataFimTratada = $DFm2[2].'-'.$DFm2[1].'-'.$DFm2[0];
-	 
+
 
 	//Caso a tarefa id venha preenchido, é feito um update da tarefa
 	if($taskId != ''){
