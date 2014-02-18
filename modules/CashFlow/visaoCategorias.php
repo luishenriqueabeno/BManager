@@ -17,7 +17,7 @@
 		<link type="text/css" rel="stylesheet" href="modules/CashFlow/resources/css/visaoCategorias.min.css">
 
 		<!-- Scripts -->
-		<script src = "modules/CashFlow/resources/js/visaoCategorias.js" type = "text/javascript"></script>
+		<script src = "modules/CashFlow/resources/js/visaoCategorias.min.js" type = "text/javascript"></script>
 
 	</head>
 	<body>
