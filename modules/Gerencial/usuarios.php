@@ -14,7 +14,7 @@
 		<meta charset = "utf-8">
 
 		<!-- CSS -->
-		<link type="text/css" rel="stylesheet" href="modules/Gerencial/resources/css/style.css">
+		<link type="text/css" rel="stylesheet" href="modules/Gerencial/resources/css/usuarios.css">
 
 		<!-- Scripts -->
 		<script src = "modules/Gerencial/resources/js/usuarios.js" type = "text/javascript"></script>

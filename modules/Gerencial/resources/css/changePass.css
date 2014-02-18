@@ -1,0 +1,65 @@
+/***********************
+*		Padrões			*
+************************/
+.greenBorder{
+	border: solid 2px green !important;;
+}
+.redBorder{
+	border: solid 2px red !important;
+}
+
+/***********************
+*		Form			*
+************************/
+.centerForm{
+	width:450px;
+	height:200px;
+	margin:0 auto;
+	margin-top:80px;
+	border:1px #CCC solid;
+}
+label{
+	width: 250px;
+}
+input {
+	width: 100%;	
+}
+#formChangePass{
+	padding:5px;
+}
+.formChangePassSeparator{
+	margin-top:10px;
+	padding-top:10px;
+	width:100%;
+	float:left;
+	border-top-style: solid;
+	border-top-width: 1px;
+	border-top-color: #CCC;
+}
+.containerTitle {
+	background: -o-linear-gradient(bottom, #005fbf 5%, #003f7f 100%);
+	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #005fbf), color-stop(1, #003f7f) );
+	background: -moz-linear-gradient( center top, #005fbf 5%, #003f7f 100% );
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#005fbf", endColorstr="#003f7f");
+	background: -o-linear-gradient(top,#005fbf,003f7f);
+	background-color: #005fbf;
+	border: 0px solid #000000;
+	text-align: left;
+	border-width: 0px 0px 1px 1px;
+	font-size: 12px;
+	font-family: Arial;
+	font-weight: bold;
+	color: #ffffff;
+	line-height: 20px;
+}
+.senhaAtualMsg{
+	position: absolute;
+	margin-left: -130px;
+	color: red;	
+}
+.senhaNewMsg{
+	position: absolute;
+	margin-left: -130px;
+	color: red;	
+}
+

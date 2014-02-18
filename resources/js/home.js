@@ -72,4 +72,10 @@ $(document).ready(function(){
 		$('#contentMain').load('modules/Gerencial/usuarios.php');
 	});
 
+	//Adiciona o modulo gerencial de usuários para alterar senha
+	$("a[name=gerencialChangePass]").click(function () { 
+		$('#contentMain').empty();
+		$('#contentMain').load('modules/Gerencial/changePass.php');
+	});
+
 })

@@ -7,7 +7,7 @@
 	$checkUserLic = mysql_query("Select firstName, lastName, productId, gender From users Where email = '$username'");
 	$res = mysql_fetch_object($checkUserLic);
 
-	$sqlPrivileges = mysql_query("Select usertype From `users` Where email = '$username'");
+	$sqlPrivileges = mysql_query("Select usertype, productId From `users` Where email = '$username'");
 	$resPrivileges = mysql_fetch_object($sqlPrivileges);
 
 	$userId = $_SESSION['userId'];
@@ -31,7 +31,7 @@
 		<!-- Scripts -->
 		<script src = "lib/jquery-1.10.2/jquery-1.10.2.min.js" type = "text/javascript"></script>
 		<script src = "lib/maskMoney/maskMoney.min.js" type = "text/javascript"></script>
-		<script src="resources/js/home.min.js"></script>
+		<script src="resources/js/home.js"></script>
 		<script src="lib/jquery-ui-1.10.3/ui/minified/jquery-ui.min.js"></script>
 		<script src="lib/bootstrap-3.0/js/bootstrap.min.js"></script>
 	</head>
@@ -94,9 +94,10 @@
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Gerencial <b class="caret"></b></a>
 								<ul class="dropdown-menu">
 									<!-- Apenas o usuário master tem acesso -->
-									<?php if ($resPrivileges->usertype == '1'){ ?>
+									<?php if ($resPrivileges->usertype == '1' && $resPrivileges->productId != 1){ ?>
 										<li><a href="#" name = "gerencialUsuarios"> Usuários </a></li>
 									<?php } ?>
+									<li><a href="#" name = "gerencialChangePass"> Alterar senha </a></li>
 								</ul>
 							</li>
 						</ul>
