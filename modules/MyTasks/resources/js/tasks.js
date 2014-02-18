@@ -54,16 +54,8 @@ $(document).ready(function(){
 	****************************/
 
 	//Para qualquer requisição ajax é adicionado um loader na página
-	$( document ).ajaxStart(function() {
-		var onEdit = true;
-
-		if(onEdit == false){
-			//Exibe o loader até que a requisição seja concluída
-			$('.loader').show();
-		} else {
-			//Exibe o loader até que a requisição seja concluída
-			$('.loader').hide();
-		}
+	$('#listActiveTasks, #listDoneTasks').ajaxStart(function() {
+		$('.loader').show();
 	});
 	$( document ).ajaxStop(function() {
 		//Ao terminar uma requisição o loader é escondido
