@@ -48,7 +48,7 @@ $(document).ready(function(){
       	changeMonth: true,
       	changeYear: true
     });
-	
+
 	/***************************
 	*	 Inicio das funções 	*
 	****************************/
@@ -342,7 +342,7 @@ $(document).ready(function(){
 		var minutoInicio = $('#minutoInicio');
 		var horaFim = $('#horaFim');
 		var minutoFim = $('#minutoFim');
-    	
+
     	//Envia id da tarefa
     	$.ajax({
     		url: 'modules/MyTasks/php/editaTarefa.php',
@@ -350,7 +350,6 @@ $(document).ready(function(){
     		data:{ taskId: taskId },
     		success: function(data){
     			var task = $.parseJSON(data);
-    			var onEdit = false;
 
     			//Altera texto do botão
     			$('#btnAddTask span').html('Gravar');

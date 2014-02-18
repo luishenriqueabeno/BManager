@@ -40,12 +40,12 @@
 	//Verifica se existem despesas para as categorias selecionadas
 	if($rowsExpenses > 0){
 		//Deleta as despesas uma vez que a categoria não existe mais
-		$deleteExpensesCategory = mysql_query("Delete From cashflowexpenses Where categoryId In ($finalIdArr) ");
+		$updateExpensesCategory = mysql_query("Update cashflowexpenses Set categoryId = 0 Where categoryId In ($finalIdArr) ");
 	}
 
 	if($rowsIncomes > 0){
 		//Deleta as receitas uma vez que a categoria não existe mais
-		$deleteIncomesCategory = mysql_query("Delete From cashflowincome Where categoryId In ($finalIdArr) ");
+		$deleteIncomesCategory = mysql_query("Update cashflowincome Set categoryId = 0 Where categoryId In ($finalIdArr)");
 	}
 
 ?>

@@ -46,7 +46,9 @@
 		<!-- Dialogs -->
 		<div id="deleteDialog" title="Remover categorias(s)">
 			<p>
-				Esta(s) categorias(s) e todas as receitas/despesas associadas a ela será(ão) excluida(s) permanetemente, tem certeza que deseja prosseguir?
+				Atenção!<br>
+				Todas as categorias selecionadas serão removidas. Todas as despesas/receitas a elas associadas ficarão sem categoria. <br>
+				Deseja prosseguir?
 			</p>
 		</div>
 	
