@@ -56,7 +56,7 @@ $(document).ready(function(){
 	//Para qualquer requisição ajax é adicionado um loader na página
 	$( document ).ajaxStart(function() {
 		//Exibe o loader até que a requisição seja concluída
-		$('.loader').hide();
+		$('.loader').show();
 	});
 	$( document ).ajaxStop(function() {
 		//Ao terminar uma requisição o loader é escondido
