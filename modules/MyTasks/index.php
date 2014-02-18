@@ -11,7 +11,7 @@
 		<link type="text/css" rel="stylesheet" href="modules/MyTasks/resources/css/style.min.css">
 
 		<!-- Scripts -->
-		<script src = "modules/MyTasks/resources/js/tasks.js" type = "text/javascript"></script>
+		<script src = "modules/MyTasks/resources/js/tasks.min.js" type = "text/javascript"></script>
 
 	</head>
 	<body>
