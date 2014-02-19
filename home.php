@@ -112,6 +112,7 @@
 				Grafico Saldo Total <br>
 				Grafico Receitas x Despesas <br>
 				5 tarefas mais proximas a data de conclusão <br>
+				Faturamento <br>
 			</div>
 
 			<div class = "homeInfos"> 
