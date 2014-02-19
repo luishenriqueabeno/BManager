@@ -72,7 +72,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="#"> Home </a>
+						<a class="navbar-brand" name = "homePage" href="home.php"> Home </a>
 					</div>
 
 					<!-- Collect the nav links, forms, and other content for toggling -->
@@ -107,6 +107,20 @@
 
 		<input type = "hidden" value = "<?php echo $userId; ?>" name = "userId">
 
-		<div id = "contentMain"> </div>
+		<div id = "contentMain">
+			<div class = "homeGraficos">
+				Grafico Saldo Total <br>
+				Grafico Receitas x Despesas <br>
+				5 tarefas mais proximas a data de conclusão <br>
+			</div>
+
+			<div class = "homeInfos"> 
+				<div class = "toggleButton"> T </div>
+				<div class = "homeInfosTitle"> <h3> Noticias </div>
+				<div class = "homeInfosText"> 
+					19/02/2014 - Agora é possível trocar sua senha!
+				</div>
+			</div>
+		</div>
 	</body>
 </html>

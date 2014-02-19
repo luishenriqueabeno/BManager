@@ -78,6 +78,47 @@ $(document).ready(function(){
 		}
 	});
 
+	//Envia formulário para alterar senha
+	$('#btnChangePass').on('click', function(){
+		var actualPass = $('#actualPass').val();
+		var newPass = $('#newPass').val();
+
+		//Verifico se os campos de senha foram preenchidos corretamente
+		if($('#actualPass').hasClass('redBorder') || $('#newPass').hasClass('redBorder')){
+			$('.message').html('Favor corrija os campos destacados');
+			$('.message').css('color', 'red');
+		} else {
+			//Envio via ajax os dados para trocar a senha
+			$.ajax({
+				url: 'modules/Gerencial/php/changePass.php',
+				type: 'POST',
+				data:{
+					userId: userId,
+					actualPass: actualPass,
+					newPass: newPass
+				},
+				success: function(data){
+					//Verifica retorno do back end
+					if(data == 1){
+						//Mostra mensagem dizendo que ocorreu tudo certo
+						$('.message').html('Senha alterada com sucesso');
+						$('.message').css('color', 'green');
+					} else {
+						//Mostra mensagem de erro informando que a senha atual difere do que esta cadastrado no banco
+						//retorna o foco no campo e adiciona estilo para destaca-lo
+						$('#actualPass').focus();
+						$('.message').html('Senha atual inválida');
+						$('.message').css('color', 'red');
+						$('#actualPass').removeClass('greenBorder');
+						$('#actualPass').addClass('redBorder');
+					}
+				}
+			})
+		}
+
+		
+	})
+
 	
 
 });

@@ -62,4 +62,13 @@ input {
 	margin-left: -130px;
 	color: red;	
 }
-
+.senhaNewMsg{
+	position: absolute;
+	margin-left: -130px;
+	color: red;	
+}
+.message{
+	color:red;
+	text-align:center;
+	font-weight:bold;
+}
