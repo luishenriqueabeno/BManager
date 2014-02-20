@@ -33,6 +33,7 @@ $(document).ready(function(){
 	* Inicio das funções 
 	****************************/
 	$( document ).ajaxStart(function() {
+		userList.hide();
 		$('.loader').show();
 	});
 	$( document ).ajaxStop(function() {
