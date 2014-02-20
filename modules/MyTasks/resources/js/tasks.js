@@ -55,6 +55,9 @@ $(document).ready(function(){
 
 	//Para qualquer requisição ajax é adicionado um loader na página
 	$( document ).ajaxStart(function() {
+		//Esconde tarefas sempre que houver uma requisição ajax
+		taskList.hide();
+
 		//Exibe o loader até que a requisição seja concluída
 		$('.loader').show();
 	});
