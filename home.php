@@ -151,6 +151,7 @@
 
 		<input type = "hidden" value = "<?php echo $userId; ?>" name = "userId">
 
+		<!-- Graficos -->
 		<div id = "contentMain">
 			<div class = "homeGraficos">
 				Grafico Saldo Total <br>
@@ -159,6 +160,7 @@
 				Faturamento <br>
 			</div>
 
+			<!-- Area de noticias -->
 			<div class = "homeInfos"> 
 				<div class = "toggleButton"> T </div>
 				<div class = "homeInfosTitle"> <h3> Noticias </div>

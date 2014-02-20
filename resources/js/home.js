@@ -36,6 +36,34 @@ $(document).ready(function(){
 		$(this).addClass('active');
 	})
 
+	//Minimiza area de noticias
+	$('.toggleButton').on('click', function(){
+		//Esconde conteudo do container de noticias
+		$('.homeInfosTitle').css('display', 'none');
+		$('.homeInfosText').css('display', 'none');
+
+		//Reduz altura para que o container fique no canto inferior da página
+		$('.homeInfos').css('height', '30px');
+
+		//Adiciona classe para informar que o conteudo foi minimizado
+		$(this).removeClass('totoggleButtonggle');
+		$(this).addClass('toggle');
+	});
+
+	//Expande area de noticias
+	$('.toggle').on('click', function(){
+		alert("OK");
+		//Exibe conteudo do container de noticias
+		$('.homeInfosTitle').css('display', 'block');
+		$('.homeInfosText').css('display', 'block');
+
+		//Aumenta altura para exibir o container
+		$('.homeInfos').css('height', '250px');
+
+		//Remove classe usada para informar que o conteúdo foi minimizado
+		$('.homeInfos').removeClass('toggle');
+	});
+
 	//Adiciona o modulo de tarefas a página
 	$("a[name=modulesTasks]").click(function () { 
 		$('#contentMain').empty();
