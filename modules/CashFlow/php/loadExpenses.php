@@ -8,7 +8,7 @@
 	if($baseUrl == 'http://localhost/'){
 		$baseUrl = "http://" . $_SERVER['SERVER_NAME'] . '/';
 	} else {
-		$baseUrl = "http://" . $_SERVER['SERVER_NAME'] . '/trabalhos/2014/Projeto%20-%20Daily%20Helper/';
+		$baseUrl = "http://" . $_SERVER['SERVER_NAME'] . '/trabalhos/2014/Projeto%20-%20Daily%20Helper/DailyHelper/';
 	}
 
 	//Suprime warnings
@@ -38,7 +38,7 @@
 	while($resExpenseList = mysql_fetch_object($expenseList)){
 		//Imprime despesas para cada mês
 		echo "<tr class = 'tableRow' id = ". 'expense_' .$resExpenseList->id .">";
-			echo "<td class = 'expenseTitle' title = ".str_replace(' ', '_', $resExpenseList->expenseName).">". ((($resExpenseList->categoryId) == '0') ? " <img src = '". $baseUrl . 'dailyhelper/modules/CashFlow/resources/images/alert.png' ."' title = 'Não há categoria associada'> " : " ") . $resExpenseList->expenseName ."</td>";
+			echo "<td class = 'expenseTitle' title = ".str_replace(' ', '_', $resExpenseList->expenseName).">". ((($resExpenseList->categoryId) == '0') ? " <img src = '". $baseUrl . 'DailyHelper/modules/CashFlow/resources/images/alert.png' ."' title = 'Não há categoria associada'> " : " ") . $resExpenseList->expenseName ."</td>";
 			echo "<td class = 'jan'>". 'R$ ' . number_format($resExpenseList->jan,2,",",".") ."</td>";
 			echo "<td class = 'fev'>". 'R$ ' . number_format($resExpenseList->fev,2,",",".") ."</td>";
 			echo "<td class = 'mar'>". 'R$ ' . number_format($resExpenseList->mar,2,",",".") ."</td>";
