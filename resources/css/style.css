@@ -59,9 +59,19 @@ a:visited{
 }
 .arrowUp{
 	background:url('../images/arrowUp.png') center center no-repeat;
+	position: absolute;	
+	bottom:-3px;
+	width: 100px;
+	left: 50%;
+	margin-left: -50px;
 }
 .arrowDown{
 	background:url('../images/arrowDown.png') center center no-repeat;
+	position: absolute;	
+	margin-top: -8px;
+	width: 100px;
+	left: 50%;
+	margin-left: -50px;
 }
 
 /************************
@@ -185,6 +195,19 @@ a:visited{
 *************************/
 #contentMainArea{
 	border:solid;
+}
+
+/************************
+*	 Grafico Saldo	     *
+*************************/
+.containerSaldo{
+	padding:10px;
+	border-top: 3px solid #d8e9fb;
+	border-bottom: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	width:660px;
+	height:300px;
 }
 
 /************************

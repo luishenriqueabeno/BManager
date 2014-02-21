@@ -151,10 +151,10 @@
 
 		<input type = "hidden" value = "<?php echo $userId; ?>" name = "userId">
 
-		<!-- Graficos -->
 		<div id = "contentMain">
+			<!-- Area graficos -->
 			<div class = "homeGraficos">
-				Grafico Saldo Total <br>
+				<div class = "containerSaldo" id = "saldoChart"> </div>
 				Grafico Receitas x Despesas <br>
 				5 tarefas mais proximas a data de conclusão <br>
 				Faturamento <br>
@@ -169,5 +169,107 @@
 				</div>
 			</div>
 		</div>
+
+		<!-- Google charts -->
+		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	    <script type="text/javascript">
+	    	//User id
+	    	var userId = $('input[name=userId]').val();
+
+	    	//Grafico saldo/mes
+			google.load("visualization", "1", {packages:["corechart"]});
+
+			//Carregra grafico movimentação/mês
+			google.setOnLoadCallback(drawChartMovimentacao);
+
+			//Função para carregar grafico com movimentação/mês
+			function drawChartMovimentacao() {
+				//Armazeno tipo de relatório
+				var type = "movimentacaoChart";
+
+				//Envio ajax com os dados do usuário para retornar os dados do grafico
+				$.ajax({
+					url: 'php/charts.php',
+					type: 'POST',
+					data: {
+						userId: userId,
+						type: type
+					},
+					success: function(data){
+						var json = $.parseJSON(data);	
+						console.log(json);					
+
+						//Converte despesas para float
+						var DespesasJan = parseFloat(json[0].DespesasJan);
+						var DespesasFev = parseFloat(json[0].DespesasFev);
+						var DespesasMar = parseFloat(json[0].DespesasMar);
+						var DespesasAbr = parseFloat(json[0].DespesasAbr);
+						var DespesasMai = parseFloat(json[0].DespesasMai);
+						var DespesasJun = parseFloat(json[0].DespesasJun);
+						var DespesasJul = parseFloat(json[0].DespesasJul);
+						var DespesasAgo = parseFloat(json[0].DespesasAgo);
+						var DespesasSet = parseFloat(json[0].DespesasSet);
+						var DespesasOut = parseFloat(json[0].DespesasOut);
+						var DespesasNov = parseFloat(json[0].DespesasNov);
+						var DespesasDez = parseFloat(json[0].DespesasDez);
+
+						//Converte receitas para float
+						var ReceitasJan = parseFloat(json[1].ReceitasJan);
+						var ReceitasFev = parseFloat(json[1].ReceitasFev);
+						var ReceitasMar = parseFloat(json[1].ReceitasMar);
+						var ReceitasAbr = parseFloat(json[1].ReceitasAbr);
+						var ReceitasMai = parseFloat(json[1].ReceitasMai);
+						var ReceitasJun = parseFloat(json[1].ReceitasJun);
+						var ReceitasJul = parseFloat(json[1].ReceitasJul);
+						var ReceitasAgo = parseFloat(json[1].ReceitasAgo);
+						var ReceitasSet = parseFloat(json[1].ReceitasSet);
+						var ReceitasOut = parseFloat(json[1].ReceitasOut);
+						var ReceitasNov = parseFloat(json[1].ReceitasNov);
+						var ReceitasDez = parseFloat(json[1].ReceitasDez);
+
+						//Converte saldos para float
+						var SaldoJan = parseFloat(json[2].SaldoJan);
+						var SaldoFev = parseFloat(json[2].SaldoFev);
+						var SaldoMar = parseFloat(json[2].SaldoMar);
+						var SaldoAbr = parseFloat(json[2].SaldoAbr);
+						var SaldoMai = parseFloat(json[2].SaldoMai);
+						var SaldoJun = parseFloat(json[2].SaldoJun);
+						var SaldoJul = parseFloat(json[2].SaldoJul);
+						var SaldoAgo = parseFloat(json[2].SaldoAgo);
+						var SaldoSet = parseFloat(json[2].SaldoSet);
+						var SaldoOut = parseFloat(json[2].SaldoOut);
+						var SaldoNov = parseFloat(json[2].SaldoNov);
+						var SaldoDez = parseFloat(json[2].SaldoDez);
+
+						//Dados do gráfico
+						var data = google.visualization.arrayToDataTable([
+							['Mes', 'Receitas', 'Despesas', 'Saldo'],
+							['Jan',  ReceitasJan, DespesasJan, SaldoJan],
+							['Fev',  ReceitasFev, DespesasFev, SaldoFev],
+							['Mar',  ReceitasMar, DespesasMar, SaldoMar],
+							['Abr',  ReceitasAbr, DespesasAbr, SaldoAbr],
+							['Mai',  ReceitasMai, DespesasMai, SaldoMai],
+							['Jun',  ReceitasJun, DespesasJun, SaldoJun],
+							['Jul',  ReceitasJul, DespesasJul, SaldoJul],
+							['Ago',  ReceitasAgo, DespesasAgo, SaldoAgo],
+							['Set',  ReceitasSet, DespesasSet, SaldoSet],
+							['Out',  ReceitasOut, DespesasOut, SaldoOut],
+							['Nov',  ReceitasNov, DespesasNov, SaldoNov],
+							['Dez',  ReceitasDez, DespesasDez, SaldoDez],
+						]);
+
+						var options = {
+							title: 'Movimentação/mês',
+							hAxis: {format: 'R$ #,###'},
+							vAxis: {format: 'R$ #,###'}
+						};
+
+						var chart = new google.visualization.LineChart(document.getElementById('saldoChart'));
+						chart.draw(data, options);
+
+					}
+				})
+			}
+	    </script>
 	</body>
 </html>
