@@ -1,6 +1,9 @@
 <?php
 	require("conn.php");
 
+	//Suprime warnings
+	error_reporting(E_ERROR | E_PARSE);
+
 	//Recebe dados
 	$userId = $_POST['userId'];
 	$type = $_POST['type'];
