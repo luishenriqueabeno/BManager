@@ -1,6 +1,16 @@
 <?php
 	require('../../../php/conn.php');
 
+	//Pega url base
+	$baseUrl = "http://" . $_SERVER['SERVER_NAME'] . '/';
+
+	//Verifica se é ambiente de produção ou desenvolvimento
+	if($baseUrl == 'http://localhost/'){
+		$baseUrl = "http://" . $_SERVER['SERVER_NAME'] . '/';
+	} else {
+		$baseUrl = "http://" . $_SERVER['SERVER_NAME'] . '/trabalhos/2014/Projeto%20-%20Daily%20Helper/';
+	}
+
 	//Suprime warnings
 	error_reporting(E_ERROR | E_PARSE);
 
@@ -31,7 +41,7 @@
 	while($resIncomeList = mysql_fetch_object($incomeList)){
 		//Imprime receitas para cada mês
 		echo "<tr class = 'tableRow' id = ". 'income_' . $resIncomeList->id .">";
-			echo "<td class = 'incomeTitle' title = ".str_replace(' ', '_', $resIncomeList->incomeName).">". ((($resIncomeList->categoryId) == '0') ? " <img src = '". $baseUrl . 'dailyhelper/modules/CashFlow/resources/images/alert.png' ."' title = 'Não há categoria associada'> " : " "). $resIncomeList->incomeName ."</td>";
+			echo "<td class = 'incomeTitle' title = ".str_replace(' ', '_', $resIncomeList->incomeName).">". ((($resIncomeList->categoryId) == '0') ? " <img src = '". $baseUrl . 'DailyHelper/modules/CashFlow/resources/images/alert.png' ."' title = 'Não há categoria associada'> " : " "). $resIncomeList->incomeName ."</td>";
 			echo "<td class = 'jan'>". 'R$ ' . number_format($resIncomeList->jan,2,",",".") ."</td>";
 			echo "<td class = 'fev'>". 'R$ ' . number_format($resIncomeList->fev,2,",",".") ."</td>";
 			echo "<td class = 'mar'>". 'R$ ' . number_format($resIncomeList->mar,2,",",".") ."</td>";
