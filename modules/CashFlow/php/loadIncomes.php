@@ -4,6 +4,9 @@
 	//Suprime warnings
 	error_reporting(E_ERROR | E_PARSE);
 
+	//Pega url base
+	$baseUrl = "http://" . $_SERVER['SERVER_NAME'] . '/';
+
 	//Recebe dados para carregar receitas
 	$ano = $_POST['ano'];
 	$userId = $_POST['userId'];
@@ -28,7 +31,7 @@
 	while($resIncomeList = mysql_fetch_object($incomeList)){
 		//Imprime receitas para cada mês
 		echo "<tr class = 'tableRow' id = ". 'income_' . $resIncomeList->id .">";
-			echo "<td class = 'incomeTitle' title = ".str_replace(' ', '_', $resIncomeList->incomeName).">". ((($resIncomeList->categoryId) == '0') ? " <img src = 'modules/cashFlow/resources/images/alert.png' title = 'Não há categoria associada'> " : " "). $resIncomeList->incomeName ."</td>";
+			echo "<td class = 'incomeTitle' title = ".str_replace(' ', '_', $resIncomeList->incomeName).">". ((($resIncomeList->categoryId) == '0') ? " <img src = '". $baseUrl . 'dailyhelper/modules/CashFlow/resources/images/alert.png' ."' title = 'Não há categoria associada'> " : " "). $resIncomeList->incomeName ."</td>";
 			echo "<td class = 'jan'>". 'R$ ' . number_format($resIncomeList->jan,2,",",".") ."</td>";
 			echo "<td class = 'fev'>". 'R$ ' . number_format($resIncomeList->fev,2,",",".") ."</td>";
 			echo "<td class = 'mar'>". 'R$ ' . number_format($resIncomeList->mar,2,",",".") ."</td>";
