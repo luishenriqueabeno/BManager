@@ -165,7 +165,8 @@
 				<div id = "noticeAreaToggle" class = "toggleButton arrowDown"> </div>
 				<div class = "homeInfosTitle"> <h3> Noticias </div>
 				<div class = "homeInfosText"> 
-					19/02/2014 - Agora é possível trocar sua senha!
+					19/02/2014 - Agora é possível trocar sua senha!<br>
+					21/02/2014 - Agora através de um gráfico, você terá uma visão geral de todas as suas movimentações (despesas, receitas e saldo)<br>
 				</div>
 			</div>
 			<!-- Google charts -->
