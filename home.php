@@ -162,7 +162,7 @@
 
 			<!-- Area de noticias -->
 			<div class = "homeInfos"> 
-				<div class = "toggleButton"> T </div>
+				<div id = "noticeAreaToggle" class = "toggleButton arrowDown"> </div>
 				<div class = "homeInfosTitle"> <h3> Noticias </div>
 				<div class = "homeInfosText"> 
 					19/02/2014 - Agora é possível trocar sua senha!

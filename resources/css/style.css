@@ -53,10 +53,15 @@ a:visited{
 .toggleButton{
 	width:100px;
 	height:30px;
-	border:solid;
 	margin:0 auto;
 	padding:0;
 	cursor:pointer;
+}
+.arrowUp{
+	background:url('../images/arrowUp.png') center center no-repeat;
+}
+.arrowDown{
+	background:url('../images/arrowDown.png') center center no-repeat;
 }
 
 /************************
