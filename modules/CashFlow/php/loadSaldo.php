@@ -1,8 +1,8 @@
 <?php
-	require('../../../php/conn.php');
-
 	//Suprime warnings
 	error_reporting(E_ERROR | E_PARSE);
+
+	require('../../../php/conn.php');
 
 	//Recebe dados para carregar categorias da natureza despesa
 	$ano = $_POST['ano'];
@@ -43,45 +43,52 @@
 	//Verifico se retornou registros
 	$rows = mysql_num_rows($saldoList);
 
+	//Variavel que recebe tabela, dessa forma não é necessário modificar o DOM
+	//a cada iteração
+	$table = "";
+
 	//Condição para imprimir valores de acordo com quantidade de registros retornados
 	if($rows <= 0){
 		//Caso não retorne nenhum registro, os valores exibidos serão iguais a '0,00'
 		//isso significa que não foi cadastrado um saldo
-		echo "<tr class = 'saldo tableRow' id = 'saldoMonths'>";
-			echo "<td> Saldo </td>";
-			echo "<td class = 'jan'> R$ 0,00 </td>";
-			echo "<td class = 'fev'> R$ 0,00 </td>";
-			echo "<td class = 'mar'> R$ 0,00 </td>";
-			echo "<td class = 'abr'> R$ 0,00 </td>";
-			echo "<td class = 'mai'> R$ 0,00 </td>";
-			echo "<td class = 'jun'> R$ 0,00 </td>";
-			echo "<td class = 'jul'> R$ 0,00 </td>";
-			echo "<td class = 'ago'> R$ 0,00 </td>";
-			echo "<td class = 'set'> R$ 0,00 </td>";
-			echo "<td class = 'out'> R$ 0,00 </td>";
-			echo "<td class = 'nov'> R$ 0,00 </td>";
-			echo "<td class = 'dez'> R$ 0,00 </td>";
-		echo "</tr>";
+		$table .= "	<tr class = 'saldo tableRow' id = 'saldoMonths'>
+						<td> Saldo </td>
+						<td class = 'jan'> R$ 0,00 </td>
+						<td class = 'fev'> R$ 0,00 </td>
+						<td class = 'mar'> R$ 0,00 </td>
+						<td class = 'abr'> R$ 0,00 </td>
+						<td class = 'mai'> R$ 0,00 </td>
+						<td class = 'jun'> R$ 0,00 </td>
+						<td class = 'jul'> R$ 0,00 </td>
+						<td class = 'ago'> R$ 0,00 </td>
+						<td class = 'set'> R$ 0,00 </td>
+						<td class = 'out'> R$ 0,00 </td>
+						<td class = 'nov'> R$ 0,00 </td>
+						<td class = 'dez'> R$ 0,00 </td>
+					</tr>";
 	} else {
 		//Itero resultados
 		while($resSaldoList = mysql_fetch_object($saldoList)){
 			//Imprime tabela com o valor do saldo
 			//Caso o saldo seja menor com zero o valor ficará vermelho, caso contrário, azul
-			echo "<tr class = 'saldo tableRow' id = 'saldoMonths'>";
-				echo "<td> Saldo </td>";
-				echo "<td class = 'jan ". (((number_format($resSaldoList->SaldoJan,2,",",".")) < 0) ? "redNum" : "blueNum") ."'>". 'R$ ' . number_format($resSaldoList->SaldoJan,2,",",".") ."</td>";
-				echo "<td class = 'fev ". (((number_format($resSaldoList->SaldoFev,2,",",".")) < 0) ? "redNum" : "blueNum") ."'>". 'R$ ' . number_format($resSaldoList->SaldoFev,2,",",".") ."</td>";
-				echo "<td class = 'mar ". (((number_format($resSaldoList->SaldoMar,2,",",".")) < 0) ? "redNum" : "blueNum") ."'>". 'R$ ' . number_format($resSaldoList->SaldoMar,2,",",".") ."</td>";
-				echo "<td class = 'abr ". (((number_format($resSaldoList->SaldoAbr,2,",",".")) < 0) ? "redNum" : "blueNum") ."'>". 'R$ ' . number_format($resSaldoList->SaldoAbr,2,",",".") ."</td>";
-				echo "<td class = 'mai ". (((number_format($resSaldoList->SaldoMai,2,",",".")) < 0) ? "redNum" : "blueNum") ."'>". 'R$ ' . number_format($resSaldoList->SaldoMai,2,",",".") ."</td>";
-				echo "<td class = 'jun ". (((number_format($resSaldoList->SaldoJun,2,",",".")) < 0) ? "redNum" : "blueNum") ."'>". 'R$ ' . number_format($resSaldoList->SaldoJun,2,",",".") ."</td>";
-				echo "<td class = 'jul ". (((number_format($resSaldoList->SaldoJul,2,",",".")) < 0) ? "redNum" : "blueNum") ."'>". 'R$ ' . number_format($resSaldoList->SaldoJul,2,",",".") ."</td>";
-				echo "<td class = 'ago ". (((number_format($resSaldoList->SaldoAgo,2,",",".")) < 0) ? "redNum" : "blueNum") ."'>". 'R$ ' . number_format($resSaldoList->SaldoAgo,2,",",".") ."</td>";
-				echo "<td class = 'set ". (((number_format($resSaldoList->SaldoSet,2,",",".")) < 0) ? "redNum" : "blueNum") ."'>". 'R$ ' . number_format($resSaldoList->SaldoSet,2,",",".") ."</td>";
-				echo "<td class = 'out ". (((number_format($resSaldoList->SaldoOut,2,",",".")) < 0) ? "redNum" : "blueNum") ."'>". 'R$ ' . number_format($resSaldoList->SaldoOut,2,",",".") ."</td>";
-				echo "<td class = 'nov ". (((number_format($resSaldoList->SaldoNov,2,",",".")) < 0) ? "redNum" : "blueNum") ."'>". 'R$ ' . number_format($resSaldoList->SaldoNov,2,",",".") ."</td>";
-				echo "<td class = 'dez ". (((number_format($resSaldoList->SaldoDez,2,",",".")) < 0) ? "redNum" : "blueNum") ."'>". 'R$ ' . number_format($resSaldoList->SaldoDez,2,",",".") ."</td>";
-			echo "</tr>";
+			$table .= "	<tr class = 'saldo tableRow' id = 'saldoMonths'>
+							<td> Saldo </td>
+							<td class = 'jan ". (((number_format($resSaldoList->SaldoJan,2,",",".")) < 0) ? "redNum" : "blueNum") ."'>". 'R$ ' . number_format($resSaldoList->SaldoJan,2,",",".") ."</td>
+							<td class = 'fev ". (((number_format($resSaldoList->SaldoFev,2,",",".")) < 0) ? "redNum" : "blueNum") ."'>". 'R$ ' . number_format($resSaldoList->SaldoFev,2,",",".") ."</td>
+							<td class = 'mar ". (((number_format($resSaldoList->SaldoMar,2,",",".")) < 0) ? "redNum" : "blueNum") ."'>". 'R$ ' . number_format($resSaldoList->SaldoMar,2,",",".") ."</td>
+							<td class = 'abr ". (((number_format($resSaldoList->SaldoAbr,2,",",".")) < 0) ? "redNum" : "blueNum") ."'>". 'R$ ' . number_format($resSaldoList->SaldoAbr,2,",",".") ."</td>
+							<td class = 'mai ". (((number_format($resSaldoList->SaldoMai,2,",",".")) < 0) ? "redNum" : "blueNum") ."'>". 'R$ ' . number_format($resSaldoList->SaldoMai,2,",",".") ."</td>
+							<td class = 'jun ". (((number_format($resSaldoList->SaldoJun,2,",",".")) < 0) ? "redNum" : "blueNum") ."'>". 'R$ ' . number_format($resSaldoList->SaldoJun,2,",",".") ."</td>
+							<td class = 'jul ". (((number_format($resSaldoList->SaldoJul,2,",",".")) < 0) ? "redNum" : "blueNum") ."'>". 'R$ ' . number_format($resSaldoList->SaldoJul,2,",",".") ."</td>
+							<td class = 'ago ". (((number_format($resSaldoList->SaldoAgo,2,",",".")) < 0) ? "redNum" : "blueNum") ."'>". 'R$ ' . number_format($resSaldoList->SaldoAgo,2,",",".") ."</td>
+							<td class = 'set ". (((number_format($resSaldoList->SaldoSet,2,",",".")) < 0) ? "redNum" : "blueNum") ."'>". 'R$ ' . number_format($resSaldoList->SaldoSet,2,",",".") ."</td>
+							<td class = 'out ". (((number_format($resSaldoList->SaldoOut,2,",",".")) < 0) ? "redNum" : "blueNum") ."'>". 'R$ ' . number_format($resSaldoList->SaldoOut,2,",",".") ."</td>
+							<td class = 'nov ". (((number_format($resSaldoList->SaldoNov,2,",",".")) < 0) ? "redNum" : "blueNum") ."'>". 'R$ ' . number_format($resSaldoList->SaldoNov,2,",",".") ."</td>
+							<td class = 'dez ". (((number_format($resSaldoList->SaldoDez,2,",",".")) < 0) ? "redNum" : "blueNum") ."'>". 'R$ ' . number_format($resSaldoList->SaldoDez,2,",",".") ."</td>
+						</tr>";
 		}		
 	}
+
+	//Envia tabela como retorno, modifica o DOM apenas uma vez
+	echo $table;
 ?>

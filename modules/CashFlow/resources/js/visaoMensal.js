@@ -379,20 +379,23 @@ $(document).ready(function(){
 			success: function(data){
 				var json = $.parseJSON(data);
 
+				//Cria variavel para guardar options de despesas
+				var optExpenses = "";
+				var optIncomes = "";
+
 				//Itero retorno
 				for(var i = 0; i < json.length; i++){
 					//Caso a categoria seja do tipo 'despesa', a mesma é adicionada no combo box de despesa
 					if(json[i].categoryTypeId == 1){
-						expenseCategory.append(
-							"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
-						);
+						optExpenses += "<option value = " + json[i].id + ">" + json[i].categoryName + "</option>";
 					} else {
 						//Caso a categoria seja do tipo 'receita', a mesma é adicionada no combo box de receita
-						incomeCategory.append(
-							"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
-						);
+						optIncomes += "<option value = " + json[i].id + ">" + json[i].categoryName + "</option>";
 					}
 				}
+				//Guarda no DOM todas as opções de categoria
+				expenseCategory.append(optExpenses);
+				incomeCategory.append(optIncomes);
 			}
 		});
 	});
@@ -413,20 +416,23 @@ $(document).ready(function(){
 			success: function (data){			
 				var json = $.parseJSON(data);
 
+				//Cria variavel para guardar options de despesas
+				var optExpenses = "";
+				var optIncomes = "";
+
 				//Itero retorno
 				for(var i = 0; i < json.length; i++){
 					//Caso a categoria seja do tipo 'despesa', a mesma é adicionada no combo box de despesa
 					if(json[i].categoryTypeId == 1){
-						expenseCategory.append(
-							"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
-						);
+						optExpenses += "<option value = " + json[i].id + ">" + json[i].categoryName + "</option>";
 					} else {
 						//Caso a categoria seja do tipo 'receita', a mesma é adicionada no combo box de receita
-						incomeCategory.append(
-							"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
-						);
+						optIncomes += "<option value = " + json[i].id + ">" + json[i].categoryName + "</option>";
 					}
 				}
+				//Guarda no DOM todas as opções de categoria
+				expenseCategory.append(optExpenses);
+				incomeCategory.append(optIncomes);
 			}
 		});
 	}
@@ -654,20 +660,23 @@ $(document).ready(function(){
 
 						var json = $.parseJSON(data);
 
+						//Cria variavel para guardar options de despesas
+						var optExpenses = "";
+						var optIncomes = "";
+
 						//Iitera retorno
 						for(var i = 0; i < json.length; i++){
 							//Caso a categoria seja do tipo 'despesa', adiciono item ao combo box despesa
 							if(json[i].categoryTypeId == 1){
-								expenseCategory.append(
-									"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
-								);
+								optExpenses += "<option value = " + json[i].id + ">" + json[i].categoryName + "</option>";
 							} else {
 								//Caso a categoria seja do tipo 'receita', adiciono item ao combo box receita
-								incomeCategory.append(
-									"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
-								);
+								optIncomes += "<option value = " + json[i].id + ">" + json[i].categoryName + "</option>";
 							}
 						}
+						//Guarda no DOM todas as opções de categoria
+						expenseCategory.append(optExpenses);
+						incomeCategory.append(optIncomes);
 					}
 				}
 			})

@@ -146,15 +146,18 @@ $(document).ready(function(){
 			success: function (data){			
 				var json = $.parseJSON(data);
 
+				//Cria variavel para guardar options
+				var opt = "";
+
 				//Itera retorno
 				for(var i = 0; i < json.length; i++){
-					//Adiciona as categorias do tipo 'receita' no combobox para o ano atual
+					//Adiciona as categorias do tipo 'receita' no combo box para o ano atual
 					if(json[i].categoryTypeId == 2){
-						incomeCategory.append(
-							"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
-						);
+						opt += "<option value = " + json[i].id + ">" + json[i].categoryName + "</option>";
 					}
 				}
+				//Guarda no DOM todas as opções de categoria receita
+				incomeCategory.append(opt);
 			}
 		});
 	}
@@ -212,15 +215,18 @@ $(document).ready(function(){
 			success: function(data){
 				var json = $.parseJSON(data);
 
+				//Cria variavel para guardar options
+				var opt = "";
+
 				//Adiciona retorno com as categorias no combobox
 				for(var i = 0; i < json.length; i++){
 					//Adiciono apenas as categorias que são do tipo 'receita' no combobox
 					if(json[i].categoryTypeId == 2){
-						incomeCategory.append(
-							"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
-						);
+						opt += "<option value = " + json[i].id + ">" + json[i].categoryName + "</option>";
 					}
 				}
+				//Guarda no DOM todas as opções de categoria receita
+				incomeCategory.append(opt);
 			}
 		});
 	});

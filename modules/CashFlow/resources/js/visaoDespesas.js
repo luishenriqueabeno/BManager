@@ -145,15 +145,18 @@ $(document).ready(function(){
 			success: function (data){			
 				var json = $.parseJSON(data);
 
+				//Cria variavel para guardar options
+				var opt = "";
+
 				//Itera retorno
 				for(var i = 0; i < json.length; i++){
 					//Adiciona as categorias do tipo 'despesa' no combobox para o ano atual
 					if(json[i].categoryTypeId == 1){
-						expenseCategory.append(
-							"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
-						);
+						opt += "<option value = " + json[i].id + ">" + json[i].categoryName + "</option>";
 					}
 				}
+				//Guarda no DOM todas as opções de categoria receita
+				expenseCategory.append(opt);
 			}
 		});
 	}
@@ -211,15 +214,18 @@ $(document).ready(function(){
 			success: function(data){
 				var json = $.parseJSON(data);
 
+				//Cria variavel para guardar options
+				var opt = "";
+
 				//Adiciona retorno com as categorias no combobox
 				for(var i = 0; i < json.length; i++){
 					//Adiciono apenas as categorias que são do tipo 'despesa' no combobox
 					if(json[i].categoryTypeId == 1){
-						expenseCategory.append(
-							"<option value = " + json[i].id + ">" + json[i].categoryName + "</option>"
-						);
+						opt += "<option value = " + json[i].id + ">" + json[i].categoryName + "</option>";
 					}
 				}
+				//Guarda no DOM todas as opções de categoria receita
+				expenseCategory.append(opt);
 			}
 		});
 	});
