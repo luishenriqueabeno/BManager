@@ -12,7 +12,8 @@
 		<link rel="stylesheet" href="lib/jquery-ui-1.10.3/themes/base/jquery-ui.css">
 
 		<!-- Scripts -->
-		<script src = "lib/jquery-1.10.2/jquery-1.10.2.dev.js" type = "text/javascript"></script>
+		<!--<script src = "lib/jquery-1.10.2/jquery-1.10.2.dev.js" type = "text/javascript"></script>-->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script src="resources/js/index.js"></script>
 		<script src="lib/jquery-ui-1.10.3/ui/jquery-ui.js"></script>
 
