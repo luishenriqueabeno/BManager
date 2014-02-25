@@ -98,6 +98,40 @@ $(document).ready(function(){
 
 	/********* Ações *********/
 
+	//Submit do login ao pressionar enter
+	$("input").keypress(function(event) {
+	    if (event.which == 13) {
+	        event.preventDefault();
+	        
+	       //Armazena usuário e senha dos campos de login
+			var username = $('#txtUsername').val();
+			var password = $('#txtPassword').val();
+
+			//Envia os dados para autenticar o usuário
+			$.ajax({
+				url: 'php/logon.php',
+				type: 'POST',
+				data:{
+					username: username,
+					password: password
+				},
+				success: function(data){
+					//Fecha o dialog de login
+					//$( "#loginForm" ).dialog( "destroy" );
+
+					//Dependendo do retorno é realizada uma ação
+					if(data[0] == 1){
+						//Redireciona para a página principal do sistema
+						window.location.href = "home.php";	
+					} else {
+						//alert("Usuário e/ou senha incorreto.");
+						$('#logonMessage').show();
+					}
+				}
+			})
+	    }
+	});
+
 	//Adiciona usuário
 	$('#btnAddUser').click(function(){
 
