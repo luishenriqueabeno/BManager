@@ -63,6 +63,12 @@ $(document).ready(function(){
 		}
 	});
 
+	//Link para area de tarefas através da home
+	$('#goToTasks').click(function(){
+		$('#contentMain').empty();
+		$('#contentMain').load('modules/MyTasks/index.php');
+	})
+
 	//Adiciona o modulo de tarefas a página
 	$("a[name=modulesTasks]").click(function () { 
 		$('#contentMain').empty();

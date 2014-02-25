@@ -21,7 +21,6 @@
 	$DFm2 = explode("/",$dataFim);
 	$dataFimTratada = $DFm2[2].'-'.$DFm2[1].'-'.$DFm2[0];
 
-
 	//Caso a tarefa id venha preenchido, é feito um update da tarefa
 	if($taskId != ''){
 		//Atualiza tarefa

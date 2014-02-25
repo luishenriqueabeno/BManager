@@ -43,7 +43,7 @@ a:visited{
 	bottom:0;
 	width:100%;
 	border:1px solid #CCC;
-	height:250px;
+	height:250px;	
 	-moz-box-shadow: 0px -2px 35px #888;
 	-webkit-box-shadow: 0px -2px 35px #888;
 	box-shadow: 0px -2px 35px #888;
@@ -208,7 +208,72 @@ a:visited{
 	border-left: 1px solid #ccc;
 	width:660px;
 	height:300px;
+	float:left;
 }
+
+/************************
+*	 TarefasVencer	     *
+*************************/
+.titleTarefasVencer h6{
+	float:left;
+}
+.titleTarefasVencer a{
+	float:right;
+	margin-top: 10px;
+}
+#tarefasVencer{
+	padding-top:25px;
+}
+.containerTarefas{
+	padding:10px;
+	float:right;
+	border-top: 3px solid #66FF66;
+	border-bottom: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	width:630px;
+	height:300px;
+}
+.tarefasVencer{
+	margin-top:25px;
+	width:100%;
+	float:left;
+}
+.tarefasVencer tr:nth-child(odd):not(:first-child){ 
+	background-color:#aad4ff; 
+}
+.tarefasVencer tr:nth-child(even):not(:first-child){ 
+	background-color:#ffffff; 
+}
+.tarefasVencer tr td:nth-child(2){
+	width:200px;
+  	overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; 
+    display:inline-block
+}
+.tarefasVencer tr td:nth-child(1){
+	width:150px;
+  	overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; 
+    display:inline-block;
+}
+.tarefasVencer tr:first-child{
+	font-weight:bold;
+	background: -webkit-gradient(linear,left top,left bottom,color-stop(0.05,#005fbf),color-stop(1,#003f7f));
+	background: -moz-linear-gradient(center top,#005fbf 5%,#003f7f 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#005fbf", endColorstr="#003f7f");
+	background: -o-linear-gradient(top,#005fbf,003f7f);
+	background-color: #005fbf;
+	border: 0 solid #000;
+	text-align: center;
+	font-size: 12px;
+	font-family: Arial;
+	font-weight: 700;
+	color: #fff;
+}
+
 
 /************************
 *	 Correções Mozila	*

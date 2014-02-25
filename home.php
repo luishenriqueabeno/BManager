@@ -154,10 +154,38 @@
 		<div id = "contentMain">
 			<!-- Area graficos -->
 			<div class = "homeGraficos">
+				<!-- Grafico Saldo/Receitas/Despesas mês -->
 				<div class = "containerSaldo" id = "saldoChart"> </div>
-				Grafico Receitas x Despesas <br>
-				5 tarefas mais proximas a data de conclusão <br>
-				Faturamento <br>
+
+				<!-- Cinco tarefas próximas a data de expiração -->
+				<div class = "containerTarefas" id = "tarefasVencer"> 
+					<div class = "titleTarefasVencer"> 
+						<h6> <b> Cinco tarefas próximas a data prevista para conclusão </b> </h6>
+						<a href = "#" id = "goToTasks"> Ir para tarefas </a>
+						<table class = "tarefasVencer"> 
+							<tr>
+								<td> Tarefa </td>
+								<td> Descrição </td>
+								<td> Inicio </td>
+								<td> Fim </td>
+							</tr>
+							<?php
+								$table = "";
+
+								$sqlFiveTasks = mysql_query("Select * From `tasks` Where userId = ". $userId ." And dataFim < (now()-5)  And taskStatus <> 1 Order By dataFim Limit 0,5 ");
+								while($resFiveTasks = mysql_fetch_object($sqlFiveTasks)){
+									$table .= "<tr>
+												 	<td>" . $resFiveTasks->taskName . "</td>
+												 	<td>" . $resFiveTasks->desc . "</td>
+												 	<td>" . $resFiveTasks->dataInicio . "</td>
+												 	<td>" . $resFiveTasks->dataFim . "</td>
+												</tr>";
+								}
+								echo $table;
+							?>
+						</table>
+					</div>
+				</div>
 			</div>
 
 			<!-- Area de noticias -->
@@ -169,6 +197,8 @@
 					21/02/2014 - Agora através de um gráfico, você terá uma visão geral de todas as suas movimentações (despesas, receitas e saldo)<br>
 				</div>
 			</div>
+
+
 			<!-- Google charts -->
 			<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 		    <script type="text/javascript">
