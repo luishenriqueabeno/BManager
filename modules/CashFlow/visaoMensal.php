@@ -13,6 +13,10 @@
 
 		<!-- CSS -->
 		<link type="text/css" rel="stylesheet" href="modules/CashFlow/resources/css/visaoMensal.css">
+
+		<!-- Scripts -->
+		<script src = "modules/CashFlow/resources/js/visaoMensal.min.js" type = "text/javascript"></script>
+
 	</head>
 	<body>
 			<!-- Add expense form -->
@@ -143,6 +147,4 @@
 			</table>
 		</div>	
 	</body>
-	<!-- Scripts -->
-	<script src = "modules/CashFlow/resources/js/visaoMensal.min.js" type = "text/javascript"></script>
 </html>
