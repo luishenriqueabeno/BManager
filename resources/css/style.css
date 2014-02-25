@@ -250,7 +250,8 @@ a:visited{
   	overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis; 
-    display:inline-block
+    display:inline-block;
+    text-align:left;
 }
 .tarefasVencer tr td:nth-child(1){
 	width:150px;
@@ -258,6 +259,7 @@ a:visited{
     white-space: nowrap;
     text-overflow: ellipsis; 
     display:inline-block;
+    text-align:left;
 }
 .tarefasVencer tr:first-child{
 	font-weight:bold;
