@@ -43,7 +43,7 @@
 		//Guarda receitas mês a mês e monta tabela em uma variavel
 		//para não modificar o DOM para cada receita que for encontrada
 		$table .= "	<tr class = 'tableRow' id = ". 'income_' . $resIncomeList->id .">
-						<td class = 'incomeTitle' title = ".str_replace(' ', '_', $resIncomeList->incomeName).">". ((($resIncomeList->categoryId) == '0') ? " <img src = '". $baseUrl . 'DailyHelper/modules/CashFlow/resources/images/alert.png' ."' title = 'Não há categoria associada'> " : " "). $resIncomeList->incomeName ."</td>
+						<td class = 'incomeTitle' title = ".str_replace(' ', '_', $resIncomeList->incomeName).">". /*((($resIncomeList->categoryId) == '0') ? " <img src = '". $baseUrl . 'DailyHelper/modules/CashFlow/resources/images/alert.png' ."' title = 'Não há categoria associada'> " : " ").*/ $resIncomeList->incomeName ."</td>
 						<td class = 'jan'>". 'R$ ' . number_format($resIncomeList->jan,2,",",".") ."</td>
 						<td class = 'fev'>". 'R$ ' . number_format($resIncomeList->fev,2,",",".") ."</td>
 						<td class = 'mar'>". 'R$ ' . number_format($resIncomeList->mar,2,",",".") ."</td>

@@ -35,7 +35,6 @@
 				<label for = "expenseCategory"> Categoria </label>
 				<select name = "expenseCategory">
 					<option value = ""> Selecione uma categoria </option>
-					<option value = "0"> Cadastrar sem categoria </option>
 				</select>
 				<div class = "formAddExpenseSeparator">
 					<div class="ui-dialog-buttonset">

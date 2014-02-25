@@ -58,7 +58,6 @@
 					<label for = "incomeCategory"> Categoria </label>
 					<select name = "incomeCategory">
 						<option value = ""> Selecione uma categoria </option>
-						<option value = "0"> Cadastrar sem categoria </option>
 					</select>
 					<div class = "formAddIncomeSeparator">
 						<div class="ui-dialog-buttonset">

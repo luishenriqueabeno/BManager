@@ -43,7 +43,7 @@
 		//Guarda despesas mês a mês e monta tabela em uma variavel
 		//para não modificar o DOM para cada despesa que for encontrada
 		$table .= "	<tr class = 'tableRow' id = ". 'expense_' .$resExpenseList->id .">
-						<td class = 'expenseTitle' title = ".str_replace(' ', '_', $resExpenseList->expenseName).">". ((($resExpenseList->categoryId) == '0') ? " <img src = '". $baseUrl . 'DailyHelper/modules/CashFlow/resources/images/alert.png' ."' title = 'Não há categoria associada'> " : " ") . $resExpenseList->expenseName ."</td>
+						<td class = 'expenseTitle' title = ".str_replace(' ', '_', $resExpenseList->expenseName).">". /*((($resExpenseList->categoryId) == '0') ? " <img src = '". $baseUrl . 'DailyHelper/modules/CashFlow/resources/images/alert.png' ."' title = 'Não há categoria associada'> " : " ") .*/ $resExpenseList->expenseName ."</td>
 						<td class = 'jan'>". 'R$ ' . number_format($resExpenseList->jan,2,",",".") ."</td>
 						<td class = 'fev'>". 'R$ ' . number_format($resExpenseList->fev,2,",",".") ."</td>
 						<td class = 'mar'>". 'R$ ' . number_format($resExpenseList->mar,2,",",".") ."</td>
