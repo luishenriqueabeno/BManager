@@ -117,32 +117,34 @@
 
 			<div class = "loader"> <img src = "resources/images/loading.gif"> </div>
 		
-			<table id = "tableMonths" >
-				<tr class = "months tableRow">
-					<td> </td>
-					<td> Jan </td>
-					<td> Fev </td>
-					<td> Mar </td>
-					<td> Abr </td>
-					<td> Mai </td>
-					<td> Jun </td>
-					<td> Jul </td>
-					<td> Ago </td>
-					<td> Set </td>
-					<td> Out </td>
-					<td> Nov </td>
-					<td> Dez</td>
-				</tr>	
-			</table>
-			<table id = "tableSaldo" >
-				
-			</table>
-			<table id = "listIncomes" class = "tabelaEditavel">
+			<div class = "tableAxisXFix">
+				<table id = "tableMonths" >
+					<tr class = "months tableRow">
+						<td> </td>
+						<td> Jan </td>
+						<td> Fev </td>
+						<td> Mar </td>
+						<td> Abr </td>
+						<td> Mai </td>
+						<td> Jun </td>
+						<td> Jul </td>
+						<td> Ago </td>
+						<td> Set </td>
+						<td> Out </td>
+						<td> Nov </td>
+						<td> Dez</td>
+					</tr>	
+				</table>
+				<table id = "tableSaldo" >
+					
+				</table>
+				<table id = "listIncomes" class = "tabelaEditavel">
 
-			</table>
-			<table id = "listExpenses" class = "tabelaEditavel">
+				</table>
+				<table id = "listExpenses" class = "tabelaEditavel">
 
-			</table>
+				</table>
+			</div>
 		</div>	
 	</body>
 </html>
