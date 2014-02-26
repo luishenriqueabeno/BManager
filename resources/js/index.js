@@ -119,9 +119,6 @@ $(document).ready(function(){
 					password: password
 				},
 				success: function(data){
-					//Volta botão com o texto original
-	        		$("#btnLogin .ui-button-text").html('Entrar');
-
 					//Dependendo do retorno é realizada uma ação
 					if(data[0] == 1){
 						//Redireciona para a página principal do sistema
