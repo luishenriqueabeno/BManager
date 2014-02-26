@@ -102,6 +102,9 @@ $(document).ready(function(){
 	$("input").keypress(function(event) {
 	    if (event.which == 13) {
 	        event.preventDefault();
+
+	        //Altera texto do botão
+	        $("#btnLogin .ui-button-text").html('Entrando...');
 	        
 	       //Armazena usuário e senha dos campos de login
 			var username = $('#txtUsername').val();
@@ -116,8 +119,8 @@ $(document).ready(function(){
 					password: password
 				},
 				success: function(data){
-					//Fecha o dialog de login
-					//$( "#loginForm" ).dialog( "destroy" );
+					//Volta botão com o texto original
+	        		$("#btnLogin .ui-button-text").html('Entrar');
 
 					//Dependendo do retorno é realizada uma ação
 					if(data[0] == 1){
@@ -203,6 +206,8 @@ $(document).ready(function(){
 		//Armazena usuário e senha dos campos de login
 		var username = $('#txtUsername').val();
 		var password = $('#txtPassword').val();
+
+		$("#btnLogin .ui-button-text").html('Entrando...');
 
 		//Envia os dados para autenticar o usuário
 		$.ajax({
