@@ -209,7 +209,7 @@
 	border-right-color:#000;
 	width:100px !important;
 	max-width:100px !important;
-	min-width:100px !important;
+	/*min-width:100px !important;*/
 }
 .tableRow td:last-child{
 	border-right-style:solid !important;

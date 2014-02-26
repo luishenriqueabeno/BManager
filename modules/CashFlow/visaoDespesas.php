@@ -14,7 +14,7 @@
 		<meta charset = "utf-8">
 
 		<!-- CSS -->
-		<link type="text/css" rel="stylesheet" href="modules/CashFlow/resources/css/visaoDespesas.min.css">
+		<link type="text/css" rel="stylesheet" href="modules/CashFlow/resources/css/visaoDespesas.css">
 
 		<!-- Scripts -->
 		<script src = "modules/CashFlow/resources/js/visaoDespesas.min.js" type = "text/javascript"></script>
@@ -78,27 +78,28 @@
 			</table>
 
 			<div class = "loader"> <img src = "resources/images/loading.gif"> </div>
-		
-			<table id = "tableMonths" >
-				<tr class = "months tableRow">
-					<td> </td>
-					<td> Jan </td>
-					<td> Fev </td>
-					<td> Mar </td>
-					<td> Abr </td>
-					<td> Mai </td>
-					<td> Jun </td>
-					<td> Jul </td>
-					<td> Ago </td>
-					<td> Set </td>
-					<td> Out </td>
-					<td> Nov </td>
-					<td> Dez</td>
-				</tr>	
-			</table>
-			<table id = "listExpenses" class = "tabelaEditavel">
+			<div class = "tableAxisXFix">
+				<table id = "tableMonths" >
+					<tr class = "months tableRow">
+						<td> </td>
+						<td> Jan </td>
+						<td> Fev </td>
+						<td> Mar </td>
+						<td> Abr </td>
+						<td> Mai </td>
+						<td> Jun </td>
+						<td> Jul </td>
+						<td> Ago </td>
+						<td> Set </td>
+						<td> Out </td>
+						<td> Nov </td>
+						<td> Dez</td>
+					</tr>	
+				</table>
+				<table id = "listExpenses" class = "tabelaEditavel">
 
-			<table>
+				<table>
+			</div>
 		</div>	
 	</body>
 </html>
