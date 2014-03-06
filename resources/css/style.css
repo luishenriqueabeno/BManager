@@ -9,17 +9,17 @@ li{
 	list-style-type: none;
 }
 a:link{
-	color: #3333FF !important;
+	color: #1919FF !important;
 	font-weight:bold !important;
 }
 a:visited{
-	color: #3333FF !important;	
+	color: #1919FF !important;	
 	font-weight:bold !important;
 }
 #logonMessage{
 	color: red;
 	text-align:center;
-}
+}	
 
 /***********************
 *		Header			*
@@ -29,6 +29,9 @@ a:visited{
 }
 .welcome{
 	padding-bottom: 10px;
+}
+.welcome a{
+	margin-left:20px;
 }
 
 /************************
