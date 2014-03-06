@@ -5,7 +5,27 @@
 	$taskId = $_POST['taskId'];
 	
 	//Carrega dados da tarefa selecionada para edição
-	$getTaskDataQuery = mysql_query("Select * From tasks Where id = '$taskId'");
+	$getTaskDataQuery = mysql_query("Select 
+										id,
+										taskName,
+										`desc`,
+										CONCAT( DAY( dataInicio ) ,  '/', MONTH( dataInicio ) ,  '/', YEAR( dataInicio ) ) As dataInicio,
+										CONCAT( DAY( dataFim ) ,  '/', MONTH( dataFim ) ,  '/', YEAR( dataFim ) ) As dataFim,
+										horaInicio,
+										minutoInicio,
+										horaFim,
+										minutoFim,
+										userId,
+										taskStatus
+									From 
+										tasks 
+									Where 
+										id = ". $taskId ."
+									Order By 
+										YEAR( dataInicio ),
+			                            MONTH( dataInicio ),
+										DAY( dataInicio )
+									");
 
 	$rows = array();
 
