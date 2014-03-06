@@ -163,7 +163,7 @@
 				<!-- Cinco tarefas próximas a data de expiração -->
 				<div class = "containerTarefas" id = "tarefasVencer"> 
 					<div class = "titleTarefasVencer"> 
-						<h6> <b> Cinco tarefas próximas a data prevista para conclusão </b> </h6>
+						<h6> <b> Tarefas próximas a data prevista de conclusão </b> </h6>
 						<a href = "#" id = "goToTasks"> Ir para tarefas </a>
 						<table class = "tarefasVencer"> 
 							<tr>
@@ -175,7 +175,7 @@
 							<?php
 								$table = "";
 
-								$sqlFiveTasks = mysql_query("Select * From `tasks` Where userId = ". $userId ." And dataFim < (now()-5)  And taskStatus <> 1 Order By dataFim Limit 0,5 ");
+								$sqlFiveTasks = mysql_query("Select * From `tasks` Where userId = ". $userId ." And dataFim > NOW( ) AND taskStatus <> 1 ORDER BY ABS( DATEDIFF( dataFim, NOW( ) ) ) Limit 5 ");
 								while($resFiveTasks = mysql_fetch_object($sqlFiveTasks)){
 									$table .= "<tr>
 												 	<td>" . $resFiveTasks->taskName . "</td>
