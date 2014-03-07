@@ -36,6 +36,56 @@ $(document).ready(function(){
 		$(this).addClass('active');
 	})
 
+	//Abre formulário para alterar foto
+	$('.logoInner').on('click', function(){
+		//Limpa formulário
+		$('#formChangePhoto')[0].reset();
+
+		//Limpa preview da imagem anterior
+		$('#previewHolder').attr('src', '');
+
+		//Esconde div com miniatura da imagem selecionada
+		$('.imagePreview').hide();
+
+		//Exibe modal
+		$( "#userPhotoForm" ).dialog({
+			modal: true,
+			show: { effect: "slideDown", duration: 600 } ,
+			width: 500,
+		});
+	})
+
+	//Função para carrega miniatura da imagem
+	function readURL(input) {
+       if (input.files && input.files[0]) {
+	       var reader = new FileReader();
+	      	reader.onload = function(e) {
+        		$('#previewHolder').attr('src', e.target.result);
+	       	}
+
+           reader.readAsDataURL(input.files[0]);
+       }
+   	}
+
+   //Ao selecionar uma imagem é exibida uma miniatura
+   $("#filePhoto").change(function() {
+       readURL(this);
+   });
+
+   //Faz upload da imagem
+   $('#btnChangePhoto').on('click', function(){
+   		var userId = $('input[name=userId]').val();
+   		var fileName = $('#filePhoto').val();
+
+   		alert(fileName);
+
+   });
+
+	//Botão cancelar do formulário
+	$('#btnChangePhotoCancel').on('click', function(){
+		$( "#userPhotoForm" ).dialog( "destroy" );
+	});
+
 	//Minimiza area de noticias
 	$('.toggleButton').on('click', function(){
 		if($('#noticeAreaToggle').hasClass('arrowDown')){

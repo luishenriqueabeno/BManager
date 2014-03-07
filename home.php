@@ -31,19 +31,45 @@
 		<!-- Scripts -->
 		<!--<script src = "lib/jquery-1.10.2/jquery-1.10.2.min.js" type = "text/javascript"></script>-->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-		<script src = "lib/maskMoney/maskMoney.min.js" type = "text/javascript"></script>
-		<script src="resources/js/home.js"></script>
 		<script src="lib/jquery-ui-1.10.3/ui/minified/jquery-ui.min.js"></script>
+		<script src="resources/js/home.js"></script>
+		<script src = "lib/maskMoney/maskMoney.min.js" type = "text/javascript"></script>
 		<script src="lib/bootstrap-3.0/js/bootstrap.min.js"></script>
+
+		<!-- Google fonts -->
+		
 	</head>
 	<body>
+		<!-- Change photo modal -->
+		<div id="userPhotoForm" title="Alterar foto" style = "display:none">
+			<div id = "formMessageError"> </div>
+			<div id = "formMessageSuccess"> </div>
+			<div id = "formMessageInfo"> </div>
+			<form method = "post" id = "formChangePhoto">
+				
+				<input type="file" name="filePhoto" value="" id="filePhoto" class="required borrowerImageFile" data-errormsg="PhotoUploadErrorMsg">
+			 	<img id="previewHolder" alt="Pré-visualização" width="80px" height="80px"/>
+
+				<div class = "formChangePhotoSeparator">
+					<div class="ui-dialog-buttonset">
+						<button id= "btnChangePhoto" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"> <span class="ui-button-text">Alterar</span> </button>
+						<button id = "btnChangePhotoCancel" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"> <span class="ui-button-text">Cancelar</span></button>
+					</div>
+				</div>
+			</form>
+		</div>
+
 		<!-- Header -->
 		<section>
 			<header>
 				<div class="row">
 					<div class="col-xs-4 col-sm-4 col-md-12"> </div>
 					<div class="col-xs-4 col-sm-4 col-md-12"> 
-						<div class = "logo"> <img src = "resources/images/logo.gif" width = "80" height = "80"> </div>
+						<div class = "logo">
+							<div class = "logoInner">
+								<div class = "logoText"> Logo </div>
+							</div>
+						</div>
 					</div>
 					<div class="col-xs-4 col-sm-4 col-md-12"> </div>
 

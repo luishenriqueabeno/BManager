@@ -20,6 +20,12 @@ a:visited{
 	color: red;
 	text-align:center;
 }	
+.ui-dialog-titlebar-close{
+	background: url('../../lib/jquery-ui-1.10.3/themes/base/images/ui-icons_888888_256x240.png') no-repeat -34px -194px;
+	border:none;
+	width:15px !important;
+	height:12px !important;
+}
 
 /***********************
 *		Header			*
@@ -29,9 +35,68 @@ a:visited{
 }
 .welcome{
 	padding-bottom: 10px;
+	margin-left: 15px;
 }
 .welcome a{
 	margin-left:20px;
+}
+.logo{
+	width:90px;
+	height:90px;
+	border: 1px #e7e7e7 solid;
+	padding:4px;
+	margin:20px 0 -20px 20px;
+}
+.logoInner{
+	width:80px;
+	height:80px;
+	border: 1px #e7e7e7 solid;
+	border-bottom-width:0px !important;
+	cursor:pointer;
+}
+.logoText{
+	margin-top: 30px;
+	margin-left: 20px;
+	font-weight:bold;
+	color:#B9B9B9;
+}
+.imagePreview{
+	width:80px;
+	height:80px;
+	float:left;
+}
+
+/***************************
+*		Main Menu			*
+****************************/
+.navbar-header{
+	margin-left:10px;
+}
+
+/***************************
+*	Formulário change photo *
+****************************/
+#formChangePhoto label{
+	float:left;
+	width:100%;
+	position:relative;
+}
+#formChangePhoto input{
+	float:right;
+	position:relative;
+	margin-top:30px;
+}
+.formChangePhotoSeparator{
+	margin-top:10px;
+	padding-top:10px;
+	width:100%;
+	float:left;
+	border-top-style: solid;
+	border-top-width: 1px;
+	border-top-color: #CCC;
+}
+.ui-dialog-buttonset{
+	text-align:right;
 }
 
 /************************

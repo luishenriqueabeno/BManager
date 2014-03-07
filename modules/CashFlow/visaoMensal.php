@@ -16,78 +16,77 @@
 
 		<!-- Scripts -->
 		<script src = "modules/CashFlow/resources/js/visaoMensal.min.js" type = "text/javascript"></script>
-
 	</head>
 	<body>
-			<!-- Add expense form -->
-			<div id="addExpenseForm" title="Cadastrar despesa">
-				<div class = "expenseAddSuccess"> Despesa cadastrada com sucesso! </div>
-				<div class = "displayError">Corrija os campos destacados </div>
-				<form method = "post" id = "formAddExpense">
-					<label for = "expenseName"> Despesa </label>
-					<input id = "txtExpenseName" type = "text" name = "txtExpenseName" >
+		<!-- Add expense form -->
+		<div id="addExpenseForm" title="Cadastrar despesa">
+			<div class = "expenseAddSuccess"> Despesa cadastrada com sucesso! </div>
+			<div class = "displayError">Corrija os campos destacados </div>
+			<form method = "post" id = "formAddExpense">
+				<label for = "expenseName"> Despesa </label>
+				<input id = "txtExpenseName" type = "text" name = "txtExpenseName" >
 
-					<label for = "expenseValue"> Valor </label>
- 				    <input id = "txtExpenseValue" name = "txtExpenseValue" class = "cashValue" type = "text"> <div class = "formFix"> </div>
+				<label for = "expenseValue"> Valor </label>
+				    <input id = "txtExpenseValue" name = "txtExpenseValue" class = "cashValue" type = "text"> <div class = "formFix"> </div>
 
-					<label for = "expenseCategory"> Categoria </label>
-					<select name = "expenseCategory">
-						<option value = ""> Selecione uma categoria </option>
-					</select>
-					<div class = "formAddExpenseSeparator">
-						<div class="ui-dialog-buttonset">
-							<button id= "btnAddExpense" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"> <span class="ui-button-text">Adicionar</span> </button>
-							<button id = "btnCancelExpenseForm" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"> <span class="ui-button-text">Cancel</span></button>
-						</div>
+				<label for = "expenseCategory"> Categoria </label>
+				<select name = "expenseCategory">
+					<option value = ""> Selecione uma categoria </option>
+				</select>
+				<div class = "formAddExpenseSeparator">
+					<div class="ui-dialog-buttonset">
+						<button id= "btnAddExpense" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"> <span class="ui-button-text">Adicionar</span> </button>
+						<button id = "btnCancelExpenseForm" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"> <span class="ui-button-text">Cancel</span></button>
 					</div>
-				</form>
-			</div>
+				</div>
+			</form>
+		</div>
 
-			<!-- Add income form -->
-			<div id="addIncomeForm" title="Cadastrar receita">
-				<div class = "incomeAddSuccess"> Receita cadastrada com sucesso! </div>
-				<div class = "displayError">Corrija os campos destacados </div>
-				<form method = "post" id = "formAddIncome">
-					<label for = "incomeName"> Receita </label>
-					<input id = "txtIncomeName" type = "text" name = "txtIncomeName" >
+		<!-- Add income form -->
+		<div id="addIncomeForm" title="Cadastrar receita">
+			<div class = "incomeAddSuccess"> Receita cadastrada com sucesso! </div>
+			<div class = "displayError">Corrija os campos destacados </div>
+			<form method = "post" id = "formAddIncome">
+				<label for = "incomeName"> Receita </label>
+				<input id = "txtIncomeName" type = "text" name = "txtIncomeName" >
 
-					<label for = "incomeValue"> Valor </label>
- 			        <input id = "txtIncomeValue" name = "txtIncomeValue" class = "cashValue" type = "text" > <div class = "formFix"> </div>
+				<label for = "incomeValue"> Valor </label>
+			        <input id = "txtIncomeValue" name = "txtIncomeValue" class = "cashValue" type = "text" > <div class = "formFix"> </div>
 
-					<label for = "incomeCategory"> Categoria </label>
-					<select name = "incomeCategory">
-						<option value = ""> Selecione uma categoria </option>
-					</select>
-					<div class = "formAddIncomeSeparator">
-						<div class="ui-dialog-buttonset">
-							<button id= "btnAddIncome" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"> <span class="ui-button-text">Adicionar</span> </button>
-							<button id = "btnCancelIncomeForm" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"> <span class="ui-button-text">Cancel</span></button>
-						</div>
+				<label for = "incomeCategory"> Categoria </label>
+				<select name = "incomeCategory">
+					<option value = ""> Selecione uma categoria </option>
+				</select>
+				<div class = "formAddIncomeSeparator">
+					<div class="ui-dialog-buttonset">
+						<button id= "btnAddIncome" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"> <span class="ui-button-text">Adicionar</span> </button>
+						<button id = "btnCancelIncomeForm" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"> <span class="ui-button-text">Cancel</span></button>
 					</div>
-				</form>
-			</div>
+				</div>
+			</form>
+		</div>
 
-			<!-- Add Category form -->
-			<div id="addCategoryForm" title="Criar uma categoria">
-				<div class = "categoryMsgSuccess"> Categoria criada com sucesso! </div>
-				<div class = "categoryMsgError"> Essa categoria já existe. </div>
-				<div class = "displayError">Corrija os campos destacados </div>
-				<form method = "post" id = "formAddCategory">
-					<label for = "categoryName"> Categoria </label>
-					<input id = "txtCategoryName" type = "text" name = "txtCategoryName" >
+		<!-- Add Category form -->
+		<div id="addCategoryForm" title="Criar uma categoria">
+			<div class = "categoryMsgSuccess"> Categoria criada com sucesso! </div>
+			<div class = "categoryMsgError"> Essa categoria já existe. </div>
+			<div class = "displayError">Corrija os campos destacados </div>
+			<form method = "post" id = "formAddCategory">
+				<label for = "categoryName"> Categoria </label>
+				<input id = "txtCategoryName" type = "text" name = "txtCategoryName" >
 
-					<label for = "categoryType"> Escolha a natureza da categoria </label>
-					<input type="radio" name="categoryType" value="1" checked>Despesa
-					<input type="radio" name="categoryType" value="2">Receita
+				<label for = "categoryType"> Escolha a natureza da categoria </label>
+				<input type="radio" name="categoryType" value="1" checked>Despesa
+				<input type="radio" name="categoryType" value="2">Receita
 
-					<div class = "formAddCategorySeparator">
-						<div class="ui-dialog-buttonset">
-							<button id= "btnAddCategory" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"> <span class="ui-button-text">Adicionar</span> </button>
-							<button id = "btnCancelCategoryForm" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"> <span class="ui-button-text">Cancel</span></button>
-						</div>
+				<div class = "formAddCategorySeparator">
+					<div class="ui-dialog-buttonset">
+						<button id= "btnAddCategory" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"> <span class="ui-button-text">Adicionar</span> </button>
+						<button id = "btnCancelCategoryForm" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"> <span class="ui-button-text">Cancel</span></button>
 					</div>
-				</form>
-			</div>
+				</div>
+			</form>
+		</div>
 		
 		<div class = "selectYear">
 			<input type = "hidden" value = "" id = "anoRetorno" name = "anoRetorno">

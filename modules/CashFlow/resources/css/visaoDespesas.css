@@ -209,7 +209,13 @@
 	border-right-color:#000;
 	width:100px !important;
 	max-width:100px !important;
-	/*min-width:100px !important;*/
+	cursor:pointer;
+}
+.totalRow td{
+	cursor:default !important;
+}
+#tableMonths .tableRow td{
+	cursor:default !important;
 }
 .tableRow td:last-child{
 	border-right-style:solid !important;
