@@ -1,6 +1,9 @@
 <?php
 	require ("conn.php");
 
+	//Suprime warnings
+	error_reporting(E_ERROR | E_PARSE);
+
 	//Nome do arquivo
 	$fileName = $_FILES["filePhoto"]["name"]; 
 
