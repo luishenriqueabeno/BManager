@@ -41,6 +41,10 @@ $(document).ready(function(){
 		//Limpa formulário
 		$('#formChangePhoto')[0].reset();
 
+		//Limpa mensagens
+		$('#formMessageSuccess').html('');
+		$('#formMessageError').html('');
+
 		//Limpa preview da imagem anterior
 		$('#previewHolder').attr('src', '');
 
@@ -74,11 +78,30 @@ $(document).ready(function(){
 
    //Faz upload da imagem
    $('#btnChangePhoto').on('click', function(){
-   		var userId = $('input[name=userId]').val();
-   		var fileName = $('#filePhoto').val();
+   		$('#formChangePhoto').on('submit', function(e) {
+   			//Previne enviar a mesma imagem mais de uma vez
+   			e.preventDefault();
+   			e.stopImmediatePropagation();
 
-   		alert(fileName);
+   			//Dados do formulário
+        	var formData = new FormData(this);
 
+        	//Envia via Ajax
+	   		$.ajax({
+	   			url: 'php/userLogoUpload.php',
+	   			data: formData,
+	   			type:'POST',
+	   			cache:false,
+	            contentType: false,
+	            processData: false,
+	            success:function(data){
+	               $('#formMessageSuccess').html(data);
+	            },
+	            error: function(data){
+	                $('#formMessageError').html(data);
+	            }
+	   		});
+	   	});
    });
 
 	//Botão cancelar do formulário

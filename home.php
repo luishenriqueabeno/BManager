@@ -16,7 +16,7 @@
 <!doctype html>
 <html lang = "pt">
 	<head>
-		<title> Daily Helper </title>
+		<title> Bussiness Manager </title>
 
 		<!-- Meta -->
 		<meta charset = "utf-8">
@@ -47,12 +47,14 @@
 			<div id = "formMessageInfo"> </div>
 			<form method = "post" id = "formChangePhoto">
 				
-				<input type="file" name="filePhoto" value="" id="filePhoto" class="required borrowerImageFile" data-errormsg="PhotoUploadErrorMsg">
+				<input type="file" name="filePhoto" value="" id="filePhoto" class="required borrowerImageFile uploadFix" data-errormsg="PhotoUploadErrorMsg">
 			 	<img id="previewHolder" alt="Pré-visualização" width="80px" height="80px"/>
+
+			 	<input type = "hidden" name = "userValuePhotoName" value = "<?php echo $userId;  ?>">
 
 				<div class = "formChangePhotoSeparator">
 					<div class="ui-dialog-buttonset">
-						<button id= "btnChangePhoto" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"> <span class="ui-button-text">Alterar</span> </button>
+						<input id= "btnChangePhoto" type="submit" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"> 
 						<button id = "btnChangePhotoCancel" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"> <span class="ui-button-text">Cancelar</span></button>
 					</div>
 				</div>

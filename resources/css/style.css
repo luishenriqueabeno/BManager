@@ -81,10 +81,9 @@ a:visited{
 	width:100%;
 	position:relative;
 }
-#formChangePhoto input{
-	float:right;
-	position:relative;
-	margin-top:30px;
+.uploadFix{
+	float: right;
+	margin-top: 30px;
 }
 .formChangePhotoSeparator{
 	margin-top:10px;
@@ -97,6 +96,12 @@ a:visited{
 }
 .ui-dialog-buttonset{
 	text-align:right;
+}
+#formMessageSuccess{
+	color: green;
+}
+#formMessageError{
+	color:red;
 }
 
 /************************
