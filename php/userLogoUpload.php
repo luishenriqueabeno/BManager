@@ -80,10 +80,9 @@
 			//Remove imagem antiga
 			unlink("../resources/images/uploads/". $resName->logoName);
 		} else {
-			//Em ambiente de produção executar comando rm
-			exec("../resources/images/uploads/". $resName->logoName . " -Rf");
-
-			echo "Caiu aqui";
+			//Remove imagem antiga
+			unlink("/home/luish360/public_html/trabalhos/2014/BManager/resources/images/uploads/". $resName->logoName);
+			echo "aqui";
 		}
 
 		
