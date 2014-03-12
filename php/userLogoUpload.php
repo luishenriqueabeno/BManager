@@ -81,8 +81,7 @@
 			unlink("../resources/images/uploads/". $resName->logoName);
 		} else {
 			//Remove imagem antiga
-			unlink("/home/luish360/public_html/trabalhos/2014/BManager/resources/images/uploads/". $resName->logoName);
-			echo "aqui";
+			exec("rm /home/luish360/public_html/trabalhos/2014/BManager/resources/images/uploads/". $resName->logoName . "-Rf");
 		}
 
 		
