@@ -81,7 +81,9 @@
 			unlink("../resources/images/uploads/". $resName->logoName);
 		} else {
 			//Em ambiente de produção executar comando rm
-			exec("../resources/images/uploads/". $resName->logoName);
+			exec("../resources/images/uploads/". $resName->logoName . " -Rf");
+
+			echo "Caiu aqui";
 		}
 
 		
