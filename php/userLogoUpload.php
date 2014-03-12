@@ -4,16 +4,6 @@
 	//Suprime warnings
 	error_reporting(E_ERROR | E_PARSE);
 
-	//Pega url base
-	$baseUrl = "http://" . $_SERVER['SERVER_NAME'] . '/';
-
-	//Verifica se é ambiente de produção ou desenvolvimento
-	if($baseUrl == 'http://localhost/'){
-		$baseUrl = "http://" . $_SERVER['SERVER_NAME'] . '/BManager/';
-	} else {
-		$baseUrl = "http://" . $_SERVER['SERVER_NAME'] . '/trabalhos/2014/BManager/';
-	}
-
 	//Nome do arquivo
 	$fileName = $_FILES["filePhoto"]["name"]; 
 
@@ -82,8 +72,19 @@
 		//Pega nome do arquivo atual para o usuário especificado
 		$resName = mysql_fetch_object($getName);
 
-		//Remove imagem antiga
-		unlink("../resources/images/uploads/". $resName->logoName);
+		//Pega url base
+		$baseUrl = "http://" . $_SERVER['SERVER_NAME'] . '/';
+
+		//Verifica se é ambiente de produção ou desenvolvimento
+		if($baseUrl == 'http://localhost/'){
+			//Remove imagem antiga
+			unlink("../resources/images/uploads/". $resName->logoName);
+		} else {
+			//Em ambiente de produção executar comando rm
+			exec("../resources/images/uploads/". $resName->logoName);
+		}
+
+		
 	}
 
 
