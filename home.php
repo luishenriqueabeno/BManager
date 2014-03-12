@@ -1,16 +1,33 @@
 <?php
 	require('php/conn.php');
 	require("secure.php");
+
+	//Pega url base
+	$baseUrl = "http://" . $_SERVER['SERVER_NAME'] . '/';
+
+	//Verifica se é ambiente de produção ou desenvolvimento
+	if($baseUrl == 'http://localhost/'){
+		$baseUrl = "http://" . $_SERVER['SERVER_NAME'] . '/BManager/';
+	} else {
+		$baseUrl = "http://" . $_SERVER['SERVER_NAME'] . '/trabalhos/2014/BManager/';
+	}
 	
 	$username = $_SESSION['username'];
 
+	//Verifica licença do usuário
 	$checkUserLic = mysql_query("Select firstName, lastName, productId, gender From users Where email = '$username'");
 	$res = mysql_fetch_object($checkUserLic);
 
+	//Verifica privilégios
 	$sqlPrivileges = mysql_query("Select usertype, productId From `users` Where email = '$username'");
 	$resPrivileges = mysql_fetch_object($sqlPrivileges);
 
+	//Guarda id do usuário na sessão
 	$userId = $_SESSION['userId'];
+
+	//Verifica logo
+	$sqlLogo = mysql_query("Select logoName From userlogo Where userId = ". $userId ."");
+	$resLogo = mysql_fetch_object($sqlLogo);
 ?>
 
 <!doctype html>
@@ -69,7 +86,11 @@
 					<div class="col-xs-4 col-sm-4 col-md-12"> 
 						<div class = "logo">
 							<div class = "logoInner">
-								<div class = "logoText"> Logo </div>
+								<?php if ($resLogo->logoName){ ?>
+									<img src = "<?php echo $baseUrl ?>resources/images/uploads/<?php echo $resLogo->logoName; ?>" width = "80" height = "80">
+								<?php } else { ?>
+									<div class = "logoText"> Logo </div>
+								<?php } ?>
 							</div>
 						</div>
 					</div>

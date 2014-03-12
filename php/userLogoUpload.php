@@ -82,8 +82,8 @@
 		//Pega nome do arquivo atual para o usuário especificado
 		$resName = mysql_fetch_object($getName);
 
-		//Move para pasta de imagens antigas
-		$path = rename("../resources/images/uploads/". $resName->logoName, "../resources/images/uploads/OLD/". $resName->logoName . '.OLD');
+		//Remove imagem antiga
+		unlink("../resources/images/uploads/". $resName->logoName);
 	}
 
 
