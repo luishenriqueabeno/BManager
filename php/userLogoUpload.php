@@ -67,7 +67,7 @@
 	//Função para mover arquivos antigos
 	function moveOldFiles($userId, $fileTmpLoc){
 		//Verifica nome da imagem atual
-		$getName = mysql_query("Select logoName From userLogo Where userId = ". $userId ." ");
+		$getName = mysql_query("Select logoName From userlogo Where userId = ". $userId);
 		
 		//Pega nome do arquivo atual para o usuário especificado
 		$resName = mysql_fetch_object($getName);
