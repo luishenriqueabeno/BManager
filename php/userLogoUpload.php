@@ -77,11 +77,13 @@
 
 		//Verifica se é ambiente de produção ou desenvolvimento
 		if($baseUrl == 'http://localhost/'){		
+			echo "Ele acha que é local";
 			//Remove imagem antiga
 			$unlink = unlink("../resources/images/uploads/". $resName->logoName);
 
 			echo $unlink;
 		} else {
+			echo "Ele sabe que é servidor";
 			//Remove imagem antiga
 			$unlink = unlink("/home/luish360/public_html/trabalhos/2014/BManager/resources/images/uploads/". $resName->logoName);
 
