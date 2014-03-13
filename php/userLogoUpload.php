@@ -83,18 +83,11 @@
 		//Pega nome do arquivo atual para o usuário especificado
 		$resName = mysql_fetch_object($getName);
 
-		//Pega url base
-		$baseUrl = "http://" . $_SERVER['SERVER_NAME'] . '/';
-
-		//Verifica se é ambiente de produção ou desenvolvimento
-		if($baseUrl == 'http://localhost/'){		
+		
 			//Remove imagem antiga
 			unlink("../resources/images/uploads/". $resName->logoName);
 
-		} else {
-			//Remove imagem antiga
-			unlink("/home/luish360/public_html/trabalhos/2014/BManager/resources/images/uploads/". $resName->logoName );
-		}
+		
 	}
 
 	//Mensagem de retorno
