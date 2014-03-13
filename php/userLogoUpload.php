@@ -81,9 +81,16 @@
 			$unlink = unlink("../resources/images/uploads/". $resName->logoName);
 
 		} else {
+			echo "Entrou na mardita função";
+
 			//Remove imagem antiga
 			//$unlink = unlink("../resources/images/uploads/". $resName->logoName);
+
+			echo $resName->logoName. "Pegou o nome do bendito";
+
 			unlink("/home/luish360/public_html/trabalhos/2014/BManager/resources/images/uploads/". $resName->logoName );
+
+			echo "Isso é o correto....  /home/luish360/public_html/trabalhos/2014/BManager/resources/images/uploads/". $resName->logoName;
 		}
 
 		
