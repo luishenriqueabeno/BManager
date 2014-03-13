@@ -83,7 +83,7 @@
 		} else {
 			//Remove imagem antiga
 			//$unlink = unlink("../resources/images/uploads/". $resName->logoName);
-			unlink("/home/luish360/public_html/trabalhos/2014/BManager/resources/images/uploads/image_2014-03-13_5321b19d5c3db_Chrysanthemum.jpg");
+			unlink("/home/luish360/public_html/trabalhos/2014/BManager/resources/images/uploads/". $resName->logoName );
 		}
 
 		
