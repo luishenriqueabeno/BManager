@@ -82,6 +82,9 @@ a:visited{
 .navbar-header{
 	margin-left:10px;
 }
+.navbar-default .navbar-nav>.active>a{
+	height: 55px;
+}
 
 /***************************
 *	Formulário change photo *
