@@ -68,7 +68,7 @@
 	function moveOldFiles($userId, $fileTmpLoc){
 		//Verifica nome da imagem atual
 		$getName = mysql_query("Select logoName From userLogo Where userId = ". $userId ." ");
-		echo "Entrou na função";
+		
 		//Pega nome do arquivo atual para o usuário especificado
 		$resName = mysql_fetch_object($getName);
 
@@ -77,15 +77,13 @@
 
 		//Verifica se é ambiente de produção ou desenvolvimento
 		if($baseUrl == 'http://localhost/'){		
-			echo "Ele acha que é local";
 			//Remove imagem antiga
 			$unlink = unlink("../resources/images/uploads/". $resName->logoName);
 
 			echo $unlink;
 		} else {
-			echo "Ele sabe que é servidor";
 			//Remove imagem antiga
-			$unlink = unlink("/home/luish360/public_html/trabalhos/2014/BManager/resources/images/uploads/". $resName->logoName);
+			$unlink = unlink("../resources/images/uploads/". $resName->logoName);
 
 			echo $unlink;
 		}
