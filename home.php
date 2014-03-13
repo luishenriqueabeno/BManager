@@ -25,8 +25,12 @@
 	//Guarda id do usuário na sessão
 	$userId = $_SESSION['userId'];
 
+	//Pega id do usuário master
+	$getMaster = mysql_query("Select userMaster From users Where id = ". $userId. "");
+	$resMaster = mysql_fetch_object($getMaster);
+
 	//Verifica logo
-	$sqlLogo = mysql_query("Select logoName From userlogo Where userId = ". $userId ."");
+	$sqlLogo = mysql_query("Select logoName From userlogo Where userMaster = '". $resMaster->userMaster ."'");
 	$resLogo = mysql_fetch_object($sqlLogo);
 ?>
 
@@ -85,7 +89,9 @@
 					<div class="col-xs-4 col-sm-4 col-md-12"> </div>
 					<div class="col-xs-4 col-sm-4 col-md-12"> 
 						<div class = "logo">
-							<div class = "logoInner">
+							<!-- Apenas o usuário master pode alterar a foto -->
+							<div <?php if ($resPrivileges->usertype == '1'){ ?> class = "logoInner" <?php } else { ?> class = "logoInnerUser" <?php } ?>>
+								<!-- Exibe imagem se existir, caso contrário, exibe o texto "Logo" -->
 								<?php if ($resLogo->logoName){ ?>
 									<img src = "<?php echo $baseUrl ?>resources/images/uploads/<?php echo $resLogo->logoName; ?>" width = "80" height = "80">
 								<?php } else { ?>
@@ -99,7 +105,7 @@
 					<div class="col-xs-4 col-sm-4 col-md-12"> </div>
 					<div class="col-md-offset-1 col-xs-8 col-sm-8 col-md-8">
 						<div class = "welcome"> 
-							<?php if($res->gender == 1) echo "<span class = 'welcomeText'> Seja bem vindo " . $res->firstName . " " . $res->lastName; ?> </span> <a href = "php/logout.php"> Logout </a>
+							<?php if($res->gender == 1) echo "<span class = 'welcomeText'> Seja bem vindo " . $res->firstName . " " . $res->lastName; ?> </span> 
 						</div>
 					</div>
 					<div class="col-xs-2 col-sm-2 col-md-2"> 
@@ -149,6 +155,7 @@
 								</ul>
 							</li>
 						</ul>
+						<p class="navbar-text navbar-right"><a href = "php/logout.php" class = "logout"> <img src = "resources/images/logout.png" width = "25" height = "25"> </a></p>
 					</div><!-- /.navbar-collapse -->
 				</nav>
 		<?php } ?>
@@ -193,6 +200,7 @@
 								</ul>
 							</li>
 						</ul>
+						<p class="navbar-text navbar-right"><a href = "php/logout.php" class = "logout"> <img src = "resources/images/logout.png" width = "25" height = "25"> </a></p>
 					</div><!-- /.navbar-collapse -->
 				</nav>
 		<?php } ?>
