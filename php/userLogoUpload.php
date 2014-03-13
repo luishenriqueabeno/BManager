@@ -78,10 +78,14 @@
 		//Verifica se é ambiente de produção ou desenvolvimento
 		if($baseUrl == 'http://localhost/'){
 			//Remove imagem antiga
-			unlink("../resources/images/uploads/". $resName->logoName);
+			$unlink = unlink("../resources/images/uploads/". $resName->logoName);
+
+			echo $unlink;
 		} else {
 			//Remove imagem antiga
-			exec("rm /home/luish360/public_html/trabalhos/2014/BManager/resources/images/uploads/". $resName->logoName . "-Rf");
+			$unlink = unlink("/home/luish360/public_html/trabalhos/2014/BManager/resources/images/uploads/". $resName->logoName);
+
+			echo $unlink;
 		}
 
 		
