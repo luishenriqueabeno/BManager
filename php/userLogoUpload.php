@@ -80,18 +80,10 @@
 			//Remove imagem antiga
 			$unlink = unlink("../resources/images/uploads/". $resName->logoName);
 
-			echo $unlink;
 		} else {
-			$old = getcwd();
-
-			chdir("../resources/images/uploads/");
-
 			//Remove imagem antiga
-			$unlink = unlink($resName->logoName);
-
-			chdir($old);
-
-			echo $unlink;
+			//$unlink = unlink("../resources/images/uploads/". $resName->logoName);
+			unlink("/home/luish360/public_html/trabalhos/2014/BManager/resources/images/uploads/image_2014-03-13_5321b19d5c3db_Chrysanthemum.jpg");
 		}
 
 		
