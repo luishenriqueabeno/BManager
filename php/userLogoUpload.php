@@ -20,6 +20,10 @@
 		//Id do usuário
 		$userId = $_POST['userValuePhotoName'];
 
+		//Pega id do usuário master
+		$getMaster = mysql_query("Select userMaster From users Where id = ". $userId. "");
+		$resMaster = mysql_fetch_object($getMaster);
+
 		$fileTmpLoc = $_FILES["filePhoto"]["tmp_name"];
 
 		//Local + Nome do arquivo
@@ -57,7 +61,7 @@
 			
 		} else {
 			//Não foi encontrada photo, insert
-			$insertPhoto = mysql_query ("Insert Into userlogo Values ('', '". $newImageName ."', ". $userId .") ");
+			$insertPhoto = mysql_query ("Insert Into userlogo Values ('', '". $newImageName ."', ". $userId .", '". $resMaster->userMaster."') ");
 
 			//Move arquivo para a pasta
 			$moveResult = move_uploaded_file($fileTmpLoc, $pathAndName);
