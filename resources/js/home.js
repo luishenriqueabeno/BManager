@@ -98,11 +98,24 @@ $(document).ready(function(){
 	            contentType: false,
 	            processData: false,
 	            success:function(data){
+	            	//Exibe mensagem de sucesso
 	               $('#formMessageSuccess').html(data);
+
+	               //Volta texto do botão para o estado original
 	               $('#btnChangePhoto').attr('value', 'Enviar');
+
+	               //Ao finalizar requisição
+	               $( document ).ajaxStop(function() {
+	               		//Assim que a requisição for finalizada é feito um refresh na página para
+	               		//exibir a nova imagem
+						location.reload();
+					});
 	            },
 	            error: function(data){
+	            	//Exibe mensagem de erro
 	                $('#formMessageError').html(data);
+
+	                //Volta texto do botão para o estado original
 	                $('#btnChangePhoto').attr('value', 'Enviar');
 	            }
 	   		});
