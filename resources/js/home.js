@@ -78,6 +78,9 @@ $(document).ready(function(){
 
    //Faz upload da imagem
    $('#btnChangePhoto').on('click', function(){
+   		//Altera nome do botão para o usuário saber que esta sendo feito o upload da imagem
+   		$(this).attr('value', 'Alterando...');
+
    		$('#formChangePhoto').on('submit', function(e) {
    			//Previne enviar a mesma imagem mais de uma vez
    			e.preventDefault();
@@ -96,9 +99,11 @@ $(document).ready(function(){
 	            processData: false,
 	            success:function(data){
 	               $('#formMessageSuccess').html(data);
+	               $('#btnChangePhoto').attr('value', 'Enviar');
 	            },
 	            error: function(data){
 	                $('#formMessageError').html(data);
+	                $('#btnChangePhoto').attr('value', 'Enviar');
 	            }
 	   		});
 	   	});

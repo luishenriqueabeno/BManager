@@ -12,7 +12,7 @@
 
 	//Verifica se o arquivo é maior que 2MB (2097152 bytes)
 	if($fileSize > 2097152){
-		$message = "O arquivo é muito grande, o tamanho máximo é de 2MB";
+		$message = "<b style = 'color:red'>O arquivo é muito grande, o tamanho máximo é de 2MB</b>";
 	} else {
 		//Garente que não haverá uma imagem com o mesmo nome
 		$newImageName = 'image_' . date('Y-m-d') . '_' . uniqid() . '_' . $fileName ;
