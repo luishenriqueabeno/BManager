@@ -1,9 +1,9 @@
 <?php
 	require ("conn.php");
-	echo round(microtime(true) * 1000) . "Verifica os warnings <br>";
+	
 	//Suprime warnings
 	error_reporting(E_ERROR | E_PARSE);
-	echo round(microtime(true) * 1000) . "<br>";
+	
 	//Nome do arquivo
 	$fileName = $_FILES["filePhoto"]["name"]; 
 
@@ -14,10 +14,10 @@
 	if($fileSize > 2097152){
 		$message = "<b style = 'color:red'>O arquivo é muito grande, o tamanho máximo é de 2MB</b>";
 	} else {
-		echo round(microtime(true) * 1000) . "Verifica a função para renomear a imagem <br>";
+	
 		//Garente que não haverá uma imagem com o mesmo nome
 		$newImageName = 'image_' . date('Y-m-d') . '_' . uniqid() . '_' . $fileName ;
-		echo round(microtime(true) * 1000) . "<br>";
+	
 
 		//Id do usuário
 		$userId = $_POST['userValuePhotoName'];
@@ -45,20 +45,14 @@
 
 		if($rowsCheckPhoto >= 1){
 
-			echo round(microtime(true) * 1000) . "Tempo para remover imagem <br>";
 			//Remove imagem antiga
 			removeOldFiles($userId, $fileTmpLoc);
-			echo round(microtime(true) * 1000) . "<br>";
 
-			echo round(microtime(true) * 1000) . "Tempo para fazer update <br>";
 			//Foi encontrada photo, faz update do nome imagem
 			$updatePhoto = mysql_query ("Update userlogo Set logoName = '". $newImageName ."' Where userId = ". $userId ."");
-			echo round(microtime(true) * 1000) . "<br>";
 
-			echo round(microtime(true) * 1000) . "Tempo para mover imagem <br>";
 			//Move arquivo para a pasta
 			$moveResult = move_uploaded_file($fileTmpLoc, $pathAndName);
-			echo round(microtime(true) * 1000) . "<br>";
 
 			//Verifica se o arquivo foi movido corretamente
 			if ($moveResult == true) {
@@ -68,15 +62,11 @@
 			}
 			
 		} else {
-			echo round(microtime(true) * 1000) . "Tempo para fazer insert <br>";
 			//Não foi encontrada photo, insert
-			$insertPhoto = mysql_query ("Insert Into userlogo Values ('', '". $newImageName ."', ". $userId .", '". $resMaster->userMaster."') ");
-			echo round(microtime(true) * 1000) . "<br>";
+			$insertPhoto = mysql_query ("Insert Into userlogo Values ('', '". $newImageName ."', ". $userId .", '". $resMaster->userMaster."') ");		
 
-			echo round(microtime(true) * 1000) . "Tempo para mover arquivo <br>";
 			//Move arquivo para a pasta
 			$moveResult = move_uploaded_file($fileTmpLoc, $pathAndName);
-			echo round(microtime(true) * 1000) . "<br>";
 
 			//Verifica se o arquivo foi movido corretamente
 			if ($moveResult == true) {
