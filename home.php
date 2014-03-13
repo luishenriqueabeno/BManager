@@ -72,6 +72,7 @@
 			 	<img id="previewHolder" alt="Pré-visualização" width="80px" height="80px"/>
 
 			 	<input type = "hidden" name = "userValuePhotoName" value = "<?php echo $userId;  ?>">
+			 	<div style="float: left;">  *O tamanho máximo é de 2MB </div>
 
 				<div class = "formChangePhotoSeparator">
 					<div class="ui-dialog-buttonset">
