@@ -68,7 +68,7 @@
 	function moveOldFiles($userId, $fileTmpLoc){
 		//Verifica nome da imagem atual
 		$getName = mysql_query("Select logoName From userLogo Where userId = ". $userId ." ");
-
+		echo "Entrou na função";
 		//Pega nome do arquivo atual para o usuário especificado
 		$resName = mysql_fetch_object($getName);
 
@@ -76,7 +76,7 @@
 		$baseUrl = "http://" . $_SERVER['SERVER_NAME'] . '/';
 
 		//Verifica se é ambiente de produção ou desenvolvimento
-		if($baseUrl == 'http://localhost/'){
+		if($baseUrl == 'http://localhost/'){		
 			//Remove imagem antiga
 			$unlink = unlink("../resources/images/uploads/". $resName->logoName);
 
