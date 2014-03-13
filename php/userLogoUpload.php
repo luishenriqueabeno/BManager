@@ -7,62 +7,69 @@
 	//Nome do arquivo
 	$fileName = $_FILES["filePhoto"]["name"]; 
 
-	//Garente que não haverá uma imagem com o mesmo nome
-	$newImageName = 'image_' . date('Y-m-d') . '_' . uniqid() . '_' . $fileName ;
+	//Tamanho do arquivo
+	$fileSize = $_FILES['filePhoto']['size'];
 
-	//Id do usuário
-	$userId = $_POST['userValuePhotoName'];
-
-	$fileTmpLoc = $_FILES["filePhoto"]["tmp_name"];
-
-	//Local + Nome do arquivo
-	$pathAndName = "../resources/images/uploads/". $newImageName;
-
-	//Verifica se o usuário já fez o upload de alguma photo
-	//isso servirá para remover a imagem antiga e atualizar o path com a nova
-	$checkPhoto = mysql_query("	Select
-									id
-								From
-									userlogo
-								Where
-									userId = ". $userId ."
-							");
-
-	$rowsCheckPhoto = mysql_num_rows($checkPhoto);
-
-	if($rowsCheckPhoto >= 1){
-
-		//Move imagem antiga
-		moveOldFiles($userId, $fileTmpLoc);
-
-		//Foi encontrada photo, faz update do nome imagem
-		$updatePhoto = mysql_query ("Update userlogo Set logoName = '". $newImageName ."' Where userId = ". $userId ."");
-
-		//Move arquivo para a pasta
-		$moveResult = move_uploaded_file($fileTmpLoc, $pathAndName);
-
-		//Verifica se o arquivo foi movido corretamente
-		if ($moveResult == true) {
-			$message = "Foto alterada com sucesso.";
-		} else {
-			$message = "Falha ao alterar foto.";
-		}
-		
+	//Verifica se o arquivo é maior que 2MB (2097152 bytes)
+	if($fileSize > 2097152){
+		$message = "O arquivo é muito grande, o tamanho máximo é de 2MB";
 	} else {
-		//Não foi encontrada photo, insert
-		$insertPhoto = mysql_query ("Insert Into userlogo Values ('', '". $newImageName ."', ". $userId .") ");
+		//Garente que não haverá uma imagem com o mesmo nome
+		$newImageName = 'image_' . date('Y-m-d') . '_' . uniqid() . '_' . $fileName ;
 
-		//Move arquivo para a pasta
-		$moveResult = move_uploaded_file($fileTmpLoc, $pathAndName);
+		//Id do usuário
+		$userId = $_POST['userValuePhotoName'];
 
-		//Verifica se o arquivo foi movido corretamente
-		if ($moveResult == true) {
-			$message = "Foto alterada com sucesso.";
+		$fileTmpLoc = $_FILES["filePhoto"]["tmp_name"];
+
+		//Local + Nome do arquivo
+		$pathAndName = "../resources/images/uploads/". $newImageName;
+
+		//Verifica se o usuário já fez o upload de alguma photo
+		//isso servirá para remover a imagem antiga e atualizar o path com a nova
+		$checkPhoto = mysql_query("	Select
+										id
+									From
+										userlogo
+									Where
+										userId = ". $userId ."
+								");
+
+		$rowsCheckPhoto = mysql_num_rows($checkPhoto);
+
+		if($rowsCheckPhoto >= 1){
+
+			//Move imagem antiga
+			moveOldFiles($userId, $fileTmpLoc);
+
+			//Foi encontrada photo, faz update do nome imagem
+			$updatePhoto = mysql_query ("Update userlogo Set logoName = '". $newImageName ."' Where userId = ". $userId ."");
+
+			//Move arquivo para a pasta
+			$moveResult = move_uploaded_file($fileTmpLoc, $pathAndName);
+
+			//Verifica se o arquivo foi movido corretamente
+			if ($moveResult == true) {
+				$message = "Foto alterada com sucesso.";
+			} else {
+				$message = "Falha ao alterar foto.";
+			}
+			
 		} else {
-			$message = "Falha ao alterar foto.";
+			//Não foi encontrada photo, insert
+			$insertPhoto = mysql_query ("Insert Into userlogo Values ('', '". $newImageName ."', ". $userId .") ");
+
+			//Move arquivo para a pasta
+			$moveResult = move_uploaded_file($fileTmpLoc, $pathAndName);
+
+			//Verifica se o arquivo foi movido corretamente
+			if ($moveResult == true) {
+				$message = "Foto alterada com sucesso.";
+			} else {
+				$message = "Falha ao alterar foto.";
+			}
 		}
 	}
-
 
 	//Função para mover arquivos antigos
 	function moveOldFiles($userId, $fileTmpLoc){
@@ -78,25 +85,14 @@
 		//Verifica se é ambiente de produção ou desenvolvimento
 		if($baseUrl == 'http://localhost/'){		
 			//Remove imagem antiga
-			$unlink = unlink("../resources/images/uploads/". $resName->logoName);
+			unlink("../resources/images/uploads/". $resName->logoName);
 
 		} else {
-			echo "Entrou na mardita função";
-
 			//Remove imagem antiga
-			//$unlink = unlink("../resources/images/uploads/". $resName->logoName);
-
-			echo $resName->logoName. "Pegou o nome do bendito";
-
 			unlink("/home/luish360/public_html/trabalhos/2014/BManager/resources/images/uploads/". $resName->logoName );
-
-			echo "Isso é o correto....  /home/luish360/public_html/trabalhos/2014/BManager/resources/images/uploads/". $resName->logoName;
 		}
-
-		
 	}
 
-
+	//Mensagem de retorno
 	echo $message;
-	
 ?>
