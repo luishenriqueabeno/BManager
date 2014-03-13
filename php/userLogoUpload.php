@@ -82,8 +82,14 @@
 
 			echo $unlink;
 		} else {
+			$old = getcwd();
+
+			chdir("../resources/images/uploads/");
+
 			//Remove imagem antiga
-			$unlink = unlink("../resources/images/uploads/". $resName->logoName);
+			$unlink = unlink($resName->logoName);
+
+			chdir($old);
 
 			echo $unlink;
 		}
