@@ -39,8 +39,8 @@
 
 		if($rowsCheckPhoto >= 1){
 
-			//Move imagem antiga
-			moveOldFiles($userId, $fileTmpLoc);
+			//Remove imagem antiga
+			removeOldFiles($userId, $fileTmpLoc);
 
 			//Foi encontrada photo, faz update do nome imagem
 			$updatePhoto = mysql_query ("Update userlogo Set logoName = '". $newImageName ."' Where userId = ". $userId ."");
@@ -72,7 +72,7 @@
 	}
 
 	//Função para mover arquivos antigos
-	function moveOldFiles($userId, $fileTmpLoc){
+	function removeOldFiles($userId, $fileTmpLoc){
 		//Verifica nome da imagem atual
 		$getName = mysql_query("Select logoName From userlogo Where userId = ". $userId);
 		
