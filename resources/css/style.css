@@ -125,7 +125,7 @@ a:visited{
 	height:auto;
 }
 .homeInfos{
-	position:absolute;
+	float:left;
 	bottom:0;
 	width:100%;
 	border:1px solid #CCC;
@@ -158,6 +158,9 @@ a:visited{
 	width: 100px;
 	left: 50%;
 	margin-left: -50px;
+}
+#contentMain{
+	float:left;
 }
 
 /************************
@@ -295,6 +298,50 @@ a:visited{
 	width:660px;
 	height:300px;
 	float:left;
+}
+
+/************************
+*		Enquete		     *
+*************************/
+.titleContainerEnquete h6{
+	float:left;
+}
+.titleContainerEnquete a{
+	float:right;
+	margin-top: 10px;
+}
+#enquete{
+	padding-top:25px;
+}
+.containerEnquete{
+	padding:10px;
+	float:right;
+	border-top: 3px solid #FF770D;
+	border-bottom: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	width:660px;
+	height:300px;
+	margin-bottom:20px;
+}
+.containerEnquete{
+	margin-top:25px;
+	float:left;
+}
+.enqueteForm{
+	float:left;
+	margin-top:15px;
+}
+.enqueteForm label, textarea{
+	width:100%;
+}
+.enqueteBtn{
+	margin-top: 10px;
+	margin-left: 190px;
+	width: 200px;
+	padding: .4em 1em;
+	border: 1px solid #d3d3d3/*{borderColorDefault}*/;
+	background: #e6e6e6/*{bgColorDefault} url(images/ui-bg_glass_75_e6e6e6_1x400.png)/*{bgImgUrlDefault}*/ 50%/*{bgDefaultXPos}*/ 50%/*{bgDefaultYPos}*/ repeat-x/*{bgDefaultRepeat}*/;
 }
 
 /************************

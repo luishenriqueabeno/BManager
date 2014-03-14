@@ -46,10 +46,7 @@
 		<script src="lib/jquery-ui-1.10.3/ui/minified/jquery-ui.min.js"></script>
 		<script src="resources/js/home.js"></script>
 		<script src = "lib/maskMoney/maskMoney.min.js" type = "text/javascript"></script>
-		<script src="lib/bootstrap-3.0/js/bootstrap.min.js"></script>
-
-		<!-- Google fonts -->
-		
+		<script src="lib/bootstrap-3.0/js/bootstrap.min.js"></script>		
 	</head>
 	<body>
 		<!-- Change photo modal -->
@@ -95,9 +92,14 @@
 					<div class="col-xs-4 col-sm-4 col-md-12"> </div>
 
 					<div class="col-xs-4 col-sm-4 col-md-12"> </div>
-					<div class="col-md-offset-1 col-xs-8 col-sm-8 col-md-8">
+					<div class="col-md-offset-1 col-xs-6 col-sm-6 col-md-6">
 						<div class = "welcome"> 
 							<?php if($res->gender == 1) echo "<span class = 'welcomeText'> Seja bem vindo " . $res->firstName . " " . $res->lastName; ?> </span> 
+						</div>
+					</div>
+					<div class="col-md-offset-1 col-xs-2 col-sm-2 col-md-2"> 
+						<div class = "suportContainner">
+							<a href = "#"> <img src = "<?php echo $baseUrl ?>resources/images/suporte.png" title = "Suporte" width = "32" height = "32"> </a>
 						</div>
 					</div>
 					<div class="col-xs-2 col-sm-2 col-md-2"> 
@@ -236,19 +238,25 @@
 						</table>
 					</div>
 				</div>
-			</div>
 
-			<!-- Area de noticias -->
-			<div class = "homeInfos"> 
-				<div id = "noticeAreaToggle" class = "toggleButton arrowDown"> </div>
-				<div class = "homeInfosTitle"> <h3> Noticias </div>
-				<div class = "homeInfosText"> 
-					19/02/2014 - Agora é possível trocar sua senha!<br>
-					21/02/2014 - Agora através de um gráfico, você terá uma visão geral de todas as suas movimentações (despesas, receitas e saldo)<br>
-					24/02/2014 - Não se preocupe, agora o sistema irá mostrar as suas tarefas que estão mais próximas a data prevista para término!
+				<!-- Área de enquete -->
+				<div class = "containerEnquete" id = "enquete"> 
+					<div class = "titleContainerEnquete"> 
+						<h6> <b> Gostariamos de ouvir a sua opinião! </h6>  </b>
+						<div class = "enqueteForm">
+							<form method = "post">
+								<label> <h6> <b> O que você achou do BManager até o momento? </h6>  </b> </label>
+								<textarea name = "opiniaoUsuario"> </textarea>
+
+								<label> <h6> <b> Há alguma sugestão e/ou problema para nos reportar? </h6> </b> </label>
+								<textarea name = "reporteUsuario"> </textarea>
+
+								<button name = "enviarEnquete" class = "enqueteBtn"> Enviar </button>
+							</form>
+						</div>						
+					</div>
 				</div>
 			</div>
-
 
 			<!-- Google charts -->
 			<?php if ($resPrivileges->usertype == '2' && $resPrivileges->productId != 1 || $resPrivileges->usertype == '1'){ ?>
@@ -353,5 +361,16 @@
 			    </script>
 		    <?php } ?>
 		</div>
+
+		<!-- Area de noticias -->
+		<!--<div class = "homeInfos"> 
+			<div id = "noticeAreaToggle" class = "toggleButton arrowDown"> </div>
+			<div class = "homeInfosTitle"> <h3> Noticias </div>
+			<div class = "homeInfosText"> 
+				19/02/2014 - Agora é possível trocar sua senha!<br>
+				21/02/2014 - Agora através de um gráfico, você terá uma visão geral de todas as suas movimentações (despesas, receitas e saldo)<br>
+				24/02/2014 - Não se preocupe, agora o sistema irá mostrar as suas tarefas que estão mais próximas a data prevista para término!
+			</div>
+		</div>-->
 	</body>
 </html>

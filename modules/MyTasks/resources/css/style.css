@@ -30,7 +30,9 @@ table{
 	border:solid #CCC;
 	border-width:2px;
 	width:900px;
-	margin: 0 auto;
+	left: 50%;
+	position: absolute;
+	margin-left: -450px;
 }
 .taskContainerTitle{
 	background:-o-linear-gradient(bottom, #005fbf 5%, #003f7f 100%);	

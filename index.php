@@ -2,7 +2,7 @@
 <!doctype html>
 <html lang = "pt">
 	<head>
-		<title> Daily Helper </title>
+		<title> Bussiness Manager </title>
 
 		<!-- Meta -->
 		<meta charset = "utf-8">

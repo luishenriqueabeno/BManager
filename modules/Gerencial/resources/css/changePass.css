@@ -17,6 +17,9 @@
 	margin:0 auto;
 	margin-top:80px;
 	border:1px #CCC solid;
+	left: 50%;
+	position: absolute;
+	margin-left: -225px;
 }
 label{
 	width: 250px;
