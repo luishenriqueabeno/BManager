@@ -16,10 +16,7 @@
 	height:200px;
 	margin:0 auto;
 	margin-top:80px;
-	border:1px #CCC solid;
-	left: 50%;
-	position: absolute;
-	margin-left: -225px;
+	border:1px #CCC solid;	
 }
 label{
 	width: 250px;

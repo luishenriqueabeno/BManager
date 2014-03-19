@@ -202,4 +202,10 @@ $(document).ready(function(){
 		$('#contentMain').load('modules/Gerencial/changePass.php');
 	});
 
+	//Adiciona o modulo de arquivos
+	$("a[name=myFiles]").click(function () { 
+		$('#contentMain').empty();
+		$('#contentMain').load('modules/MyFiles/index.php');
+	});
+
 })

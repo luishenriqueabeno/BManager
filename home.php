@@ -130,7 +130,7 @@
 						<ul class="nav navbar-nav">
 							<li> <a href = "#" name = "modulesTasks"> Minhas Tarefas </a> </li>
 							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Fluxo de caixa <b class="caret"></b></a>
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Meu dinheiro <b class="caret"></b></a>
 								<ul class="dropdown-menu">
 									<li><a href="#" name = "modulesCashFlowMonth"> Visão mensal </a></li>
 									<li><a href="#" name = "modulesCashFlowExpenses"> Gerenciar despesas </a></li>
@@ -138,6 +138,7 @@
 									<li><a href="#" name = "modulesCashFlowCategories"> Gerenciar categorias </a></li>
 								</ul>
 							</li>
+							<li> <a href = "#" name = "myFiles"> Meus Arquivos </a> </li>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Gerencial <b class="caret"></b></a>
 								<ul class="dropdown-menu">
