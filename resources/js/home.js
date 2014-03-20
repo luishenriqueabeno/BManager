@@ -154,6 +154,11 @@ $(document).ready(function(){
 		}
 	});
 
+	//Remove active do link home ao clicar em qualquer outro
+	$('.navbar-nav').on('click', function(){
+		$('#homeLink').removeClass('firstActive');
+	})
+
 	//Link para area de tarefas através da home
 	$('#goToTasks').click(function(){
 		$('#contentMain').empty();

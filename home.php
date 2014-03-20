@@ -94,7 +94,7 @@
 					<div class="col-xs-4 col-sm-4 col-md-12"> </div>
 					<div class="col-md-offset-1 col-xs-6 col-sm-6 col-md-6">
 						<div class = "welcome"> 
-							<?php if($res->gender == 1) echo "<span class = 'welcomeText'> Seja bem vindo " . $res->firstName . " " . $res->lastName; ?> </span> 
+							<?php if($res->gender == 1) echo "<span class = 'welcomeText'> Seja bem vindo <a href = ''> " . $res->firstName . " " . $res->lastName; ?> </a></span> 
 						</div>
 					</div>
 					<div class="col-md-offset-1 col-xs-2 col-sm-2 col-md-2"> 
@@ -122,7 +122,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" name = "homePage" href="home.php"> Home </a>
+						<a class="navbar-brand firstActive" id = "homeLink" name = "homePage" href="home.php"> <img src = "resources/images/home.jpg"> </a>
 					</div>
 
 					<!-- Collect the nav links, forms, and other content for toggling -->
@@ -130,19 +130,37 @@
 						<ul class="nav navbar-nav">
 							<li> <a href = "#" name = "modulesTasks"> Minhas Tarefas </a> </li>
 							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Fluxo de caixa <b class="caret"></b></a>
-								<ul class="dropdown-menu">
-									<li><a href="#" name = "modulesCashFlowMonth"> Visão mensal </a></li>
-									<li><a href="#" name = "modulesCashFlowExpenses"> Gerenciar despesas </a></li>
-									<li><a href="#" name = "modulesCashFlowIncomes"> Gerenciar receitas </a></li>
-									<li><a href="#" name = "modulesCashFlowCategories"> Gerenciar categorias </a></li>
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Financeiro<b class="caret"></b></a>
+								<ul class="dropdown-menu bigMenu">
+									<div class = "onLeft">
+										<li role="presentation" class="dropdown-header">Contas a pagar</li>
+										<li><a href="#" name = ""> Gerenciar contas a pagar</a></li>
+									</div>
+									<div class = "onRight">
+										<li role="presentation" class="dropdown-header">Contas a receber</li>
+										<li><a href="#" name = ""> Gerenciar contas a receber</a></li>								
+									</div>
+
+									<li class="divider dividerFix"></li>
+
+									<div class = "onLeft">
+										<li role="presentation" class="dropdown-header">Fluxo de caixa</li>
+										<li><a href="#" name = "modulesCashFlowMonth"> Visão mensal </a></li>
+										<li><a href="#" name = "modulesCashFlowExpenses"> Gerenciar despesas </a></li>
+										<li><a href="#" name = "modulesCashFlowIncomes"> Gerenciar receitas </a></li>
+										<li><a href="#" name = "modulesCashFlowCategories"> Gerenciar categorias </a></li>
+									</div>
+									<div class = "onRight">
+										<li role="presentation" class="dropdown-header">Contas bancárias</li>
+										<li><a href="#" name = ""> Gerenciar contas bancárias</a></li>								
+									</div>
 								</ul>
 							</li>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Gerencial <b class="caret"></b></a>
 								<ul class="dropdown-menu">
 									<!-- Apenas o usuário master tem acesso -->
-									<?php if ($resPrivileges->usertype == '1' && $resPrivileges->productId != 1){ ?>
+									<?php if ($resPrivileges->usertype == '1'){ ?>
 										<li><a href="#" name = "gerencialUsuarios"> Usuários </a></li>
 									<?php } ?>
 									<li><a href="#" name = "gerencialChangePass"> Alterar senha </a></li>
@@ -154,50 +172,6 @@
 				</nav>
 		<?php } ?>
 
-		<!-- Menu carregado para produtos basic -->
-		<?php if($res->productId == 2){ ?>
-				<nav class="navbar navbar-default" role="navigation">
-					<!-- Brand and toggle get grouped for better mobile display -->
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						</button>
-						<a class="navbar-brand" name = "homePage" href="home.php"> Home </a>
-					</div>
-
-					<!-- Collect the nav links, forms, and other content for toggling -->
-					<div class="collapse navbar-collapse mainMenu" id="bs-example-navbar-collapse-1">
-						<ul class="nav navbar-nav">
-							<li> <a href = "#" name = "modulesTasks"> Minhas Tarefas </a> </li>
-							<?php if ($resPrivileges->usertype == '2' && $resPrivileges->productId != 1 || $resPrivileges->usertype == '1'){ ?>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Fluxo de caixa <b class="caret"></b></a>
-								<ul class="dropdown-menu">
-									<li><a href="#" name = "modulesCashFlowMonth"> Visão mensal </a></li>
-									<li><a href="#" name = "modulesCashFlowExpenses"> Gerenciar despesas </a></li>
-									<li><a href="#" name = "modulesCashFlowIncomes"> Gerenciar receitas </a></li>
-									<li><a href="#" name = "modulesCashFlowCategories"> Gerenciar categorias </a></li>
-								</ul>
-							</li>
-							<?php } ?>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Gerencial <b class="caret"></b></a>
-								<ul class="dropdown-menu">
-									<!-- Apenas o usuário master tem acesso -->
-									<?php if ($resPrivileges->usertype == '1' && $resPrivileges->productId == 2){ ?>
-										<li><a href="#" name = "gerencialUsuarios"> Usuários </a></li>
-									<?php } ?>
-									<li><a href="#" name = "gerencialChangePass"> Alterar senha </a></li>
-								</ul>
-							</li>
-						</ul>
-						<p class="navbar-text navbar-right"><a href = "php/logout.php" class = "logout"> <img src = "resources/images/logout.png" width = "25" height = "25"> </a></p>
-					</div><!-- /.navbar-collapse -->
-				</nav>
-		<?php } ?>
 
 		<input type = "hidden" value = "<?php echo $userId; ?>" name = "userId">
 
@@ -347,7 +321,7 @@
 								]);
 
 								var options = {
-									title: 'Movimentação/mês',
+									title: 'Fluxo de caixa',
 									hAxis: {format: 'R$ #,###'},
 									vAxis: {format: 'R$ #,###'}
 								};
