@@ -138,7 +138,6 @@
 									<li><a href="#" name = "modulesCashFlowCategories"> Gerenciar categorias </a></li>
 								</ul>
 							</li>
-							<li> <a href = "#" name = "myFiles"> Meus Arquivos </a> </li>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Gerencial <b class="caret"></b></a>
 								<ul class="dropdown-menu">
