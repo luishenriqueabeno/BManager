@@ -1,5 +1,5 @@
 <?php
-	require("php/conf.php");
+	require("conf.php");
 
 	session_start();
 	session_destroy();
