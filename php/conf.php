@@ -6,6 +6,6 @@
 	if($baseUrl == 'http://localhost/'){
 		$baseUrl = "http://" . $_SERVER['SERVER_NAME'] . '/BManager/';
 	} else {
-		$baseUrl = "http://" . $_SERVER['SERVER_NAME'] . '/trabalhos/BManager/';
+		$baseUrl = "http://" . $_SERVER['SERVER_NAME'] . '/projetos/BManager/';
 	}
 ?>
