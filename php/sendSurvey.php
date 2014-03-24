@@ -1,6 +1,9 @@
 <?php
 	require("conn.php");
 
+	//Suprime warnings
+	error_reporting(E_ERROR | E_PARSE);
+
 	//Recebe dados do formulário
 	$userId = $_POST['userId'];
 	$userSurvey = $_POST['userSurvey'];
