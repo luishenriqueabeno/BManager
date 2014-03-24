@@ -71,6 +71,16 @@
 			</form>
 		</div>
 
+		<!-- Survey modal -->
+		<div id="surveyModal" title="Obrigado" style = "display:none">
+			<div id = "surveyMsg"> </div>					
+			<div class = "formSurveySeparator">
+				<div class="ui-dialog-buttonset">
+					<input value = "OK" id= "btnSurveyOk" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false">
+				</div>
+			</div>
+		</div>
+
 		<!-- Header -->
 		<section>
 			<header>
@@ -133,25 +143,25 @@
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Financeiro<b class="caret"></b></a>
 								<ul class="dropdown-menu bigMenu">
 									<div class = "onLeft">
-										<li role="presentation" class="dropdown-header">Contas a pagar</li>
+										<li role="presentation" class="dropdown-header"><u> Contas a pagar </u></li>
 										<li><a href="#" name = ""> Gerenciar contas a pagar</a></li>
 									</div>
 									<div class = "onRight">
-										<li role="presentation" class="dropdown-header">Contas a receber</li>
+										<li role="presentation" class="dropdown-header"><u> Contas a receber </u></li>
 										<li><a href="#" name = ""> Gerenciar contas a receber</a></li>								
 									</div>
 
 									<li class="divider dividerFix"></li>
 
 									<div class = "onLeft">
-										<li role="presentation" class="dropdown-header">Fluxo de caixa</li>
+										<li role="presentation" class="dropdown-header"> <u> Fluxo de caixa </u></li>
 										<li><a href="#" name = "modulesCashFlowMonth"> Visão mensal </a></li>
 										<li><a href="#" name = "modulesCashFlowExpenses"> Gerenciar despesas </a></li>
 										<li><a href="#" name = "modulesCashFlowIncomes"> Gerenciar receitas </a></li>
 										<li><a href="#" name = "modulesCashFlowCategories"> Gerenciar categorias </a></li>
 									</div>
 									<div class = "onRight">
-										<li role="presentation" class="dropdown-header">Contas bancárias</li>
+										<li role="presentation" class="dropdown-header"><u> Contas bancárias </u></li>
 										<li><a href="#" name = ""> Gerenciar contas bancárias</a></li>								
 									</div>
 								</ul>
@@ -218,14 +228,14 @@
 					<div class = "titleContainerEnquete"> 
 						<h6> <b> Gostariamos de ouvir a sua opinião! </h6>  </b>
 						<div class = "enqueteForm">
-							<form method = "post">
+							<form>
 								<label> <h6> <b> O que você achou do BManager até o momento? </h6>  </b> </label>
-								<textarea name = "opiniaoUsuario"> </textarea>
+								<textarea name = "opiniaoUsuario" id = "opiniaoUsuario"> </textarea>
 
 								<label> <h6> <b> Há alguma sugestão e/ou problema para nos reportar? </h6> </b> </label>
-								<textarea name = "reporteUsuario"> </textarea>
+								<textarea name = "reporteUsuario" id = "reporteUsuario"> </textarea>
 
-								<button name = "enviarEnquete" class = "enqueteBtn"> Enviar </button>
+								<button type = "button" name = "enviarEnquete" id = "enviarEnquete" class = "enqueteBtn"> Enviar </button>
 							</form>
 						</div>						
 					</div>

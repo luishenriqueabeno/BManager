@@ -20,6 +20,9 @@ $(document).ready(function(){
 	var str_data = dia + '/' + (mes+1) + '/' + ano4;
 	var str_hora = hora + ':' + min;
 
+	//Limpa status de envio do formulário de enquete
+	$("#surveyMsg").html('');
+
 	//Exibe data e hora
 	$('#dataHoraShow').html('<b>Hoje é dia ' + str_data + ' ' + str_hora + '</b>');
 
@@ -158,6 +161,43 @@ $(document).ready(function(){
 	$('.navbar-nav').on('click', function(){
 		$('#homeLink').removeClass('firstActive');
 	})
+
+	//Envia enquete
+	$("#enviarEnquete").on("click", function(){
+		//Pega dados para enviar formulário
+		var userId = $("input[name=userId]").val();
+		var userSurvey = $("#opiniaoUsuario").val();
+		var userReport = $("#reporteUsuario").val();
+
+		//Envia formulário
+		$.ajax({
+			type: 'POST',
+			url: 'php/sendSurvey.php',
+			data: {
+				userId: userId,
+				userSurvey: userSurvey,
+				userReport: userReport
+			},
+			success: function(data){
+
+				//Exibe modal
+				$( "#surveyModal" ).dialog({
+					modal: true,
+					show: { effect: "slideDown", duration: 600 } ,
+					width: 500,
+				});
+
+				//Exibe mensagem
+				$("#surveyMsg").html(data);
+			}
+		});	
+
+	});
+
+	//Botão cancelar do formulário
+	$('#btnSurveyOk').on('click', function(){
+		$( "#surveyModal" ).dialog( "destroy" );
+	});
 
 	//Link para area de tarefas através da home
 	$('#goToTasks').click(function(){
