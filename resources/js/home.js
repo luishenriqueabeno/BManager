@@ -247,10 +247,22 @@ $(document).ready(function(){
 		$('#contentMain').load('modules/Gerencial/changePass.php');
 	});
 
-	//Adiciona o modulo de arquivos
-	$("a[name=myFiles]").click(function () { 
+	//Adiciona o modulo de contas a pagar
+	$("a[name=modulesContasAPagar]").click(function () { 
 		$('#contentMain').empty();
-		$('#contentMain').load('modules/MyFiles/index.php');
+		$('#contentMain').load('modules/ContasAPagar/contasAPagar.php');
+	});
+
+	//Adiciona o modulo de contas a receber
+	$("a[name=modulesContasAReceber]").click(function () { 
+		$('#contentMain').empty();
+		$('#contentMain').load('modules/ContasAReceber/contasAReceber.php');
+	});
+
+	//Adiciona o modulo de contas bancarias
+	$("a[name=modulesContasBancarias]").click(function () { 
+		$('#contentMain').empty();
+		$('#contentMain').load('modules/ContasBancarias/contasBancarias.php');
 	});
 
 })

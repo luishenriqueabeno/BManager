@@ -144,11 +144,11 @@
 								<ul class="dropdown-menu bigMenu">
 									<div class = "onLeft">
 										<li role="presentation" class="dropdown-header"><u> Contas a pagar </u></li>
-										<li><a href="#" name = ""> Gerenciar contas a pagar</a></li>
+										<li><a href="#" name = "modulesContasAPagar"> Gerenciar contas a pagar</a></li>
 									</div>
 									<div class = "onRight">
 										<li role="presentation" class="dropdown-header"><u> Contas a receber </u></li>
-										<li><a href="#" name = ""> Gerenciar contas a receber</a></li>								
+										<li><a href="#" name = "modulesContasAReceber"> Gerenciar contas a receber</a></li>								
 									</div>
 
 									<li class="divider dividerFix"></li>
@@ -162,7 +162,7 @@
 									</div>
 									<div class = "onRight">
 										<li role="presentation" class="dropdown-header"><u> Contas bancárias </u></li>
-										<li><a href="#" name = ""> Gerenciar contas bancárias</a></li>								
+										<li><a href="#" name = "modulesContasBancarias"> Gerenciar contas bancárias</a></li>								
 									</div>
 								</ul>
 							</li>
