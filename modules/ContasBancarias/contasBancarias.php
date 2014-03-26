@@ -74,7 +74,9 @@
 					<table class = "table" id = "bankList">
 						<tr>
 							<td> Banco </td>
+							<td> Agência </td>
 							<td> Conta </td>
+							<td> Gerente </td>
 						</tr>
 					</table>
 				</div>

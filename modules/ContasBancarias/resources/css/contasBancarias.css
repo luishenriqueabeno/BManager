@@ -15,6 +15,9 @@ table{
 	margin-bottom:10px;
 	float: left;
 }
+.ui-dialog-titlebar-close {
+  visibility: hidden;
+}
 
 /***********************
 *		Loader			*
@@ -150,7 +153,7 @@ table{
 	background: -o-linear-gradient(top,#005fbf,003f7f);
 	background-color:#005fbf;
 	border:0px solid #000000;
-	text-align:center;
+	text-align:left;
 	font-size:12px;
 	font-family:Arial;
 	font-weight:bold;
@@ -179,10 +182,10 @@ table{
 	width:200px;
 }
 #bankList tr td:nth-child(2){
-	width:400px;	
+	width:100px;	
 }
 #bankList tr td:nth-child(3){
-	width:122px;	
+	width:100px;	
 }
 #bankList tr td:nth-child(4){
 	width:122px;	
@@ -212,4 +215,9 @@ table{
 }
 .ui-dialog-buttonset{
 	text-align:right;
+}
+.msg{
+	color: green;
+	text-align:center;
+	font-weight:bold;
 }
