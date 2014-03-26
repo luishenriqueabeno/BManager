@@ -46,6 +46,7 @@
 		<script src="lib/jquery-ui-1.10.3/ui/minified/jquery-ui.min.js"></script>
 		<script src="resources/js/home.js"></script>
 		<script src = "lib/maskMoney/maskMoney.min.js" type = "text/javascript"></script>
+		<script src = "lib/jquery-maskedInput/maskedInput.js" type = "text/javascript"></script>
 		<script src="lib/bootstrap-3.0/js/bootstrap.min.js"></script>		
 	</head>
 	<body>

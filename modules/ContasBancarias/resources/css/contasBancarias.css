@@ -1,0 +1,215 @@
+/***********************
+*		Padrões			*
+************************/
+table{
+	-moz-user-select: none; 
+    -khtml-user-select: none; 
+    -webkit-user-select: none; 
+    -o-user-select: none;
+}
+.ui-autocomplete{
+	z-index:999;
+}
+#addManagerContact{
+	margin-top:10px;
+	margin-bottom:10px;
+	float: left;
+}
+
+/***********************
+*		Loader			*
+************************/
+.loader{
+	width: 600px !important;
+	height: 300px !important;
+	background: #FFF;
+}
+.loader img{
+	left: 50%;
+	position: absolute;
+	margin-left: -200px;
+	width: 400px;
+}
+
+/***********************
+*		Container		*
+************************/
+#bankContainer{
+	border:solid #CCC;
+	border-width:2px;
+	width:900px;
+	margin:0 auto;
+}
+.bankContainerTitle{
+	background:-o-linear-gradient(bottom, #005fbf 5%, #003f7f 100%);	
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #005fbf), color-stop(1, #003f7f) );
+	background:-moz-linear-gradient( center top, #005fbf 5%, #003f7f 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#005fbf", endColorstr="#003f7f");	
+	background: -o-linear-gradient(top,#005fbf,003f7f);
+	background-color:#005fbf;
+	border:0px solid #000000;
+	text-align:left;
+	border-width:0px 0px 1px 1px;
+	font-size:12px;
+	font-family:Arial;
+	font-weight:bold;
+	color:#ffffff;
+	line-height:20px;
+}
+.ui-dialog-titlebar-close{
+	background: url('../../../../lib/jquery-ui-1.10.3/themes/base/images/ui-icons_888888_256x240.png') no-repeat -34px -194px;
+	border:none;
+	width:15px !important;
+	height:12px !important;
+}
+
+/***********************
+*		Painel			*
+************************/
+#bankPanel{
+	width:100%;
+}
+#bankPanel tr:first-child td{
+	background-color:#d3e1f1 !important;
+	border:0px solid #000000;
+	text-align:center;
+	font-size:12px;
+	font-family:Arial;
+	font-weight:bold;
+	color:#ffffff;
+}
+#removeBank{
+	width:16px;
+	height:16px;
+	background:url('../images/remove.gif') center center no-repeat;
+	background-size: 100% 100%;
+	float:left;
+	margin-left:10px;
+}
+#addBank{
+	width:16px;
+	height:16px;
+	background:url('../images/add.gif') center center no-repeat;
+	background-size: 100% 100%;	
+	float:left;
+	margin-left:10px;
+}
+.bgBtnContainer{
+	float:left;	
+	width:40px;
+	margin-left:5px;
+}
+.bgBtnContainerTxt{
+	width:130px;
+	height:32px;
+	padding-top: 7px;
+	float:right;	
+	text-align:center;
+	font-weight:bold;
+}
+
+/*******************************
+* 	Tabela de contas bancárias	*
+********************************/
+.bankList {
+	margin:0px;
+	padding:0px;	
+}
+.bankList table{
+    border-collapse: collapse;
+    border-spacing: 0;	
+	height:100%;
+	margin:0px;
+	padding:0px;
+	table-layout: fixed;
+}
+.bankList tr:nth-child(odd){ 
+	background-color:#aad4ff; 
+}
+.bankList tr:nth-child(even){ 
+	background-color:#ffffff; 
+}
+.bankList td{
+	vertical-align:middle;
+	text-align:left;
+	padding:7px;
+	font-size:10px;
+	font-family:Arial;
+	font-weight:normal;
+	color:#000000;
+}
+.bankList tr:not(:first-child){
+	border-bottom-style:solid;
+	border-bottom-width:1px;
+}
+.bankList #bankList tr:first-child td{
+	background:-o-linear-gradient(bottom, #005fbf 5%, #003f7f 100%);	
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #005fbf), color-stop(1, #003f7f) );
+	background:-moz-linear-gradient( center top, #005fbf 5%, #003f7f 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#005fbf", endColorstr="#003f7f");	
+	background: -o-linear-gradient(top,#005fbf,003f7f);
+	background-color:#005fbf;
+	border:0px solid #000000;
+	text-align:center;
+	font-size:12px;
+	font-family:Arial;
+	font-weight:bold;
+	color:#ffffff;
+}
+.bankList tr:hover{
+	background-color:#CCC;
+}
+.highlighted {
+    color: #261F1D;
+    background-color: #CCC !important;
+}
+.highlighted2 {
+    color: #CCC;
+    background-color: #CCC !important;
+}
+#bankList{
+	width:100%;
+}
+#bankList tr td{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; 
+}
+#bankList tr td:first-child{
+	width:200px;
+}
+#bankList tr td:nth-child(2){
+	width:400px;	
+}
+#bankList tr td:nth-child(3){
+	width:122px;	
+}
+#bankList tr td:nth-child(4){
+	width:122px;	
+}
+
+/*************************
+*	Formulário add banco *
+**************************/
+#formAddBank label{
+	float:left;
+	width:100%;
+	position:relative;
+}
+#formAddBank input{
+	float:right;
+	width:100%;	
+	position:relative;
+}
+.formAddBankSeparator{
+	margin-top:10px;
+	padding-top:10px;
+	width:100%;
+	float:left;
+	border-top-style: solid;
+	border-top-width: 1px;
+	border-top-color: #CCC;
+}
+.ui-dialog-buttonset{
+	text-align:right;
+}
