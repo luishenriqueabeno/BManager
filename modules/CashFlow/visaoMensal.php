@@ -163,7 +163,21 @@
 					</tr>	
 				</table>
 				<table id = "tableSaldo" >
-					
+					<tr class = 'saldo tableRow' id = 'saldoMonths'>
+						<td> Saldo </td>
+						<td class = 'jan'> R$ 0,00 </td>
+						<td class = 'fev'> R$ 0,00 </td>
+						<td class = 'mar'> R$ 0,00 </td>
+						<td class = 'abr'> R$ 0,00 </td>
+						<td class = 'mai'> R$ 0,00 </td>
+						<td class = 'jun'> R$ 0,00 </td>
+						<td class = 'jul'> R$ 0,00 </td>
+						<td class = 'ago'> R$ 0,00 </td>
+						<td class = 'set'> R$ 0,00 </td>
+						<td class = 'out'> R$ 0,00 </td>
+						<td class = 'nov'> R$ 0,00 </td>
+						<td class = 'dez'> R$ 0,00 </td>
+					</tr>
 				</table>
 				<table id = "listIncomes" class = "tabelaEditavel">
 
