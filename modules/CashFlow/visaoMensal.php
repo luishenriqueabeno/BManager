@@ -163,7 +163,7 @@
 					</tr>	
 				</table>
 				<table id = "tableSaldo" >
-					<tr class = 'saldo tableRow' id = 'saldoMonths'>
+					<!--<tr class = 'saldo tableRow' id = 'saldoMonths'>
 						<td> Saldo </td>
 						<td class = 'jan'> R$ 0,00 </td>
 						<td class = 'fev'> R$ 0,00 </td>
@@ -177,7 +177,7 @@
 						<td class = 'out'> R$ 0,00 </td>
 						<td class = 'nov'> R$ 0,00 </td>
 						<td class = 'dez'> R$ 0,00 </td>
-					</tr>
+					</tr>-->
 				</table>
 				<table id = "listIncomes" class = "tabelaEditavel">
 

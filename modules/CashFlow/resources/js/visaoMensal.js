@@ -10,6 +10,7 @@ $(document).ready(function(){
 	var incomeBank = $('select[name=incomeBank]');
 	var monthTableExpenses = $('#listExpenses');
 	var monthTableIncomes = $('#listIncomes');
+	var monthTableSaldo = $('#tableSaldo'); 
 
 	//Esconde formulários e dialogs
 	$('#addExpenseForm').hide();
@@ -193,6 +194,9 @@ $(document).ready(function(){
 		//Limpa tabela de receitas
 		monthTableIncomes.empty();
 
+		//Limpa tabela de saldo
+		monthTableSaldo.empty();
+
 		//Carrega despesas
 		$.ajax({
 			type: 'POST',
@@ -220,6 +224,10 @@ $(document).ready(function(){
 				$(monthTableIncomes).append(data);
 			}
 		});
+
+		//Carrega Saldo
+		calculaSaldo();
+
 	}
 
 	//Lista itens a partir do ano atual
@@ -240,6 +248,9 @@ $(document).ready(function(){
 
 		//Limpa tabela de receitas
 		monthTableIncomes.empty();
+
+		//Limpa tabela de receitas
+		monthTableSaldo.empty();
 
 		//Pega ano selecionado	
 		var ano = $('#anoSelect').val();
@@ -274,6 +285,8 @@ $(document).ready(function(){
 			}
 		});
 
+		//Carrega saldo
+		calculaSaldo();
 	}
 
 	//Carrega dados ao selecionar o ano
@@ -846,7 +859,8 @@ $(document).ready(function(){
 			},
 			url: 'modules/CashFlow/php/calculaSaldo.php',
 			success: function(data){
-				alert(data);
+				$('#tableSaldo').append(data);
+				//alert(data);
 			}
 		})
 	}
