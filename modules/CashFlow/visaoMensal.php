@@ -15,7 +15,7 @@
 		<link type="text/css" rel="stylesheet" href="modules/CashFlow/resources/css/visaoMensal.css">
 
 		<!-- Scripts -->
-		<script src = "modules/CashFlow/resources/js/visaoMensal.min.js" type = "text/javascript"></script>
+		<script src = "modules/CashFlow/resources/js/visaoMensal.js" type = "text/javascript"></script>
 	</head>
 	<body>
 		<!-- Add expense form -->
@@ -27,12 +27,18 @@
 				<input id = "txtExpenseName" type = "text" name = "txtExpenseName" >
 
 				<label for = "expenseValue"> Valor </label>
-				    <input id = "txtExpenseValue" name = "txtExpenseValue" class = "cashValue" type = "text"> <div class = "formFix"> </div>
+			    <input id = "txtExpenseValue" name = "txtExpenseValue" class = "cashValue" type = "text"> <div class = "formFix"> </div>
 
 				<label for = "expenseCategory"> Categoria </label>
 				<select name = "expenseCategory">
 					<option value = ""> Selecione uma categoria </option>
 				</select>
+
+				<label for = "expenseBank"> Conta bancária </label>
+				<select name = "expenseBank">
+					<option value = ""> Selecione uma conta bancária </option>
+				</select>
+
 				<div class = "formAddExpenseSeparator">
 					<div class="ui-dialog-buttonset">
 						<button id= "btnAddExpense" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"> <span class="ui-button-text">Adicionar</span> </button>
@@ -57,6 +63,12 @@
 				<select name = "incomeCategory">
 					<option value = ""> Selecione uma categoria </option>
 				</select>
+
+				<label for = "incomeBank"> Conta bancária </label>
+				<select name = "incomeBank">
+					<option value = ""> Selecione uma conta bancária </option>
+				</select>
+
 				<div class = "formAddIncomeSeparator">
 					<div class="ui-dialog-buttonset">
 						<button id= "btnAddIncome" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"> <span class="ui-button-text">Adicionar</span> </button>
@@ -88,6 +100,22 @@
 			</form>
 		</div>
 		
+		<div class = "selectBank">
+			
+			<div id="menuBanksFilter">
+				<ul>
+					<li>
+						<a href = "#"> Contas bancárias  </a>
+						<ul id = "theBankList">
+							
+							<button id = "sendBanks"> OK </button>
+						</ul>
+					</li>
+				</ul>
+			</div>
+
+		</div>
+
 		<div class = "selectYear">
 			<input type = "hidden" value = "" id = "anoRetorno" name = "anoRetorno">
 			<select id = "anoSelect">

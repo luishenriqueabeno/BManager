@@ -6,6 +6,7 @@
 	$incomeName = $_POST['incomeName'];
 	$incomeValue = $_POST['incomeValue'];
 	$category = $_POST['category'];
+	$bank = $_POST['bank'];
 	$ano = $_POST['ano'];
 
 	//Através do id do usuário logado é verificado quem é o usuário master
@@ -22,7 +23,7 @@
 
 	//Insere receita
 	//O valor é o mesmo para todos os meses, fica a critério do usuário alterar os valores
-	$incomeInsert = mysql_query("Insert Into cashflowincome Values ('', '$incomeName', $category, $userId, '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$ano', '$resMaster->userMaster')");
+	$incomeInsert = mysql_query("Insert Into cashflowincome Values ('', '$incomeName', $category, $userId, '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$ano', '$resMaster->userMaster', '$bank')");
 
 	//Verifico se a despesa foi inserida
 	if($incomeInsert){

@@ -6,6 +6,7 @@
 	$expenseName = $_POST['expenseName'];
 	$expenseValue = $_POST['expenseValue'];
 	$category = $_POST['category'];
+	$bank = $_POST['bank'];
 	$ano = $_POST['ano'];
 
 	//Através do id do usuário logado é verificado quem é o usuário master
@@ -22,7 +23,7 @@
 
 	//Insere despesa
 	//O valor é o mesmo para todos os meses, fica a critério do usuário alterar os valores
-	$expenseInsert = mysql_query("Insert Into cashflowexpenses Values ('', '$expenseName', $category, $userId, '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$ano', '$resMaster->userMaster')");
+	$expenseInsert = mysql_query("Insert Into cashflowexpenses Values ('', '$expenseName', $category, $userId, '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$value', '$ano', '$resMaster->userMaster', '$bank')");
 
 	//Verifico se a despesa foi inserida
 	if($expenseInsert){

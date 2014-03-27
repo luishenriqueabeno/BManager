@@ -14,6 +14,12 @@
 		$baseUrl = "http://" . $_SERVER['SERVER_NAME'] . '/trabalhos/2014/Projeto%20-%20Daily%20Helper/';
 	}
 
+	//Recebe contas bancárias
+	$banks = $_POST['banks'];
+
+	//Trata dados para jogar na query
+	$newBanks = implode(',', $banks);
+
 	//Recebe dados para carregar receitas
 	$ano = $_POST['ano'];
 	$userId = $_POST['userId'];
@@ -27,8 +33,13 @@
 	$getMaster = mysql_query("Select userMaster From users Where id = $userId");
 	$resMaster = mysql_fetch_object($getMaster);
 
-	//Query para retornar todas as receitas para o ano selecionado e que estão abaixo do usuário master
-	$incomeList = mysql_query("Select * From cashflowincome Where ano = ". $ano ." And userMaster = '". $resMaster->userMaster ."'");
+	if($banks != ''){
+		//Query para retornar todas as receitas para o ano selecionado e que estão abaixo do usuário master
+		$incomeList = mysql_query("Select * From cashflowincome Where ano = ". $ano ." And userMaster = '". $resMaster->userMaster ."' And contaBancariaId in (". $newBanks .")");
+	} else {
+		//Query para retornar todas as receitas para o ano selecionado e que estão abaixo do usuário master
+		$incomeList = mysql_query("Select * From cashflowincome Where ano = ". $ano ." And userMaster = '". $resMaster->userMaster ."'");
+	}
 
 	//Variavel que recebe tabela, dessa forma não é necessário modificar o DOM
 	//a cada iteração

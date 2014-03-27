@@ -8,6 +8,7 @@ $(document).ready(function(){
 	//Esconde formulários e dialogs
 	$('#addBankForm').hide();
 	$('.formManagerContact').hide();
+	$('#deleteDialog').hide();
 
 	//Tabela contas bancarias
 	var bankList = $('#bankList');
@@ -40,6 +41,9 @@ $(document).ready(function(){
 	$('#addBank').on('click', function(){
 		//Limpa mensagens
 		$('.msg').html('');
+
+		//Limpa formulário
+		$('#formAddBank')[0].reset();
 
 		//Exibe modal
 		$( "#addBankForm" ).dialog({
@@ -135,6 +139,7 @@ $(document).ready(function(){
 		var txtManagerName = $('#txtManagerName').val();
 		var txtManagerTel = $('#txtManagerTel').val();
 		var txtManagerEmail = $('#txtManagerEmail').val();
+		var hidenId = $('input[name=bankId]').val();
 
 		//Envia dados
 		$.ajax({
@@ -147,11 +152,11 @@ $(document).ready(function(){
 				txtManagerName: txtManagerName,
 				txtManagerTel: txtManagerTel,
 				txtManagerEmail: txtManagerEmail,
-				userId: userId
+				userId: userId,
+				hidenId: hidenId
 			},
 			success: function(data){
-				$('#formAddBank')[0].reset();
-
+				//Limpa mensagens
 				$('.msg').html(data);
 				//Caso haja retorno, recarrega tabela
 				reloadContasBancarias();
@@ -162,6 +167,129 @@ $(document).ready(function(){
 	//Mostra formulário para adicionar contato do gerente
 	$('#addManagerContact').on('click', function(){
 		$('.formManagerContact').toggle();
+	});
+
+	 //Carrega dados da conta bancária para edição
+    $('#bankList').on('dblclick', 'tr', function(){
+    	//Limpa mensagens
+		$('.msg').html('');
+
+		//Limpa formulário
+		$('#formAddBank')[0].reset();
+
+    	//Campos do formulário
+    	var bankId = $(this).attr('id');
+    	var hidenId = $('input[name=bankId]');
+    	var bankName = $('#txtBankName');
+		var txtAgNumber = $('#txtAgNumber');
+		var txtAccNumber = $('#txtAccNumber');
+		var txtManagerName = $('#txtManagerName');
+		var txtManagerTel = $('#txtManagerTel');
+		var txtManagerEmail = $('#txtManagerEmail');
+
+    	//Envia id da conta bancária
+    	$.ajax({
+    		url: 'modules/ContasBancarias/php/editaContaBancaria.php',
+    		type: 'POST',
+    		data:{ bankId: bankId },
+    		success: function(data){
+    			var bank = $.parseJSON(data);
+
+    			//Altera texto do botão
+    			$('#btnAddBank span').html('Gravar');
+
+    			//Exibe modal preenchido
+				$( "#addBankForm" ).dialog({
+					modal: true,
+					show: { effect: "slideDown", duration: 600 } ,
+					width: 500,
+				});
+
+				//Preenche modal com as informações retornadas
+    			for(var i = 0; i < bank.length; i++){
+    				hidenId.val(bank[i].id);
+    				bankName.val(bank[i].banco);
+    				txtAgNumber.val(bank[i].agencia);
+    				txtAccNumber.val(bank[i].conta);
+    				txtManagerName.val(bank[i].nomeGerente);
+    				txtManagerTel.val(bank[i].telGerente);
+    				txtManagerEmail.val(bank[i].emailGerente);
+    			}
+    		}
+    	});
+
+    });
+
+	//Remove contas bancárias selecionadas
+	$('#removeBank').on('click', function(){
+		var i = 0;
+		//Cria array para armazenar contas bancárias selecionadas
+		var checkSelected = [];
+
+		//Verifica se tem algum item selecionado
+		$('.highlighted').each(function(){
+			
+			//Guarda itens selecionados em um array
+			checkSelected[i] = $(this).attr('id');
+
+			i++;
+		});
+
+		//Caso haja itens selecionados abre dialog com mensagem questionando sobre a exclusão
+		if(checkSelected.length > 0){
+			$( "#deleteDialog" ).dialog({
+				resizable: false,
+				height:140,
+				width:500,
+				modal: true,
+				buttons: {
+					//Se o usuário clicar em 'Sim', as contas bancárias selecionadas serão excluidas do banco
+					"Sim": function() {
+						var i = 0;
+
+						//Cria array para armazenar o id das contas
+						var banks = [];
+
+						//Para cada conta selecionada é armazenado o id no array
+						$('.highlighted').each(function(){
+							
+							//Remove da lista
+							$(this).remove();
+							
+							//Guarda itens selecionados em um array
+							banks[i] = $(this).attr('id');
+
+							i++;
+						});
+
+						//Remove do banco
+						$.ajax({
+							type: 'POST',
+							url: 'modules/ContasBancarias/php/deletaContasBancarias.php',
+							data: { banks: banks },
+							success: function(data){
+								//Não faz nada em caso de sucesso
+							}
+						});
+
+						$( this ).dialog( "close" );
+					},
+					Cancelar: function() {
+						$( this ).dialog( "close" );
+					}
+				}
+			});
+		} else {
+			//Caso o usuário não confirme a exclusão o dialog é fechado
+			$( "#deleteDialogSelected" ).dialog({
+				modal: true,
+				buttons: {
+					Ok: function() {
+						$( this ).dialog( "close" );
+					}
+				}
+			});
+		}
 	});
 
 });

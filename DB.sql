@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.11.1
+-- version 3.2.4
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tempo de Geração: 11/03/2014 às 10:07:45
--- Versão do Servidor: 5.5.33
--- Versão do PHP: 5.3.17
+-- Tempo de Geração: Mar 27, 2014 as 04:54 
+-- Versão do Servidor: 5.1.41
+-- Versão do PHP: 5.3.1
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -17,8 +16,130 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Banco de Dados: `luish360_dailyhelper`
+-- Banco de Dados: `bmanager`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `bancos`
+--
+
+CREATE TABLE IF NOT EXISTS `bancos` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `banco` varchar(250) COLLATE latin1_general_ci NOT NULL,
+  `codigo` varchar(10) COLLATE latin1_general_ci NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=104 ;
+
+--
+-- Extraindo dados da tabela `bancos`
+--
+
+INSERT INTO `bancos` (`ID`, `banco`, `codigo`) VALUES
+(1, 'Banco ABC Brasil S.A.', '246'),
+(2, 'Banco ABN AMRO Real S.A.', '356'),
+(3, 'Banco Alfa S.A.', '025'),
+(4, 'Banco Alvorada S.A.', '641'),
+(5, 'Banco Banerj S.A.', '029'),
+(6, 'Banco Banestado S.A.', '038'),
+(7, 'Banco Barclays S.A.', '740'),
+(8, 'Banco BBM S.A.', '107'),
+(9, 'Banco Beg S.A.', '031'),
+(10, 'Banco Bem S.A.', '036'),
+(11, 'Banco BM&F de Serviços de Liquidação e Custódia S.A', '096'),
+(12, 'Banco BMC S.A.', '394'),
+(13, 'Banco BMG S.A.', '318'),
+(14, 'Banco BNP Paribas Brasil S.A.', '752'),
+(15, 'Banco Boavista Interatlântico S.A.', '248'),
+(16, 'Banco Bradesco S.A.', '237'),
+(17, 'Banco Brascan S.A.', '225'),
+(18, 'Banco Cacique S.A.', '263'),
+(19, 'Banco Calyon Brasil S.A.', '222'),
+(20, 'Banco Cargill S.A.', '040'),
+(21, 'Banco Citibank S.A.', '745'),
+(22, 'Banco Comercial e de Investimento Sudameris S.A.', '215'),
+(23, 'Banco Cooperativo do Brasil S.A. – BANCOOB', '756'),
+(24, 'Banco Cooperativo Sicredi S.A. – BANSICREDI', '748'),
+(25, 'Banco Credit Suisse (Brasil) S.A.', '505'),
+(26, 'Banco Cruzeiro do Sul S.A.', '229'),
+(27, 'Banco da Amazônia S.A.', '003'),
+(28, 'Banco Daycoval S.A.', '707'),
+(29, 'Banco de Pernambuco S.A. – BANDEPE', '024'),
+(30, 'Banco de Tokyo-Mitsubishi UFJ Brasil S.A.', '456'),
+(31, 'Banco Dibens S.A.', '214'),
+(32, 'Banco do Brasil S.A.', '001'),
+(33, 'Banco do Estado de Santa Catarina S.A.', '027'),
+(34, 'Banco do Estado de Sergipe S.A.', '047'),
+(35, 'Banco do Estado do Pará S.A.', '037'),
+(36, 'Banco do Estado do Rio Grande do Sul S.A.', '041'),
+(37, 'Banco do Nordeste do Brasil S.A.', '004'),
+(38, 'Banco Fator S.A.', '265'),
+(39, 'Banco Fibra S.A.', '224'),
+(40, 'Banco Finasa S.A.', '175'),
+(41, 'Banco Fininvest S.A.', '252'),
+(42, 'Banco GE Capital S.A.', '233'),
+(43, 'Banco Gerdau S.A.', '734'),
+(44, 'Banco Guanabara S.A.', '612'),
+(45, 'Banco Ibi S.A. Banco Múltiplo', '063'),
+(46, 'Banco Industrial do Brasil S.A.', '604'),
+(47, 'Banco Industrial e Comercial S.A.', '320'),
+(48, 'Banco Indusval S.A.', '653'),
+(49, 'Banco Intercap S.A.', '630'),
+(50, 'Banco Investcred Unibanco S.A.', '249'),
+(51, 'Banco Itaú BBA S.A.', '184-8'),
+(52, 'Banco Itaú Holding Financeira S.A.', '652'),
+(53, 'Banco Itaú S.A.', '341'),
+(54, 'Banco ItaúBank S.A', '479'),
+(55, 'Banco J. P. Morgan S.A.', '376'),
+(56, 'Banco J. Safra S.A.', '074'),
+(57, 'Banco Luso Brasileiro S.A.', '600'),
+(58, 'Banco Mercantil de São Paulo S.A.', '392'),
+(59, 'Banco Mercantil do Brasil S.A.', '389'),
+(60, 'Banco Merrill Lynch de Investimentos S.A.', '755'),
+(61, 'Banco Nossa Caixa S.A.', '151'),
+(62, 'Banco Opportunity S.A.', '045'),
+(63, 'Banco Panamericano S.A.', '623'),
+(64, 'Banco Paulista S.A.', '611'),
+(65, 'Banco Pine S.A.', '643'),
+(66, 'Banco Prosper S.A.', '638'),
+(67, 'Banco Rabobank International Brasil S.A.', '747'),
+(68, 'Banco Rendimento S.A.', '633'),
+(69, 'Banco Rural Mais S.A.', '072'),
+(70, 'Banco Rural S.A.', '453'),
+(71, 'Banco Safra S.A.', '422'),
+(72, 'Banco Santander Banespa S.A.', '008'),
+(73, 'Banco Schahin S.A.', '250'),
+(74, 'Banco Simples S.A.', '749'),
+(75, 'Banco Société Générale Brasil S.A.', '366'),
+(76, 'Banco Sofisa S.A.', '637'),
+(77, 'Banco Sudameris Brasil S.A.', '347'),
+(78, 'Banco Sumitomo Mitsui Brasileiro S.A.', '464'),
+(79, 'Banco Triângulo S.A.', '634'),
+(80, 'Banco UBS Pactual S.A.', '208'),
+(81, 'Banco UBS S.A.', '247'),
+(82, 'Banco Único S.A.', '116'),
+(83, 'Banco Votorantim S.A.', '655'),
+(84, 'Banco VR S.A.', '610'),
+(85, 'Banco WestLB do Brasil S.A.', '370'),
+(86, 'BANESTES S.A. Banco do Estado do Espírito Santo', '021'),
+(87, 'Banif-Banco Internacional do Funchal (Brasil)S.A.', '719'),
+(88, 'Bankpar Banco Multiplo S.A.', '204'),
+(89, 'BB Banco Popular do Brasil S.A.', '073-6'),
+(90, 'BPN Brasil Banco Mútiplo S.A.', '069-8'),
+(91, 'BRB – Banco de Brasília S.A.', '070'),
+(92, 'Caixa Econômica Federal', '104'),
+(93, 'Citibank N.A.', '477'),
+(94, 'Deutsche Bank S.A. – Banco Alemão', '487'),
+(95, 'Dresdner Bank Brasil S.A. – Banco Múltiplo', '751'),
+(96, 'Dresdner Bank Lateinamerika Aktiengesellschaft', '210'),
+(97, 'Hipercard Banco Múltiplo S.A.', '062'),
+(98, 'HSBC Bank Brasil S.A. – Banco Múltiplo', '399'),
+(99, 'ING Bank N.V.', '492'),
+(100, 'JPMorgan Chase Bank', '488'),
+(101, 'Lemon Bank Banco Múltiplo S.A.', '065'),
+(102, 'UNIBANCO – União de Bancos Brasileiros S.A.', '409'),
+(103, 'Unicard Banco Múltiplo S.A.', '230');
 
 -- --------------------------------------------------------
 
@@ -95,25 +216,16 @@ CREATE TABLE IF NOT EXISTS `cashflowexpenses` (
   `dez` decimal(10,2) NOT NULL,
   `ano` varchar(10) NOT NULL,
   `userMaster` varchar(255) NOT NULL,
+  `contaBancariaId` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Extraindo dados da tabela `cashflowexpenses`
 --
 
-INSERT INTO `cashflowexpenses` (`id`, `expenseName`, `categoryId`, `userId`, `jan`, `fev`, `mar`, `abr`, `mai`, `jun`, `jul`, `ago`, `set`, `out`, `nov`, `dez`, `ano`, `userMaster`) VALUES
-(2, 'Parcela carro', 3, 1, 0.00, 642.73, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, '2014', 'luis_abeno@hotmail.com'),
-(4, 'Seguro', 3, 1, 0.00, 345.25, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, '2014', 'luis_abeno@hotmail.com'),
-(5, 'Emprestimo Caixa', 5, 1, 0.00, 392.18, 392.18, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, '2014', 'luis_abeno@hotmail.com'),
-(6, 'Celular', 6, 1, 0.00, 117.78, 113.61, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, '2014', 'luis_abeno@hotmail.com'),
-(7, 'Hotel Fazenda SÃ£o JoÃ£o', 7, 1, 0.00, 240.00, 245.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, '2014', 'luis_abeno@hotmail.com'),
-(8, 'Outros', 9, 1, 0.00, 105.00, 40.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, '2014', 'luis_abeno@hotmail.com'),
-(11, 'Taxas bancarias', 13, 1, 0.00, 42.66, 173.58, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, '2014', 'luis_abeno@hotmail.com'),
-(12, 'CartÃ£o de crÃ©dito', 13, 1, 0.00, 1270.07, 552.51, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, '2014', 'luis_abeno@hotmail.com'),
-(13, 'Hospedagem', 9, 1, 0.00, 56.97, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, '2014', 'luis_abeno@hotmail.com'),
-(14, 'ManutenÃ§Ã£o Carro', 3, 1, 0.00, 15.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, '2014', 'luis_abeno@hotmail.com'),
-(15, 'Emprestimo Bradesco', 13, 1, 0.00, 608.96, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, '2014', 'luis_abeno@hotmail.com');
+INSERT INTO `cashflowexpenses` (`id`, `expenseName`, `categoryId`, `userId`, `jan`, `fev`, `mar`, `abr`, `mai`, `jun`, `jul`, `ago`, `set`, `out`, `nov`, `dez`, `ano`, `userMaster`, `contaBancariaId`) VALUES
+(1, 'teste', 3, 1, '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '2014', 'luis_abeno@hotmail.com', 1);
 
 -- --------------------------------------------------------
 
@@ -140,51 +252,41 @@ CREATE TABLE IF NOT EXISTS `cashflowincome` (
   `dez` decimal(10,2) NOT NULL,
   `ano` varchar(10) NOT NULL,
   `userMaster` varchar(255) NOT NULL,
+  `contaBancariaId` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Extraindo dados da tabela `cashflowincome`
 --
 
-INSERT INTO `cashflowincome` (`id`, `incomeName`, `categoryId`, `userId`, `jan`, `fev`, `mar`, `abr`, `mai`, `jun`, `jul`, `ago`, `set`, `out`, `nov`, `dez`, `ano`, `userMaster`) VALUES
-(1, 'Adiantamento', 4, 1, 0.00, 1600.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, '2014', 'luis_abeno@hotmail.com'),
-(2, 'Restante salario', 4, 1, 0.00, 1511.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, '2014', 'luis_abeno@hotmail.com'),
-(4, 'Outros', 8, 1, 0.00, 510.00, 1180.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, '2014', 'luis_abeno@hotmail.com');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `cashflowsaldo`
+-- Estrutura da tabela `contasbancarias`
 --
 
-CREATE TABLE IF NOT EXISTS `cashflowsaldo` (
+CREATE TABLE IF NOT EXISTS `contasbancarias` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `banco` varchar(255) NOT NULL,
+  `agencia` varchar(255) NOT NULL,
+  `conta` varchar(255) NOT NULL,
+  `nomeGerente` varchar(255) NOT NULL,
+  `telGerente` varchar(255) NOT NULL,
+  `emailGerente` varchar(255) NOT NULL,
   `userId` int(11) NOT NULL,
-  `jan` decimal(10,2) NOT NULL,
-  `fev` decimal(10,2) NOT NULL,
-  `mar` decimal(10,2) NOT NULL,
-  `abr` decimal(10,2) NOT NULL,
-  `mai` decimal(10,2) NOT NULL,
-  `jun` decimal(10,2) NOT NULL,
-  `jul` decimal(10,2) NOT NULL,
-  `ago` decimal(10,2) NOT NULL,
-  `set` decimal(10,2) NOT NULL,
-  `out` decimal(10,2) NOT NULL,
-  `nov` decimal(10,2) NOT NULL,
-  `dez` decimal(10,2) NOT NULL,
-  `ano` varchar(10) NOT NULL,
   `userMaster` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Extraindo dados da tabela `cashflowsaldo`
+-- Extraindo dados da tabela `contasbancarias`
 --
 
-INSERT INTO `cashflowsaldo` (`id`, `userId`, `jan`, `fev`, `mar`, `abr`, `mai`, `jun`, `jul`, `ago`, `set`, `out`, `nov`, `dez`, `ano`, `userMaster`) VALUES
-(1, 1, 0.00, -2218.36, -2080.61, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, '2014', 'luis_abeno@hotmail.com'),
-(2, 2, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, '2014', 'robertakrug@gmail.com');
+INSERT INTO `contasbancarias` (`id`, `banco`, `agencia`, `conta`, `nomeGerente`, `telGerente`, `emailGerente`, `userId`, `userMaster`) VALUES
+(1, '237 - Banco Bradesco S.A.', '12312312', '3123123', '', '', '', 1, 'luis_abeno@hotmail.com'),
+(2, '008 - Banco Santander Banespa S.A.', '123', '4333', '', '', '', 1, 'luis_abeno@hotmail.com');
 
 -- --------------------------------------------------------
 
@@ -198,6 +300,11 @@ CREATE TABLE IF NOT EXISTS `products` (
   `price` varchar(10) NOT NULL,
   PRIMARY KEY (`productId`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Extraindo dados da tabela `products`
+--
+
 
 -- --------------------------------------------------------
 
@@ -218,7 +325,7 @@ CREATE TABLE IF NOT EXISTS `tasks` (
   `userId` int(11) NOT NULL,
   `taskStatus` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=50 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=52 ;
 
 --
 -- Extraindo dados da tabela `tasks`
@@ -251,7 +358,8 @@ INSERT INTO `tasks` (`id`, `taskName`, `desc`, `dataInicio`, `dataFim`, `horaIni
 (45, 'Material divulgaÃ§Ã£o - dia do professor', 'Testar receitas, tirar fotos e criar material de divulgaÃ§Ã£o da campanha que comeÃ§a dia 08/09\n\nFacebook â€“ email â€“ elo7', '--2014-09-', '--2014-09-', '08', '00', '18', '00', 2, 0),
 (46, 'Material de divulgaÃ§Ã£o- dia das bruxas', 'Testar receitas, tirar fotos e criar material de divulgaÃ§Ã£o da campanha que comeÃ§a dia 20/10.\n\nFacebook â€“ email â€“ elo7', '--2014-10-', '--2014-10-', '09', '00', '18', '00', 2, 0),
 (47, 'Material divulgaÃ§Ã£o - black friday', 'Testar receitas, tirar fotos e criar material de divulgaÃ§Ã£o da campanha que comeÃ§a dia 28/11\n\nFacebook â€“ email â€“ elo7', '--2014-11-', '--2014-11-', '09', '00', '18', '00', 2, 0),
-(48, 'Material divulgaÃ§Ã£o - Natal', 'Testar receitas, tirar fotos e criar material de divulgaÃ§Ã£o da campanha que comeÃ§a dia 25/11.\n\nFlyers â€“ facebook â€“ email â€“ elo7', '--2014-11-', '--2014-11-', '09', '00', '18', '00', 2, 0);
+(48, 'Material divulgaÃ§Ã£o - Natal', 'Testar receitas, tirar fotos e criar material de divulgaÃ§Ã£o da campanha que comeÃ§a dia 25/11.\n\nFlyers â€“ facebook â€“ email â€“ elo7', '--2014-11-', '--2014-11-', '09', '00', '18', '00', 2, 0),
+(51, 'asdas', 'dasd', '--', '--', '01', '00', '01', '00', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -276,6 +384,28 @@ INSERT INTO `taskstatus` (`taskStatusId`, `taskStatus`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `userlogo`
+--
+
+CREATE TABLE IF NOT EXISTS `userlogo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `logoName` varchar(255) NOT NULL,
+  `userId` int(11) NOT NULL,
+  `userMaster` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `userId` (`userId`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+--
+-- Extraindo dados da tabela `userlogo`
+--
+
+INSERT INTO `userlogo` (`id`, `logoName`, `userId`, `userMaster`) VALUES
+(8, 'image_2014-03-27_53342cb19a536_Koala.jpg', 1, 'luis_abeno@hotmail.com');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `users`
 --
 
@@ -292,19 +422,44 @@ CREATE TABLE IF NOT EXISTS `users` (
   `userMaster` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Extraindo dados da tabela `users`
 --
 
 INSERT INTO `users` (`id`, `firstName`, `lastName`, `email`, `password`, `gender`, `productId`, `signupDate`, `userType`, `userMaster`) VALUES
-(1, 'Luis Henrique', 'Abeno', 'luis_abeno@hotmail.com', '4aafd190adfeb9477899840deae6c370', 1, 2, '27/01/2014', '1', 'luis_abeno@hotmail.com'),
+(1, 'Luis Henrique', 'Abeno', 'luis_abeno@hotmail.com', '4aafd190adfeb9477899840deae6c370', 1, 1, '27/01/2014', '1', 'luis_abeno@hotmail.com'),
 (2, 'Roberta', 'Krug', 'robertakrug@gmail.com', '9b538b392c3364579ccde894ccc6c3b8', 2, 2, '26/01/2014', '1', 'robertakrug@gmail.com'),
 (8, 'Francisco', 'costa', 'fec_costa@hotmail.com.br', 'f32facdc82cea53133cfc6808af56b6b', 2, 1, '18/02/2014', '1', 'fec_costa@hotmail.com.br'),
 (6, 'Fabio', 'Portes', 'fabioportes@live.com', 'ae7f2027fa8a8e8fb0e0b4fb294b6136', 1, 1, '18/02/2014', '1', 'fabioportes@live.com'),
 (7, 'Daniel', 'Zanella', 'dsz.zanella@gmail.com', '92fcdcad8839e1077f3870f966d238fe', 1, 1, '18/02/2014', '1', 'dsz.zanella@gmail.com'),
-(9, 'Luis', 'Abeno', 'luis.abeno@cakersfestas.com.br', '4aafd190adfeb9477899840deae6c370', 1, 2, '05/03/2014', '2', 'robertakrug@gmail.com');
+(9, 'Luis', 'Abeno', 'luis.abeno@cakersfestas.com.br', '4aafd190adfeb9477899840deae6c370', 1, 2, '05/03/2014', '2', 'robertakrug@gmail.com'),
+(10, 'teste', 'teste', 'teste@teste.com.br', 'a8f5f167f44f4964e6c998dee827110c', 1, 2, '13/03/2014', '', 'luis_abeno@hotmail.com');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `usersurvey`
+--
+
+CREATE TABLE IF NOT EXISTS `usersurvey` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userId` int(11) NOT NULL,
+  `survey` varchar(255) NOT NULL,
+  `report` varchar(255) NOT NULL,
+  `date` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Extraindo dados da tabela `usersurvey`
+--
+
+INSERT INTO `usersurvey` (`id`, `userId`, `survey`, `report`, `date`) VALUES
+(1, 1, ' Teste', ' Teste', '2014-03-24'),
+(2, 1, ' ', ' ', '2014-03-24'),
+(3, 1, ' asdas', ' dasd', '2014-03-24');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

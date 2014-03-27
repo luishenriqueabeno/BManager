@@ -253,6 +253,9 @@
 	max-width:100px !important;
 	cursor:pointer;
 }
+#saldoMonths td {
+	cursor:auto !important;
+}
 .tableRow td:last-child{
 	border-right-style:solid !important;
 	border-right-width:0px !important;
@@ -317,4 +320,31 @@
 	border-right-width:0px !important;
 	border-right-color:#000 !important;
 	font-weight:bold !important;
+}
+
+/************************
+* Filtro contas bancárias *
+*************************/
+#menuBanksFilter ul
+{
+	list-style: none;
+	width: 350px;
+	padding: .5em;
+}
+#menuBanksFilter ul ul
+{
+	display: none;
+	position: absolute;
+	font-size: 12px;
+	font-family: Arial;
+	font-weight: bold;
+	color: #ffffff;
+	background-color: #d3e1f1;
+	border: 1px solid #CCC;
+}
+#menuBanksFilter ul li ul input{
+	margin-right:5px;
+}
+#sendBanks{
+	width:100%;
 }

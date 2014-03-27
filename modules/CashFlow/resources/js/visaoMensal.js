@@ -6,9 +6,10 @@ $(document).ready(function(){
 	//Carrega campos
 	var expenseCategory = $('select[name=expenseCategory]');
 	var incomeCategory = $('select[name=incomeCategory]');
+	var expenseBank = $('select[name=expenseBank]');
+	var incomeBank = $('select[name=incomeBank]');
 	var monthTableExpenses = $('#listExpenses');
 	var monthTableIncomes = $('#listIncomes');
-	var monthTableSaldo = $('#tableSaldo');
 
 	//Esconde formulários e dialogs
 	$('#addExpenseForm').hide();
@@ -26,11 +27,17 @@ $(document).ready(function(){
 	//Armazena id do usuário logado
 	var userId = $('input[name=userId]').val();
 
-	//Carrega receitas, despesas e saldo na inicialização
+	//Carrega receitas, despesas na inicialização
 	listaComAnoAtual();
 
 	//Carrega categorias na inicialização
 	loadCategories();
+
+	//Carrega contas bancárias na inicialização
+	loadBanks();
+
+	//Carrega contas bancárias
+	loadBanksFilter();
 
 	//Date picker
     $( "#data" ).datepicker({
@@ -179,14 +186,12 @@ $(document).ready(function(){
 		//Pega ano selecionado
 		var ano = $('#anoSelect').val();
 
+
 		//Limpa tabela de despesas
 		monthTableExpenses.empty();
 
 		//Limpa tabela de receitas
 		monthTableIncomes.empty();
-
-		//Limpa tabela com os saldos
-		monthTableSaldo.empty();
 
 		//Carrega despesas
 		$.ajax({
@@ -194,7 +199,7 @@ $(document).ready(function(){
 			url: 'modules/CashFlow/php/loadExpenses.php',
 			data:{
 				ano: ano,
-				userId: userId
+				userId: userId,
 			},
 			success: function(data){
 				//Adiciona retorno a tabela de despesas
@@ -213,37 +218,31 @@ $(document).ready(function(){
 			success: function(data){
 				//Adiciona retorno a tabela de receitas
 				$(monthTableIncomes).append(data);
-			}
-		});
-
-		//Carrega saldo
-		$.ajax({
-			type: 'POST',
-			url: 'modules/CashFlow/php/loadSaldo.php',
-			data:{
-				ano: ano,
-				userId: userId
-			},
-			success: function(data){
-				//Adiciona retorno a tabela de saldos
-				$(monthTableSaldo).append(data);
 			}
 		});
 	}
 
 	//Lista itens a partir do ano atual
 	function listaComAnoAtual(){
+		//Variaveis de controle
+		var banks = [];
+		var i = 0;
+
+		//Para cada conta bancária selecionada, guarda valores em um array
+		$('#theBankList li input:checked').each(function(){
+			banks[i] = $(this).val();
+
+			i++;
+		});
+
 		//Limpa tabela de despesas
 		monthTableExpenses.empty();
 
 		//Limpa tabela de receitas
 		monthTableIncomes.empty();
 
-		//Limpa tabela de saldos
-		monthTableSaldo.empty();
-
-		//Variavel ano passa a ser nulo
-		var ano = "";
+		//Pega ano selecionado	
+		var ano = $('#anoSelect').val();
 
 		//Carrega despesas
 		$.ajax({
@@ -251,7 +250,8 @@ $(document).ready(function(){
 			url: 'modules/CashFlow/php/loadExpenses.php',
 			data:{
 				ano: ano,
-				userId: userId
+				userId: userId,
+				banks: banks
 			},
 			success: function(data){
 				//Adiciona retorno a tabela de despesas
@@ -265,7 +265,8 @@ $(document).ready(function(){
 			url: 'modules/CashFlow/php/loadIncomes.php',
 			data:{
 				ano: ano,
-				userId: userId
+				userId: userId,
+				banks: banks
 			},
 			success: function(data){
 				//Adiciona retorno a tabela de receitas
@@ -273,28 +274,29 @@ $(document).ready(function(){
 			}
 		});
 
-		//Carrega saldo
-		$.ajax({
-			type: 'POST',
-			url: 'modules/CashFlow/php/loadSaldo.php',
-			data:{
-				ano: ano,
-				userId: userId
-			},
-			success: function(data){
-				//Adiciona retorno a tabela de saldos
-				$(monthTableSaldo).append(data);
-			}
-		});
 	}
 
-	//Carrega despesas ao selecionar o ano
+	//Carrega dados ao selecionar o ano
 	$('#anoSelect').change(function(){
+		//Variaveis de controle
+		var banks = [];
+		var i = 0;
+
+		//Para cada conta bancária selecionada, guarda valores em um array
+		$('#theBankList li input:checked').each(function(){
+			banks[i] = $(this).val();
+
+			i++;
+		});
+
 		//Pega ano selecionado
 		var ano = $('#anoSelect').val();
 
 		//Limpa tabela de despesas
 		monthTableExpenses.empty();
+
+		//Limpa tabela de receitas
+		monthTableIncomes.empty();
 
 		//Carrega despesas
 		$.ajax({
@@ -302,22 +304,14 @@ $(document).ready(function(){
 			url: 'modules/CashFlow/php/loadExpenses.php',
 			data:{
 				ano: ano,
-				userId: userId
+				userId: userId,
+				banks: banks
 			},
 			success: function(data){
 				//Adiciona retorno a tabela de despesas
 				$(monthTableExpenses).append(data);
 			}
 		});
-	});
-	
-	//Carrega receitas ao selecionar o ano
-	$('#anoSelect').change(function(){
-		//Pega ano selecionado
-		var ano = $('#anoSelect').val();
-
-		//Limpa tabela de receitas
-		monthTableIncomes.empty();
 
 		//Carrega receitas
 		$.ajax({
@@ -325,37 +319,17 @@ $(document).ready(function(){
 			url: 'modules/CashFlow/php/loadIncomes.php',
 			data:{
 				ano: ano,
-				userId: userId
+				userId: userId,
+				banks: banks
 			},
 			success: function(data){
 				//Adiciona retorno a tabela de receitas
 				$(monthTableIncomes).append(data);
 			}
 		});
+
 	});
 
-	//Carrega saldo ao selecionar o ano
-	$('#anoSelect').change(function(){
-		//pega ano selecionado
-		var ano = $('#anoSelect').val();
-
-		//Limpa tabela de saldos
-		monthTableSaldo.empty();
-
-		//Carrega saldos
-		$.ajax({
-			type: 'POST',
-			url: 'modules/CashFlow/php/loadSaldo.php',
-			data:{
-				ano: ano,
-				userId: userId
-			},
-			success: function(data){
-				//Adiciona retorno a tabela de saldos
-				$(monthTableSaldo).append(data);
-			}
-		});
-	});
 	
 	//Carrega categorias ao selecionar o ano
 	$('#anoSelect').change(function(){
@@ -495,6 +469,7 @@ $(document).ready(function(){
 		var expenseName = $('#txtExpenseName').val();
 		var ano = $('#anoSelect').val();
 		var expenseValue = $('#txtExpenseValue').val();
+		var bank = $('select[name=expenseBank]').find(":selected").val();
 		var category = $('select[name=expenseCategory]').find(":selected").val();
 
 		//Caso o nome da despesa esteja em branco
@@ -511,6 +486,13 @@ $(document).ready(function(){
 
 			//Esconde mensagem de erro
 			$('.displayError').hide();
+		} else if(bank == ''){
+			alert("Favor informe ao menos uma conta bancária");
+			//Esconde mensagem de sucesso
+			$('.expenseAddSuccess').hide();
+
+			//Esconde mensagem de erro
+			$('.displayError').hide();
 		} else {
 			//Adiciona despesa no banco
 			$.ajax({
@@ -521,7 +503,8 @@ $(document).ready(function(){
 					expenseName: expenseName,
 					expenseValue: expenseValue,
 					ano: ano,
-					category: category
+					category: category,
+					bank: bank
 				},
 				success: function (data){
 					if(data == 1){
@@ -549,6 +532,7 @@ $(document).ready(function(){
 		var incomeName = $('#txtIncomeName').val();
 		var ano = $('#anoSelect').val();
 		var incomeValue = $('#txtIncomeValue').val();
+		var bank = $('select[name=incomeBank]').find(":selected").val();
 		var category = $('select[name=incomeCategory]').find(":selected").val();
 
 		//Caso o nome da receita esteja em branco
@@ -568,6 +552,13 @@ $(document).ready(function(){
 
 			//Esconde mensagem de erro
 			$('.displayError').hide();
+		} else if(bank == ''){
+			alert("Favor informe ao menos uma conta bancária");
+			//Esconde mensagem de sucesso
+			$('.expenseAddSuccess').hide();
+
+			//Esconde mensagem de erro
+			$('.displayError').hide();
 		} else {
 			//Adiciona receitas
 			$.ajax({
@@ -578,7 +569,8 @@ $(document).ready(function(){
 					incomeName: incomeName,
 					incomeValue: incomeValue,
 					ano: ano,
-					category: category
+					category: category,
+					bank: bank
 				},
 				success: function (data){
 					//Limpa formulário
@@ -685,7 +677,18 @@ $(document).ready(function(){
 	});
 
 	//Edição dos dados diretamente na tabela	
-	 $('#listIncomes, #listExpenses, #tableSaldo').on('click', 'td:not(.total, :first-child)', function(){ 
+	 $('#listIncomes, #listExpenses').on('click', 'td:not(.total, :first-child)', function(){ 
+	 	//Variaveis de controle
+		var banks = [];
+		var i = 0;
+
+		//Para cada conta bancária selecionada, guarda valores em um array
+		$('#theBankList li input:checked').each(function(){
+			banks[i] = $(this).val();
+
+			i++;
+		});
+
 	 	//Carrega conteúdo original do campo
 		var conteudoOriginal = $(this).text(); 
 
@@ -728,7 +731,8 @@ $(document).ready(function(){
 						rowId: rowId,
 						month: month,
 						userId: userId,
-						ano: ano
+						ano: ano,
+						banks: banks
 					},
 					type: 'POST',
 					success: function(data){
@@ -745,4 +749,105 @@ $(document).ready(function(){
 			$(this).parent().removeClass("celulaEmEdicao"); 
 		});
 	});
+
+	//Carrega contas bancárias
+	function loadBanks(){
+		//Carrega contas
+		$.ajax({
+			type: 'POST',
+			url: 'modules/CashFlow/php/loadBanks.php',
+			data:{
+				userId: userId
+			},
+			success: function (data){			
+				var json = $.parseJSON(data);
+
+				//Cria variavel para guardar options
+				var optBanks = "";
+
+				//Itero retorno
+				for(var i = 0; i < json.length; i++){
+					
+					optBanks += "<option value = " + json[i].id + ">" + json[i].banco + "</option>";
+					
+				}
+				//Guarda no DOM todas as opções
+				expenseBank.append(optBanks);
+				incomeBank.append(optBanks);
+			}
+		});
+	}
+
+	//Filtro conta bancária
+	$(function(){
+		$('#menuBanksFilter>ul>li').on({
+			mouseenter:function(){
+				$(this).siblings().children(":not(:first-child)").hide();
+				$(this).children().show();
+			},
+		})
+		$('#menuBanksFilter>ul').on({
+			mouseleave:function(){
+				$(this).children().children(":not(:first-child)").hide();
+			},
+		})
+	});
+
+	//Confirma filtro com as contas bancárias selecionadas
+	$('#sendBanks').on("click", function(){
+		listaComAnoAtual();
+	})
+
+	function loadBanksFilter(){
+		//Envia ajax para carrega todas as contas bancárias cadastradas para o usuário
+		$.ajax({
+			url: 'modules/CashFlow/php/loadBanks.php',
+			data: {
+				userId: userId
+			},
+			type: 'POST',
+			success: function(data){
+				var json = $.parseJSON(data);
+
+				//Itera resultado e adiciona contas bancárias ao DOM
+				for(var i = 0; i < json.length; i++){
+
+					//Cria div com as contas bancárias
+					$('#theBankList').append(""+
+						"<li> <input type = 'checkbox' value ="+ json[i].id +">"+ json[i].banco + "</li>"+
+					"");
+				}
+			}
+		})
+	}
+
+	//Calcula saldo
+	function calculaSaldo(){
+		//Variaveis de controle
+		var banks = [];
+		var i = 0;
+
+		//Para cada conta bancária selecionada, guarda valores em um array
+		$('#theBankList li input:checked').each(function(){
+			banks[i] = $(this).val();
+
+			i++;
+		});
+
+		//Pega ano selecionado
+		var ano = $('#anoSelect').val();
+
+		$.ajax({
+			type: 'POST',
+			data:{
+				banks: banks,
+				ano: ano,
+				userId: userId
+			},
+			url: 'modules/CashFlow/php/calculaSaldo.php',
+			success: function(data){
+				alert(data);
+			}
+		})
+	}
 });

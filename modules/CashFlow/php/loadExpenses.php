@@ -7,6 +7,9 @@
 	//Recebe dados para carregar despesas
 	$ano = $_POST['ano'];
 	$userId = $_POST['userId'];
+	$banks = $_POST['banks'];
+
+	$newBanks = implode(',', $banks);
 
 	//Caso a variavel ano chegue vazia, é setado o ano atual
 	if($ano == ''){
@@ -17,8 +20,13 @@
 	$getMaster = mysql_query("Select userMaster From users Where id = $userId");
 	$resMaster = mysql_fetch_object($getMaster);
 
-	//Query para retornar todas as despesas para o ano selecionado e que estão abaixo do usuário master
-	$expenseList = mysql_query("Select * From cashflowexpenses Where ano = ". $ano . " And userMaster = '". $resMaster->userMaster ."'");
+	if($banks != ''){
+		//Query para retornar todas as despesas para o ano selecionado e que estão abaixo do usuário master e que possuem determinadas contas bancárias
+		$expenseList = mysql_query("Select * From cashflowexpenses Where ano = ". $ano . " And userMaster = '". $resMaster->userMaster ."' And contaBancariaId in (". $newBanks .")");
+	} else {
+		//Query para retornar todas as despesas para o ano selecionado e que estão abaixo do usuário master e que possuem determinadas contas bancárias
+		$expenseList = mysql_query("Select * From cashflowexpenses Where ano = ". $ano . " And userMaster = '". $resMaster->userMaster ."'");
+	}
 
 	//Variavel que recebe tabela, dessa forma não é necessário modificar o DOM
 	//a cada iteração

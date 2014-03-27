@@ -18,6 +18,9 @@ table{
 .ui-dialog-titlebar-close {
   visibility: hidden;
 }
+#deleteDialog{
+	height: auto !important;
+}
 
 /***********************
 *		Loader			*

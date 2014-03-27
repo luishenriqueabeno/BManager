@@ -42,6 +42,8 @@
 				    <label for = "managerEmail"> E-mail do gerente </label>
 				    <input id = "txtManagerEmail" name = "txtManagerEmail" type = "text"> <div class = "formFix"> </div>
 			    </div>
+
+			    <input type = "hidden" name = "bankId" value = "">
 				
 				<div class = "formAddBankSeparator">
 					<div class="ui-dialog-buttonset">
@@ -50,6 +52,13 @@
 					</div>
 				</div>
 			</form>
+		</div>
+
+		<!-- Dialogs -->
+		<div id="deleteDialog" title="Remover conta bancária">
+			<p>
+				Esta(s) conta(s) será(ão) excluida(s) permanetemente, tem certeza que deseja prosseguir?
+			</p>
 		</div>
 
 		<div id = "bankContainer">
