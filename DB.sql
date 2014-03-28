@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tempo de Geração: Mar 27, 2014 as 04:54 
+-- Tempo de Geração: Mar 28, 2014 as 11:54 
 -- Versão do Servidor: 5.1.41
 -- Versão do PHP: 5.3.1
 
@@ -218,14 +218,14 @@ CREATE TABLE IF NOT EXISTS `cashflowexpenses` (
   `userMaster` varchar(255) NOT NULL,
   `contaBancariaId` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Extraindo dados da tabela `cashflowexpenses`
 --
 
 INSERT INTO `cashflowexpenses` (`id`, `expenseName`, `categoryId`, `userId`, `jan`, `fev`, `mar`, `abr`, `mai`, `jun`, `jul`, `ago`, `set`, `out`, `nov`, `dez`, `ano`, `userMaster`, `contaBancariaId`) VALUES
-(1, 'teste', 3, 1, '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '2014', 'luis_abeno@hotmail.com', 1);
+(3, 'Despesa 01 2014', 3, 1, '55.00', '56.00', '50.00', '5.00', '50.00', '50.00', '12.00', '50.00', '50.00', '50.00', '50.00', '50.00', '2014', 'luis_abeno@hotmail.com', 1);
 
 -- --------------------------------------------------------
 
@@ -254,12 +254,15 @@ CREATE TABLE IF NOT EXISTS `cashflowincome` (
   `userMaster` varchar(255) NOT NULL,
   `contaBancariaId` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Extraindo dados da tabela `cashflowincome`
 --
 
+INSERT INTO `cashflowincome` (`id`, `incomeName`, `categoryId`, `userId`, `jan`, `fev`, `mar`, `abr`, `mai`, `jun`, `jul`, `ago`, `set`, `out`, `nov`, `dez`, `ano`, `userMaster`, `contaBancariaId`) VALUES
+(6, 'teste', 4, 1, '4555.55', '12.00', '12.00', '4555.55', '4555.55', '45.00', '4555.55', '4555.55', '4555.55', '45.00', '23.00', '4555.55', '2014', 'luis_abeno@hotmail.com', 2),
+(5, 'Receita 01 2014', 8, 1, '80.00', '53.00', '34.45', '34.45', '34.45', '34.45', '34.45', '34.45', '34.45', '34.45', '34.45', '34.45', '2014', 'luis_abeno@hotmail.com', 1);
 
 -- --------------------------------------------------------
 

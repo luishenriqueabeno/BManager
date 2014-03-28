@@ -311,6 +311,9 @@ $(document).ready(function(){
 		//Limpa tabela de receitas
 		monthTableIncomes.empty();
 
+		//Limpa tabela de saldo
+		monthTableSaldo.empty();
+
 		//Carrega despesas
 		$.ajax({
 			type: 'POST',
@@ -340,6 +343,9 @@ $(document).ready(function(){
 				$(monthTableIncomes).append(data);
 			}
 		});
+
+		//Carrega saldo
+		calculaSaldo();
 
 	});
 

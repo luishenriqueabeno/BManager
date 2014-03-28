@@ -100,24 +100,24 @@
 			</form>
 		</div>
 		
-		<div class = "selectBank">
-			
-			<div id="menuBanksFilter">
-				<ul>
-					<li>
-						<a href = "#"> Contas bancárias  </a>
-						<ul id = "theBankList">
-							
-							<button id = "sendBanks"> OK </button>
-						</ul>
-					</li>
-				</ul>
+		<div class = "filtro">
+			<input type = "hidden" value = "" id = "anoRetorno" name = "anoRetorno">
+
+			<div class = "selectBank">
+				<div id="menuBanksFilter">
+					<ul>
+						<li>
+							<a href = "#"> Contas bancárias  </a>
+							<ul id = "theBankList">
+								
+								<button id = "sendBanks"> OK </button>
+							</ul>
+						</li>
+					</ul>
+				</div>
 			</div>
 
-		</div>
-
-		<div class = "selectYear">
-			<input type = "hidden" value = "" id = "anoRetorno" name = "anoRetorno">
+			<labe for "ano"> Ano: </label>
 			<select id = "anoSelect">
 				<option value = "2013"> 2013 </option>
 				<option value = "2014"> 2014 </option>

@@ -16,13 +16,12 @@
 	padding-bottom:5px;
 	color:red;
 }
-.selectYear{
-	width:100%;
+.filtro{
 	text-align:right;
 	padding:0px 5px 0px 30px;
 }
-.selectYear select{
-	width:250px;
+.filtro select{
+	width:150px;
 	height:30px;
 	padding-left: 100px;
 }
@@ -299,6 +298,7 @@
 }
 #tableSaldo td:first-child{
 	text-align:left !important;
+	padding-left:0px !important;
 }
 .saldo{
 	height:40px !important;
@@ -347,4 +347,7 @@
 }
 #sendBanks{
 	width:100%;
+}
+.selectBank{
+	float:right;
 }
